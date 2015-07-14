@@ -24,5 +24,16 @@ namespace GI
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 实现顶栏可拖动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
     }
 }

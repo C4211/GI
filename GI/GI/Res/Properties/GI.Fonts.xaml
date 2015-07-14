@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <FontFamily x:Key="GI.Head.Title.FontFamily">STXihei</FontFamily>
+    <sys:Double x:Key="GI.Head.Title.FontSize">24</sys:Double>
+    <FontFamily x:Key="GI.Head.SubTitle.FontFamily">STXihei</FontFamily>
+    <sys:Double x:Key="GI.Head.SubTitle.FontSize">14</sys:Double>
+</ResourceDictionary>

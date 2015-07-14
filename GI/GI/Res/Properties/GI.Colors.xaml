@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="GI.Colors.Essential">#2C77DE</SolidColorBrush>
+    <LinearGradientBrush x:Key="GI.Colors.Head.linear" EndPoint="0,1">
+        <GradientStop Color="#FF4B87D8" Offset="0"/>
+        <GradientStop Color="#FF4080D7" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="GI.Colors.Secondary">#5AC65C</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Background">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Font.Head">#EDEDED</SolidColorBrush>
+</ResourceDictionary>
