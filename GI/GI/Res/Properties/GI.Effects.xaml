@@ -2,5 +2,5 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ImageBrush x:Key="GI.MainWindow.Effect.Shadow.Focus" ImageSource="/Res/Images/GI.MainWindow.Shadow.png" Opacity="0.6"></ImageBrush>
     <ImageBrush x:Key="GI.MainWindow.Effect.Shadow.Default" ImageSource="/Res/Images/GI.MainWindow.Shadow.png" Opacity="0.3"></ImageBrush>
-    <DropShadowEffect x:Key="GI.Effect.Shadow.Global" Opacity="0.1" ShadowDepth="2" BlurRadius="4"></DropShadowEffect>
+    <!--<DropShadowEffect x:Key="GI.Effect.Shadow.Global" Opacity="0.1" ShadowDepth="2" BlurRadius="4" RenderingBias="Quality"></DropShadowEffect>-->
 </ResourceDictionary>

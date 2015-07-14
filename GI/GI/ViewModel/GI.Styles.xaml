@@ -16,21 +16,27 @@
     </Style>
     <Style x:Key="GI.Window.Head.Logo.Style" TargetType="{x:Type Rectangle}">
         <Setter Property="Fill" Value="{DynamicResource GI.Window.Head.Logo}"/>
-        <Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
     <Style x:Key="GI.Window.Head.Title.Style" TargetType="{x:Type TextBlock}">
         <Setter Property="Text" Value="{DynamicResource GI.Detail.Name.Cn}"/>
         <Setter Property="FontFamily" Value="{DynamicResource GI.Head.Title.FontFamily}"/>
         <Setter Property="FontSize" Value="{DynamicResource GI.Head.Title.FontSize}"/>
         <Setter Property="Foreground" Value="{DynamicResource GI.Colors.Font.Head}"/>
-        <Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
     <Style x:Key="GI.Window.Head.SubTitle.Style" TargetType="{x:Type TextBlock}">
         <Setter Property="Text" Value="{DynamicResource GI.Detail.Name.En}"/>
         <Setter Property="FontFamily" Value="{DynamicResource GI.Head.SubTitle.FontFamily}"/>
         <Setter Property="FontSize" Value="{DynamicResource GI.Head.SubTitle.FontSize}"/>
         <Setter Property="Foreground" Value="{DynamicResource GI.Colors.Font.Head}"/>
-        <Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
     <Style x:Key="GI.Window.Body.Style" TargetType="Grid">
         <Setter Property="Background" Value="{DynamicResource GI.Colors.Background}"/>
