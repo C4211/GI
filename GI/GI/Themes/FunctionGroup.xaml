@@ -7,7 +7,12 @@
              Name="functionGroup">
 
     <Grid>
-        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="3" StrokeThickness="1" Stroke="#55555555" Visibility="{Binding ElementName=functionGroup, Path=Bd}"/>
+        <Rectangle 
+            Grid.RowSpan="2" 
+            Grid.ColumnSpan="3" 
+            StrokeThickness="1" 
+            Stroke="#55555555" 
+            Visibility="{Binding ElementName=functionGroup, Path=Bd}"/>
         <Grid Height="120">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
@@ -15,12 +20,27 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <!--<Rectangle Grid.Row="1" Height="70" Width="70" Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
-            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding ElementName=functionGroup, Path=Title}"/>
-            <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding ElementName=functionGroup, Path=Summary}"/>-->
-            <Rectangle Grid.Row="1" Height="70" Width="70" Fill="{StaticResource GI.Window.Head.Logo}"/>
-            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="重力异常改正" FontSize="14" FontFamily="Microsoft YaHei UI Light" Foreground="#FF333333"/>
-            <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Text="自空改正、布格改正..." FontSize="11" Foreground="#FF666666" FontFamily="Microsoft YaHei UI Light"/>
+            <Rectangle 
+                Grid.Row="1" 
+                Height="70" 
+                Width="70" 
+                Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
+            <TextBlock 
+                Grid.Row="2" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Text="{Binding ElementName=functionGroup, Path=TitleText}" 
+                FontFamily="{Binding ElementName=functionGroup, Path=TitleFontFamily}" 
+                FontSize="{Binding ElementName=functionGroup, Path=TitleFontSize}" 
+                Foreground="{Binding ElementName=functionGroup, Path=TitleForeground}"/>
+            <TextBlock 
+                Grid.Row="3" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Text="{Binding ElementName=functionGroup, Path=SummaryText}" 
+                FontFamily="{Binding ElementName=functionGroup, Path=SummaryFontFamily}" 
+                FontSize="{Binding ElementName=functionGroup, Path=SummaryFontSize}"
+                Foreground="{Binding ElementName=functionGroup, Path=SummaryForeground}"/>
         </Grid>
     </Grid>
 </UserControl>

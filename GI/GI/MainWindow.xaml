@@ -50,12 +50,48 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <local:FunctionGroup Grid.Row="0" Grid.Column="0" Icon="{StaticResource GI.Window.Head.Logo}" Title="重力异常改正" Summary="自空改正、布格改正..."/>
-                <local:FunctionGroup Grid.Row="0" Grid.Column="1" Icon="{StaticResource GI.Window.Head.Logo}" Title="重力数据处理" Summary="扩边、滤波、导数..."/>
-                <local:FunctionGroup Grid.Row="0" Grid.Column="2" Icon="{StaticResource GI.Window.Head.Logo}" Title="重力正反演计算" Summary="界面重力正演、重力..."/>
-                <local:FunctionGroup Grid.Row="1" Grid.Column="0" Icon="{StaticResource GI.Window.Head.Logo}" Title="重力数据解释" Summary="二维建模、三维建模"/>
-                <local:FunctionGroup Grid.Row="1" Grid.Column="1" Icon="{StaticResource GI.Window.Head.Logo}" Title="地质体参数计算" Summary="地质体参数反演、地..."/>
-                <local:FunctionGroup Grid.Row="1" Grid.Column="2" Icon="{StaticResource GI.Window.Head.Logo}" Title="使用说明" Summary="第一次使用？点击这里！"/>
+                <local:FunctionGroup 
+                    Grid.Row="0" 
+                    Grid.Column="0" 
+                    Icon="{StaticResource GI.Window.Head.Logo}" 
+                    TitleText="重力异常改正" 
+                    TitleFontFamily="{StaticResource GI.Body.Title.FontFamily}"
+                    TitleFontSize="14"
+                    TitleForeground="#333333"
+                    SummaryText="自空改正、布格改正..."
+                    SummaryFontFamily="{StaticResource GI.Body.Summary.FontFamily}"
+                    SummaryFontSize="11"
+                    SummaryForeground="#999999"/>
+                <local:FunctionGroup 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    Icon="{StaticResource GI.Window.Head.Logo}"
+                    TitleText="重力数据处理" 
+                    SummaryText="扩边、滤波、导数..."/>
+                <local:FunctionGroup
+                    Grid.Row="0" 
+                    Grid.Column="2" 
+                    Icon="{StaticResource GI.Window.Head.Logo}" 
+                    TitleText="重力正反演计算" 
+                    SummaryText="界面重力正演、重力..."/>
+                <local:FunctionGroup 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Icon="{StaticResource GI.Window.Head.Logo}"
+                    TitleText="重力数据解释" 
+                    SummaryText="二维建模、三维建模"/>
+                <local:FunctionGroup
+                    Grid.Row="1" 
+                    Grid.Column="1" 
+                    Icon="{StaticResource GI.Window.Head.Logo}"
+                    TitleText="地质体参数计算" 
+                    SummaryText="地质体参数反演、地..."/>
+                <local:FunctionGroup 
+                    Grid.Row="1" 
+                    Grid.Column="2" 
+                    Icon="{StaticResource GI.Window.Head.Logo}" 
+                    TitleText="使用说明" 
+                    SummaryText="第一次使用？点击这里！"/>
             </Grid>
         </Grid>
     </Grid>
