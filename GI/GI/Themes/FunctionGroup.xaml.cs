@@ -25,7 +25,7 @@ namespace GI
             InitializeComponent();
         }
 
-        #region Getters & Setters
+        #region 获取、设置依赖属性
         public DrawingBrush Icon
         {
             get { return (DrawingBrush)GetValue(IconProperty); }
@@ -51,7 +51,7 @@ namespace GI
         }
         #endregion
 
-        #region DependencyProperties
+        #region 注册依赖属性
         public static readonly DependencyProperty IconProperty = DependencyProperty.Register("Icon", typeof(DrawingBrush), typeof(FunctionGroup));
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(FunctionGroup));
         public static readonly DependencyProperty SummaryProperty = DependencyProperty.Register("Summary", typeof(string), typeof(FunctionGroup));
