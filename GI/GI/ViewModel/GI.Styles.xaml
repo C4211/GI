@@ -26,7 +26,7 @@
         <Setter Property="FontSize" Value="{DynamicResource GI.Head.Title.FontSize}"/>
         <Setter Property="Foreground" Value="{DynamicResource GI.Colors.Font.Head}"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
-        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <!--<Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />-->
         <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
     <Style x:Key="GI.Window.Head.SubTitle.Style" TargetType="{x:Type TextBlock}">
@@ -37,6 +37,45 @@
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
+    </Style>
+    <Style x:Key="GI.Window.Head.Close.Style" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent">
+                        <Rectangle x:Name="windowHeadClose" Width="11" Height="11" Fill="{DynamicResource GI.Window.Head.Close}" RenderTransformOrigin="0.5,0.5" >
+                            <Rectangle.RenderTransform>
+                                <RotateTransform Angle="0"/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(RotateTransform.Angle)" To="90" Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(RotateTransform.Angle)" To="0" Duration="0:0:0.2">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style x:Key="GI.Window.Body.Style" TargetType="Grid">
         <Setter Property="Background" Value="{DynamicResource GI.Colors.Background}"/>

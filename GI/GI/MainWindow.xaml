@@ -20,10 +20,21 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Style="{DynamicResource GI.Window.Head.Title.Style}"/>
-                <TextBlock Grid.Row="1" Style="{DynamicResource GI.Window.Head.SubTitle.Style}"/>
+                <TextBlock Grid.Row="1" Style="{DynamicResource GI.Window.Head.SubTitle.Style}" />
             </Grid>
             <Grid Grid.Column="2">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="2" Width="31" Height="31" Style="{DynamicResource GI.Window.Head.Close.Style}" Click="Button_Click" ></Button>
+                </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Style="{DynamicResource GI.Window.Body.Style}"></Grid>

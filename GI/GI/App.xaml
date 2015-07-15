@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Res/Properties/GI.Effects.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Properties/GI.Fonts.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Logo.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Res/Icons/GI.Window.Head.Close.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ViewModel/GI.Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
