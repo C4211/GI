@@ -45,7 +45,10 @@
                     <Grid Background="Transparent">
                         <Rectangle x:Name="windowHeadClose" Width="11" Height="11" Fill="{DynamicResource GI.Window.Head.Close}" RenderTransformOrigin="0.5,0.5" >
                             <Rectangle.RenderTransform>
-                                <RotateTransform Angle="0"/>
+                                <TransformGroup>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform Y="0" X="0"/>
+                                </TransformGroup>
                             </Rectangle.RenderTransform>
                         </Rectangle>
                     </Grid>
@@ -53,22 +56,79 @@
                         <EventTrigger RoutedEvent="Mouse.MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(RotateTransform.Angle)" To="90" Duration="0:0:0.2">
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseInOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)" To="90" Duration="0:0:0.2"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Mouse.MouseLeave">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(RotateTransform.Angle)" To="0" Duration="0:0:0.2">
-                                        <DoubleAnimation.EasingFunction>
-                                            <CubicEase EasingMode="EaseInOut"/>
-                                        </DoubleAnimation.EasingFunction>
-                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)" To="0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="1" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.Y)" To="0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadClose" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[1].(TranslateTransform.X)" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="GI.Window.Head.Min.Style" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent">
+                        <Rectangle x:Name="windowHeadMin" Width="11" Height="11" Fill="{DynamicResource GI.Window.Head.Min}" RenderTransformOrigin="0.5,0.5" >
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="0" X="0"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" To="5.5" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" To="0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" To="6.5" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" To="5.5" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="windowHeadMin" Storyboard.TargetProperty="(Panel.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)" To="0" Duration="0:0:0.1"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -79,6 +139,5 @@
     </Style>
     <Style x:Key="GI.Window.Body.Style" TargetType="Grid">
         <Setter Property="Background" Value="{DynamicResource GI.Colors.Background}"/>
-        <Setter Property="Opacity" Value="0.95"/>
     </Style>
 </ResourceDictionary>

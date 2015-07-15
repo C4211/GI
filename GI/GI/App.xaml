@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Logo.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Close.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="ViewModel/GI.Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Res/Icons/GI.Window.Head.Min.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

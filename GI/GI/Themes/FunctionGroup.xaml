@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="GI.FunctionGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Name="functionGroup">
+
+    <Grid>
+        <Rectangle Grid.RowSpan="2" Grid.ColumnSpan="3" StrokeThickness="1" Stroke="#55555555" Visibility="{Binding ElementName=functionGroup, Path=Bd}"/>
+        <Grid Height="120">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Height="10"></Grid>
+            <Rectangle Grid.Row="1" Height="70" Width="70" Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding ElementName=functionGroup, Path=Title}"/>
+            <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding ElementName=functionGroup, Path=Summary}"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -35,9 +35,14 @@ namespace GI
             this.DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Head_Min_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
 
     }
