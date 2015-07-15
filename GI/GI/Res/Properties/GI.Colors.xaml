@@ -6,7 +6,7 @@
         <GradientStop Color="#FF4080D7" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="GI.Colors.Secondary">#5AC65C</SolidColorBrush>
-    <SolidColorBrush x:Key="GI.Colors.Background">#FBFFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Background">#F5FFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="GI.Colors.Font.Head">#EDEDED</SolidColorBrush>
     <SolidColorBrush x:Key="GI.Colors.Head.ico">#FFFFFF</SolidColorBrush>
 </ResourceDictionary>
