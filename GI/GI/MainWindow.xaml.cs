@@ -34,12 +34,20 @@ namespace GI
         {
             this.DragMove();
         }
-
+        /// <summary>
+        /// 实现顶栏关闭功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// 实现顶栏最小化功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Head_Min_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
