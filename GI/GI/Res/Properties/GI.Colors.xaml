@@ -9,4 +9,9 @@
     <SolidColorBrush x:Key="GI.Colors.Background">#F5FFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="GI.Colors.Font.Head">#EDEDED</SolidColorBrush>
     <SolidColorBrush x:Key="GI.Colors.Head.ico">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Body.Tile">#333333</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Body.Summary">#999999</SolidColorBrush>
+    <Color x:Key="GI.Colors.Body.FunctionGroup.Default">#00CCCCCC</Color>
+    <Color x:Key="GI.Colors.Body.FunctionGroup.Hover">#FFCCCCCC</Color>
+    <Color x:Key="GI.Colors.Body.FunctionGroup.Press">#FF2C77DE</Color>
 </ResourceDictionary>

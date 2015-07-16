@@ -3,10 +3,6 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <FontFamily x:Key="GI.Head.Title.FontFamily">Microsoft YaHei UI Light</FontFamily>
     <sys:Double x:Key="GI.Head.Title.FontSize">24</sys:Double>
-    <FontFamily x:Key="GI.Head.SubTitle.FontFamily">Microsoft YaHei</FontFamily>
+    <FontFamily x:Key="GI.Head.SubTitle.FontFamily">Nirmala UI</FontFamily>
     <sys:Double x:Key="GI.Head.SubTitle.FontSize">14</sys:Double>
-    <FontFamily x:Key="GI.Body.Title.FontFamily">Microsoft YaHei UI</FontFamily>
-    <sys:Double x:Key="GI.Body.Title.FontSize"></sys:Double>
-    <FontFamily x:Key="GI.Body.Summary.FontFamily">Microsoft YaHei UI</FontFamily>
-    <sys:Double x:Key="GI.Body.Summary.FontSize"></sys:Double>
 </ResourceDictionary>

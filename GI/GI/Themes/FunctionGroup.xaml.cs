@@ -79,10 +79,10 @@ namespace GI
             set { SetValue(SummaryForegroundProperty, value); }
         }
 
-        public Visibility Bd
+        public SolidColorBrush BdColor
         {
-            get { return (Visibility)GetValue(BdProperty); }
-            set { SetValue(BdProperty, value); }
+            get { return (SolidColorBrush)GetValue(BdColorProperty); }
+            set { SetValue(BdColorProperty, value); }
         }
         #endregion
 
@@ -105,8 +105,9 @@ namespace GI
             DependencyProperty.Register("SummaryFontSize", typeof(double), typeof(FunctionGroup));
         public static readonly DependencyProperty SummaryForegroundProperty =
             DependencyProperty.Register("SummaryForeground", typeof(SolidColorBrush), typeof(FunctionGroup));
-        public static readonly DependencyProperty BdProperty =
-            DependencyProperty.Register("Bd", typeof(Visibility), typeof(FunctionGroup), new PropertyMetadata(Visibility.Collapsed));
+        public static readonly DependencyProperty BdColorProperty =
+            DependencyProperty.Register("BdColor", typeof(SolidColorBrush), typeof(FunctionGroup),
+                new PropertyMetadata(new SolidColorBrush((Color)Application.Current.Resources["GI.Colors.Body.FunctionGroup.Default"])));
         #endregion
     }
 }

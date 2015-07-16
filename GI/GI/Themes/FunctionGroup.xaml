@@ -7,40 +7,37 @@
              Name="functionGroup">
 
     <Grid>
-        <Rectangle 
-            Grid.RowSpan="2" 
-            Grid.ColumnSpan="3" 
-            StrokeThickness="1" 
-            Stroke="#55555555" 
-            Visibility="{Binding ElementName=functionGroup, Path=Bd}"/>
-        <Grid Height="120">
+        <Rectangle StrokeThickness="1" 
+                   Stroke="{Binding ElementName=functionGroup, Path=BdColor}"
+                   Fill="#00000000" />
+        <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="6"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Rectangle 
-                Grid.Row="1" 
-                Height="70" 
-                Width="70" 
-                Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
-            <TextBlock 
-                Grid.Row="2" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Bottom" 
-                Text="{Binding ElementName=functionGroup, Path=TitleText}" 
-                FontFamily="{Binding ElementName=functionGroup, Path=TitleFontFamily}" 
-                FontSize="{Binding ElementName=functionGroup, Path=TitleFontSize}" 
-                Foreground="{Binding ElementName=functionGroup, Path=TitleForeground}"/>
-            <TextBlock 
-                Grid.Row="3" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Top" 
-                Text="{Binding ElementName=functionGroup, Path=SummaryText}" 
-                FontFamily="{Binding ElementName=functionGroup, Path=SummaryFontFamily}" 
-                FontSize="{Binding ElementName=functionGroup, Path=SummaryFontSize}"
-                Foreground="{Binding ElementName=functionGroup, Path=SummaryForeground}"/>
+            <Rectangle Grid.Row="1" 
+                       Height="70" 
+                       Width="70" 
+                       Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
+            <TextBlock Grid.Row="3" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom" 
+                       Text="{Binding ElementName=functionGroup, Path=TitleText}" 
+                       FontFamily="{Binding ElementName=functionGroup, Path=TitleFontFamily}" 
+                       FontSize="{Binding ElementName=functionGroup, Path=TitleFontSize}" 
+                       Foreground="{Binding ElementName=functionGroup, Path=TitleForeground}"/>
+            <TextBlock Grid.Row="5" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top" 
+                       Text="{Binding ElementName=functionGroup, Path=SummaryText}" 
+                       FontFamily="{Binding ElementName=functionGroup, Path=SummaryFontFamily}" 
+                       FontSize="{Binding ElementName=functionGroup, Path=SummaryFontSize}"
+                       Foreground="{Binding ElementName=functionGroup, Path=SummaryForeground}"/>
         </Grid>
     </Grid>
 </UserControl>

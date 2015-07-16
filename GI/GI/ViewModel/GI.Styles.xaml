@@ -139,5 +139,6 @@
     </Style>
     <Style x:Key="GI.Window.Body.Style" TargetType="Grid">
         <Setter Property="Background" Value="{DynamicResource GI.Colors.Background}"/>
+        <Setter Property="ClipToBounds" Value="True"></Setter>
     </Style>
 </ResourceDictionary>
