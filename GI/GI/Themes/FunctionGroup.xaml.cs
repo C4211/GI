@@ -96,7 +96,8 @@ namespace GI
         public static readonly DependencyProperty TitleFontSizeProperty =
             DependencyProperty.Register("TitleFontSize", typeof(double), typeof(FunctionGroup));
         public static readonly DependencyProperty TitleForegroundProperty =
-            DependencyProperty.Register("TitleForeground", typeof(SolidColorBrush), typeof(FunctionGroup));
+            DependencyProperty.Register("TitleForeground", typeof(SolidColorBrush), typeof(FunctionGroup),
+                new PropertyMetadata(new SolidColorBrush(Colors.Black)));
         public static readonly DependencyProperty SummaryTextProperty =
             DependencyProperty.Register("SummaryText", typeof(string), typeof(FunctionGroup));
         public static readonly DependencyProperty SummaryFontFamilyProperty =
@@ -104,7 +105,8 @@ namespace GI
         public static readonly DependencyProperty SummaryFontSizeProperty =
             DependencyProperty.Register("SummaryFontSize", typeof(double), typeof(FunctionGroup));
         public static readonly DependencyProperty SummaryForegroundProperty =
-            DependencyProperty.Register("SummaryForeground", typeof(SolidColorBrush), typeof(FunctionGroup));
+            DependencyProperty.Register("SummaryForeground", typeof(SolidColorBrush), typeof(FunctionGroup),
+                new PropertyMetadata(new SolidColorBrush(Colors.Black)));
         public static readonly DependencyProperty BdColorProperty =
             DependencyProperty.Register("BdColor", typeof(SolidColorBrush), typeof(FunctionGroup),
                 new PropertyMetadata(new SolidColorBrush((Color)Application.Current.Resources["GI.Colors.Body.FunctionGroup.Default"])));

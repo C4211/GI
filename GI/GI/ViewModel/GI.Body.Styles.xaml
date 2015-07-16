@@ -16,8 +16,10 @@
         <Setter Property="Visibility" Value="Collapsed"></Setter>
     </Style>
     <Style x:Key="GI.Body.FunctionGroup.Style" TargetType="local:FunctionGroup">
-        <Setter Property="TitleForeground" Value="{DynamicResource GI.Colors.Body.Tile}"></Setter>
-        <Setter Property="SummaryForeground" Value="{DynamicResource GI.Colors.Body.Summary}"></Setter>
+        <Setter Property="TitleForeground" Value="{StaticResource GI.Colors.Body.Tile}"></Setter>
+        <Setter Property="TitleFontSize" Value="{StaticResource GI.Body.FunctionGroup.Title.FontSize}"></Setter>
+        <Setter Property="SummaryForeground" Value="{StaticResource GI.Colors.Body.Summary}"></Setter>
+        <Setter Property="SummaryFontSize" Value="{StaticResource GI.Body.FunctionGroup.Summary.FontSize}"></Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="Mouse.MouseEnter">
                 <BeginStoryboard>

@@ -5,4 +5,6 @@
     <sys:Double x:Key="GI.Head.Title.FontSize">24</sys:Double>
     <FontFamily x:Key="GI.Head.SubTitle.FontFamily">Nirmala UI</FontFamily>
     <sys:Double x:Key="GI.Head.SubTitle.FontSize">14</sys:Double>
+    <sys:Double x:Key="GI.Body.FunctionGroup.Title.FontSize">14</sys:Double>
+    <sys:Double x:Key="GI.Body.FunctionGroup.Summary.FontSize">12</sys:Double>
 </ResourceDictionary>
