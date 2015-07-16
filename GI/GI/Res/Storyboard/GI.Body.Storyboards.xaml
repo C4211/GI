@@ -43,7 +43,7 @@
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     
@@ -90,7 +90,7 @@
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     <Storyboard x:Key="GI.Body.Content.Storyboard.Back">
@@ -135,7 +135,7 @@
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     <Storyboard x:Key="GI.Body.Content.Storyboard.Open">
@@ -180,7 +180,7 @@
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.2" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
 </ResourceDictionary>
