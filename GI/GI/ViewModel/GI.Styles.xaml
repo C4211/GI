@@ -20,6 +20,12 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
+    <Style x:Key="GI.Window.Head.Back.Style" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{DynamicResource GI.Window.Head.Back.Default}"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
+    </Style>
     <Style x:Key="GI.Window.Head.Title.Style" TargetType="{x:Type TextBlock}">
         <Setter Property="Text" Value="{DynamicResource GI.Detail.Name.Cn}"/>
         <Setter Property="FontFamily" Value="{DynamicResource GI.Head.Title.FontFamily}"/>
