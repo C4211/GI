@@ -50,16 +50,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Margin="30,30,30,10" Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <UniformGrid Margin="30" Columns="3">
                     <local:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group1_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="重力异常改正"
@@ -84,7 +75,8 @@
                                      Icon="{DynamicResource 占位}"
                                      TitleText="GRD画图"
                                      SummaryText="GRD文件可视化预览"/>
-                </Grid>
+                </UniformGrid>
+                <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
                 <Grid Grid.Row="1" Height="30">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
