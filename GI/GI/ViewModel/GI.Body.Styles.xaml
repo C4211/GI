@@ -16,36 +16,75 @@
         <Setter Property="Visibility" Value="Collapsed"></Setter>
     </Style>
     <Style x:Key="GI.Body.FunctionGroup.Style" TargetType="local:FunctionGroup">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:FunctionGroup">
+                    <Grid>
+                        <Rectangle x:Name="bdColor" StrokeThickness="1" Fill="#00000000">
+                            <Rectangle.Stroke>
+                                <SolidColorBrush Color="{StaticResource GI.Colors.Body.FunctionGroup.Default}"></SolidColorBrush>
+                            </Rectangle.Stroke>
+                        </Rectangle>
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="bdColor" Storyboard.TargetProperty="Stroke.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Hover}" Duration="0:0:0.2"></ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="bdColor" Storyboard.TargetProperty="Stroke.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Default}" Duration="0:0:0.2"></ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="bdColor" Storyboard.TargetProperty="Stroke.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Press}" Duration="0:0:0.2"></ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="bdColor" Storyboard.TargetProperty="Stroke.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Hover}" Duration="0:0:0.2"></ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="TitleForeground" Value="{StaticResource GI.Colors.Body.Tile}"></Setter>
         <Setter Property="TitleFontSize" Value="{StaticResource GI.Body.FunctionGroup.Title.FontSize}"></Setter>
         <Setter Property="SummaryForeground" Value="{StaticResource GI.Colors.Body.Summary}"></Setter>
         <Setter Property="SummaryFontSize" Value="{StaticResource GI.Body.FunctionGroup.Summary.FontSize}"></Setter>
+    </Style>
+    <Style x:Key="GI.Body.BottomText.Style" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential}"/>
+        <Setter Property="Margin" Value="0,0,15,0"/>
         <Style.Triggers>
-            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential.Press}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="BdColor.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Hover}" Duration="0:0:0.2"></ColorAnimation>
+                        <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Essential.Color}" Duration="0"></ColorAnimation>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+            <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="BdColor.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Default}" Duration="0:0:0.2"></ColorAnimation>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="Mouse.MouseDown">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="BdColor.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Press}" Duration="0:0:0.2"></ColorAnimation>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="Mouse.MouseUp">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="BdColor.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Body.FunctionGroup.Hover}" Duration="0:0:0.2"></ColorAnimation>
+                        <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="{StaticResource GI.Colors.Essential.Press.Color}" Duration="0"></ColorAnimation>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>

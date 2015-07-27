@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="GI.Colors.Essential">#2C77DE</SolidColorBrush>
+    <Color x:Key="GI.Colors.Essential.Color">#2C77DE</Color>
+    <SolidColorBrush x:Key="GI.Colors.Essential.Press">#FF4C95DE</SolidColorBrush>
+    <Color x:Key="GI.Colors.Essential.Press.Color">#FF4C95DE</Color>
     <LinearGradientBrush x:Key="GI.Colors.Head.linear" EndPoint="0,1">
         <GradientStop Color="#FF4B87D8" Offset="0"/>
         <GradientStop Color="#FF4080D7" Offset="1"/>

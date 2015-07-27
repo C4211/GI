@@ -1,4 +1,4 @@
-﻿<Window x:Class="GI.MainWindow"
+﻿<Window xmlns:UserControls="clr-namespace:GI.UserControls"  x:Class="GI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:GI"
@@ -18,7 +18,7 @@
                 <Rectangle Margin="13" Style="{DynamicResource GI.Window.Head.Back.Style}" PreviewMouseLeftButtonUp="Group_Back" PreviewMouseLeftButtonDown="Preview_Group_Back" MouseLeave="Group_Back_MouseLeave" MouseEnter="Group_Back_MouseEnter"></Rectangle>
                 <Rectangle x:Name="headLogo" Width="60" Margin="13" Style="{DynamicResource GI.Window.Head.Logo.Style}"></Rectangle>
             </Grid>
-            
+
             <Grid Grid.Column="1" VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -60,27 +60,27 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <local:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group1_Open"
+                    <local:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group1_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="重力异常改正"
                                      SummaryText="自空改正、布格改正..."/>
-                    <local:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group2_Open"
+                    <local:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group2_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="重力数据处理"
                                      SummaryText="扩边、滤波、导数..."/>
-                    <local:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group3_Open"
+                    <local:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group3_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="重力正反演计算"
                                      SummaryText="界面重力正演、重力..."/>
-                    <local:FunctionGroup Grid.Row="1" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group4_Open"
+                    <local:FunctionGroup Grid.Row="1" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group4_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="重力数据解释"
                                      SummaryText="二维建模、三维建模"/>
-                    <local:FunctionGroup Grid.Row="1" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group5_Open"
+                    <local:FunctionGroup Grid.Row="1" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group5_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="地质体参数计算"
                                      SummaryText="地质体参数反演、地..."/>
-                    <local:FunctionGroup Grid.Row="1" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}" MouseLeftButtonUp="Group6_Open"
+                    <local:FunctionGroup Grid.Row="1" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}" Click="Group6_Open"
                                      Icon="{DynamicResource 占位}"
                                      TitleText="GRD画图"
                                      SummaryText="GRD文件可视化预览"/>
@@ -90,23 +90,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1" Margin="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Ellipse Grid.Column="0" Width="16" Height="16" Fill="ForestGreen"></Ellipse>
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center">使用说明</TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="2" Margin="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Ellipse Grid.Column="0" Width="16" Height="16" Fill="ForestGreen"></Ellipse>
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center">设置</TextBlock>
-                    </Grid>
+                    <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}">设置</TextBlock>
+                    <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}">关于</TextBlock>
+                    <TextBlock Grid.Column="3" Style="{StaticResource GI.Body.BottomText.Style}">使用帮助</TextBlock>
                 </Grid>
             </Grid>
             <Grid x:Name="group1" Style="{DynamicResource GI.Body.Content.Style}">

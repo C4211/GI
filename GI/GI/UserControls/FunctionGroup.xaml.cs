@@ -18,7 +18,7 @@ namespace GI
     /// <summary>
     /// UserControl1.xaml 的交互逻辑
     /// </summary>
-    public partial class FunctionGroup : UserControl
+    public partial class FunctionGroup : Button
     {
         public FunctionGroup()
         {
@@ -78,12 +78,6 @@ namespace GI
             get { return (SolidColorBrush)GetValue(TitleFontFamilyProperty); }
             set { SetValue(SummaryForegroundProperty, value); }
         }
-
-        public SolidColorBrush BdColor
-        {
-            get { return (SolidColorBrush)GetValue(BdColorProperty); }
-            set { SetValue(BdColorProperty, value); }
-        }
         #endregion
 
         #region 注册依赖属性
@@ -107,9 +101,6 @@ namespace GI
         public static readonly DependencyProperty SummaryForegroundProperty =
             DependencyProperty.Register("SummaryForeground", typeof(SolidColorBrush), typeof(FunctionGroup),
                 new PropertyMetadata(new SolidColorBrush(Colors.Black)));
-        public static readonly DependencyProperty BdColorProperty =
-            DependencyProperty.Register("BdColor", typeof(SolidColorBrush), typeof(FunctionGroup),
-                new PropertyMetadata(new SolidColorBrush((Color)Application.Current.Resources["GI.Colors.Body.FunctionGroup.Default"])));
         #endregion
     }
 }

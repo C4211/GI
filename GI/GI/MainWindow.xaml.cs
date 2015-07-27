@@ -159,7 +159,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group1_Open(object sender, MouseButtonEventArgs e)
+        private void Group1_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group1, "重力异常改正", "Gravity Exception Correction"));
         }
@@ -168,7 +168,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group2_Open(object sender, MouseButtonEventArgs e)
+        private void Group2_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group2, "重力数据处理", "Gravity Data Processing"));
         }
@@ -177,7 +177,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group3_Open(object sender, MouseButtonEventArgs e)
+        private void Group3_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group3,"重力正反演计算","Gravity forward calculation"));
         }
@@ -186,7 +186,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group4_Open(object sender, MouseButtonEventArgs e)
+        private void Group4_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group4, "重力数据解释","Gravity data interpretation"));
         }
@@ -195,7 +195,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group5_Open(object sender, MouseButtonEventArgs e)
+        private void Group5_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group5, "地质体参数计算","Calculation of geological parameters"));
         }
@@ -204,7 +204,7 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group6_Open(object sender, MouseButtonEventArgs e)
+        private void Group6_Open(object sender, RoutedEventArgs e)
         {
             Group_Open(new Page(group6, "GRD画图","Grd drawing"));
         }
@@ -239,9 +239,10 @@ namespace GI
         }
         #endregion
 
-
+        
 
     }
+
     #region 页面信息类
     /// <summary>
     /// 页面信息类
@@ -257,6 +258,25 @@ namespace GI
         public Grid Grid { get; set; }
         public string Title { get; set; }
         public string Subtile { get; set; }
+    }
+    #endregion
+
+    #region 功能树节点类
+    public class FunctionTree
+    {
+        public FunctionTree(string title,string summary,DrawingBrush ico,DrawingBrush icoHover,List<FunctionTree> children)
+        {
+            _title = title;
+            _summmary = summary;
+            _ico = ico;
+            _icoHover = icoHover;
+            _children = children;
+        }
+        public string _title { get; set; }
+        public string _summmary { get; set; }
+        public DrawingBrush _ico { get; set; }
+        public DrawingBrush _icoHover { get; set; }
+        public List<FunctionTree> _children { get; set; }
     }
     #endregion
 }

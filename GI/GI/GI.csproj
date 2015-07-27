@@ -54,8 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Themes\FunctionGroup.xaml.cs">
+    <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FunctionPage.xaml.cs">
+      <DependentUpon>FunctionPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,7 +122,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\FunctionGroup.xaml">
+    <Page Include="UserControls\FunctionGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FunctionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +172,7 @@
   <ItemGroup>
     <Resource Include="Res\images\GI.MainWindow.Shadow.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

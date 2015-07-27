@@ -1,43 +1,39 @@
-﻿<UserControl x:Class="GI.FunctionGroup"
+﻿<Button x:Class="GI.FunctionGroup"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
              Name="functionGroup">
-
     <Grid>
-        <Rectangle StrokeThickness="1" 
-                   Stroke="{Binding ElementName=functionGroup, Path=BdColor}"
-                   Fill="#00000000" />
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="6"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Rectangle Grid.Row="1" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="1" 
                        Height="70" 
                        Width="70" 
                        Fill="{Binding ElementName=functionGroup, Path=Icon}"/>
-            <TextBlock Grid.Row="3" 
+        <TextBlock Grid.Row="3"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Bottom" 
+                       VerticalAlignment="Bottom"
                        Text="{Binding ElementName=functionGroup, Path=TitleText}" 
                        FontFamily="{Binding ElementName=functionGroup, Path=TitleFontFamily}" 
                        FontSize="{Binding ElementName=functionGroup, Path=TitleFontSize}" 
-                       Foreground="{Binding ElementName=functionGroup, Path=TitleForeground}"/>
-            <TextBlock Grid.Row="5" 
+                       Foreground="{Binding ElementName=functionGroup, Path=TitleForeground}"
+                       >
+        </TextBlock>
+        <TextBlock Grid.Row="5" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top" 
                        Text="{Binding ElementName=functionGroup, Path=SummaryText}" 
                        FontFamily="{Binding ElementName=functionGroup, Path=SummaryFontFamily}" 
                        FontSize="{Binding ElementName=functionGroup, Path=SummaryFontSize}"
                        Foreground="{Binding ElementName=functionGroup, Path=SummaryForeground}"/>
-        </Grid>
     </Grid>
-</UserControl>
+</Button>
