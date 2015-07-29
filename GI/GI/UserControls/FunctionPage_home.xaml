@@ -1,0 +1,60 @@
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:GI="clr-namespace:GI"
+             xmlns:Tools="clr-namespace:GI.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="414" d:DesignWidth="680" ClipToBounds="True"
+                    Style="{DynamicResource GI.Body.Content.Style}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <UniformGrid Margin="30" Columns="3">
+                <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="zlycgz"
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="重力异常改正"
+                                  SummaryText="自空改正、布格改正..."
+                                  ToolTip="自空改正、布格改正、地形改正"/>
+                <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="zlsjcl"   
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="重力数据处理"
+                                  SummaryText="扩边、滤波、导数..."/>
+                <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="zlzfyjs"   
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="重力正反演计算"
+                                  SummaryText="界面重力正演、重力..."/>
+                <GI:FunctionGroup Grid.Row="1" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="zlsjjs"
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="重力数据解释"
+                                  SummaryText="二维建模、三维建模"/>
+                <GI:FunctionGroup Grid.Row="1" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="dztcsjs"
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="地质体参数计算"
+                                  SummaryText="地质体参数反演、地..."/>
+                <GI:FunctionGroup Grid.Row="1" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="grdht"
+                                  Icon="{DynamicResource 占位}"
+                                  TitleText="GRD画图"
+                                  SummaryText="GRD文件可视化预览"/>
+            </UniformGrid>
+            <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
+    <Grid Grid.Row="1" Height="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}">设置</TextBlock>
+        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}">关于</TextBlock>
+        <TextBlock Grid.Column="3" Style="{StaticResource GI.Body.BottomText.Style}">使用帮助</TextBlock>
+    </Grid>
+</Tools:FunctionPage>

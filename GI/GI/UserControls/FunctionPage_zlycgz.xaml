@@ -1,0 +1,46 @@
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_zlycgz"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:GI="clr-namespace:GI"
+             xmlns:Tools="clr-namespace:GI.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="414" d:DesignWidth="680" 
+             Style="{DynamicResource GI.Body.Content.Style}">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <UniformGrid Margin="30,108" Columns="3">
+        <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                          x:Name="dxgz"
+                          Icon="{DynamicResource 占位}"
+                          TitleText="地形改正"
+                          SummaryText="利用方形域法进行地形改正"/>
+        <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                          x:Name="bggz"
+                          Icon="{DynamicResource 占位}"
+                          TitleText="布格改正"
+                          SummaryText="利用傅里叶变换法进行地形改正"/>
+        <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                          x:Name="zkgz"
+                          Icon="{DynamicResource 占位}"
+                          TitleText="自空改正"
+                          SummaryText="自由空气重力异常改正"
+                          ToolTip="自由空气重力异常改正"/>
+
+    </UniformGrid>
+    <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
+    <Grid Grid.Row="1" Height="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}">设置</TextBlock>
+        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}">关于</TextBlock>
+        <TextBlock Grid.Column="3" Style="{StaticResource GI.Body.BottomText.Style}">使用帮助</TextBlock>
+    </Grid>
+</Tools:FunctionPage>

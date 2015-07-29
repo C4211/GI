@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GI.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,15 @@ using System.Windows.Shapes;
 namespace GI.UserControls
 {
     /// <summary>
-    /// FunctionPage.xaml 的交互逻辑
+    /// Function_fxyf.xaml 的交互逻辑
     /// </summary>
-    public partial class FunctionPage : UserControl
+    public partial class Function_bggz : FunctionPage
     {
-        public FunctionPage()
+        public Function_bggz()
         {
             InitializeComponent();
+            this.titleCn = "方形域法";
+            this.titleEn = "Square domain Method";
         }
-
     }
 }

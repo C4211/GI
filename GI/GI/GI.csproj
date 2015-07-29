@@ -54,11 +54,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tools\FunctionPage.cs" />
     <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage.xaml.cs">
-      <DependentUpon>FunctionPage.xaml</DependentUpon>
+    <Compile Include="UserControls\FunctionPage_home.xaml.cs">
+      <DependentUpon>FunctionPage_home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FunctionPage_zlycgz.xaml.cs">
+      <DependentUpon>FunctionPage_zlycgz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_bggz.xaml.cs">
+      <DependentUpon>Function_bggz.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -126,7 +133,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\FunctionPage.xaml">
+    <Page Include="UserControls\FunctionPage_home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FunctionPage_zlycgz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Function_bggz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

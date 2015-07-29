@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GI.Tools;
+using GI.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,15 +28,15 @@ namespace GI
         public MainWindow()
         {
             InitializeComponent();
-            Page pHome = new Page(home, (string)Application.Current.Resources["GI.Detail.Name.Cn"], (string)Application.Current.Resources["GI.Detail.Name.En"]);
-            contentStack.Push(pHome);
+            contentStack.Push(home);
+            home.zlycgz.Click += Zlycgz_Open;
         }
 
         #region 返回
         /// <summary>
         /// 返回层级栈
         /// </summary>
-        private Stack<Page> contentStack = new Stack<Page>();
+        private Stack<FunctionPage> contentStack = new Stack<FunctionPage>();
         /// <summary>
         /// 当前层级关闭动画
         /// </summary>
@@ -56,11 +58,13 @@ namespace GI
         {
             if (contentStack.Count > 1)
             {
-                Grid current = contentStack.Pop().Grid;
-                Grid prev = contentStack.Peek().Grid;
-                current.BeginStoryboard(sbBackward);
+                Storyboard sb = sbBackward.Clone();
+                Grid current = contentStack.Pop();
+                Grid prev = contentStack.Peek();
+                current.BeginStoryboard(sb);
                 prev.BeginStoryboard(sbBack);
-                ChangeHeadTitle(contentStack.Peek().Title, contentStack.Peek().Subtile);
+                sb.Completed += delegate { current = null; };
+                ChangeHeadTitle(contentStack.Peek().titleCn, contentStack.Peek().titleEn);
                 ((Rectangle)sender).Fill = (DrawingBrush)Application.Current.Resources["GI.Window.Head.Back.Defalut"];
             }
             if (contentStack.Count <= 1)
@@ -145,12 +149,13 @@ namespace GI
         /// 打开输入Group
         /// </summary>
         /// <param name="sender">需要打开的Group</param>
-        private void Group_Open(Page sender)
+        private void Group_Open(FunctionPage sender)
         {
-            contentStack.Peek().Grid.BeginStoryboard(sbForward);
-            sender.Grid.BeginStoryboard(sbOpen);
+            body.Children.Add(sender);
+            contentStack.Peek().BeginStoryboard(sbForward);
+            sender.BeginStoryboard(sbOpen);
             contentStack.Push(sender);
-            ChangeHeadTitle(sender.Title, sender.Subtile);
+            ChangeHeadTitle(sender.titleCn, sender.titleEn);
             if (contentStack.Count > 1)
                 headLogo.BeginStoryboard(sbBackEnable);
         }
@@ -159,55 +164,67 @@ namespace GI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group1_Open(object sender, RoutedEventArgs e)
+        private void Zlycgz_Open(object sender, RoutedEventArgs e)
         {
-            Group_Open(new Page(group1, "重力异常改正", "Gravity Exception Correction"));
+            FunctionPage_zlycgz fp = new FunctionPage_zlycgz();
+            fp.bggz.Click += Bggz_Open;
+            Group_Open(fp);
         }
         /// <summary>
-        /// 重力数据处理点击事件
+        /// 布格改正点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Group2_Open(object sender, RoutedEventArgs e)
+        private void Bggz_Open(object sender, RoutedEventArgs e)
         {
-            Group_Open(new Page(group2, "重力数据处理", "Gravity Data Processing"));
+            Function_bggz fp = new Function_bggz();
+            Group_Open(fp);
         }
-        /// <summary>
-        /// 重力正反演计算点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Group3_Open(object sender, RoutedEventArgs e)
-        {
-            Group_Open(new Page(group3,"重力正反演计算","Gravity forward calculation"));
-        }
-        /// <summary>
-        /// 重力数据解释点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Group4_Open(object sender, RoutedEventArgs e)
-        {
-            Group_Open(new Page(group4, "重力数据解释","Gravity data interpretation"));
-        }
-        /// <summary>
-        /// 地质体参数计算点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Group5_Open(object sender, RoutedEventArgs e)
-        {
-            Group_Open(new Page(group5, "地质体参数计算","Calculation of geological parameters"));
-        }
-        /// <summary>
-        /// Grd画图点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Group6_Open(object sender, RoutedEventArgs e)
-        {
-            Group_Open(new Page(group6, "GRD画图","Grd drawing"));
-        }
+        ///// <summary>
+        ///// 重力数据处理点击事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Group2_Open(object sender, RoutedEventArgs e)
+        //{
+        //    Group_Open(new Page(group2, "重力数据处理", "Gravity Data Processing"));
+        //}
+        ///// <summary>
+        ///// 重力正反演计算点击事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Group3_Open(object sender, RoutedEventArgs e)
+        //{
+        //    Group_Open(new Page(group3, "重力正反演计算", "Gravity forward calculation"));
+        //}
+        ///// <summary>
+        ///// 重力数据解释点击事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Group4_Open(object sender, RoutedEventArgs e)
+        //{
+        //    Group_Open(new Page(group4, "重力数据解释", "Gravity data interpretation"));
+        //}
+        ///// <summary>
+        ///// 地质体参数计算点击事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Group5_Open(object sender, RoutedEventArgs e)
+        //{
+        //    Group_Open(new Page(group5, "地质体参数计算", "Calculation of geological parameters"));
+        //}
+        ///// <summary>
+        ///// Grd画图点击事件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Group6_Open(object sender, RoutedEventArgs e)
+        //{
+        //    Group_Open(new Page(group6, "GRD画图", "Grd drawing"));
+        //}
         #endregion
 
         #region 标题栏控制
@@ -239,44 +256,8 @@ namespace GI
         }
         #endregion
 
+
         
 
     }
-
-    #region 页面信息类
-    /// <summary>
-    /// 页面信息类
-    /// </summary>
-    public class Page
-    {
-        public Page(Grid page,string title,string subtitle)
-        {
-            Grid = page;
-            Title = title;
-            Subtile = subtitle;
-        }
-        public Grid Grid { get; set; }
-        public string Title { get; set; }
-        public string Subtile { get; set; }
-    }
-    #endregion
-
-    #region 功能树节点类
-    public class FunctionTree
-    {
-        public FunctionTree(string title,string summary,DrawingBrush ico,DrawingBrush icoHover,List<FunctionTree> children)
-        {
-            _title = title;
-            _summmary = summary;
-            _ico = ico;
-            _icoHover = icoHover;
-            _children = children;
-        }
-        public string _title { get; set; }
-        public string _summmary { get; set; }
-        public DrawingBrush _ico { get; set; }
-        public DrawingBrush _icoHover { get; set; }
-        public List<FunctionTree> _children { get; set; }
-    }
-    #endregion
 }

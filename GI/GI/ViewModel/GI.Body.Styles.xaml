@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:GI">
     <Style x:Key="GI.Body.Content.Style" TargetType="Grid">
+        <Setter Property="Visibility" Value="Collapsed"/>
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <TransformGroup>
@@ -20,7 +21,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:FunctionGroup">
                     <Grid>
-                        <Rectangle x:Name="bdColor" StrokeThickness="1" Fill="#00000000">
+                        <Rectangle x:Name="bdColor" StrokeThickness="1" Fill="#00000000" RadiusX="3" RadiusY="3">
                             <Rectangle.Stroke>
                                 <SolidColorBrush Color="{StaticResource GI.Colors.Body.FunctionGroup.Default}"></SolidColorBrush>
                             </Rectangle.Stroke>
