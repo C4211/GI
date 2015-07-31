@@ -7,7 +7,7 @@
              xmlns:Tools="clr-namespace:GI.Tools"
              d:DesignHeight="414" d:DesignWidth="680"
              Width="680"
-             Style="{StaticResource GI.Body.Content.Style}" Visibility="Visible">
+             Style="{StaticResource GI.Body.Content.Style}">
     <Tools:FunctionPage.Resources>
         <Style x:Key="Text.Style" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>

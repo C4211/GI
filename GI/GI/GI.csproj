@@ -64,8 +64,20 @@
     <Compile Include="UserControls\FunctionPage_home.xaml.cs">
       <DependentUpon>FunctionPage_home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FunctionPage_dxgz.xaml.cs">
+      <DependentUpon>FunctionPage_dxgz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctionPage_zlycgz.xaml.cs">
       <DependentUpon>FunctionPage_zlycgz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_flybhf.xaml.cs">
+      <DependentUpon>Function_flybhf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_fxyf.xaml.cs">
+      <DependentUpon>Function_fxyf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_gsjff.xaml.cs">
+      <DependentUpon>Function_gsjff.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Function_zkgz.xaml.cs">
       <DependentUpon>Function_zkgz.xaml</DependentUpon>
@@ -160,9 +172,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctionPage_dxgz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\FunctionPage_zlycgz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Function_flybhf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_fxyf.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_gsjff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Function_zkgz.xaml">
       <Generator>MSBuild:Compile</Generator>

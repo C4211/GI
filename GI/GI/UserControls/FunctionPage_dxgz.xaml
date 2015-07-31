@@ -1,4 +1,4 @@
-﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_zlycgz"
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_dxgz"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,23 +14,23 @@
     </Grid.RowDefinitions>
     <UniformGrid Margin="30,108" Columns="3">
         <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
-                          x:Name="dxgz"
+                          x:Name="fxyf"
                           Icon="{DynamicResource 占位}"
-                          TitleText="地形改正"
-                          SummaryText="方形域法、傅里叶变换..."
-                          ToolTip="方形域法、傅里叶变换法、高斯积分法"/>
+                          TitleText="方形域法"
+                          SummaryText="利用方形域法进行地形改正"
+                          ToolTip="利用方形域法进行地形改正。"/>
         <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
-                          x:Name="bggz"
+                          x:Name="gsjff"
                           Icon="{DynamicResource 占位}"
-                          TitleText="布格改正"
-                          SummaryText="进行自空重力异常值布格改正"
-                          ToolTip="进行自空重力异常值布格改正"/>
+                          TitleText="高斯积分法"
+                          SummaryText="利用高斯积分法进行地形改正"
+                          ToolTip="利用高斯积分法进行地形改正"/>
         <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
-                          x:Name="zkgz"
+                          x:Name="flybhf"
                           Icon="{DynamicResource 占位}"
-                          TitleText="自空改正"
-                          SummaryText="自由空气重力异常改正"
-                          ToolTip="自由空气重力异常改正"/>
+                          TitleText="傅里叶变换法"
+                          SummaryText="利用傅里叶变换法进行地形改正"
+                          ToolTip="利用傅里叶变换法进行地形改正"/>
 
     </UniformGrid>
     <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>

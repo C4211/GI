@@ -170,7 +170,66 @@ namespace GI
         private void Zlycgz_Open(object sender, RoutedEventArgs e)
         {
             FunctionPage_zlycgz fp = new FunctionPage_zlycgz();
+            fp.dxgz.Click += dxgz_Click;
             fp.bggz.Click += Bggz_Open;
+            fp.zkgz.Click += Zkgz_Open;
+            Group_Open(fp);
+        }
+        /// <summary>
+        /// 地形改正点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void dxgz_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionPage_dxgz fp = new FunctionPage_dxgz();
+            fp.fxyf.Click += fxyf_Click;
+            fp.gsjff.Click += gsjff_Click;
+            fp.flybhf.Click += flybhf_Click;
+            Group_Open(fp);
+        }
+        /// <summary>
+        /// 傅里叶变换法点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void flybhf_Click(object sender, RoutedEventArgs e)
+        {
+            Function_flybhf fp = new Function_flybhf();
+            fp.Cancle.Click += delegate { Page_Back(); };
+            Group_Open(fp);
+        }
+        /// <summary>
+        /// 高斯积分法点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void gsjff_Click(object sender, RoutedEventArgs e)
+        {
+            Function_gsjff fp = new Function_gsjff();
+            fp.Cancle.Click += delegate { Page_Back(); };
+            Group_Open(fp);
+        }
+        /// <summary>
+        /// 方形域法点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void fxyf_Click(object sender, RoutedEventArgs e)
+        {
+            Function_fxyf fp = new Function_fxyf();
+            fp.Cancle.Click += delegate { Page_Back(); };
+            Group_Open(fp);
+        }
+        /// <summary>
+        /// 自空改正点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Zkgz_Open(object sender, RoutedEventArgs e)
+        {
+            Function_zkgz fp = new Function_zkgz();
+            fp.Cancle.Click += delegate { Page_Back(); };
             Group_Open(fp);
         }
         /// <summary>
