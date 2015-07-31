@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="GI.UserControls.BodyTitle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             Name="bodyTitle"
+             Height="70" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Margin="10,0" Width="3" Height="24" Fill="{StaticResource GI.Colors.Essential}"></Rectangle>
+        <TextBlock Grid.Column="1" 
+                   VerticalAlignment="Center"
+                   FontSize="16" 
+                   Foreground="{StaticResource GI.Colors.Body.Tile}"
+                   Text="{Binding ElementName=bodyTitle,Path=Title}"/>
+    </Grid>
+</UserControl>

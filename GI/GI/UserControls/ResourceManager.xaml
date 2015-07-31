@@ -1,0 +1,39 @@
+﻿<Grid xmlns:UserControls="clr-namespace:GI.UserControls"  x:Class="GI.UserControls.ResourceManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid.Resources>
+        <Style x:Key="AddPathStyle" TargetType="UserControls:ResourceManger_Addpath">
+            <Setter Property="Color" Value="{StaticResource GI.Colors.Essential}"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Color" Value="{StaticResource GI.Colors.Essential.Press}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Color" Value="{StaticResource GI.Colors.Essential}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <UserControls:BodyTitle Grid.Column="0" Title="资源管理器"/>
+            <Grid Grid.Column="1">
+            <UserControls:ResourceManger_Addpath Style="{StaticResource AddPathStyle}"/>
+        </Grid>
+    </Grid>
+    <Grid Grid.Row="1">
+        <TextBlock Margin="10">资源管理器内容</TextBlock>
+    </Grid>
+</Grid>

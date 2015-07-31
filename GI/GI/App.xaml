@@ -18,6 +18,8 @@
                 <ResourceDictionary Source="Res/Storyboard/GI.Body.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Head.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Back.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Res/Icons/GI.ResourceManager.Addpath.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Themes/Generic.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

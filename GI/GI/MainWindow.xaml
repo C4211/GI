@@ -14,9 +14,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Height="106">
-                <Rectangle Margin="23,23,13,23" Style="{DynamicResource GI.Window.Head.Back.Style}" MouseLeftButtonUp="Group_Back" MouseLeftButtonDown="Preview_Group_Back" MouseLeave="Group_Back_MouseLeave" MouseEnter="Group_Back_MouseEnter"></Rectangle>
-                <Rectangle x:Name="headLogo" Width="60" Margin="23,23,13,23" Style="{DynamicResource GI.Window.Head.Logo.Style}"></Rectangle>
+            <Grid Grid.Column="0" Height="86">
+                <Rectangle Margin="13" Style="{DynamicResource GI.Window.Head.Back.Style}" MouseLeftButtonUp="Group_Back" MouseLeftButtonDown="Preview_Group_Back" MouseLeave="Group_Back_MouseLeave" MouseEnter="Group_Back_MouseEnter"></Rectangle>
+                <Rectangle x:Name="headLogo" Width="60" Margin="13" Style="{DynamicResource GI.Window.Head.Logo.Style}"></Rectangle>
             </Grid>
 
             <Grid Grid.Column="1" VerticalAlignment="Center">

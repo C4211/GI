@@ -1,5 +1,4 @@
-﻿using GI.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace GI.UserControls
 {
     /// <summary>
-    /// Function_fxyf.xaml 的交互逻辑
+    /// ResourceManager.xaml 的交互逻辑
     /// </summary>
-    public partial class Function_bggz : FunctionPage
+    public partial class ResourceManager : Grid
     {
-        public Function_bggz()
+        public ResourceManager()
         {
             InitializeComponent();
-            this.titleCn = "布格改正";
-            this.titleEn = "Bouguer correction";
         }
     }
 }

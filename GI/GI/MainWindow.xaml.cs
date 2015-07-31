@@ -56,6 +56,10 @@ namespace GI
         /// <param name="e"></param>
         private void Group_Back(object sender, MouseButtonEventArgs e)
         {
+            Page_Back();
+        }
+        private void Page_Back()
+        {
             if (contentStack.Count > 1)
             {
                 Storyboard sb = sbBackward.Clone();
@@ -65,7 +69,6 @@ namespace GI
                 prev.BeginStoryboard(sbBack);
                 sb.Completed += delegate { current = null; };
                 ChangeHeadTitle(contentStack.Peek().titleCn, contentStack.Peek().titleEn);
-                ((Rectangle)sender).Fill = (DrawingBrush)Application.Current.Resources["GI.Window.Head.Back.Defalut"];
             }
             if (contentStack.Count <= 1)
                 headLogo.BeginStoryboard(sbBackDefault);
@@ -156,7 +159,7 @@ namespace GI
             sender.BeginStoryboard(sbOpen);
             contentStack.Push(sender);
             ChangeHeadTitle(sender.titleCn, sender.titleEn);
-            if (contentStack.Count > 1)
+            if (contentStack.Count == 2)
                 headLogo.BeginStoryboard(sbBackEnable);
         }
         /// <summary>
@@ -179,7 +182,9 @@ namespace GI
         {
             Function_bggz fp = new Function_bggz();
             Group_Open(fp);
+            fp.Cancle.Click += delegate { Page_Back(); };
         }
+
         ///// <summary>
         ///// 重力数据处理点击事件
         ///// </summary>

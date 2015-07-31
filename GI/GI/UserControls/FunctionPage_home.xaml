@@ -6,8 +6,8 @@
              xmlns:GI="clr-namespace:GI"
              xmlns:Tools="clr-namespace:GI.Tools"
              mc:Ignorable="d" 
-             d:DesignHeight="414" d:DesignWidth="680" ClipToBounds="True"
-                    Style="{DynamicResource GI.Body.Content.Style}">
+             d:DesignHeight="444" d:DesignWidth="680" ClipToBounds="True"
+                    Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
@@ -45,7 +45,7 @@
                                   TitleText="GRD画图"
                                   SummaryText="GRD文件可视化预览"/>
             </UniformGrid>
-            <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
+            <Rectangle Height="1" Fill="{StaticResource GI.Colors.Body.Line}" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
     <Grid Grid.Row="1" Height="30">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

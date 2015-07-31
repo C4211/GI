@@ -55,6 +55,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Tools\FunctionPage.cs" />
+    <Compile Include="UserControls\BodyTitle.xaml.cs">
+      <DependentUpon>BodyTitle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
@@ -64,8 +67,20 @@
     <Compile Include="UserControls\FunctionPage_zlycgz.xaml.cs">
       <DependentUpon>FunctionPage_zlycgz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Function_zkgz.xaml.cs">
+      <DependentUpon>Function_zkgz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Function_bggz.xaml.cs">
       <DependentUpon>Function_bggz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ResourceManager.xaml.cs">
+      <DependentUpon>ResourceManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ResourceManger_Addpath.xaml.cs">
+      <DependentUpon>ResourceManger_Addpath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelectFileControl.xaml.cs">
+      <DependentUpon>SelectFileControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Res\Icons\GI.ResourceManager.Addpath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Res\Icons\GI.Window.Head.Back.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\BodyTitle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\FunctionGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,7 +164,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Function_zkgz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\Function_bggz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ResourceManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ResourceManger_Addpath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelectFileControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

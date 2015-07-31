@@ -4,46 +4,46 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
-            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
         </ObjectAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     
@@ -51,58 +51,58 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
             <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
         </ObjectAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.95">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.95">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.95">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.95">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     <Storyboard x:Key="GI.Body.Content.Storyboard.Back">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
             <EasingDoubleKeyFrame KeyTime="0" Value="0">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
@@ -112,42 +112,42 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1.05">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
             <EasingDoubleKeyFrame KeyTime="0" Value="1.1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
     <Storyboard x:Key="GI.Body.Content.Storyboard.Open">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
             <EasingDoubleKeyFrame KeyTime="0" Value="0">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
@@ -157,30 +157,30 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
             <EasingDoubleKeyFrame KeyTime="0" Value="0.95">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
             <EasingDoubleKeyFrame KeyTime="0" Value="0.95">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
-                    <QuarticEase EasingMode="EaseOut"/>
+                    <QuadraticEase EasingMode="EaseInOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
         <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)">
             <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="false"/>
-            <DiscreteBooleanKeyFrame KeyTime="0:0:0.5" Value="true"/>
+            <DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="true"/>
         </BooleanAnimationUsingKeyFrames>
     </Storyboard>
 </ResourceDictionary>
