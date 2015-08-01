@@ -3,6 +3,7 @@
     <SolidColorBrush x:Key="GI.Colors.Essential">#2C77DE</SolidColorBrush>
     <Color x:Key="GI.Colors.Essential.Color">#2C77DE</Color>
     <SolidColorBrush x:Key="GI.Colors.Essential.Press">#FF4C95DE</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Null">#00000000</SolidColorBrush>
     <Color x:Key="GI.Colors.Essential.Press.Color">#FF4C95DE</Color>
     <LinearGradientBrush x:Key="GI.Colors.Head.linear" EndPoint="0,1">
         <GradientStop Color="#FF4B87D8" Offset="0"/>

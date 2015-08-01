@@ -1,5 +1,120 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:GI">
+    xmlns:local="clr-namespace:GI.Tools">
+    <Style TargetType="{x:Type local:ResourceManagerTreeNode}">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ResourceManagerTreeNode}">
+                    <Grid Height="{TemplateBinding Height}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="34"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" x:Name="Bd" Background="{TemplateBinding Background}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="{Binding Path=LevelLeft,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Rectangle x:Name="OnSelect" Fill="{StaticResource GI.Colors.Null}" Width="3"></Rectangle>
+                            </Grid>
+                            <Rectangle Grid.Column="2" Margin="10,0" Width="20" Height="20" Fill="{StaticResource GI.Colors.Body.text}" RadiusX="20" RadiusY="20"></Rectangle>
+                            <TextBlock Grid.Column="3" x:Name="Title" Text="{TemplateBinding Title}" VerticalAlignment="Center" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Foreground" Value="#2C77DE"></Setter>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <local:ResourceManagerToggleButton Grid.Column="4" x:Name="Expander" ClickMode="Press" HorizontalAlignment="Left"
+                                            IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                                <local:ResourceManagerToggleButton.Style>
+                                    <Style TargetType="local:ResourceManagerToggleButton">
+                                        <Setter Property="Background" Value="{StaticResource GI.Colors.Null}"></Setter>
+                                        <Setter Property="Height" Value="34"></Setter>
+                                        <Setter Property="Width" Value="34"></Setter>
+                                        <Setter Property="IcoAngle" Value="0"></Setter>
+                                        <Setter Property="Focusable" Value="False"/>
+                                        <Setter Property="BorderBrush" Value="{StaticResource GI.Colors.Body.text}"></Setter>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="local:ResourceManagerToggleButton">
+                                                    <Grid Background="{TemplateBinding Background}">
+                                                        <Rectangle Width="6" Height="12" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                            <Rectangle.LayoutTransform>
+                                                                <TransformGroup>
+                                                                    <ScaleTransform/>
+                                                                    <SkewTransform/>
+                                                                    <RotateTransform Angle="{Binding IcoAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                    <TranslateTransform/>
+                                                                </TransformGroup>
+                                                            </Rectangle.LayoutTransform>
+                                                            <Rectangle.Fill>
+                                                                <DrawingBrush Stretch="Uniform">
+                                                                    <DrawingBrush.Drawing>
+                                                                        <DrawingGroup>
+                                                                            <DrawingGroup.Children>
+                                                                                <GeometryDrawing Brush="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}" Geometry="F1 M -4.36715e-009,0.865574L 4.00652,5.33264L -4.36715e-009,9.79972C -0.214267,10.0395 -0.214267,10.4268 -4.36715e-009,10.6667C 0.214267,10.9051 0.561765,10.9051 0.776032,10.6667L 5.17263,5.76681C 5.27427,5.65241 5.33333,5.49391 5.33333,5.33264C 5.33333,5.17138 5.27427,5.01426 5.17263,4.89986L 0.776032,-2.38419e-007C 0.561765,-0.239824 0.214267,-0.239824 -4.36715e-009,-2.38419e-007C -0.214267,0.238447 -0.214267,0.625748 -4.36715e-009,0.865574 Z "/>
+                                                                            </DrawingGroup.Children>
+                                                                        </DrawingGroup>
+                                                                    </DrawingBrush.Drawing>
+                                                                </DrawingBrush>
+                                                            </Rectangle.Fill>
+                                                        </Rectangle>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsChecked" Value="True">
+                                                <Setter Property="IcoAngle" Value="90"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush" Value="#2C77DE"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </local:ResourceManagerToggleButton.Style>
+                            </local:ResourceManagerToggleButton>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1" x:Name="ItemsHost"></ItemsPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="false">
+                            <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Foreground" TargetName="Title" Value="#2C77DE"></Setter>
+                            <Setter Property="Background" TargetName="Bd" Value="#E8E8E8"/>
+                            <Setter Property="Fill" TargetName="OnSelect" Value="#2C77DE"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="IsSelectionActive" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="#E8E8E8"/>
+                            <Setter Property="Fill" TargetName="OnSelect" Value="#AAAAAA"/>
+                            <Setter Property="Foreground" TargetName="Title" Value="{StaticResource GI.Colors.Body.text}"></Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

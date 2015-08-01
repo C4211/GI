@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\FunctionPage.cs" />
+    <Compile Include="Tools\ResourceManagerTreeNode.cs" />
     <Compile Include="UserControls\BodyTitle.xaml.cs">
       <DependentUpon>BodyTitle.xaml</DependentUpon>
     </Compile>
