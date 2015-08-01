@@ -10,6 +10,7 @@
              Name="selectFileControl">
     <UserControl.Resources>
         <Style x:Key="SelectButton.Style" TargetType="Button">
+            <Setter Property="Focusable" Value="False"></Setter>
             <Setter Property="Margin" Value="2"></Setter>
             <Setter Property="Background" Value="{StaticResource GI.Colors.Essential}"></Setter>
             <Setter Property="Template">

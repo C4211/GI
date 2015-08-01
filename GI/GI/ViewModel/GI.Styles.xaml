@@ -46,6 +46,7 @@
         <!--<Setter Property="Effect" Value="{DynamicResource GI.Effect.Shadow.Global}"/>-->
     </Style>
     <Style x:Key="GI.Window.Head.Close.Style" TargetType="Button">
+        <Setter Property="Focusable" Value="False"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -96,6 +97,7 @@
         </Setter>
     </Style>
     <Style x:Key="GI.Window.Head.Min.Style" TargetType="Button">
+        <Setter Property="Focusable" Value="False"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">

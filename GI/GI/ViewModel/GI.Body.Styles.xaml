@@ -17,6 +17,59 @@
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"></Setter>
         <Setter Property="Visibility" Value="Collapsed"></Setter>
     </Style>
+    <Style x:Key="GI.Window.Body.Text.Style" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
+        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
+    <Style x:Key="GI.Window.Body.CancelButton.Style" TargetType="Button">
+        <Setter Property="IsTabStop" Value="False"></Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.Tile}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential}"></Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential.Press}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="GI.Window.Body.NextButton.Style" TargetType="Button">
+        <Setter Property="IsTabStop" Value="False"></Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary.Press}"></Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="GI.Body.FunctionGroup.Style" TargetType="local:FunctionGroup">
         <Setter Property="Margin" Value="10"></Setter>
         <Setter Property="Template">

@@ -8,57 +8,6 @@
              d:DesignHeight="414" d:DesignWidth="680"
              Width="680"
              Style="{StaticResource GI.Body.Content.Style}">
-    <Tools:FunctionPage.Resources>
-        <Style x:Key="Text.Style" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
-            <Setter Property="Margin" Value="10"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
-            <Setter Property="FontSize" Value="14"></Setter>
-        </Style>
-        <Style x:Key="CancelButton.Style" TargetType="Button">
-            <Setter Property="Background" Value="{x:Null}"></Setter>
-            <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.Tile}"></Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential}"></Setter>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Foreground" Value="{StaticResource GI.Colors.Essential.Press}"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
-            <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary.Press}"></Setter>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Tools:FunctionPage.Resources>
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
         <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
@@ -88,13 +37,13 @@
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="270"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <!--<TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource Text.Style}" 
+                <!--<TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
                             Text="站点文件："/>
                 <UserControls:SelectFileControl Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource Text.Style}" 
+                <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="内区地形数据："/>
                 <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource Text.Style}" 
+                <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="外区地形数据："/>
                 <UserControls:SelectFileControl Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>-->
             </Grid>
@@ -105,7 +54,7 @@
     </Grid>
     <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
         <Button Width="80" Content="上一步" Visibility="Hidden"></Button>
-        <Button Width="80" Content="下一步"></Button>
-        <Button x:Name="Cancle" Width="80" Content="取消" Style="{StaticResource CancelButton.Style}"></Button>
+        <Button Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}"></Button>
+        <Button x:Name="Cancle" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"></Button>
     </UniformGrid>    
 </Tools:FunctionPage>
