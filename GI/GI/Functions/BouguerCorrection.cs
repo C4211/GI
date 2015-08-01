@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GI
+namespace GI.Tools
 {
     class BouguerCorrection
     {

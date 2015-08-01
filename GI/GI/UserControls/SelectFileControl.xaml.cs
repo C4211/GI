@@ -57,5 +57,17 @@ namespace GI.UserControls
         public static readonly DependencyProperty IsKeyboardFocusedProperty =
             DependencyProperty.Register("IsKeyboardFocused", typeof(bool), typeof(SelectFileControl));
         #endregion
+
+        private void selectButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            ofd.Filter = "可用文件(*.txt,*.grd,*.dat)|*.txt;*.grd;*.dat|txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat|所有文件(*.*)|*.*";
+            ofd.RestoreDirectory = true;
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                filePath.Text = ofd.FileName;
+            }
+        }
     }
 }

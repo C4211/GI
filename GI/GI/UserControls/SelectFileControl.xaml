@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="filePath" Grid.Column="0" BorderThickness="0" VerticalContentAlignment="Center"/>
-            <Button x:Name="selectButton" Grid.Column="1" Width="24" Style="{StaticResource SelectButton.Style}"></Button>
+            <Button x:Name="selectButton" Grid.Column="1" Width="24" Style="{StaticResource SelectButton.Style}" Click="selectButton_Click"></Button>
         </Grid>
     </Border>
 </UserControl>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GI
+namespace GI.Tools
 {
     /// <summary>
     /// 自空校正工具类
