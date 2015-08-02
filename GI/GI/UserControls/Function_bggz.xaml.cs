@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -26,6 +27,31 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "布格改正";
             this.titleEn = "Bouguer correction";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (content.ActualWidth + content.Margin.Left > 680)
+            {
+                Storyboard sb = (Storyboard)this.FindResource("sb");
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(content.Margin.Left - 680, 0, 0, 0);
+                sb.Begin();
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+            }
+        }
+
+        private void prev_Click(object sender, RoutedEventArgs e)
+        {
+            if (content.Margin.Left < 0)
+            {
+                Storyboard sb = (Storyboard)this.FindResource("sb");
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(content.Margin.Left + 680, 0, 0, 0);
+                sb.Begin();
+                prev.Visibility = Visibility.Hidden;
+                next.Content = "下一步";
+                next.Visibility = Visibility.Visible;
+            }
         }
     }
 }

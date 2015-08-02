@@ -37,19 +37,33 @@
     </Grid>
     <Grid Grid.Row="1">
         <TreeView BorderThickness="0">
-            <Tools:ResourceManagerTreeNode Title="文件夹1" IsExpanded="True">
-                <Tools:ResourceManagerTreeNode Title="文件夹2" Level="0">
-                    <Tools:ResourceManagerTreeNode Title="文件夹3" Level="1">
-                        <Tools:ResourceManagerTreeNode Title="文件1" Level="2"></Tools:ResourceManagerTreeNode>
-                        <Tools:ResourceManagerTreeNode Title="文件2" Level="2"></Tools:ResourceManagerTreeNode>
-                        <Tools:ResourceManagerTreeNode Title="文件3" Level="2"></Tools:ResourceManagerTreeNode>
+            <Tools:ResourceManagerTreeNode Title="文件夹1" Level="0">
+                <Tools:ResourceManagerTreeNode Title="文件夹2" Level="1">
+                    <Tools:ResourceManagerTreeNode Title="文件夹3" Level="2">
+                        <Tools:ResourceManagerTreeNode Title="文件1" Level="3"></Tools:ResourceManagerTreeNode>
+                        <Tools:ResourceManagerTreeNode Title="文件2" Level="3"></Tools:ResourceManagerTreeNode>
+                        <Tools:ResourceManagerTreeNode Title="文件3" Level="3"></Tools:ResourceManagerTreeNode>
                     </Tools:ResourceManagerTreeNode>
-                    <Tools:ResourceManagerTreeNode Title="文件夹4" Level="1"></Tools:ResourceManagerTreeNode>
-                    <Tools:ResourceManagerTreeNode Title="文件夹5" Level="1"></Tools:ResourceManagerTreeNode>
+                    <Tools:ResourceManagerTreeNode Title="文件夹4" Level="2"></Tools:ResourceManagerTreeNode>
+                    <Tools:ResourceManagerTreeNode Title="文件夹5" Level="2"></Tools:ResourceManagerTreeNode>
                 </Tools:ResourceManagerTreeNode>
-                <Tools:ResourceManagerTreeNode Title="文件4" Level="0"></Tools:ResourceManagerTreeNode>
-                <Tools:ResourceManagerTreeNode Title="文件5" Level="0"></Tools:ResourceManagerTreeNode>
-                <Tools:ResourceManagerTreeNode Title="文件6" Level="0"></Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件4" Level="1"></Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件5" Level="1"></Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件6" Level="1"></Tools:ResourceManagerTreeNode>
+            </Tools:ResourceManagerTreeNode>
+            <Tools:ResourceManagerTreeNode Title="文件夹2" Level="0">
+                <Tools:ResourceManagerTreeNode Title="文件夹2" Level="1">
+                    <Tools:ResourceManagerTreeNode Title="文件夹3" Level="2">
+                        <Tools:ResourceManagerTreeNode Title="文件1" Level="3"></Tools:ResourceManagerTreeNode>
+                        <Tools:ResourceManagerTreeNode Title="文件2" Level="3"></Tools:ResourceManagerTreeNode>
+                        <Tools:ResourceManagerTreeNode Title="文件3" Level="3"></Tools:ResourceManagerTreeNode>
+                    </Tools:ResourceManagerTreeNode>
+                    <Tools:ResourceManagerTreeNode Title="文件夹4" Level="2"></Tools:ResourceManagerTreeNode>
+                    <Tools:ResourceManagerTreeNode Title="文件夹5" Level="2"></Tools:ResourceManagerTreeNode>
+                </Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件4" Level="1"></Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件5" Level="1"></Tools:ResourceManagerTreeNode>
+                <Tools:ResourceManagerTreeNode Title="文件6" Level="1"></Tools:ResourceManagerTreeNode>
             </Tools:ResourceManagerTreeNode>
         </TreeView>
     </Grid>
