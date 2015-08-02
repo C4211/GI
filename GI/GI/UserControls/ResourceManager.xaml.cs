@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GI.Tools;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace GI.UserControls
 {
     /// <summary>
@@ -23,6 +26,56 @@ namespace GI.UserControls
         public ResourceManager()
         {
             InitializeComponent();
+        }
+
+
+        private async void resourceTree_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<DirectoryInfo> roots = new List<DirectoryInfo>();
+            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
+            Task<List<ResourceTreeNode>> task = ResourceDirectoryScanner.LoadResourceTreeAsync(roots);
+            await task;
+            List<ResourceTreeNode> result;
+            result = task.Result;
+            resourceTree.Items.Clear();
+            foreach (var node in result)
+            {
+                ResourceManagerTreeNode parentNode;
+                parentNode = new ResourceManagerTreeNode(0);
+                parentNode.Path = node.Info;
+                parentNode.Title = node.Info.Name;
+                List<ResourceManagerTreeNode> list = FillDataToResourceTree(node);
+                foreach (var l in list)
+                {
+                    parentNode.Items.Add(l);
+                }
+                resourceTree.Items.Add(parentNode);
+            }
+        }
+
+        private List<ResourceManagerTreeNode> FillDataToResourceTree(ResourceTreeNode node, int level = 1)
+        {
+            List<ResourceManagerTreeNode> result = new List<ResourceManagerTreeNode>();
+            foreach (var child in node.Children)
+            {
+                ResourceManagerTreeNode childNode = new ResourceManagerTreeNode(level);
+                childNode.Path = child.Info;
+                childNode.Title = child.Info.Name;
+                if (!child.IsDir)
+                {
+                    childNode.PreviewMouseLeftButtonDown += delegate
+                    {
+                        DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
+                    };
+                }
+                List<ResourceManagerTreeNode> list = FillDataToResourceTree(child, level + 1);
+                foreach (var l in list)
+                {
+                    childNode.Items.Add(l);
+                }
+                result.Add(childNode);
+            }
+            return result;
         }
     }
 }

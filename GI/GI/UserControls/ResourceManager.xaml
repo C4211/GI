@@ -36,7 +36,7 @@
         </Grid>
     </Grid>
     <Grid Grid.Row="1">
-        <TreeView BorderThickness="0">
+        <TreeView BorderThickness="0" x:Name="resourceTree" Loaded="resourceTree_Loaded">
             <Tools:ResourceManagerTreeNode Title="文件夹1" Level="0">
                 <Tools:ResourceManagerTreeNode Title="文件夹2" Level="1">
                     <Tools:ResourceManagerTreeNode Title="文件夹3" Level="2">

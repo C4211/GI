@@ -18,14 +18,14 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="{Binding Path=LevelLeft,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"></ColumnDefinition>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Rectangle x:Name="OnSelect" Fill="{StaticResource GI.Colors.Null}" Width="3"></Rectangle>
                             </Grid>
-                            <Rectangle Grid.Column="2" Margin="10,0" Width="20" Height="20" Fill="{StaticResource GI.Colors.Body.text}" RadiusX="20" RadiusY="20"></Rectangle>
+                            <!--<Rectangle Grid.Column="2" Margin="10,0" Width="20" Height="20" Fill="{StaticResource GI.Colors.Body.text}" RadiusX="20" RadiusY="20"></Rectangle>-->
                             <TextBlock Grid.Column="3" x:Name="Title" Text="{TemplateBinding Title}" VerticalAlignment="Center" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">

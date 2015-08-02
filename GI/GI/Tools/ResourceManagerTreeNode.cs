@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,13 @@ namespace GI.Tools
     {
         public ResourceManagerTreeNode()
         {
-            Children = new List<ResourceManagerTreeNode>();
-            Path = new Path();
             ItemLeft = 15;
+        }
+
+        public ResourceManagerTreeNode(int level)
+        {
+            ItemLeft = 15;
+            Level = level;
         }
 
         #region 获取设置依赖属性
@@ -34,15 +39,11 @@ namespace GI.Tools
             get { return (int)GetValue(LevelProperty); }
             set { SetValue(LevelProperty, value); }
         }
-        public List<ResourceManagerTreeNode> Children { get; set; }
 
-        public Path Path { get; set; }
-        public bool HasChildren
+        public FileSystemInfo Path { get; set; }
+
+        public string Title
         {
-            get { return Children.Count == 0 ? false : true; }
-        }
-
-        public string Title {
             get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
         }
@@ -53,14 +54,14 @@ namespace GI.Tools
         }
         public GridLength LevelLeft
         {
-            get { return new GridLength(this.Level*ItemLeft); }
+            get { return new GridLength(this.Level * ItemLeft); }
         }
         public int ItemLeft { get; set; }
         #endregion
 
         #region 注册依赖属性
         public static readonly DependencyProperty LevelProperty =
-            DependencyProperty.Register("Level",typeof(int),typeof(ResourceManagerTreeNode),new PropertyMetadata(0));
+            DependencyProperty.Register("Level", typeof(int), typeof(ResourceManagerTreeNode), new PropertyMetadata(0));
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(ResourceManagerTreeNode));
         public static readonly DependencyProperty IconProperty =

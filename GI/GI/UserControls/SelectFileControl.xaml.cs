@@ -69,5 +69,10 @@ namespace GI.UserControls
                 filePath.Text = ofd.FileName;
             }
         }
+
+        private void filePath_PreviewDrop(object sender, DragEventArgs e)
+        {
+            filePath.Clear();
+        }
     }
 }

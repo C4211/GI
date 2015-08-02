@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="1"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <UserControls:ResourceManager Grid.Column="0"/>
+            <UserControls:ResourceManager x:Name="resourceTree" Grid.Column="0"/>
             <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -78,7 +78,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
                             Text="密度："/>
-                <UserControls:SelectFileControl Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <UserControls:SelectFileControl  Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="内区半径："/>
                 <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
