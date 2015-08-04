@@ -53,7 +53,7 @@ namespace GI.Tools
         /// <param name="outterRadius">外区半径</param>
         /// <returns>异步执行Task</returns>
         /// 
-        public static Task<string> Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius)
+        public static Task Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius)
         {
             //判断传入文件是否存在
             if (!File.Exists(dat))
@@ -89,7 +89,7 @@ namespace GI.Tools
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.CreateNoWindow = true;
                 p.Start();
-                return p.StandardOutput.ReadToEnd();
+                result = p.StandardOutput.ReadToEnd();
             });
         }
     }

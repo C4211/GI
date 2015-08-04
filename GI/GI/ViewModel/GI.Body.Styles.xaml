@@ -25,7 +25,6 @@
         <Setter Property="FontSize" Value="14"></Setter>
     </Style>
     <Style x:Key="GI.Window.Body.CancelButton.Style" TargetType="Button">
-        <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="IsTabStop" Value="False"></Setter>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{x:Null}"></Setter>
@@ -49,7 +48,6 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="GI.Window.Body.NextButton.Style" TargetType="Button">
-        <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="IsTabStop" Value="False"></Setter>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
