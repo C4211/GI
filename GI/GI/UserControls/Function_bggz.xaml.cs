@@ -30,8 +30,20 @@ namespace GI.UserControls
             this.titleEn = "Bouguer correction";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private bool aa = false;
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (aa == true)
+            {
+                MessageBox.Show("aaa");
+                Task<string> task = BouguerCorrection.Start(arg0.filePath.Text, arg1.filePath.Text, arg2.filePath.Text, 20.0, 166.735, 2.67);
+                await task;
+                string msg = task.Result;
+                MessageBox.Show(msg);
+                aa = false;
+                return;
+            }
             if (content.ActualWidth + content.Margin.Left > 680)
             {
                 Storyboard sb = (Storyboard)this.FindResource("sb");
@@ -39,6 +51,7 @@ namespace GI.UserControls
                 sb.Begin();
                 prev.Visibility = Visibility.Visible;
                 next.Content = "计算";
+                aa = true;
             }
         }
 

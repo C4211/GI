@@ -49,13 +49,13 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
                             Text="站点文件："/>
-                    <UserControls:SelectFileControl Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                    <UserControls:SelectFileControl x:Name="arg0" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
                     <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="内区地形数据："/>
-                    <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                    <UserControls:SelectFileControl x:Name="arg1" Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
                     <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="外区地形数据："/>
-                    <UserControls:SelectFileControl Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                    <UserControls:SelectFileControl x:Name="arg2" Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -78,13 +78,13 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
                             Text="密度："/>
-                <UserControls:SelectFileControl  Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <TextBox x:Name="density" Text="20.0" Grid.Row="1" Grid.Column="1" Margin="10"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="内区半径："/>
-                <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <TextBox x:Name="innerRadius" Text="166.735" Grid.Row="2" Grid.Column="1" Margin="10"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="外区半径："/>
-                <UserControls:SelectFileControl Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <TextBox x:Name="outterRadius" Text="2.67" Grid.Row="3" Grid.Column="1" Margin="10"/>
             </Grid>
         </Grid>
     </Grid>
