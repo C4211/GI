@@ -49,35 +49,35 @@ namespace GI.UserControls
         private async void resourceTree_Loaded(object sender, RoutedEventArgs e)
         {
             StartLoading();
-            await RefreshTree();
+            await Task.Factory.StartNew(RefreshTreeView);
             StopLoading();
         }
 
-        public async Task RefreshTree()
+        public void RefreshTreeView()
         {
             List<DirectoryInfo> roots = new List<DirectoryInfo>();
-            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
-            Task<List<ResourceTreeNode>> task = ResourceDirectoryScanner.LoadResourceTreeAsync(roots);
-            await task;
-            List<ResourceTreeNode> result;
-            result = task.Result;
-            resourceTree.Items.Clear();
-            foreach (var node in result)
+            roots.Add(new DirectoryInfo(@"E:\dropbox"));
+            List<ResourceTreeNode> result = LoadResourceTree(roots);
+            Dispatcher.Invoke(delegate
             {
-                ResourceManagerTreeNode parentNode;
-                parentNode = new ResourceManagerTreeNode(0);
-                parentNode.Path = node.Info;
-                parentNode.Title = node.Info.Name;
-                List<ResourceManagerTreeNode> list = FillDataToResourceTree(node);
-                foreach (var l in list)
+                resourceTree.Items.Clear();
+                foreach (var node in result)
                 {
-                    parentNode.Items.Add(l);
+                    ResourceManagerTreeNode parentNode;
+                    parentNode = new ResourceManagerTreeNode();
+                    parentNode.Path = node.Info;
+                    parentNode.Title = node.Info.Name;
+                    List<ResourceManagerTreeNode> list = FillDataToResourceTreeView(node);
+                    foreach (var l in list)
+                    {
+                        parentNode.Items.Add(l);
+                    }
+                    resourceTree.Items.Add(parentNode);
                 }
-                resourceTree.Items.Add(parentNode);
-            }
+            });
         }
 
-        private List<ResourceManagerTreeNode> FillDataToResourceTree(ResourceTreeNode node, int level = 1)
+        private List<ResourceManagerTreeNode> FillDataToResourceTreeView(ResourceTreeNode node, int level = 1)
         {
             List<ResourceManagerTreeNode> result = new List<ResourceManagerTreeNode>();
             foreach (var child in node.Children)
@@ -92,7 +92,7 @@ namespace GI.UserControls
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
                     };
                 }
-                List<ResourceManagerTreeNode> list = FillDataToResourceTree(child, level + 1);
+                List<ResourceManagerTreeNode> list = FillDataToResourceTreeView(child, level + 1);
                 foreach (var l in list)
                 {
                     childNode.Items.Add(l);
@@ -100,6 +100,81 @@ namespace GI.UserControls
                 result.Add(childNode);
             }
             return result;
+        }
+
+        private List<ResourceTreeNode> LoadResourceTree(List<DirectoryInfo> Roots)
+        {
+            List<ResourceTreeNode> list = new List<ResourceTreeNode>();
+            ResourceTreeNode rootNode;
+            List<DirectoryInfo> dirs;
+            List<FileInfo> files;
+            foreach (DirectoryInfo rootDir in Roots)
+            {
+                try
+                {
+                    rootNode = new ResourceTreeNode(rootDir);
+                    dirs = rootDir.GetDirectories().ToList();
+                    rootNode.Children = LoadResourceTree(dirs);
+                    files = rootDir.GetFiles().ToList();
+                    foreach (var file in files)
+                    {
+                        rootNode.Children.Add(new ResourceTreeNode(file));
+                    }
+                    list.Add(rootNode);
+                }
+                catch { }
+            }
+            return list;
+        }
+    }
+
+    /// <summary>
+    /// 资源管理树节点类
+    /// </summary>
+    public class ResourceTreeNode
+    {
+        public bool IsDir { get; set; }
+
+        private FileInfo _FileInfo;
+        private DirectoryInfo _DirectoryInfo;
+        public FileSystemInfo Info
+        {
+            get
+            {
+                if (IsDir)
+                    return _DirectoryInfo;
+                else
+                    return _FileInfo;
+            }
+        }
+
+        public List<ResourceTreeNode> Children { get; set; }
+
+        public ResourceTreeNode(bool isDir, string path)
+        {
+            if (isDir)
+            {
+                _DirectoryInfo = new DirectoryInfo(path);
+            }
+            else
+            {
+                _FileInfo = new FileInfo(path);
+            }
+            Children = new List<ResourceTreeNode>();
+        }
+
+        public ResourceTreeNode(DirectoryInfo dirInfo)
+        {
+            IsDir = true;
+            _DirectoryInfo = dirInfo;
+            Children = new List<ResourceTreeNode>();
+        }
+
+        public ResourceTreeNode(FileInfo fileInfo)
+        {
+            IsDir = false;
+            _FileInfo = fileInfo;
+            Children = new List<ResourceTreeNode>();
         }
     }
 }

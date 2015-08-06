@@ -19,12 +19,7 @@ namespace GI.Tools
 {
     public class ResourceManagerTreeNode : TreeViewItem
     {
-        public ResourceManagerTreeNode()
-        {
-            ItemLeft = 15;
-        }
-
-        public ResourceManagerTreeNode(int level)
+        public ResourceManagerTreeNode(int level = 0)
         {
             ItemLeft = 15;
             Level = level;
