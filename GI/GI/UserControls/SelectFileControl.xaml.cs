@@ -49,6 +49,11 @@ namespace GI.UserControls
             get { return (bool)GetValue(IsKeyboardFocusedProperty); }
             set { SetValue(IsKeyboardFocusedProperty, value); }
         }
+        public string OpenFileFilter
+        {
+            get { return (string)GetValue(OpenFileFilterProperty); }
+            set { SetValue(OpenFileFilterProperty, value); }
+        }
         #endregion
 
         #region 注册依赖属性
@@ -56,13 +61,16 @@ namespace GI.UserControls
             DependencyProperty.Register("BorderBrush", typeof(SolidColorBrush), typeof(SelectFileControl));
         public static readonly DependencyProperty IsKeyboardFocusedProperty =
             DependencyProperty.Register("IsKeyboardFocused", typeof(bool), typeof(SelectFileControl));
+        public static readonly DependencyProperty OpenFileFilterProperty =
+            DependencyProperty.Register("OpenFileFilter", typeof(string), typeof(SelectFileControl),
+                new PropertyMetadata("可用文件(*.txt,*.grd,*.dat)|*.txt;*.grd;*.dat|txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat|所有文件(*.*)|*.*"));
         #endregion
 
         private void selectButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            ofd.Filter = "可用文件(*.txt,*.grd,*.dat)|*.txt;*.grd;*.dat|txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat|所有文件(*.*)|*.*";
+            ofd.Filter = this.OpenFileFilter;
             ofd.RestoreDirectory = true;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
