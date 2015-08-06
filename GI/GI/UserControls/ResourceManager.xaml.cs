@@ -28,11 +28,35 @@ namespace GI.UserControls
             InitializeComponent();
         }
 
+        private void StartLoading()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                resourceTree.Visibility = Visibility.Hidden;
+                loadingBar.Visibility = Visibility.Visible;
+            });
+        }
+
+        private void StopLoading()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                loadingBar.Visibility = Visibility.Hidden;
+                resourceTree.Visibility = Visibility.Visible;
+            });
+        }
 
         private async void resourceTree_Loaded(object sender, RoutedEventArgs e)
         {
+            StartLoading();
+            await RefreshTree();
+            StopLoading();
+        }
+
+        public async Task RefreshTree()
+        {
             List<DirectoryInfo> roots = new List<DirectoryInfo>();
-            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
+            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
             Task<List<ResourceTreeNode>> task = ResourceDirectoryScanner.LoadResourceTreeAsync(roots);
             await task;
             List<ResourceTreeNode> result;

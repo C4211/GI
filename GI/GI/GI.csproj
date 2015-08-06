@@ -88,6 +88,9 @@
     <Compile Include="UserControls\Function_bggz.xaml.cs">
       <DependentUpon>Function_bggz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LoadingBar.xaml.cs">
+      <DependentUpon>LoadingBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ResourceManager.xaml.cs">
       <DependentUpon>ResourceManager.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Function_bggz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoadingBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
