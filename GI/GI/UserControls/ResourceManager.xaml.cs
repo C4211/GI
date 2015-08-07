@@ -108,10 +108,12 @@ namespace GI.UserControls
             ResourceTreeNode rootNode;
             List<DirectoryInfo> dirs;
             List<FileInfo> files;
-            foreach (DirectoryInfo rootDir in Roots)
+            try
             {
-                try
+                foreach (DirectoryInfo rootDir in Roots)
                 {
+                    if (!rootDir.Exists)
+                        throw new Exception();
                     rootNode = new ResourceTreeNode(rootDir);
                     dirs = rootDir.GetDirectories().ToList();
                     rootNode.Children = LoadResourceTree(dirs);
@@ -122,7 +124,11 @@ namespace GI.UserControls
                     }
                     list.Add(rootNode);
                 }
-                catch { }
+            }
+            catch
+            {
+                MessageBox.Show(@"读取目录失败！");
+                return null;
             }
             return list;
         }
