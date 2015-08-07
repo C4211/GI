@@ -39,12 +39,12 @@ namespace GI.UserControls
         #endregion
 
         #region 获取设置依赖属性
-        public SolidColorBrush BorderBrush
+        public new SolidColorBrush BorderBrush
         {
             get { return (SolidColorBrush)GetValue(BorderBrushProperty); }
             set { SetValue(BorderBrushProperty, value); }
         }
-        public bool IsKeyboardFocused
+        public new bool IsKeyboardFocused
         {
             get { return (bool)GetValue(IsKeyboardFocusedProperty); }
             set { SetValue(IsKeyboardFocusedProperty, value); }
@@ -57,9 +57,9 @@ namespace GI.UserControls
         #endregion
 
         #region 注册依赖属性
-        public static readonly DependencyProperty BorderBrushProperty =
+        public static readonly new DependencyProperty BorderBrushProperty =
             DependencyProperty.Register("BorderBrush", typeof(SolidColorBrush), typeof(SelectFileControl));
-        public static readonly DependencyProperty IsKeyboardFocusedProperty =
+        public static readonly new DependencyProperty IsKeyboardFocusedProperty =
             DependencyProperty.Register("IsKeyboardFocused", typeof(bool), typeof(SelectFileControl));
         public static readonly DependencyProperty OpenFileFilterProperty =
             DependencyProperty.Register("OpenFileFilter", typeof(string), typeof(SelectFileControl),

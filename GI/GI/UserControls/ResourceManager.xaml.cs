@@ -56,7 +56,7 @@ namespace GI.UserControls
         public void RefreshTreeView()
         {
             List<DirectoryInfo> roots = new List<DirectoryInfo>();
-            roots.Add(new DirectoryInfo(@"E:\dropbox"));
+            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
             List<ResourceTreeNode> result = LoadResourceTree(roots);
             Dispatcher.Invoke(delegate
             {
