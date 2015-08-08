@@ -55,6 +55,20 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="RefreshPathStyle" TargetType="UserControls:ResourceManger_Refreshpath">
+            <Setter Property="IsTabStop" Value="False"></Setter>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Color" Value="{StaticResource GI.Colors.Essential}"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Color" Value="{StaticResource GI.Colors.Essential.Press}"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Color" Value="{StaticResource GI.Colors.Essential}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Grid.Resources>
     <Grid.RowDefinitions>
         <RowDefinition Height="auto"></RowDefinition>
@@ -66,8 +80,13 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <UserControls:BodyTitle Grid.Column="0" Title="资源管理器"/>
-        <Grid Grid.Column="1">
-            <UserControls:ResourceManger_Addpath Style="{StaticResource AddPathStyle}"/>
+        <Grid Grid.Column="1" Width="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UserControls:ResourceManger_Addpath Grid.Column="1" Style="{StaticResource AddPathStyle}"/>
+            <UserControls:ResourceManger_Refreshpath Grid.Column="0" Style="{StaticResource RefreshPathStyle}"/>
         </Grid>
     </Grid>
     <Grid Grid.Row="1">

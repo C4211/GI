@@ -94,6 +94,9 @@
     <Compile Include="UserControls\ResourceManager.xaml.cs">
       <DependentUpon>ResourceManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ResourceManger_Refreshpath.xaml.cs">
+      <DependentUpon>ResourceManger_Refreshpath.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ResourceManger_Addpath.xaml.cs">
       <DependentUpon>ResourceManger_Addpath.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
     <Page Include="UserControls\ResourceManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ResourceManger_Refreshpath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ResourceManger_Addpath.xaml">
       <SubType>Designer</SubType>

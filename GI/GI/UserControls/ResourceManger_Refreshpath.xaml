@@ -1,0 +1,32 @@
+﻿<Button x:Class="GI.UserControls.ResourceManger_Refreshpath"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Width="16" Height="16"
+             Name="resourceManger_Refreshpath">
+    <Button.Template>
+                <ControlTemplate>
+                    <Rectangle>
+                <Rectangle.Fill>
+                    <DrawingBrush Stretch="Uniform">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <DrawingGroup.Children>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 1.82933,10.6667C 1.82933,8.22267 2.816,6.01867 4.41733,4.41733C 6.02,2.816 8.22267,1.82933 10.6667,1.82933C 13.3093,1.82933 15.6733,2.984 17.296,4.81734C 17.6293,5.196 18.208,5.232 18.5867,4.89734C 18.964,4.56267 18.9987,3.98533 18.664,3.608C 16.7147,1.39734 13.8493,0 10.6667,0C 4.77467,0 0.00133514,4.77467 1.27157e-006,10.6667C 1.27157e-006,11.1707 0.410667,11.5813 0.914668,11.5813C 1.42,11.5813 1.82933,11.1707 1.82933,10.6667 Z "/>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 19.636,5.15493L 19.636,1.76294C 19.636,1.25893 19.2267,0.8496 18.7213,0.8496C 18.2173,0.8496 17.808,1.25893 17.808,1.76294L 17.808,5.15493C 17.808,5.65893 18.2173,6.0696 18.7213,6.0696C 19.2267,6.0696 19.636,5.65893 19.636,5.15493 Z "/>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 18.7219,4.24027L 15.3299,4.24027C 14.8259,4.24027 14.4165,4.6496 14.4165,5.15493C 14.4165,5.65893 14.8259,6.0696 15.3299,6.0696L 18.7219,6.0696C 19.2272,6.0696 19.6365,5.65893 19.6365,5.15493C 19.6365,4.6496 19.2272,4.24027 18.7219,4.24027 Z "/>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 19.5057,10.6667C 19.5057,13.1107 18.5177,15.3133 16.9177,16.916C 15.3137,18.5173 13.1111,19.5053 10.6671,19.5053C 8.02573,19.5053 5.66173,18.3507 4.03773,16.516C 3.70307,16.1387 3.12574,16.1027 2.74707,16.4373C 2.3684,16.7707 2.33374,17.3493 2.6684,17.728C 4.61907,19.936 7.4844,21.3333 10.6671,21.3333C 16.5591,21.3333 21.3337,16.5587 21.3337,10.6667C 21.3337,10.1627 20.9231,9.752 20.4204,9.752C 19.9151,9.752 19.5057,10.1627 19.5057,10.6667 Z "/>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 1.69773,16.1784L 1.69773,19.5691C 1.69773,20.0744 2.10707,20.4837 2.6124,20.4837C 3.1164,20.4837 3.52573,20.0744 3.52573,19.5691L 3.52573,16.1784C 3.52573,15.6731 3.1164,15.2637 2.6124,15.2637C 2.10707,15.2637 1.69773,15.6731 1.69773,16.1784 Z "/>
+                                    <GeometryDrawing Brush="{Binding ElementName=resourceManger_Refreshpath,Path=Color}" Geometry="F1 M 2.61187,17.0925L 6.00387,17.0925C 6.50787,17.0925 6.9172,16.6832 6.9172,16.1779C 6.9172,15.6739 6.50787,15.2645 6.00387,15.2645L 2.61187,15.2645C 2.10787,15.2645 1.6972,15.6739 1.6972,16.1779C 1.6972,16.6832 2.10787,17.0925 2.61187,17.0925 Z "/>
+                                </DrawingGroup.Children>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
+                    </Rectangle>
+                </ControlTemplate>
+    </Button.Template>
+</Button>
