@@ -30,12 +30,15 @@ namespace GI.UserControls
             this.titleEn = "Bouguer correction";
         }
 
+        private int PageCurrent = 0;
+        private int PageMax = 1;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (content.ActualWidth + content.Margin.Left > 680)
+            if (PageCurrent < PageMax)
             {
+                PageCurrent += 1;
                 Storyboard sb = (Storyboard)this.FindResource("sb");
-                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(content.Margin.Left - 680, 0, 0, 0);
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent*680, 0, 0, 0);
                 sb.Begin();
                 prev.Visibility = Visibility.Visible;
                 next.Content = "计算";
@@ -44,10 +47,11 @@ namespace GI.UserControls
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
-            if (content.Margin.Left < 0)
+            if (PageCurrent > 0)
             {
+                PageCurrent -= 1;
                 Storyboard sb = (Storyboard)this.FindResource("sb");
-                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(content.Margin.Left + 680, 0, 0, 0);
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent * 680, 0, 0, 0);
                 sb.Begin();
                 prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
