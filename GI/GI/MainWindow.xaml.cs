@@ -67,7 +67,7 @@ namespace GI
                 Grid prev = contentStack.Peek();
                 current.BeginStoryboard(sb);
                 prev.BeginStoryboard(sbBack);
-                sb.Completed += delegate { current = null; };
+                sb.Completed += delegate { body.Children.Remove(current); };
                 ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
             }
             if (contentStack.Count <= 1)
@@ -154,6 +154,8 @@ namespace GI
         /// <param name="sender">需要打开的Group</param>
         private void Group_Open(FunctionPage sender)
         {
+            if (body.Children.Contains(sender))
+                body.Children.Remove(sender);
             body.Children.Add(sender);
             contentStack.Peek().BeginStoryboard(sbForward);
             sender.BeginStoryboard(sbOpen);
@@ -169,58 +171,78 @@ namespace GI
         /// <param name="e"></param>
         private void Zlycgz_Open(object sender, RoutedEventArgs e)
         {
-            FunctionPage_zlycgz fp = new FunctionPage_zlycgz();
-            fp.dxgz.Click += dxgz_Click;
-            fp.bggz.Click += Bggz_Open;
-            fp.zkgz.Click += Zkgz_Open;
-            Group_Open(fp);
+            if (functionPage_zlycgz == null)
+            {
+                functionPage_zlycgz = new FunctionPage_zlycgz();
+                functionPage_zlycgz.dxgz.Click += dxgz_Click;
+                functionPage_zlycgz.bggz.Click += Bggz_Open;
+                functionPage_zlycgz.zkgz.Click += Zkgz_Open;
+            }
+            Group_Open(functionPage_zlycgz);
         }
+        private FunctionPage_zlycgz functionPage_zlycgz = null;
         /// <summary>
         /// 地形改正点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void dxgz_Click(object sender, RoutedEventArgs e)
+        private void dxgz_Click(object sender, RoutedEventArgs e)
         {
-            FunctionPage_dxgz fp = new FunctionPage_dxgz();
-            fp.fxyf.Click += fxyf_Click;
-            fp.gsjff.Click += gsjff_Click;
-            fp.flybhf.Click += flybhf_Click;
-            Group_Open(fp);
+            if (functionPage_dxgz == null)
+            {
+                functionPage_dxgz = new FunctionPage_dxgz();
+                functionPage_dxgz.fxyf.Click += fxyf_Click;
+                functionPage_dxgz.gsjff.Click += gsjff_Click;
+                functionPage_dxgz.flybhf.Click += flybhf_Click;
+            }
+            Group_Open(functionPage_dxgz);
         }
+        private FunctionPage_dxgz functionPage_dxgz = null;
         /// <summary>
         /// 傅里叶变换法点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void flybhf_Click(object sender, RoutedEventArgs e)
+        private void flybhf_Click(object sender, RoutedEventArgs e)
         {
-            Function_flybhf fp = new Function_flybhf();
-            fp.Cancle.Click += delegate { Page_Back(); };
-            Group_Open(fp);
+            if (function_flybhf == null)
+            {
+                function_flybhf = new Function_flybhf();
+                function_flybhf.Cancle.Click += delegate { Page_Back(); };
+            }
+            Group_Open(function_flybhf);
         }
+        private Function_flybhf function_flybhf = null;
         /// <summary>
         /// 高斯积分法点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void gsjff_Click(object sender, RoutedEventArgs e)
+        private void gsjff_Click(object sender, RoutedEventArgs e)
         {
-            Function_gsjff fp = new Function_gsjff();
-            fp.Cancle.Click += delegate { Page_Back(); };
-            Group_Open(fp);
+            if (function_gsjff == null)
+            {
+                function_gsjff = new Function_gsjff();
+                function_gsjff.Cancle.Click += delegate { Page_Back(); };
+            }
+            Group_Open(function_gsjff);
         }
+        private Function_gsjff function_gsjff = null;
         /// <summary>
         /// 方形域法点击事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void fxyf_Click(object sender, RoutedEventArgs e)
+        private void fxyf_Click(object sender, RoutedEventArgs e)
         {
-            Function_fxyf fp = new Function_fxyf();
-            fp.Cancle.Click += delegate { Page_Back(); };
-            Group_Open(fp);
+            if (function_fxyf == null)
+            {
+                function_fxyf = new Function_fxyf();
+                function_fxyf.Cancle.Click += delegate { Page_Back(); };
+            }
+            Group_Open(function_fxyf);
         }
+        private Function_fxyf function_fxyf = null;
         /// <summary>
         /// 自空改正点击事件
         /// </summary>
@@ -228,10 +250,14 @@ namespace GI
         /// <param name="e"></param>
         private void Zkgz_Open(object sender, RoutedEventArgs e)
         {
-            Function_zkgz fp = new Function_zkgz();
-            fp.Cancle.Click += delegate { Page_Back(); };
-            Group_Open(fp);
+            if (function_zkgz == null)
+            {
+                function_zkgz = new Function_zkgz();
+                function_zkgz.Cancle.Click += delegate { Page_Back(); };
+            }
+            Group_Open(function_zkgz);
         }
+        private Function_zkgz function_zkgz = null;
         /// <summary>
         /// 布格改正点击事件
         /// </summary>
@@ -239,11 +265,14 @@ namespace GI
         /// <param name="e"></param>
         private void Bggz_Open(object sender, RoutedEventArgs e)
         {
-            Function_bggz fp = new Function_bggz();
-            Group_Open(fp);
-            fp.Cancle.Click += delegate { Page_Back(); };
+            if (function_bggz == null)
+            {
+                function_bggz = new Function_bggz();
+                function_bggz.Cancle.Click += delegate { Page_Back(); };
+            }
+            Group_Open(function_bggz);
         }
-
+        private Function_bggz function_bggz = null;
         ///// <summary>
         ///// 重力数据处理点击事件
         ///// </summary>
