@@ -68,7 +68,7 @@ namespace GI
                 current.BeginStoryboard(sb);
                 prev.BeginStoryboard(sbBack);
                 sb.Completed += delegate { current = null; };
-                ChangeHeadTitle(contentStack.Peek().titleCn, contentStack.Peek().titleEn);
+                ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
             }
             if (contentStack.Count <= 1)
                 headLogo.BeginStoryboard(sbBackDefault);

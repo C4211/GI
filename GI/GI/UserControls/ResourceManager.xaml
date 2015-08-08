@@ -86,7 +86,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <UserControls:ResourceManger_Addpath Grid.Column="1" Style="{StaticResource AddPathStyle}"/>
-            <UserControls:ResourceManger_Refreshpath Grid.Column="0" Style="{StaticResource RefreshPathStyle}"/>
+            <UserControls:ResourceManger_Refreshpath Grid.Column="0" Style="{StaticResource RefreshPathStyle}" Click="ResourceManger_Refreshpath_Click"/>
         </Grid>
     </Grid>
     <Grid Grid.Row="1">

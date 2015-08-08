@@ -29,6 +29,7 @@ namespace GI.UserControls
             InitializeComponent();
         }
 
+        #region 控制LoadingBar
         private void StartLoading()
         {
             Dispatcher.Invoke(delegate
@@ -46,6 +47,7 @@ namespace GI.UserControls
                 resourceTree.Visibility = Visibility.Visible;
             });
         }
+        #endregion
 
         private async void resourceTree_Loaded(object sender, RoutedEventArgs e)
         {
@@ -54,37 +56,65 @@ namespace GI.UserControls
             StopLoading();
         }
 
+        private async void ResourceManger_Refreshpath_Click(object sender, RoutedEventArgs e)
+        {
+            StartLoading();
+            await Task.Factory.StartNew(RefreshTreeView);
+            StopLoading();
+        }
+
         public void RefreshTreeView()
         {
-            Thread.Sleep(600);
-            List<DirectoryInfo> roots = new List<DirectoryInfo>();
-            roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
-            List<ResourceTreeNode> result = LoadResourceTree(roots);
-            Dispatcher.Invoke(delegate
-            {
-                resourceTree.Items.Clear();
-                foreach (var node in result)
+            List<DirectoryInfo> roots = null;
+            List<ResourceTreeNode> result = null;
+            List<ResourceManagerTreeNode> list = null;
+            ResourceManagerTreeNode parentNode;
+            try {
+                Thread.Sleep(600);
+                roots = new List<DirectoryInfo>();
+                roots.Add(new DirectoryInfo(@"E:\dropbox"));
+                result = LoadResourceTree(roots);
+                Dispatcher.Invoke(delegate
                 {
-                    ResourceManagerTreeNode parentNode;
-                    parentNode = new ResourceManagerTreeNode();
-                    parentNode.Path = node.Info;
-                    parentNode.Title = node.Info.Name;
-                    List<ResourceManagerTreeNode> list = FillDataToResourceTreeView(node);
-                    foreach (var l in list)
+                    resourceTree.Items.Refresh();
+                    resourceTree.Items.Clear();
+                    foreach (var node in result)
                     {
-                        parentNode.Items.Add(l);
+                        parentNode = new ResourceManagerTreeNode();
+                        parentNode.Path = node.Info;
+                        parentNode.Title = node.Info.Name;
+                        list = FillDataToResourceTreeView(node);
+                        foreach (var l in list)
+                        {
+                            parentNode.Items.Add(l);
+                        }
+                        resourceTree.Items.Add(parentNode);
                     }
-                    resourceTree.Items.Add(parentNode);
-                }
-            });
+                });
+            }
+            catch
+            {
+                MessageBox.Show(@"读取目录失败！");
+            }
+            finally
+            {
+                if (roots != null)
+                    roots = null;
+                if (result != null)
+                    result = null;
+                if (list != null)
+                    list = null;
+            }
         }
 
         private List<ResourceManagerTreeNode> FillDataToResourceTreeView(ResourceTreeNode node, int level = 1)
         {
             List<ResourceManagerTreeNode> result = new List<ResourceManagerTreeNode>();
+            ResourceManagerTreeNode childNode = null;
+            List<ResourceManagerTreeNode> list = null;
             foreach (var child in node.Children)
             {
-                ResourceManagerTreeNode childNode = new ResourceManagerTreeNode(level);
+                childNode = new ResourceManagerTreeNode(level);
                 childNode.Path = child.Info;
                 childNode.Title = child.Info.Name;
                 if (!child.IsDir)
@@ -94,13 +124,14 @@ namespace GI.UserControls
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
                     };
                 }
-                List<ResourceManagerTreeNode> list = FillDataToResourceTreeView(child, level + 1);
+                list = FillDataToResourceTreeView(child, level + 1);
                 foreach (var l in list)
                 {
                     childNode.Items.Add(l);
                 }
                 result.Add(childNode);
             }
+            list = null;
             return result;
         }
 
@@ -110,27 +141,19 @@ namespace GI.UserControls
             ResourceTreeNode rootNode;
             List<DirectoryInfo> dirs;
             List<FileInfo> files;
-            try
+            foreach (DirectoryInfo rootDir in Roots)
             {
-                foreach (DirectoryInfo rootDir in Roots)
+                if (!rootDir.Exists)
+                    throw new Exception();
+                rootNode = new ResourceTreeNode(rootDir);
+                dirs = rootDir.GetDirectories().ToList();
+                rootNode.Children = LoadResourceTree(dirs);
+                files = rootDir.GetFiles().ToList();
+                foreach (var file in files)
                 {
-                    if (!rootDir.Exists)
-                        throw new Exception();
-                    rootNode = new ResourceTreeNode(rootDir);
-                    dirs = rootDir.GetDirectories().ToList();
-                    rootNode.Children = LoadResourceTree(dirs);
-                    files = rootDir.GetFiles().ToList();
-                    foreach (var file in files)
-                    {
-                        rootNode.Children.Add(new ResourceTreeNode(file));
-                    }
-                    list.Add(rootNode);
+                    rootNode.Children.Add(new ResourceTreeNode(file));
                 }
-            }
-            catch
-            {
-                MessageBox.Show(@"读取目录失败！");
-                return null;
+                list.Add(rootNode);
             }
             return list;
         }

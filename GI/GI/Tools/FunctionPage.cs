@@ -7,11 +7,12 @@ using System.Windows.Controls;
 
 namespace GI.Tools
 {
-    public class FunctionPage:Grid
+    public class FunctionPage : Grid
     {
-        public FunctionPage()
+        public FunctionPage() : base()
         {
         }
+
         public string titleCn;
         public string titleEn;
     }
