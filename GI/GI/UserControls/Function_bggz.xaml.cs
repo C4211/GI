@@ -43,6 +43,10 @@ namespace GI.UserControls
                 prev.Visibility = Visibility.Visible;
                 next.Content = "计算";
             }
+            else
+            {
+                loadingBar.Visibility = Visibility.Visible;
+            }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)

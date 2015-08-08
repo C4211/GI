@@ -72,7 +72,7 @@ namespace GI.UserControls
             try {
                 Thread.Sleep(600);
                 roots = new List<DirectoryInfo>();
-                roots.Add(new DirectoryInfo(@"E:\dropbox"));
+                roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
                 result = LoadResourceTree(roots);
                 Dispatcher.Invoke(delegate
                 {

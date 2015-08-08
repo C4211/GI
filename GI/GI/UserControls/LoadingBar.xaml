@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="460" Width="200">
+             d:DesignHeight="300" Width="200">
     <UserControl.Resources>
         <Storyboard x:Key="GI.UserControl.LoadingBar.Storyboard" RepeatBehavior="Forever"  BeginTime="0:0:0">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Loading_Dot1">
