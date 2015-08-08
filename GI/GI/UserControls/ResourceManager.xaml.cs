@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +56,7 @@ namespace GI.UserControls
 
         public void RefreshTreeView()
         {
+            Thread.Sleep(600);
             List<DirectoryInfo> roots = new List<DirectoryInfo>();
             roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
             List<ResourceTreeNode> result = LoadResourceTree(roots);
