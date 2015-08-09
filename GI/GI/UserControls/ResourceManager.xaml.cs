@@ -95,7 +95,6 @@ namespace GI.UserControls
             catch
             {
                 Dispatcher.Invoke(delegate { MessageBox.Show(Application.Current.MainWindow, @"读取目录失败！"); });
-                
             }
             finally
             {
@@ -111,10 +110,10 @@ namespace GI.UserControls
         private List<ResourceManagerTreeNode> FillDataToResourceTreeView(ResourceTreeNode node, int level = 1)
         {
             List<ResourceManagerTreeNode> result = new List<ResourceManagerTreeNode>();
-            ResourceManagerTreeNode childNode = null;
             List<ResourceManagerTreeNode> list = null;
             foreach (var child in node.Children)
             {
+                ResourceManagerTreeNode childNode = null;
                 childNode = new ResourceManagerTreeNode(level);
                 childNode.Path = child.Info;
                 childNode.Title = child.Info.Name;

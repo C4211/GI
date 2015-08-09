@@ -102,29 +102,49 @@
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                            Text="密度："/>
+                <TextBlock 
+                    Grid.Row="1" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="密度："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg1"
+                    Grid.Row="1" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">g/cm^3</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">kg/m^3</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                    Grid.Row="2" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="内区半径："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg2"
+                    Grid.Row="2" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock
+                    Grid.Row="3" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="外区半径："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg3"
+                    Grid.Row="3" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                
                 <!--<Tools:SelectUnitBox x:Name="midu" Grid.Row="1" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">km</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">m</ComboBoxItem>
                 </Tools:SelectUnitBox>-->
                 <!--<Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="241,40,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>-->
-                <Tools:SelectUnitBox Grid.Row="1" Grid.Column="1" Margin="10">
-                </Tools:SelectUnitBox>
-                <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                           Text="内区半径："/>
-                <Tools:SelectUnitBox Grid.Row="2" Grid.Column="1" Margin="10"></Tools:SelectUnitBox>
-                <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                           Text="外区半径："/>
-                <Tools:SelectUnitBox Grid.Row="3" Grid.Column="1" Margin="10"></Tools:SelectUnitBox>
-                
             </Grid> 
         </Grid>
     </Grid>
-    <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#cccccccc"/>
     <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
         <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
         <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
         <Button x:Name="Cancle" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
     </UniformGrid>
+    <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#cccccccc"/>
 </Tools:FunctionPage>

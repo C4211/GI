@@ -24,5 +24,15 @@ namespace GI.UserControls
         {
             InitializeComponent();
         }
+
+        public void Show()
+        {
+            Dispatcher.Invoke(delegate { this.Visibility = System.Windows.Visibility.Visible; });
+        }
+
+        public void Hide()
+        {
+            Dispatcher.Invoke(delegate { this.Visibility = System.Windows.Visibility.Hidden; });
+        }
     }
 }
