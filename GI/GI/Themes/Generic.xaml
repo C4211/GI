@@ -128,7 +128,7 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="templateRoot" SnapsToDevicePixels="true" BorderThickness="1" Background="#00000000" BorderBrush="#00000000">
                         <Border x:Name="splitBorder" BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Right" Margin="0" SnapsToDevicePixels="true" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
-                            <Path x:Name="arrow" Data="F1 M2.667,2.94833 L5.3334,-1.0947649E-47 0,-1.0947649E-47 z" Fill="{StaticResource GI.Colors.Body.text}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="2.948" Width="5.333" RenderTransformOrigin="0.5,0.5">
+                            <Path x:Name="arrow" Data="M0,0L3,4 6,0z" Fill="{StaticResource GI.Colors.Body.text}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
