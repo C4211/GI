@@ -5,62 +5,122 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Tools="clr-namespace:GI.Tools"
+                    Width="680"
              d:DesignHeight="414" d:DesignWidth="680" Visibility="Visible"
                     Style="{StaticResource GI.Body.Content.Style}"
                     x:Name="functionPage">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
-        <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
-    </Grid.ColumnDefinitions>
-    <Grid Grid.Column="0">
+    <Tools:FunctionPage.Resources>
+        <Storyboard x:Key="sb">
+            <ThicknessAnimation To="-680,0,0,0" Storyboard.TargetProperty="Margin" Duration="0:0:0.4">
+                <ThicknessAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseInOut"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+    </Tools:FunctionPage.Resources>
+    <Grid x:Name="content">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"></ColumnDefinition>
-            <ColumnDefinition Width="1"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
-        <UserControls:ResourceManager Grid.Column="0"/>
-        <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
-        <Grid Grid.Column="2">
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"></ColumnDefinition>
+                <ColumnDefinition Width="1"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UserControls:ResourceManager x:Name="resourceTree" Grid.Column="0"/>
+            <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <UserControls:BodyTitle Grid.Row="0" Title="输入文件"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="135"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="输入文件路径："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="inputPath1"
+                        Grid.Row="1" Grid.Column="1" Margin="10" 
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                    <TextBlock 
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="输出文件路径："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="outputPath1"
+                        Grid.Row="2" Grid.Column="1" Margin="10" 
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <UserControls:BodyTitle Grid.Row="0" Title="输入文件"/>
+            <UserControls:BodyTitle Grid.Row="0" Title="正常重力公式"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="135"></ColumnDefinition>
-                    <ColumnDefinition Width="270"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock 
-                    Grid.Row="1" Grid.Column="0" 
-                    Style="{StaticResource GI.Window.Body.Text.Style}" 
-                    Text="输入文件路径："/>
-                <UserControls:SelectFileControl 
-                    x:Name="inputPath1"
-                    Grid.Row="1" Grid.Column="1" Margin="10" 
-                    Style="{StaticResource SelectFileControl.Style}"/>
-                <TextBlock 
-                    Grid.Row="2" Grid.Column="0" 
-                    Style="{StaticResource GI.Window.Body.Text.Style}" 
-                    Text="输出文件路径："/>
-                <UserControls:SelectFileControl 
-                    x:Name="outputPath1"
-                    Grid.Row="2" Grid.Column="1" Margin="10" 
-                    Style="{StaticResource SelectFileControl.Style}"/>
+                <RadioButton 
+                    x:Name="choice1"
+                    Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="1901-1909年的赫尔默德(R.Helmert)公式" 
+                    GroupName="zczlgs" IsChecked="True">
+                </RadioButton>
+                <RadioButton 
+                    x:Name="choice2"
+                    Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="1930年卡西尼(Cassinis)国际正常重力公式" 
+                    GroupName="zczlgs"></RadioButton>
+                <RadioButton 
+                    x:Name="choice3"
+                    Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="1971年国际正常重力公式" 
+                    GroupName="zczlgs"></RadioButton>
+                <RadioButton 
+                    x:Name="choice4"
+                    Grid.Row="4" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="1970年IUGG确定的正常重力公式" 
+                    GroupName="zczlgs"></RadioButton>
+
             </Grid>
         </Grid>
     </Grid>
-    <Grid Grid.Column="1">
-
-    </Grid>
+    <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#CCFFFFFF"/>
     <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
-        <Button Width="80" Content="上一步" Visibility="Hidden"></Button>
-        <Button Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}"></Button>
-        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"></Button>
+        <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
+        <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
+        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
     </UniformGrid>
 </Tools:FunctionPage>
