@@ -31,17 +31,23 @@ namespace GI.UserControls
         }
 
         private int PageCurrent = 0;
-        private int PageMax = 1;
+        private int PageMax
+        {
+            get { return content.Children.Count-1; }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (PageCurrent < PageMax)
             {
                 PageCurrent += 1;
-                Storyboard sb = (Storyboard)this.FindResource("sb");
+                content.Children[PageCurrent].Visibility = Visibility.Visible;
+                Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent*680, 0, 0, 0);
-                sb.Begin();
+                sb.Completed += delegate { content.Children[PageCurrent-1].Visibility = Visibility.Hidden; };
+                content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
-                next.Content = "计算";
+                if(PageCurrent>=PageMax)
+                    next.Content = "计算";
             }
             else
             {
@@ -54,10 +60,13 @@ namespace GI.UserControls
             if (PageCurrent > 0)
             {
                 PageCurrent -= 1;
-                Storyboard sb = (Storyboard)this.FindResource("sb");
+                content.Children[PageCurrent].Visibility = Visibility.Visible;
+                Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent * 680, 0, 0, 0);
-                sb.Begin();
-                prev.Visibility = Visibility.Hidden;
+                sb.Completed += delegate { content.Children[PageCurrent+1].Visibility = Visibility.Hidden; };
+                content.BeginStoryboard(sb);
+                if(PageCurrent<=0)
+                    prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
                 next.Visibility = Visibility.Visible;
             }

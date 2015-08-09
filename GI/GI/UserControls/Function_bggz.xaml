@@ -9,7 +9,7 @@
              Visibility="Visible"
              Style="{StaticResource GI.Body.Content.Style}">
     <Tools:FunctionPage.Resources>
-        <Storyboard x:Key="sb" Storyboard.TargetName="content">
+        <Storyboard x:Key="sb">
             <ThicknessAnimation To="-680,0,0,0" Storyboard.TargetProperty="Margin" Duration="0:0:0.4">
                 <ThicknessAnimation.EasingFunction>
                     <SineEase EasingMode="EaseInOut"/>
@@ -17,9 +17,10 @@
             </ThicknessAnimation>
         </Storyboard>
     </Tools:FunctionPage.Resources>
-    <Grid x:Name="content" Margin="-680,0,0,0">
+    <Grid x:Name="content">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -59,7 +60,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -75,17 +76,17 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
-                    <ColumnDefinition Width="270"></ColumnDefinition>
+                    <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
                             Text="密度："/>
-                <UserControls:SelectFileControl  Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <UserControls:SelectUnitControl Grid.Row="1" Grid.Column="1" Margin="10"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="内区半径："/>
-                <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <UserControls:SelectUnitControl Grid.Row="2" Grid.Column="1" Margin="10"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
                            Text="外区半径："/>
-                <UserControls:SelectFileControl Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <UserControls:SelectUnitControl Grid.Row="3" Grid.Column="1" Margin="10"/>
             </Grid> 
         </Grid>
     </Grid>

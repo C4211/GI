@@ -119,6 +119,9 @@
     <Compile Include="UserControls\SelectFileControl.xaml.cs">
       <DependentUpon>SelectFileControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SelectUnitControl .xaml.cs">
+      <DependentUpon>SelectUnitControl .xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -242,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SelectFileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelectUnitControl .xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
