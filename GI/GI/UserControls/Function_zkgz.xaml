@@ -30,14 +30,28 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="270"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                            Text="文件路径："/>
-                <UserControls:SelectFileControl Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
+                <TextBlock 
+                    Grid.Row="1" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="输入文件路径："/>
+                <UserControls:SelectFileControl 
+                    x:Name="inputPath1"
+                    Grid.Row="1" Grid.Column="1" Margin="10" 
+                    Style="{StaticResource SelectFileControl.Style}"/>
+                <TextBlock 
+                    Grid.Row="2" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="输出文件路径："/>
+                <UserControls:SelectFileControl 
+                    x:Name="outputPath1"
+                    Grid.Row="2" Grid.Column="1" Margin="10" 
+                    Style="{StaticResource SelectFileControl.Style}"/>
             </Grid>
         </Grid>
     </Grid>
