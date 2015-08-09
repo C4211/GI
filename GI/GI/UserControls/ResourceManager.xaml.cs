@@ -27,7 +27,11 @@ namespace GI.UserControls
         public ResourceManager()
         {
             InitializeComponent();
+            if (roots.Count == 0)
+                roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
         }
+
+        private static List<DirectoryInfo> roots = new List<DirectoryInfo>();
 
         #region 控制LoadingBar
         private void StartLoading()
@@ -65,14 +69,12 @@ namespace GI.UserControls
 
         public void RefreshTreeView()
         {
-            List<DirectoryInfo> roots = null;
             List<ResourceTreeNode> result = null;
             List<ResourceManagerTreeNode> list = null;
             ResourceManagerTreeNode parentNode;
-            try {
+            try
+            {
                 Thread.Sleep(600);
-                roots = new List<DirectoryInfo>();
-                roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
                 result = LoadResourceTree(roots);
                 Dispatcher.Invoke(delegate
                 {
@@ -98,8 +100,6 @@ namespace GI.UserControls
             }
             finally
             {
-                if (roots != null)
-                    roots = null;
                 if (result != null)
                     result = null;
                 if (list != null)
@@ -161,6 +161,20 @@ namespace GI.UserControls
         private void Grid_Unloaded(object sender, RoutedEventArgs e)
         {
             resourceTree.Items.Clear();
+        }
+
+        private async void ResourceManger_Addpath_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = fbd.SelectedPath;
+                DirectoryInfo dir = new DirectoryInfo(path);
+                roots.Add(dir);
+                StartLoading();
+                await Task.Factory.StartNew(RefreshTreeView);
+                StopLoading();
+            }
         }
     }
 
