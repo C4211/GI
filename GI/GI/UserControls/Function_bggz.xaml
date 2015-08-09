@@ -147,5 +147,4 @@
         <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
         <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
     </UniformGrid>
-    <Rectangle x:Name="blocker" Fill="#00ffffff" Visibility="Hidden"/>
 </Tools:FunctionPage>

@@ -42,19 +42,16 @@ namespace GI.UserControls
         {
             if (CurrentState == 0)
             {
-                BlockControls();
+                next.IsEnabled = false;
                 CurrentState = 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
-                sb.Completed += delegate
-                {
-                    content.Children[CurrentState - 1].Visibility = Visibility.Hidden;
-                    UnblockControls();
-                };
+                sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; next.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
                 next.Content = "计算";
+                return;
             }
             else if (CurrentState == 1)
             {
@@ -79,18 +76,15 @@ namespace GI.UserControls
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentState == 1)
+            
+            if (CurrentState > 0)
             {
-                BlockControls();
-                CurrentState = 0;
+                next.IsEnabled = false;
+                CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
-                sb.Completed += delegate
-                {
-                    content.Children[CurrentState + 1].Visibility = Visibility.Hidden;
-                    UnblockControls();
-                };
+                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; next.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
@@ -113,14 +107,6 @@ namespace GI.UserControls
                 prev.Visibility = Visibility.Visible;
                 cancel.Visibility = Visibility.Visible;
             });
-        }
-        private void BlockControls()
-        {
-            Dispatcher.Invoke(delegate { blocker.Visibility = Visibility.Visible; });
-        }
-        private void UnblockControls()
-        {
-            Dispatcher.Invoke(delegate { blocker.Visibility = Visibility.Hidden; });
         }
 
         private async void DoBouguerCorrection()
