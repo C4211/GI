@@ -39,7 +39,7 @@ namespace GI.Tools
         /// <summary>
         /// 任务控制
         /// </summary>
-        public static CancellationTokenSource TaskControl = null;
+        public static Process p = null;
         #endregion
 
         /// <summary>
@@ -79,11 +79,10 @@ namespace GI.Tools
             {
                 writer.Write(tc);
             }
-            TaskControl = new CancellationTokenSource();
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
-                Process p = new Process();
+                p = new Process();
                 ProcessStartInfo startInfo = new ProcessStartInfo(exePath, tcPath);
                 p.StartInfo = startInfo;
                 p.StartInfo.UseShellExecute = false;
@@ -91,7 +90,7 @@ namespace GI.Tools
                 p.StartInfo.CreateNoWindow = true;
                 p.Start();
                 return p.StandardOutput.ReadToEnd();
-            }, TaskControl.Token);
+            });
         }
     }
 

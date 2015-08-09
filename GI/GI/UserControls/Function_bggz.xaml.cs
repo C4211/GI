@@ -36,6 +36,7 @@ namespace GI.UserControls
         /// 2 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        private bool IsCanceled = false;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +54,7 @@ namespace GI.UserControls
             else if (CurrentState == 1)
             {
                 CurrentState = 2;
+                IsCanceled = false;
                 next.Content = "取消";
                 DoBouguerCorrection();
             }
@@ -62,7 +64,8 @@ namespace GI.UserControls
                 next.Content = "计算";
                 if (Task_bggz != null)
                 {
-                    BouguerCorrection.TaskControl.Cancel(false);
+                    IsCanceled = true;
+                    BouguerCorrection.p.Kill();
                     loadingBar.Hide();
                     ShowPrevAndCancel();
                 }
@@ -135,12 +138,19 @@ namespace GI.UserControls
                 _arg3 *= double.Parse((arg3.SelectedItem as ComboBoxItem).Tag.ToString());
                 Task_bggz = BouguerCorrection.Start(path1, path2, path3, _arg1, _arg2, _arg3);
                 await Task_bggz;
-                if (Task_bggz.IsCompleted)
+                if (IsCanceled)
                 {
-                    string s = Task_bggz.Result;
-                    Msg("计算完毕!");
-                    Task_bggz = null;
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                    Msg("计算取消!");
                 }
+                else
+                {
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                    Msg(Task_bggz.Result);
+                }
+                Task_bggz = null;
             }
             Dispatcher.Invoke(delegate
             {

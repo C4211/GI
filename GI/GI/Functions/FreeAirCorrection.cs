@@ -14,11 +14,6 @@ namespace GI.Tools
     class FreeAirCorrectionStart
     {
         /// <summary>
-        /// 任务控制
-        /// </summary>
-        public static CancellationTokenSource TaskControl = null;
-
-        /// <summary>
         /// 开始自空校正
         /// </summary>
         /// <param name="inputPath">输入文件路径</param>
@@ -33,7 +28,7 @@ namespace GI.Tools
                 list = ReadAndCheckInputFormat(inputPath);
                 CalculateFreeAirAnomaly(list, choice);
                 WriteOutput(list, outputPath);
-            }, TaskControl.Token);
+            });
         }
 
         /// <summary>
