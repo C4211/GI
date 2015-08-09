@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="200">
+             d:DesignHeight="300" d:DesignWidth="210">
     <UserControl.Resources>
         <Storyboard x:Key="GI.UserControl.LoadingBar.Storyboard" RepeatBehavior="Forever"  BeginTime="0:0:0">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Loading_Dot1">
@@ -86,8 +86,8 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <Grid Height="30" >
+    <Grid  Width="210">
+        <Grid Height="30">
             <Ellipse x:Name="Loading_Dot1" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot2" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot3" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>

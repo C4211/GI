@@ -158,6 +158,11 @@ namespace GI.UserControls
             }
             return list;
         }
+
+        private void Grid_Unloaded(object sender, RoutedEventArgs e)
+        {
+            resourceTree.Items.Clear();
+        }
     }
 
     /// <summary>

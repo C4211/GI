@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GI.Tools
@@ -12,6 +13,11 @@ namespace GI.Tools
     /// </summary>
     class FreeAirCorrectionStart
     {
+        /// <summary>
+        /// 任务控制
+        /// </summary>
+        public static CancellationTokenSource TaskControl = null;
+
         /// <summary>
         /// 开始自空校正
         /// </summary>
@@ -27,7 +33,7 @@ namespace GI.Tools
                 list = ReadAndCheckInputFormat(inputPath);
                 CalculateFreeAirAnomaly(list, choice);
                 WriteOutput(list, outputPath);
-            });
+            }, TaskControl.Token);
         }
 
         /// <summary>

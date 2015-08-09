@@ -10,7 +10,7 @@ namespace GI.Tools
 {
     public class FileNameFilter
     {
-        public static bool CheckSuffix(string filePath)
+        public static bool CheckFileSuffix(string filePath)
         {
             filePath = filePath.TrimEnd();
             if (filePath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase)
@@ -18,6 +18,21 @@ namespace GI.Tools
                 || filePath.EndsWith(".dat", StringComparison.OrdinalIgnoreCase))
                 return true;
             return false;
+        }
+
+        public static bool CheckFileExistence(string filePath)
+        {
+            FileInfo file = new FileInfo(filePath);
+            if (file.Exists)
+            {
+                file = null;
+                return true;
+            }
+            else
+            {
+                file = null;
+                return false;
+            }
         }
     }
 

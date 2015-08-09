@@ -7,7 +7,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
       d:DesignHeight="300" 
-      d:DesignWidth="300">
+      d:DesignWidth="300" Unloaded="Grid_Unloaded">
     <Grid.Resources>
         <Style x:Key="TreeViewStyle" TargetType="{x:Type TreeView}">
             <Setter Property="BorderThickness" Value="0"/>

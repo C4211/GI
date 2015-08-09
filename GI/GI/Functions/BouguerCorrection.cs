@@ -37,9 +37,9 @@ namespace GI.Tools
         /// </summary>
         public static string outPath = @"out.DAT";
         /// <summary>
-        /// 存放结果
+        /// 任务控制
         /// </summary>
-        public static string result;
+        public static CancellationTokenSource TaskControl = null;
         #endregion
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace GI.Tools
         /// <param name="density">密度</param>
         /// <param name="innerRadius">内区半径</param>
         /// <param name="outterRadius">外区半径</param>
-        /// <returns>异步执行Task</returns>
+        /// <returns>异步执行Task，返回值为结果</returns>
         /// 
-        public static Task Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius)
+        public static Task<string> Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius)
         {
             //判断传入文件是否存在
             if (!File.Exists(dat))
@@ -79,8 +79,9 @@ namespace GI.Tools
             {
                 writer.Write(tc);
             }
+            TaskControl = new CancellationTokenSource();
             // 执行exe
-            return Task.Run(() =>
+            return Task.Factory.StartNew<string>(() =>
             {
                 Process p = new Process();
                 ProcessStartInfo startInfo = new ProcessStartInfo(exePath, tcPath);
@@ -89,8 +90,8 @@ namespace GI.Tools
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.CreateNoWindow = true;
                 p.Start();
-                result = p.StandardOutput.ReadToEnd();
-            });
+                return p.StandardOutput.ReadToEnd();
+            }, TaskControl.Token);
         }
     }
 
