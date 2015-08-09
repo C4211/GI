@@ -82,14 +82,21 @@ namespace GI.Tools
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
-                p = new Process();
-                ProcessStartInfo startInfo = new ProcessStartInfo(exePath, tcPath);
-                p.StartInfo = startInfo;
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.CreateNoWindow = true;
-                p.Start();
-                return p.StandardOutput.ReadToEnd();
+                try
+                {
+                    p = new Process();
+                    ProcessStartInfo startInfo = new ProcessStartInfo(exePath, tcPath);
+                    p.StartInfo = startInfo;
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.Start();
+                    return p.StandardOutput.ReadToEnd();
+                }
+                catch
+                {
+                    return "执行EXE失败";
+                }
             });
         }
     }

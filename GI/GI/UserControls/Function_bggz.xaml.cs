@@ -76,7 +76,7 @@ namespace GI.UserControls
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (CurrentState > 0)
             {
                 next.IsEnabled = false;
@@ -116,6 +116,7 @@ namespace GI.UserControls
             string path1 = inputPath1.filePath.Text;
             string path2 = inputPath2.filePath.Text;
             string path3 = inputPath3.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
             double _arg1, _arg2, _arg3;
             if (!FileNameFilter.CheckFileSuffix(path1))
                 Msg("站点文件类型不正确!");
@@ -137,24 +138,32 @@ namespace GI.UserControls
                 Msg("外区半径非法!");
             else
             {
-                _arg1 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
-                _arg2 *= double.Parse((arg2.SelectedItem as ComboBoxItem).Tag.ToString());
-                _arg3 *= double.Parse((arg3.SelectedItem as ComboBoxItem).Tag.ToString());
-                Task_bggz = BouguerCorrection.Start(path1, path2, path3, _arg1, _arg2, _arg3);
-                await Task_bggz;
-                if (IsCanceled)
+                try
                 {
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg("计算取消!");
+                    _arg1 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
+                    _arg2 *= double.Parse((arg2.SelectedItem as ComboBoxItem).Tag.ToString());
+                    _arg3 *= double.Parse((arg3.SelectedItem as ComboBoxItem).Tag.ToString());
+                    Task_bggz = BouguerCorrection.Start(path1, path2, path3, _arg1, _arg2, _arg3);
+                    await Task_bggz;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(@"out.DAT", outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg(Task_bggz.Result);
+                    }
+                    Task_bggz = null;
                 }
-                else
+                catch (Exception e)
                 {
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg(Task_bggz.Result);
+                    Msg(e.Message);
                 }
-                Task_bggz = null;
             }
             Dispatcher.Invoke(delegate
             {
