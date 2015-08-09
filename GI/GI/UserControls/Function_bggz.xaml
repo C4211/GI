@@ -17,7 +17,7 @@
             </ThicknessAnimation>
         </Storyboard>
     </Tools:FunctionPage.Resources>
-    <Grid x:Name="content">
+    <Grid x:Name="content" Margin="-680,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
