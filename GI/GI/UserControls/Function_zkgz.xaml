@@ -47,6 +47,6 @@
     <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
         <Button Width="80" Content="上一步" Visibility="Hidden"></Button>
         <Button Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}"></Button>
-        <Button x:Name="Cancle" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"></Button>
+        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"></Button>
     </UniformGrid>
 </Tools:FunctionPage>

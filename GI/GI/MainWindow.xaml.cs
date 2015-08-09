@@ -203,7 +203,7 @@ namespace GI
         {
             function_flybhf = null;
             function_flybhf = new Function_flybhf();
-            function_flybhf.Cancle.Click += delegate { Page_Back(); };
+            function_flybhf.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_flybhf);
         }
         private Function_flybhf function_flybhf = null;
@@ -216,7 +216,7 @@ namespace GI
         {
             function_gsjff = null;
             function_gsjff = new Function_gsjff();
-            function_gsjff.Cancle.Click += delegate { Page_Back(); };
+            function_gsjff.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_gsjff);
         }
         private Function_gsjff function_gsjff = null;
@@ -229,7 +229,7 @@ namespace GI
         {
             function_fxyf = null;
             function_fxyf = new Function_fxyf();
-            function_fxyf.Cancle.Click += delegate { Page_Back(); };
+            function_fxyf.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_fxyf);
         }
         private Function_fxyf function_fxyf = null;
@@ -242,7 +242,7 @@ namespace GI
         {
             function_zkgz = null;
             function_zkgz = new Function_zkgz();
-            function_zkgz.Cancle.Click += delegate { Page_Back(); };
+            function_zkgz.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_zkgz);
         }
         private Function_zkgz function_zkgz = null;
@@ -255,7 +255,7 @@ namespace GI
         {
             function_bggz = null;
             function_bggz = new Function_bggz();
-            function_bggz.Cancle.Click += delegate { Page_Back(); };
+            function_bggz.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_bggz);
         }
         private Function_bggz function_bggz = null;

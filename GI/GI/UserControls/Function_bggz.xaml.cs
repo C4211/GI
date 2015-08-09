@@ -30,50 +30,81 @@ namespace GI.UserControls
             this.titleEn = "Bouguer correction";
         }
 
-        private int PageCurrent = 0;
-        private int PageMax
-        {
-            get { return content.Children.Count-1; }
-        }
+        /// <summary>
+        /// 0 : 输入文件
+        /// 1 : 输入参数
+        /// 2 : 计算中
+        /// </summary>
+        private int CurrentState = 0;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PageCurrent < PageMax)
+            if (CurrentState == 0)
             {
-                PageCurrent += 1;
-                content.Children[PageCurrent].Visibility = Visibility.Visible;
+                CurrentState = 1;
+                content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
-                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent*680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[PageCurrent-1].Visibility = Visibility.Hidden; };
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
+                sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; };
                 content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
-                if(PageCurrent>=PageMax)
-                    next.Content = "计算";
+                next.Content = "计算";
             }
-            else
+            else if (CurrentState == 1)
             {
+                CurrentState = 2;
+                next.Content = "取消";
                 DoBouguerCorrection();
+            }
+            else if (CurrentState == 2)
+            {
+                CurrentState = 1;
+                next.Content = "计算";
+                if (Task_bggz != null)
+                {
+                    BouguerCorrection.TaskControl.Cancel(false);
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
-            if (PageCurrent > 0)
+            if (CurrentState > 0)
             {
-                PageCurrent -= 1;
-                content.Children[PageCurrent].Visibility = Visibility.Visible;
+                CurrentState -= 1;
+                content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
-                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent * 680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[PageCurrent + 1].Visibility = Visibility.Hidden; };
+                ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
+                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; };
                 content.BeginStoryboard(sb);
-                if (PageCurrent <= 0)
+                if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
                 next.Visibility = Visibility.Visible;
             }
         }
+        private void HidePrevAndCancel()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                prev.Visibility = Visibility.Hidden;
+                cancel.Visibility = Visibility.Hidden;
+            });
+        }
+        private void ShowPrevAndCancel()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                prev.Visibility = Visibility.Visible;
+                cancel.Visibility = Visibility.Visible;
+            });
+        }
 
         private async void DoBouguerCorrection()
         {
+            HidePrevAndCancel();
             loadingBar.Show();
             string path1 = inputPath1.filePath.Text;
             string path2 = inputPath2.filePath.Text;
@@ -104,13 +135,23 @@ namespace GI.UserControls
                 _arg3 *= double.Parse((arg3.SelectedItem as ComboBoxItem).Tag.ToString());
                 Task_bggz = BouguerCorrection.Start(path1, path2, path3, _arg1, _arg2, _arg3);
                 await Task_bggz;
-                string s = Task_bggz.Result;
-                Msg("计算完毕!");
+                if (Task_bggz.IsCompleted)
+                {
+                    string s = Task_bggz.Result;
+                    Msg("计算完毕!");
+                    Task_bggz = null;
+                }
             }
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = 1;
+                next.Content = "计算";
+            });
             loadingBar.Hide();
+            ShowPrevAndCancel();
         }
 
-        private Task<string> Task_bggz;
+        private Task<string> Task_bggz = null;
 
         private void Msg(string msg)
         {
