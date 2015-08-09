@@ -90,7 +90,6 @@ namespace GI.Tools
                 p.StartInfo.CreateNoWindow = true;
                 p.Start();
                 return p.StandardOutput.ReadToEnd();
-
             });
         }
     }
