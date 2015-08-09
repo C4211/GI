@@ -108,8 +108,7 @@
                     Text="密度："/>
                 <Tools:SelectUnitBox 
                     x:Name="arg1"
-                    Grid.Row="1" Grid.Column="1" Margin="10"
-                    Value="2.67">
+                    Grid.Row="1" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">g/cm^3</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">kg/m^3</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -119,8 +118,7 @@
                     Text="内区半径："/>
                 <Tools:SelectUnitBox 
                     x:Name="arg2"
-                    Grid.Row="2" Grid.Column="1" Margin="10"
-                    Value="20.0">
+                    Grid.Row="2" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">km</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">m</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -130,8 +128,7 @@
                     Text="外区半径："/>
                 <Tools:SelectUnitBox 
                     x:Name="arg3"
-                    Grid.Row="3" Grid.Column="1" Margin="10"
-                    Value="166.735">
+                    Grid.Row="3" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">km</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">m</ComboBoxItem>
                 </Tools:SelectUnitBox>
