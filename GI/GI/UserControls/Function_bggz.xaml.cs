@@ -95,5 +95,20 @@ namespace GI.UserControls
 
             }
         }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
+        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
+        //    string value;
+        //    if(midu.Value!=null)
+        //    {
+        //        value = midu.Value.ToString();
+        //    }
+        //    else
+        //    {
+        //        value = "null";
+        //    }
+        //    MessageBox.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
+        //}
     }
 }
