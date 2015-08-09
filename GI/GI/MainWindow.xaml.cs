@@ -91,7 +91,7 @@ namespace GI
         private void Group_Back_MouseEnter(object sender, MouseEventArgs e)
         {
             ((Rectangle)sender).Fill = (DrawingBrush)Application.Current.Resources["GI.Window.Head.Back.Hover"];
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
                 ((Rectangle)sender).Fill = (DrawingBrush)Application.Current.Resources["GI.Window.Head.Back.Press"];
         }
         /// <summary>
@@ -171,13 +171,11 @@ namespace GI
         /// <param name="e"></param>
         private void Zlycgz_Open(object sender, RoutedEventArgs e)
         {
-            if (functionPage_zlycgz == null)
-            {
-                functionPage_zlycgz = new FunctionPage_zlycgz();
-                functionPage_zlycgz.dxgz.Click += dxgz_Click;
-                functionPage_zlycgz.bggz.Click += Bggz_Open;
-                functionPage_zlycgz.zkgz.Click += Zkgz_Open;
-            }
+            functionPage_zlycgz = null;
+            functionPage_zlycgz = new FunctionPage_zlycgz();
+            functionPage_zlycgz.dxgz.Click += dxgz_Click;
+            functionPage_zlycgz.bggz.Click += Bggz_Open;
+            functionPage_zlycgz.zkgz.Click += Zkgz_Open;
             Group_Open(functionPage_zlycgz);
         }
         private FunctionPage_zlycgz functionPage_zlycgz = null;
@@ -188,13 +186,11 @@ namespace GI
         /// <param name="e"></param>
         private void dxgz_Click(object sender, RoutedEventArgs e)
         {
-            if (functionPage_dxgz == null)
-            {
-                functionPage_dxgz = new FunctionPage_dxgz();
-                functionPage_dxgz.fxyf.Click += fxyf_Click;
-                functionPage_dxgz.gsjff.Click += gsjff_Click;
-                functionPage_dxgz.flybhf.Click += flybhf_Click;
-            }
+            functionPage_dxgz = null;
+            functionPage_dxgz = new FunctionPage_dxgz();
+            functionPage_dxgz.fxyf.Click += fxyf_Click;
+            functionPage_dxgz.gsjff.Click += gsjff_Click;
+            functionPage_dxgz.flybhf.Click += flybhf_Click;
             Group_Open(functionPage_dxgz);
         }
         private FunctionPage_dxgz functionPage_dxgz = null;
@@ -205,11 +201,9 @@ namespace GI
         /// <param name="e"></param>
         private void flybhf_Click(object sender, RoutedEventArgs e)
         {
-            if (function_flybhf == null)
-            {
-                function_flybhf = new Function_flybhf();
-                function_flybhf.Cancle.Click += delegate { Page_Back(); };
-            }
+            function_flybhf = null;
+            function_flybhf = new Function_flybhf();
+            function_flybhf.Cancle.Click += delegate { Page_Back(); };
             Group_Open(function_flybhf);
         }
         private Function_flybhf function_flybhf = null;
@@ -220,11 +214,9 @@ namespace GI
         /// <param name="e"></param>
         private void gsjff_Click(object sender, RoutedEventArgs e)
         {
-            if (function_gsjff == null)
-            {
-                function_gsjff = new Function_gsjff();
-                function_gsjff.Cancle.Click += delegate { Page_Back(); };
-            }
+            function_gsjff = null;
+            function_gsjff = new Function_gsjff();
+            function_gsjff.Cancle.Click += delegate { Page_Back(); };
             Group_Open(function_gsjff);
         }
         private Function_gsjff function_gsjff = null;
@@ -235,11 +227,9 @@ namespace GI
         /// <param name="e"></param>
         private void fxyf_Click(object sender, RoutedEventArgs e)
         {
-            if (function_fxyf == null)
-            {
-                function_fxyf = new Function_fxyf();
-                function_fxyf.Cancle.Click += delegate { Page_Back(); };
-            }
+            function_fxyf = null;
+            function_fxyf = new Function_fxyf();
+            function_fxyf.Cancle.Click += delegate { Page_Back(); };
             Group_Open(function_fxyf);
         }
         private Function_fxyf function_fxyf = null;
@@ -250,11 +240,9 @@ namespace GI
         /// <param name="e"></param>
         private void Zkgz_Open(object sender, RoutedEventArgs e)
         {
-            if (function_zkgz == null)
-            {
-                function_zkgz = new Function_zkgz();
-                function_zkgz.Cancle.Click += delegate { Page_Back(); };
-            }
+            function_zkgz = null;
+            function_zkgz = new Function_zkgz();
+            function_zkgz.Cancle.Click += delegate { Page_Back(); };
             Group_Open(function_zkgz);
         }
         private Function_zkgz function_zkgz = null;
@@ -265,11 +253,9 @@ namespace GI
         /// <param name="e"></param>
         private void Bggz_Open(object sender, RoutedEventArgs e)
         {
-            if (function_bggz == null)
-            {
-                function_bggz = new Function_bggz();
-                function_bggz.Cancle.Click += delegate { Page_Back(); };
-            }
+            function_bggz = null;
+            function_bggz = new Function_bggz();
+            function_bggz.Cancle.Click += delegate { Page_Back(); };
             Group_Open(function_bggz);
         }
         private Function_bggz function_bggz = null;
@@ -334,7 +320,7 @@ namespace GI
         /// </summary>
         /// <param name="title">主标题</param>
         /// <param name="subtitle">副标题</param>
-        private void ChangeHeadTitle(string title,string subtitle)
+        private void ChangeHeadTitle(string title, string subtitle)
         {
             Storyboard sbTitleDisable_ = sbTitleDisable.Clone();
             sbTitleDisable_.Completed += delegate
@@ -350,7 +336,7 @@ namespace GI
         #endregion
 
 
-        
+
 
     }
 }

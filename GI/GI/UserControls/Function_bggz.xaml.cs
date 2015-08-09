@@ -52,6 +52,7 @@ namespace GI.UserControls
             else
             {
                 loadingBar.Visibility = Visibility.Visible;
+
             }
         }
 
@@ -63,15 +64,37 @@ namespace GI.UserControls
                 content.Children[PageCurrent].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-PageCurrent * 680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[PageCurrent+1].Visibility = Visibility.Hidden; };
+                sb.Completed += delegate { content.Children[PageCurrent + 1].Visibility = Visibility.Hidden; };
                 content.BeginStoryboard(sb);
-                if(PageCurrent<=0)
+                if (PageCurrent <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
                 next.Visibility = Visibility.Visible;
             }
         }
 
+        private void DoBouguerCorrection()
+        {
+            string path1, path2, path3;
+            double arg1, arg2, arg3;
+            if (!FileNameFilter.CheckFileSuffix(inputPath1.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "站点文件类型不正确");
+            else if (!FileNameFilter.CheckFileExistence(inputPath1.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "站点文件路径不存在");
+            else if (!FileNameFilter.CheckFileSuffix(inputPath2.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "内区地形文件类型不正确");
+            else if (!FileNameFilter.CheckFileExistence(inputPath2.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "内区地形文件路径不存在");
+            else if (!FileNameFilter.CheckFileSuffix(inputPath3.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "外区地形文件类型不正确");
+            else if (!FileNameFilter.CheckFileExistence(inputPath3.filePath.Text))
+                MessageBox.Show(Application.Current.MainWindow, "外区地形文件路径不存在");
+            // else if (判断参数)
+            else
+            {
+
+            }
+        }
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
         //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
