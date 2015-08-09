@@ -74,6 +74,7 @@
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\FunctionPage.cs" />
     <Compile Include="Tools\ResourceManagerTreeNode.cs" />
+    <Compile Include="Tools\SelectUnitBox.cs" />
     <Compile Include="UserControls\BodyTitle.xaml.cs">
       <DependentUpon>BodyTitle.xaml</DependentUpon>
     </Compile>
@@ -118,9 +119,6 @@
     </Compile>
     <Compile Include="UserControls\SelectFileControl.xaml.cs">
       <DependentUpon>SelectFileControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SelectUnitControl .xaml.cs">
-      <DependentUpon>SelectUnitControl .xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -245,10 +243,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SelectFileControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\SelectUnitControl .xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

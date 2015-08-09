@@ -165,29 +165,37 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
-        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type local:SelectUnitBox}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="Slide" Placement="Bottom">
-                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource GI.Colors.Essential}" BorderThickness="1,0,1,1" Background="{x:Null}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Width="{Binding ActualWidth, ElementName=templateRoot}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" BorderBrush="{x:Null}">
-                        <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
-                            </Canvas>
-                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </Grid>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
-            <ToggleButton x:Name="toggleButton" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ToggleButtonStyle1}" Background="{x:Null}"/>
-            <ContentPresenter x:Name="contentPresenter" VerticalAlignment="Center" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <TextBox x:Name="Part_Value" Text="{Binding Value, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"></TextBox>
+            <Grid x:Name="templateRoot" Grid.Column="2" Width="80" SnapsToDevicePixels="true">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="Slide" Placement="Bottom">
+                    <Border x:Name="dropDownBorder" BorderBrush="{StaticResource GI.Colors.Essential}" BorderThickness="1,0,1,1" Background="{x:Null}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Width="{Binding ActualWidth, ElementName=templateRoot}">
+                        <ScrollViewer x:Name="DropDownScrollViewer" BorderBrush="{x:Null}">
+                            <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                    <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                </Canvas>
+                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+                <ToggleButton x:Name="toggleButton" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ToggleButtonStyle1}" Background="{x:Null}"/>
+                <ContentPresenter x:Name="contentPresenter" VerticalAlignment="Center" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </Grid>
         </Grid>
     </ControlTemplate>
-    <Style TargetType="{x:Type ComboBox}">
+    <Style TargetType="{x:Type local:SelectUnitBox}">
         <Setter Property="SelectedIndex" Value="0"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"/>
@@ -198,6 +206,7 @@
     <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,0"/>
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
