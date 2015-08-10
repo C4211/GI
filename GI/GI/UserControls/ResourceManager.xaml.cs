@@ -96,7 +96,7 @@ namespace GI.UserControls
             }
             catch
             {
-                Dispatcher.Invoke(delegate { MessageBox.Show(Application.Current.MainWindow, @"读取目录失败！"); });
+                Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, @"读取目录失败！"); });
             }
             finally
             {

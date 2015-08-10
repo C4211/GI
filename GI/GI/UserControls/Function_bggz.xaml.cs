@@ -196,7 +196,7 @@ namespace GI.UserControls
         //    {
         //        value = "null";
         //    }
-        //    MessageBox.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
+        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
         //}
     }
 }
