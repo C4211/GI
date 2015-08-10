@@ -73,6 +73,9 @@
     </ApplicationDefinition>
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\FunctionPage.cs" />
+    <Compile Include="Tools\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ResourceManagerTreeNode.cs" />
     <Compile Include="Tools\SelectUnitBox.cs" />
     <Compile Include="UserControls\BodyTitle.xaml.cs">
@@ -185,6 +188,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\BodyTitle.xaml">
       <SubType>Designer</SubType>

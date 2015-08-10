@@ -181,7 +181,7 @@ namespace GI.UserControls
 
         private void Msg(string msg)
         {
-            Dispatcher.Invoke(delegate { MessageBox.Show(Application.Current.MainWindow, msg); });
+            Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
