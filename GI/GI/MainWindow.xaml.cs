@@ -67,7 +67,7 @@ namespace GI
                 Grid prev = contentStack.Peek();
                 current.BeginStoryboard(sb);
                 prev.BeginStoryboard(sbBack);
-                sb.Completed += delegate { body.Children.Remove(current); };
+                sb.Completed += delegate { body.Children.Remove(current); current = null; };
                 ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
             }
             if (contentStack.Count <= 1)
@@ -171,12 +171,12 @@ namespace GI
         /// <param name="e"></param>
         private void Zlycgz_Open(object sender, RoutedEventArgs e)
         {
-            functionPage_zlycgz = null;
             functionPage_zlycgz = new FunctionPage_zlycgz();
             functionPage_zlycgz.dxgz.Click += dxgz_Click;
             functionPage_zlycgz.bggz.Click += Bggz_Open;
             functionPage_zlycgz.zkgz.Click += Zkgz_Open;
             Group_Open(functionPage_zlycgz);
+            functionPage_zlycgz = null;
         }
         private FunctionPage_zlycgz functionPage_zlycgz = null;
         /// <summary>
@@ -186,12 +186,12 @@ namespace GI
         /// <param name="e"></param>
         private void dxgz_Click(object sender, RoutedEventArgs e)
         {
-            functionPage_dxgz = null;
             functionPage_dxgz = new FunctionPage_dxgz();
             functionPage_dxgz.fxyf.Click += fxyf_Click;
             functionPage_dxgz.gsjff.Click += gsjff_Click;
             functionPage_dxgz.flybhf.Click += flybhf_Click;
             Group_Open(functionPage_dxgz);
+            functionPage_dxgz = null;
         }
         private FunctionPage_dxgz functionPage_dxgz = null;
         /// <summary>
@@ -201,10 +201,10 @@ namespace GI
         /// <param name="e"></param>
         private void flybhf_Click(object sender, RoutedEventArgs e)
         {
-            function_flybhf = null;
             function_flybhf = new Function_flybhf();
             function_flybhf.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_flybhf);
+            function_flybhf = null;
         }
         private Function_flybhf function_flybhf = null;
         /// <summary>
@@ -214,10 +214,10 @@ namespace GI
         /// <param name="e"></param>
         private void gsjff_Click(object sender, RoutedEventArgs e)
         {
-            function_gsjff = null;
             function_gsjff = new Function_gsjff();
             function_gsjff.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_gsjff);
+            function_gsjff = null;
         }
         private Function_gsjff function_gsjff = null;
         /// <summary>
@@ -227,10 +227,10 @@ namespace GI
         /// <param name="e"></param>
         private void fxyf_Click(object sender, RoutedEventArgs e)
         {
-            function_fxyf = null;
             function_fxyf = new Function_fxyf();
             function_fxyf.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_fxyf);
+            function_fxyf = null;
         }
         private Function_fxyf function_fxyf = null;
         /// <summary>
@@ -240,10 +240,10 @@ namespace GI
         /// <param name="e"></param>
         private void Zkgz_Open(object sender, RoutedEventArgs e)
         {
-            function_zkgz = null;
             function_zkgz = new Function_zkgz();
             function_zkgz.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_zkgz);
+            function_zkgz = null;
         }
         private Function_zkgz function_zkgz = null;
         /// <summary>
@@ -253,10 +253,10 @@ namespace GI
         /// <param name="e"></param>
         private void Bggz_Open(object sender, RoutedEventArgs e)
         {
-            function_bggz = null;
             function_bggz = new Function_bggz();
             function_bggz.cancel.Click += delegate { Page_Back(); };
             Group_Open(function_bggz);
+            function_bggz = null;
         }
         private Function_bggz function_bggz = null;
         ///// <summary>
