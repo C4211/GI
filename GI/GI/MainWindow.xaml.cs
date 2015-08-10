@@ -114,6 +114,7 @@ namespace GI
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+            e.Handled = true;
         }
         /// <summary>
         /// 实现顶栏关闭功能
