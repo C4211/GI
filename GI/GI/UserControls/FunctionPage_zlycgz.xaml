@@ -102,24 +102,24 @@
         <RowDefinition Height="auto"/>
     </Grid.RowDefinitions>
     <UniformGrid Margin="30,108" Columns="3">
-        <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
-                          x:Name="dxgz"
-                          Icon="{StaticResource dxgz}"
-                          TitleText="地形改正"
-                          SummaryText="方形域法、傅里叶变换..."
-                          ToolTip="方形域法、傅里叶变换法、高斯积分法"/>
-        <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
-                          x:Name="bggz"
-                          Icon="{StaticResource bggz}"
-                          TitleText="布格改正"
-                          SummaryText="进行自空重力异常值布格改正"
-                          ToolTip="进行自空重力异常值布格改正"/>
         <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                           x:Name="zkgz"
                           Icon="{StaticResource zkgz}"
                           TitleText="自空改正"
                           SummaryText="自由空气重力异常改正"
                           ToolTip="自由空气重力异常改正"/>
+        <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                          x:Name="bggz"
+                          Icon="{StaticResource bggz}"
+                          TitleText="布格改正"
+                          SummaryText="进行自空重力异常值布格改正"
+                          ToolTip="进行自空重力异常值布格改正"/>
+        <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                          x:Name="dxgz"
+                          Icon="{StaticResource dxgz}"
+                          TitleText="地形改正"
+                          SummaryText="方形域法、傅里叶变换..."
+                          ToolTip="方形域法、傅里叶变换法、高斯积分法"/>
 
     </UniformGrid>
     <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
