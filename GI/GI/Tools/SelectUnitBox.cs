@@ -17,7 +17,8 @@ namespace GI.Tools
 {
     public class SelectUnitBox : ComboBox
     {
-        public SelectUnitBox() : base()
+        public SelectUnitBox()
+            : base()
         {
         }
 
@@ -31,7 +32,22 @@ namespace GI.Tools
 
         #region 注册依赖属性
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox));
+            DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox),
+            new PropertyMetadata("0", new PropertyChangedCallback((d, e) => ((SelectUnitBox)d).PropertyChanged())));
         #endregion
+
+        private string PreviousValue = "0";
+        private void PropertyChanged()
+        {
+            double tmp;
+            if (Value == string.Empty || (!Value.Contains(' ') && double.TryParse(Value, out tmp)))
+            {
+                PreviousValue = Value;
+            }
+            else
+            {
+                Value = PreviousValue;
+            }
+        }
     }
 }
