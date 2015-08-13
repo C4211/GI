@@ -20,6 +20,12 @@ namespace GI.UserControls
     /// </summary>
     public partial class SelectFileControl : UserControl
     {
+        public static string DefaultPath
+        {
+            get;
+            set;
+        }
+
         public SelectFileControl()
         {
             InitializeComponent();
@@ -69,7 +75,14 @@ namespace GI.UserControls
         private void selectButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
-            ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (DefaultPath == null || DefaultPath == "")
+            {
+                ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+            else
+            {
+                ofd.InitialDirectory = DefaultPath;
+            }
             ofd.Filter = this.OpenFileFilter;
             ofd.RestoreDirectory = true;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)

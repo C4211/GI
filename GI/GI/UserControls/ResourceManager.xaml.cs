@@ -176,6 +176,24 @@ namespace GI.UserControls
                 StopLoading();
             }
         }
+
+        private void resourceTree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            ResourceManagerTreeNode node = e.NewValue as ResourceManagerTreeNode;
+            if (node != null)
+            {
+                if (node.Items.Count > 0)
+                {
+                    SelectFileControl.DefaultPath = node.Path.FullName;
+                    e.Handled = true;
+                }
+                else if (node.Parent is ResourceManagerTreeNode)
+                {
+                    SelectFileControl.DefaultPath = (node.Parent as ResourceManagerTreeNode).Path.FullName;
+                    e.Handled = true;
+                }
+            }
+        }
     }
 
     /// <summary>

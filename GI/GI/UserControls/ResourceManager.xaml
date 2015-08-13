@@ -90,7 +90,7 @@
         </Grid>
     </Grid>
     <Grid Grid.Row="1">
-        <TreeView x:Name="resourceTree" Loaded="resourceTree_Loaded" Style="{StaticResource TreeViewStyle}"/>
+        <TreeView x:Name="resourceTree" Loaded="resourceTree_Loaded" Style="{StaticResource TreeViewStyle}" SelectedItemChanged="resourceTree_SelectedItemChanged"/>
         <UserControls:LoadingBar x:Name="loadingBar" Visibility="Collapsed"></UserControls:LoadingBar>
     </Grid>
 </Grid>
