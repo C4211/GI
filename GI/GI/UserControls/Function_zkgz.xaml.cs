@@ -91,14 +91,14 @@ namespace GI.UserControls
                         choice = 1;
                     else if (choice2.IsChecked == true)
                         choice = 2;
-                    else if (choice2.IsChecked == true)
+                    else if (choice3.IsChecked == true)
                         choice = 3;
-                    else if (choice2.IsChecked == true)
+                    else if (choice4.IsChecked == true)
                         choice = 4;
                     task = null;
                     task = FreeAirCorrectionStart.Start(inPath, outPath, choice);
                     await task;
-                    Msg("计算完成！");
+                    Msg("计算完成！"+choice);
                 }
                 catch (Exception e)
                 {

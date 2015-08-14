@@ -53,14 +53,14 @@ namespace GI.Tools
                     if (group.Length != 4)
                         throw new Exception(string.Format("第{0}行参数数量错误！", line));
                     // 格式检查
-                    if (!(double.TryParse(group[0], out longitude) && longitude >= -180.0 && longitude <= 180.0))
-                        throw new Exception("经度格式错误！");
-                    if (!(double.TryParse(group[1], out latitude) && latitude >= -90.0 && latitude <= 90.0))
-                        throw new Exception("纬度格式错误！");
+                    if (!(double.TryParse(group[0], out longitude) /*&& longitude >= -180.0 && longitude <= 180.0*/))
+                        throw new Exception(string.Format("第{0}行经度格式错误！", line));
+                    if (!(double.TryParse(group[1], out latitude) /*&& latitude >= -90.0 && latitude <= 90.0*/))
+                        throw new Exception(string.Format("第{0}行纬度格式错误！", line));
                     if (!double.TryParse(group[2], out height))
-                        throw new Exception("高度格式错误！");
+                        throw new Exception(string.Format("第{0}行高度格式错误！", line));
                     if (!double.TryParse(group[3], out observed))
-                        throw new Exception("测量值格式错误！");
+                        throw new Exception(string.Format("第{0}行测量值格式错误！", line));
                     // 保存
                     result.Add(new FreeAirCorrection(longitude, latitude, height, observed));
                     str = sr.ReadLine();
@@ -80,7 +80,8 @@ namespace GI.Tools
             {
                 foreach (var fac in list)
                 {
-                    sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", fac.Longitude, fac.Latitude, fac.Height, fac.ObservedGravity, fac.FreeAirAnomaly));
+                    sw.WriteLine(string.Format("{0} {1} {2} {3} {4}", fac.Longitude.ToString("f6"), fac.Latitude.ToString("f6"),
+                        fac.Height.ToString("f6"), fac.ObservedGravity.ToString("f6"), fac.FreeAirAnomaly));
                 }
             }
         }
@@ -139,7 +140,7 @@ namespace GI.Tools
                 default:
                     throw new Exception("公式编号不正确！");
             }
-            fac.NormalGravity = a * (1 + b * Math.Sin(Radian(fac.Latitude)) * Math.Sin(Radian(fac.Latitude)) - c * Math.Sin(2 * Radian(fac.Latitude)));
+            fac.NormalGravity = a * (1 + b * Math.Sin(Radian(fac.Latitude)) * Math.Sin(Radian(fac.Latitude)) - c * Math.Sin(2 * Radian(fac.Latitude)) * Math.Sin(2 * Radian(fac.Latitude)));
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace GI.Tools
         /// <returns>弧度</returns>
         static double Radian(double degree)
         {
-            return degree * Math.PI / 180;
+            return degree * 3.14159265 / 180;
         }
 
     }

@@ -90,8 +90,7 @@
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="1901-1909年的赫尔默德(R.Helmert)公式" 
-                    GroupName="zczlgs" IsChecked="True">
-                </RadioButton>
+                    GroupName="zczlgs" IsChecked="True"></RadioButton>
                 <RadioButton 
                     x:Name="choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
