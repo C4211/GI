@@ -7,54 +7,145 @@
              xmlns:Tools="clr-namespace:GI.Tools"
              d:DesignHeight="414" d:DesignWidth="680"
              Width="680"
+                    Visibility="Visible"
              Style="{StaticResource GI.Body.Content.Style}">
+    <Tools:FunctionPage.Resources>
+        <Storyboard x:Key="sb">
+            <ThicknessAnimation To="-680,0,0,0" Storyboard.TargetProperty="Margin" Duration="0:0:0.4">
+                <ThicknessAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseInOut"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+    </Tools:FunctionPage.Resources>
+    <Grid x:Name="content">
         <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
-        <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
-    </Grid.ColumnDefinitions>
-    <Grid Grid.Column="0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="210"></ColumnDefinition>
-            <ColumnDefinition Width="1"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
-        <UserControls:ResourceManager Grid.Column="0"/>
-        <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
-        <Grid Grid.Column="2">
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"></ColumnDefinition>
+                <ColumnDefinition Width="1"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UserControls:ResourceManager x:Name="resourceTree" Grid.Column="0"/>
+            <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <UserControls:BodyTitle Grid.Row="0" Title="输入文件"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="135"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="站点文件："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="inputPath1" 
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                    <TextBlock 
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="内区地形数据："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="inputPath2" 
+                        Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                    <TextBlock 
+                        Grid.Row="3" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="外区地形数据："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="inputPath3" 
+                        Grid.Row="3" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                    <TextBlock
+                        Grid.Row="4" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="    输出路径："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="outputPath1" 
+                        Grid.Row="4" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <UserControls:BodyTitle Grid.Row="0" Title="输入文件"/>
+            <UserControls:BodyTitle Grid.Row="0" Title="参数设置"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
-                    <ColumnDefinition Width="270"></ColumnDefinition>
+                    <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <!--<TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                            Text="站点文件："/>
-                <UserControls:SelectFileControl Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                           Text="内区地形数据："/>
-                <UserControls:SelectFileControl Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource GI.Window.Body.Text.Style}" 
-                           Text="外区地形数据："/>
-                <UserControls:SelectFileControl Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource SelectFileControl.Style}"/>-->
+                <TextBlock 
+                    Grid.Row="1" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="密度："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg1" Value="2.67"
+                    Grid.Row="1" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">g/cm^3</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">kg/m^3</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                    Grid.Row="2" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="内区半径："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg2"  Value="20.0"
+                    Grid.Row="2" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock
+                    Grid.Row="3" Grid.Column="0" 
+                    Style="{StaticResource GI.Window.Body.Text.Style}" 
+                    Text="外区半径："/>
+                <Tools:SelectUnitBox 
+                    x:Name="arg3" Value="166.735"
+                    Grid.Row="3" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>
+
+                <!--<Tools:SelectUnitBox x:Name="midu" Grid.Row="1" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>-->
+                <!--<Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="241,40,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>-->
             </Grid>
         </Grid>
     </Grid>
-    <Grid Grid.Column="1">
-        
-    </Grid>
-    <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
-        <Button Width="80" Content="上一步" Visibility="Hidden"></Button>
-        <Button Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}"></Button>
-        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"></Button>
-    </UniformGrid>    
+    <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#CCFFFFFF"/>
+    <UniformGrid x:Name="buttons" Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
+        <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
+        <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
+        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
+    </UniformGrid>
 </Tools:FunctionPage>

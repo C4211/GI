@@ -84,7 +84,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Visibility="Visible">
+        <Grid Grid.Column="1" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -142,7 +142,7 @@
         </Grid>
     </Grid>
     <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#CCFFFFFF"/>
-    <UniformGrid Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
+    <UniformGrid x:Name="buttons" Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
         <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
         <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
         <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>

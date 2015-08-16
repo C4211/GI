@@ -122,16 +122,4 @@
                           ToolTip="方形域法、傅里叶变换法、高斯积分法"/>
 
     </UniformGrid>
-    <Rectangle Height="1" Fill="#dddddd" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
-    <Grid Grid.Row="1" Height="30">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}">设置</TextBlock>
-        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}">关于</TextBlock>
-        <TextBlock Grid.Column="3" Style="{StaticResource GI.Body.BottomText.Style}">使用帮助</TextBlock>
-    </Grid>
 </Tools:FunctionPage>

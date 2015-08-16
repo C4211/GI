@@ -27,6 +27,12 @@ namespace GI.UserControls
             this.titleCn = Application.Current.Resources["GI.Detail.Name.Cn"] as string;
             this.titleEn = Application.Current.Resources["GI.Detail.Name.En"] as string;
         }
+
+
+        private void About_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageWindow.Show(Application.Current.MainWindow, "版权所有：\n中国科学院测量与地球物理研究所");
+        }
         
     }
 }
