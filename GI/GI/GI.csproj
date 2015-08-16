@@ -84,6 +84,15 @@
     <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FunctionPage_lb.xaml.cs">
+      <DependentUpon>FunctionPage_lb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FunctionPage_ds.xaml.cs">
+      <DependentUpon>FunctionPage_ds.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FunctionPage_zlsjcl.xaml.cs">
+      <DependentUpon>FunctionPage_zlsjcl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctionPage_home.xaml.cs">
       <DependentUpon>FunctionPage_home.xaml</DependentUpon>
     </Compile>
@@ -92,6 +101,36 @@
     </Compile>
     <Compile Include="UserControls\FunctionPage_zlycgz.xaml.cs">
       <DependentUpon>FunctionPage_zlycgz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_bcyhlb.xaml.cs">
+      <DependentUpon>Function_bcyhlb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_cxdsply.xaml.cs">
+      <DependentUpon>Function_cxdsply.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_cxdskjy.xaml.cs">
+      <DependentUpon>Function_cxdskjy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_fxds.xaml.cs">
+      <DependentUpon>Function_fxds.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_glpfx.xaml.cs">
+      <DependentUpon>Function_glpfx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_xsyt.xaml.cs">
+      <DependentUpon>Function_xsyt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_zzhlb.xaml.cs">
+      <DependentUpon>Function_zzhlb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_pplb.xaml.cs">
+      <DependentUpon>Function_pplb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_wnlb.xaml.cs">
+      <DependentUpon>Function_wnlb.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_kb.xaml.cs">
+      <DependentUpon>Function_kb.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Function_flybhf.xaml.cs">
       <DependentUpon>Function_flybhf.xaml</DependentUpon>
@@ -201,6 +240,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctionPage_lb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\FunctionPage_ds.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\FunctionPage_zlsjcl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\FunctionPage_home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +263,46 @@
     <Page Include="UserControls\FunctionPage_zlycgz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Function_bcyhlb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_cxdsply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_cxdskjy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_fxds.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_glpfx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_xsyt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_zzhlb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_pplb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_wnlb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_kb.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Function_flybhf.xaml">
       <Generator>MSBuild:Compile</Generator>

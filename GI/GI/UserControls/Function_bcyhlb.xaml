@@ -1,0 +1,94 @@
+﻿<Tools:FunctionPage xmlns:UserControls="clr-namespace:GI.UserControls"  x:Name="functionPage" x:Class="GI.UserControls.Function_bcyhlb"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:Tools="clr-namespace:GI.Tools"
+             Width="680"
+             Visibility="Visible"
+             Style="{StaticResource GI.Body.Content.Style}">
+    <Tools:FunctionPage.Resources>
+        <Storyboard x:Key="sb">
+            <ThicknessAnimation To="-680,0,0,0" Storyboard.TargetProperty="Margin" Duration="0:0:0.4">
+                <ThicknessAnimation.EasingFunction>
+                    <SineEase EasingMode="EaseInOut"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+    </Tools:FunctionPage.Resources>
+    <Grid x:Name="content">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"></ColumnDefinition>
+                <ColumnDefinition Width="1"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UserControls:ResourceManager x:Name="resourceTree" Grid.Column="0"/>
+            <Rectangle Grid.Column="1" Margin="0,5" Fill="{StaticResource GI.Colors.Body.Line}"></Rectangle>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <UserControls:BodyTitle Grid.Row="0" Title="输入文件"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="135"></ColumnDefinition>
+                        <ColumnDefinition Width="270"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="输入文件："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="inputPath1" 
+                        Grid.Row="1" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                    <TextBlock
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="    输出路径："/>
+                    <UserControls:SelectFileControl 
+                        x:Name="outputPath1" 
+                        Grid.Row="2" Grid.Column="1"
+                        Style="{StaticResource SelectFileControl.Style}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <UserControls:BodyTitle Grid.Row="0" Title="参数设置"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                    <ColumnDefinition Width="320"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+    </Grid>
+    <UserControls:LoadingBar x:Name="loadingBar" Visibility="Hidden" Background="#CCFFFFFF"/>
+    <UniformGrid x:Name="buttons" Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
+        <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
+        <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
+        <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
+    </UniformGrid>
+</Tools:FunctionPage>

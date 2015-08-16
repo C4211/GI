@@ -30,6 +30,7 @@ namespace GI
             InitializeComponent();
             contentStack.Push(home);
             home.zlycgz.Click += Zlycgz_Open;
+            home.zlsjcl.Click += Zlsjcl_Open;
         }
 
         #region 返回
@@ -137,6 +138,8 @@ namespace GI
         #endregion
 
         #region 主页按钮控制
+
+        #region 动画和函数
         /// <summary>
         /// 返回变为可用动画
         /// </summary>
@@ -165,6 +168,9 @@ namespace GI
             if (contentStack.Count == 2)
                 headLogo.BeginStoryboard(sbBackEnable);
         }
+        #endregion
+
+        #region 重力异常改正
         /// <summary>
         /// 重力异常改正点击事件
         /// </summary>
@@ -260,15 +266,202 @@ namespace GI
             function_bggz = null;
         }
         private Function_bggz function_bggz = null;
-        ///// <summary>
-        ///// 重力数据处理点击事件
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Group2_Open(object sender, RoutedEventArgs e)
-        //{
-        //    Group_Open(new Page(group2, "重力数据处理", "Gravity Data Processing"));
-        //}
+        #endregion
+
+        #region 重力数据处理
+        /// <summary>
+        /// 重力数据处理点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Zlsjcl_Open(object sender, RoutedEventArgs e)
+        {
+            functionPage_zlsjcl = new FunctionPage_zlsjcl();
+            functionPage_zlsjcl.kb.Click += kb_Click;
+            functionPage_zlsjcl.lb.Click += lb_Click;
+            functionPage_zlsjcl.xsyt.Click += xsyt_Click;
+            functionPage_zlsjcl.ds.Click += ds_Click;
+            functionPage_zlsjcl.glpfx.Click +=glpfx_Click;
+            Group_Open(functionPage_zlsjcl);
+            functionPage_zlsjcl = null;
+        }
+        FunctionPage_zlsjcl functionPage_zlsjcl = null;
+
+        /// <summary>
+        /// 功率谱分析点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void glpfx_Click(object sender, RoutedEventArgs e)
+        {
+            function_glpfx = new Function_glpfx();
+            function_glpfx.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_glpfx);
+            function_glpfx = null;
+        }
+        Function_glpfx function_glpfx = null;
+
+        /// <summary>
+        /// 导数点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void ds_Click(object sender, RoutedEventArgs e)
+        {
+            functionPage_ds = new FunctionPage_ds();
+            functionPage_ds.fxds.Click += fxds_Click;
+            functionPage_ds.cxdskjy.Click += cxdskjy_Click;
+            functionPage_ds.cxdsply.Click += cxdsply_Click;
+            Group_Open(functionPage_ds);
+            functionPage_ds = null;
+        }
+        FunctionPage_ds functionPage_ds = null;
+
+        /// <summary>
+        /// 垂向导数空间域
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void cxdskjy_Click(object sender, RoutedEventArgs e)
+        {
+            function_cxdskjy = new Function_cxdskjy();
+            function_cxdskjy.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_cxdskjy);
+            function_cxdskjy = null;
+        }
+        Function_cxdskjy function_cxdskjy = null;
+
+        /// <summary>
+        /// 垂向导数（频率域）点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void cxdsply_Click(object sender, RoutedEventArgs e)
+        {
+            function_cxdsply = new Function_cxdsply();
+            function_cxdsply.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_cxdsply);
+            function_cxdsply = null;
+        }
+        Function_cxdsply function_cxdsply = null;
+
+        /// <summary>
+        /// 方向导数点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void fxds_Click(object sender, RoutedEventArgs e)
+        {
+            function_fxds = new Function_fxds();
+            function_fxds.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_fxds);
+            function_fxds = null;
+        }
+        Function_fxds function_fxds = null;
+
+        /// <summary>
+        /// 向上延拓点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void xsyt_Click(object sender, RoutedEventArgs e)
+        {
+            function_xsyt = new Function_xsyt();
+            function_xsyt.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_xsyt);
+            function_xsyt = null;
+        }
+        Function_xsyt function_xsyt = null;
+
+        /// <summary>
+        /// 滤波点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void lb_Click(object sender, RoutedEventArgs e)
+        {
+            functionPage_lb = new FunctionPage_lb();
+            functionPage_lb.wnlb.Click += wnlb_Click;
+            functionPage_lb.pplb.Click += pplb_Click;
+            functionPage_lb.zzhlb.Click += zzhlb_Click;
+            functionPage_lb.bcyhlb.Click += bcyhlb_Click;
+            Group_Open(functionPage_lb);
+            functionPage_lb = null;
+        }
+        FunctionPage_lb functionPage_lb = null;
+
+        /// <summary>
+        /// 匹配滤波点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void pplb_Click(object sender, RoutedEventArgs e)
+        {
+            function_pplb = new Function_pplb();
+            function_pplb.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_pplb);
+            function_pplb = null;
+        }
+        Function_pplb function_pplb = null;
+
+        /// <summary>
+        /// 补偿圆滑滤波
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void bcyhlb_Click(object sender, RoutedEventArgs e)
+        {
+            function_bcyhlb = new Function_bcyhlb();
+            function_bcyhlb.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_bcyhlb);
+            function_bcyhlb = null;
+        }
+        Function_bcyhlb function_bcyhlb = null;
+
+        /// <summary>
+        /// 正则化滤波点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void zzhlb_Click(object sender, RoutedEventArgs e)
+        {
+            function_zzhlb = new Function_zzhlb();
+            function_zzhlb.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_zzhlb);
+            function_zzhlb = null;
+        }
+        Function_zzhlb function_zzhlb = null;
+
+        /// <summary>
+        /// 维纳滤波点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void wnlb_Click(object sender, RoutedEventArgs e)
+        {
+            function_wnlb = new Function_wnlb();
+            function_wnlb.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_wnlb);
+            function_wnlb = null;
+        }
+        Function_wnlb function_wnlb = null;
+
+        /// <summary>
+        /// 扩边点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void kb_Click(object sender, RoutedEventArgs e)
+        {
+            function_kb = new Function_kb();
+            function_kb.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_kb);
+            function_kb = null;
+        }
+        Function_kb function_kb = null;
+       
+        #endregion
+
         ///// <summary>
         ///// 重力正反演计算点击事件
         ///// </summary>

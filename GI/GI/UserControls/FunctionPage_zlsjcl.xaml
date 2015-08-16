@@ -1,0 +1,46 @@
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_zlsjcl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:GI="clr-namespace:GI"
+             xmlns:Tools="clr-namespace:GI.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="444" d:DesignWidth="680" ClipToBounds="True"
+                    Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
+    <Tools:FunctionPage.Resources>
+        
+    </Tools:FunctionPage.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+    <UniformGrid Margin="30" Columns="3">
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="kb"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="扩边"
+                                  SummaryText="对数据进行扩边"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="lb"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="滤波"
+                                  SummaryText="维纳滤波、匹配滤波..."
+                           ToolTip="维纳滤波、匹配滤波、正则化滤波、补偿圆滑滤波"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="xsyt"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="向上延拓"
+                                  SummaryText="对数据进行向上延拓处理"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="ds"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="导数"
+                                  SummaryText="反向导数、垂向导数"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="glpfx"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="功率谱分析"
+                                  SummaryText="重力异常的对数功率谱分析"/>
+    </UniformGrid>
+</Tools:FunctionPage>
