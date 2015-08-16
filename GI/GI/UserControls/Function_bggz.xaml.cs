@@ -36,11 +36,12 @@ namespace GI.UserControls
         /// 2 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        private int MaxState { get { return content.Children.Count; } }
         private bool IsCanceled = false;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentState == 0)
+            if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
@@ -51,19 +52,20 @@ namespace GI.UserControls
                 sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
-                next.Content = "计算";
+                if (CurrentState == MaxState - 1)
+                    next.Content = "计算";
                 return;
             }
-            else if (CurrentState == 1)
+            else if (CurrentState == MaxState - 1)
             {
-                CurrentState = 2;
+                CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
                 DoBouguerCorrection();
             }
-            else if (CurrentState == 2)
+            else if (CurrentState == MaxState)
             {
-                CurrentState = 1;
+                CurrentState = MaxState - 1;
                 next.Content = "计算";
                 if (Task_bggz != null)
                 {
@@ -90,7 +92,6 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
-                next.Visibility = Visibility.Visible;
             }
         }
         private void HidePrevAndCancel()
@@ -157,7 +158,7 @@ namespace GI.UserControls
                         File.Copy(@"out.DAT", outPath, true);
                         loadingBar.Hide();
                         ShowPrevAndCancel();
-                        Msg(Task_bggz.Result);
+                        Msg("计算完成");
                     }
                 }
                 catch (Exception e)
@@ -174,8 +175,6 @@ namespace GI.UserControls
                 CurrentState = 1;
                 next.Content = "计算";
             });
-            loadingBar.Hide();
-            ShowPrevAndCancel();
         }
 
         private Task<string> Task_bggz = null;

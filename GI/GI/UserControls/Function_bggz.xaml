@@ -21,7 +21,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
-            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>

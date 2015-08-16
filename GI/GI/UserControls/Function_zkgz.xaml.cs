@@ -34,46 +34,78 @@ namespace GI.UserControls
         /// 1 : 输入参数
         /// </summary>
         private int CurrentState = 0;
+        private int MaxState { get { return content.Children.Count; } }
+        private bool IsCanceled = false;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentState == 0)
+            if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
-                CurrentState = 1;
+                CurrentState += 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
                 sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
-                next.Content = "计算";
+                if (CurrentState == MaxState - 1)
+                    next.Content = "计算";
                 return;
             }
-            else if (CurrentState == 1)
+            else if (CurrentState == MaxState - 1)
             {
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
                 DoFreeAirCorrection();
+            }
+            else if (CurrentState == MaxState)
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+                if (Task_zkgz != null)
+                {
+                    IsCanceled = true;
+                    FreeAirCorrectionStart.Stop();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
+        private void HidePrevAndCancel()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                prev.Visibility = Visibility.Hidden;
+                cancel.Visibility = Visibility.Hidden;
+            });
+        }
+        private void ShowPrevAndCancel()
+        {
+            Dispatcher.Invoke(delegate
+            {
+                prev.Visibility = Visibility.Visible;
+                cancel.Visibility = Visibility.Visible;
+            });
+        }
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;
-                buttons.IsEnabled = false;
+                next.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
+                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; next.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
-                next.Visibility = Visibility.Visible;
             }
         }
         private async void DoFreeAirCorrection()
@@ -97,19 +129,39 @@ namespace GI.UserControls
                         choice = 3;
                     else if (choice4.IsChecked == true)
                         choice = 4;
-                    task = null;
-                    task = FreeAirCorrectionStart.Start(inPath, outPath, choice);
-                    await task;
-                    Msg("计算完成！"+choice);
+                    Task_zkgz = null;
+                    Task_zkgz = FreeAirCorrectionStart.Start(inPath, outPath, choice);
+                    await Task_zkgz;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成！");
+                    }
                 }
                 catch (Exception e)
                 {
                     Msg(e.Message);
                 }
+                finally
+                {
+                    Task_zkgz = null;
+                }
             }
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+            });
         }
 
-        private Task task = null;
+        private Task Task_zkgz = null;
 
         private void Msg(string msg)
         {

@@ -22,6 +22,7 @@ namespace GI.Tools
         /// <returns>异步执行Task</returns>
         public static Task Start(string inputPath, string outputPath, int choice)
         {
+            IsRuning = true;
             List<FreeAirCorrection> list;
             return Task.Run(() =>
             {
@@ -31,6 +32,12 @@ namespace GI.Tools
             });
         }
 
+        public static void Stop()
+        {
+            IsRuning = false;
+        }
+
+        public static bool IsRuning = false;
         /// <summary>
         /// 读取输入文件并检查输入格式方法
         /// </summary>
@@ -46,24 +53,29 @@ namespace GI.Tools
                 double longitude, latitude, height, observed;
                 for (int line = 1; !string.IsNullOrEmpty(str); line++)
                 {
-                    // 以空格、Tab、逗号分隔
-                    group = str.Split(new char[] { ' ', '\t', ',' },
-                        StringSplitOptions.RemoveEmptyEntries);
-                    // 检查参数数量
-                    if (group.Length != 4)
-                        throw new Exception(string.Format("第{0}行参数数量错误！", line));
-                    // 格式检查
-                    if (!(double.TryParse(group[0], out longitude) /*&& longitude >= -180.0 && longitude <= 180.0*/))
-                        throw new Exception(string.Format("第{0}行经度格式错误！", line));
-                    if (!(double.TryParse(group[1], out latitude) /*&& latitude >= -90.0 && latitude <= 90.0*/))
-                        throw new Exception(string.Format("第{0}行纬度格式错误！", line));
-                    if (!double.TryParse(group[2], out height))
-                        throw new Exception(string.Format("第{0}行高度格式错误！", line));
-                    if (!double.TryParse(group[3], out observed))
-                        throw new Exception(string.Format("第{0}行测量值格式错误！", line));
-                    // 保存
-                    result.Add(new FreeAirCorrection(longitude, latitude, height, observed));
-                    str = sr.ReadLine();
+                    if (IsRuning)
+                    {
+                        // 以空格、Tab、逗号分隔
+                        group = str.Split(new char[] { ' ', '\t', ',' },
+                            StringSplitOptions.RemoveEmptyEntries);
+                        // 检查参数数量
+                        if (group.Length != 4)
+                            throw new Exception(string.Format("第{0}行参数数量错误！", line));
+                        // 格式检查
+                        if (!(double.TryParse(group[0], out longitude) /*&& longitude >= -180.0 && longitude <= 180.0*/))
+                            throw new Exception(string.Format("第{0}行经度格式错误！", line));
+                        if (!(double.TryParse(group[1], out latitude) /*&& latitude >= -90.0 && latitude <= 90.0*/))
+                            throw new Exception(string.Format("第{0}行纬度格式错误！", line));
+                        if (!double.TryParse(group[2], out height))
+                            throw new Exception(string.Format("第{0}行高度格式错误！", line));
+                        if (!double.TryParse(group[3], out observed))
+                            throw new Exception(string.Format("第{0}行测量值格式错误！", line));
+                        // 保存
+                        result.Add(new FreeAirCorrection(longitude, latitude, height, observed));
+                        str = sr.ReadLine();
+                    }
+                    else
+                        break;
                 }
                 return result;
             }
