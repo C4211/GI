@@ -1,0 +1,31 @@
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_dztcsjs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:GI="clr-namespace:GI"
+             xmlns:Tools="clr-namespace:GI.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="444" d:DesignWidth="680" ClipToBounds="True"
+                    Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
+    <Tools:FunctionPage.Resources>
+        
+    </Tools:FunctionPage.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+    <UniformGrid Margin="100,108" Columns="2">
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="dztzlzltdjs"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="地质体重力/重力梯度计算"
+                                  SummaryText="根据模型正演重力/重力梯度异常"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="dztcsfy"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="地质体参数反演"
+                                  SummaryText="利用重力/重力梯度异常反演…"
+                                  ToolTip="利用重力/重力梯度异常反演目标地质体的质量以及重心方位、距离"/>
+    </UniformGrid>
+</Tools:FunctionPage>

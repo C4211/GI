@@ -33,6 +33,8 @@ namespace GI
             home.zlsjcl.Click += Zlsjcl_Open;
             home.zlzfyjs.Click += Zlzfyjs_Open;
             home.zlsjjs.Click += Zlsjjs_Open;
+            home.dztcsjs.Click += Dztcsjs_Open;
+            home.grdht.Click += Grdht_Open;
         }
 
         #region 返回
@@ -509,7 +511,7 @@ namespace GI
         private Function_zljmfy function_zljmfy = null;
         #endregion
 
-
+        #region 重力数据解释
         /// <summary>
         /// 重力数据解释点击事件
         /// </summary>
@@ -525,6 +527,11 @@ namespace GI
         }
         private FunctionPage_zlsjjs functionPage_zlsjjs = null;
 
+        /// <summary>
+        /// 二维建模点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ewjm_Click(object sender, RoutedEventArgs e)
         {
             function_ewjm = new Function_ewjm();
@@ -533,7 +540,11 @@ namespace GI
             function_ewjm = null;
         }
         private Function_ewjm function_ewjm = null;
-
+        /// <summary>
+        /// 三维建模点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void swjm_Click(object sender, RoutedEventArgs e)
         {
             function_swjm = new Function_swjm();
@@ -542,24 +553,68 @@ namespace GI
             function_swjm = null;
         }
         private Function_swjm function_swjm = null;
-        ///// <summary>
-        ///// 地质体参数计算点击事件
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Group5_Open(object sender, RoutedEventArgs e)
-        //{
-        //    Group_Open(new Page(group5, "地质体参数计算", "Calculation of geological parameters"));
-        //}
-        ///// <summary>
-        ///// Grd画图点击事件
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Group6_Open(object sender, RoutedEventArgs e)
-        //{
-        //    Group_Open(new Page(group6, "GRD画图", "Grd drawing"));
-        //}
+        #endregion
+
+        #region 地质体参数计算
+        /// <summary>
+        /// 地质体参数计算点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Dztcsjs_Open(object sender, RoutedEventArgs e)
+        {
+            functionPage_dztcsjs = new FunctionPage_dztcsjs();
+            functionPage_dztcsjs.dztzlzltdjs.Click += dztzlzltdjs_Click;
+            functionPage_dztcsjs.dztcsfy.Click += dztcsfy_Click;
+            Group_Open(functionPage_dztcsjs);
+            functionPage_dztcsjs = null;
+        }
+        private FunctionPage_dztcsjs functionPage_dztcsjs = null;
+
+        /// <summary>
+        /// 地质体重力/重力梯度计算点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dztzlzltdjs_Click(object sender, RoutedEventArgs e)
+        {
+            function_dztzlzltdjs = new Function_dztzlzltdjs();
+            function_dztzlzltdjs.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_dztzlzltdjs);
+            function_dztzlzltdjs = null;
+        }
+        private Function_dztzlzltdjs function_dztzlzltdjs = null;
+
+        /// <summary>
+        /// 地质体参数反演
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dztcsfy_Click(object sender, RoutedEventArgs e)
+        {
+            function_dztcsfy = new Function_dztcsfy();
+            function_dztcsfy.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_dztcsfy);
+            function_dztcsfy = null;
+        }
+        private Function_dztcsfy function_dztcsfy = null;
+        #endregion
+
+        #region Grd画图
+        ///<summary>
+        /// Grd画图点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grdht_Open(object sender, RoutedEventArgs e)
+        {
+            function_grdht = new Function_grdht();
+            function_grdht.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_grdht);
+            function_grdht = null;
+        }
+        private Function_grdht function_grdht = null;
+        #endregion
         #endregion
 
         #region 标题栏控制
