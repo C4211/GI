@@ -1,0 +1,30 @@
+﻿<Tools:FunctionPage x:Class="GI.UserControls.FunctionPage_zlsjjs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:GI="clr-namespace:GI"
+             xmlns:Tools="clr-namespace:GI.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="444" d:DesignWidth="680" ClipToBounds="True"
+                    Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
+    <Tools:FunctionPage.Resources>
+        
+    </Tools:FunctionPage.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+    <UniformGrid Margin="100,108" Columns="2">
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="ewjm"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="二维建模"
+                                  SummaryText="利用剖面结构建立二维地壳模型"/>
+        <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
+                                  x:Name="swjm"
+                                  Icon="{StaticResource 占位}"
+                                  TitleText="三维建模"
+                                  SummaryText="利用重力异常建立三维地下模型"/>
+    </UniformGrid>
+</Tools:FunctionPage>
