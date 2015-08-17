@@ -84,6 +84,9 @@
     <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FunctionPage_dztcsjs.xaml.cs">
+      <DependentUpon>FunctionPage_dztcsjs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctionPage_zlsjjs.xaml.cs">
       <DependentUpon>FunctionPage_zlsjjs.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,15 @@
     </Compile>
     <Compile Include="UserControls\Function_ewjm.xaml.cs">
       <DependentUpon>Function_ewjm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_dztzlzltdjs.xaml.cs">
+      <DependentUpon>Function_dztzlzltdjs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_dztcsfy.xaml.cs">
+      <DependentUpon>Function_dztcsfy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_grdht.xaml.cs">
+      <DependentUpon>Function_grdht.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Function_zljmfy.xaml.cs">
       <DependentUpon>Function_zljmfy.xaml</DependentUpon>
@@ -258,6 +270,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctionPage_dztcsjs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\FunctionPage_zlsjjs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -315,6 +331,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Function_ewjm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_dztzlzltdjs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_dztcsfy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_grdht.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
