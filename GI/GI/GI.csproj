@@ -84,6 +84,9 @@
     <Compile Include="UserControls\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FunctionPage_zlzfyjs.xaml.cs">
+      <DependentUpon>FunctionPage_zlzfyjs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctionPage_lb.xaml.cs">
       <DependentUpon>FunctionPage_lb.xaml</DependentUpon>
     </Compile>
@@ -117,8 +120,14 @@
     <Compile Include="UserControls\Function_glpfx.xaml.cs">
       <DependentUpon>Function_glpfx.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Function_zljmfy.xaml.cs">
+      <DependentUpon>Function_zljmfy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Function_xsyt.xaml.cs">
       <DependentUpon>Function_xsyt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Function_jmzlzy.xaml.cs">
+      <DependentUpon>Function_jmzlzy.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Function_zzhlb.xaml.cs">
       <DependentUpon>Function_zzhlb.xaml</DependentUpon>
@@ -240,6 +249,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctionPage_zlzfyjs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\FunctionPage_lb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -284,7 +297,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\Function_zljmfy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\Function_xsyt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\Function_jmzlzy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

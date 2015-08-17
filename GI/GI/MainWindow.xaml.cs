@@ -31,6 +31,7 @@ namespace GI
             contentStack.Push(home);
             home.zlycgz.Click += Zlycgz_Open;
             home.zlsjcl.Click += Zlsjcl_Open;
+            home.zlzfyjs.Click += Zlzfyjs_Open;
         }
 
         #region 返回
@@ -462,15 +463,50 @@ namespace GI
        
         #endregion
 
-        ///// <summary>
-        ///// 重力正反演计算点击事件
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Group3_Open(object sender, RoutedEventArgs e)
-        //{
-        //    Group_Open(new Page(group3, "重力正反演计算", "Gravity forward calculation"));
-        //}
+        #region 重力正反演计算
+        /// <summary>
+        /// 重力正反演计算点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Zlzfyjs_Open(object sender, RoutedEventArgs e)
+        {
+            functionPage_zlzfyjs = new FunctionPage_zlzfyjs();
+            functionPage_zlzfyjs.jmzlzy.Click += jmzlzy_Click;
+            functionPage_zlzfyjs.zljmfy.Click += zljmfy_Click;
+            Group_Open(functionPage_zlzfyjs);
+            functionPage_zlzfyjs = null;
+        }
+        private FunctionPage_zlzfyjs functionPage_zlzfyjs = null;
+
+        /// <summary>
+        /// 界面重力正演点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void jmzlzy_Click(object sender, RoutedEventArgs e)
+        {
+            function_jmzlzy = new Function_jmzlzy();
+            function_jmzlzy.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_jmzlzy);
+            function_jmzlzy = null;
+        }
+        private Function_jmzlzy function_jmzlzy = null;
+
+        /// <summary>
+        /// 重力界面反演点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void zljmfy_Click(object sender, RoutedEventArgs e)
+        {
+            function_zljmfy = new Function_zljmfy();
+            function_zljmfy.cancel.Click += delegate { Page_Back(); };
+            Group_Open(function_zljmfy);
+            function_zljmfy = null;
+        }
+        private Function_zljmfy function_zljmfy = null;
+        #endregion
         ///// <summary>
         ///// 重力数据解释点击事件
         ///// </summary>
