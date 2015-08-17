@@ -244,5 +244,6 @@ namespace GI.UserControls
             _FileInfo = fileInfo;
             Children = new List<ResourceTreeNode>();
         }
+        
     }
 }
