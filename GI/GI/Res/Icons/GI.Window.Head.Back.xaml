@@ -5,7 +5,7 @@
 			<DrawingGroup>
 				<DrawingGroup.Children>
                     <GeometryDrawing Brush="#00000000" Geometry="F1 M 20,39.6C 9.1928,39.6 0.399999,30.808 0.399999,20C 0.399999,9.1928 9.1928,0.399998 20,0.399998C 30.808,0.399998 39.6,9.1928 39.6,20C 39.6,30.808 30.808,39.6 20,39.6 Z "/>
-                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Font.Head}" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
                     <GeometryDrawing Geometry="F1 M 25,7.5L 10,20L 25,32.5">
 						<GeometryDrawing.Pen>
 							<Pen Thickness="1.33333" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" Brush="#FFFFFF"/>
@@ -20,10 +20,10 @@
             <DrawingGroup>
                 <DrawingGroup.Children>
                     <GeometryDrawing Brush="#11000000" Geometry="F1 M 20,39.6C 9.1928,39.6 0.399999,30.808 0.399999,20C 0.399999,9.1928 9.1928,0.399998 20,0.399998C 30.808,0.399998 39.6,9.1928 39.6,20C 39.6,30.808 30.808,39.6 20,39.6 Z "/>
-                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Font.Head}" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
                     <GeometryDrawing Geometry="F1 M 25,7.5L 10,20L 25,32.5">
                         <GeometryDrawing.Pen>
-                            <Pen Thickness="1.33333" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" Brush="#FFFFFFFF"/>
+                            <Pen Thickness="1.33333" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" Brush="{StaticResource GI.Colors.Font.Head}"/>
                         </GeometryDrawing.Pen>
                     </GeometryDrawing>
                 </DrawingGroup.Children>
@@ -34,8 +34,8 @@
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
-                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 20,39.6C 9.1928,39.6 0.399999,30.808 0.399999,20C 0.399999,9.1928 9.1928,0.399998 20,0.399998C 30.808,0.399998 39.6,9.1928 39.6,20C 39.6,30.808 30.808,39.6 20,39.6 Z "/>
-                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Font.Head}" Geometry="F1 M 20,39.6C 9.1928,39.6 0.399999,30.808 0.399999,20C 0.399999,9.1928 9.1928,0.399998 20,0.399998C 30.808,0.399998 39.6,9.1928 39.6,20C 39.6,30.808 30.808,39.6 20,39.6 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Font.Head}" Geometry="F1 M 20,0C 8.9536,0 -5.5631e-007,8.9536 -5.5631e-007,20C -5.5631e-007,31.0464 8.9536,40 20,40C 31.0464,40 40,31.0464 40,20C 40,8.9536 31.0464,0 20,0 Z M 20,0.799999C 30.5864,0.799999 39.2,9.4136 39.2,20C 39.2,30.5864 30.5864,39.2 20,39.2C 9.4136,39.2 0.799999,30.5864 0.799999,20C 0.799999,9.4136 9.4136,0.799999 20,0.799999 Z "/>
                     <GeometryDrawing Geometry="F1 M 25,7.5L 10,20L 25,32.5">
                         <GeometryDrawing.Pen>
                             <Pen Thickness="1.33333" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" Brush="{DynamicResource GI.Colors.Essential}"/>
