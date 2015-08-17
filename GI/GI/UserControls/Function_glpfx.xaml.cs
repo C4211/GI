@@ -30,8 +30,7 @@ namespace GI.UserControls
         }
         /// <summary>
         /// 0 : 输入文件
-        /// 1 : 输入参数
-        /// 2 : 计算中
+        /// 1 : 计算中
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }

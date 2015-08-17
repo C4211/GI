@@ -84,28 +84,28 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice1"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="1901-1909年的赫尔默德(R.Helmert)公式" 
                     GroupName="zczlgs" IsChecked="True"></RadioButton>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="1930年卡西尼(Cassinis)国际正常重力公式" 
                     GroupName="zczlgs"></RadioButton>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice3"
                     Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="1971年国际正常重力公式" 
                     GroupName="zczlgs"></RadioButton>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice4"
                     Grid.Row="4" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 

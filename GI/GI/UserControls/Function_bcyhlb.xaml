@@ -22,7 +22,7 @@
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"></ColumnDefinition>
                 <ColumnDefinition Width="1"></ColumnDefinition>
@@ -80,8 +80,18 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
-                    <ColumnDefinition Width="320"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <TextBlock
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="补偿系数："/>
+                <TextBox Grid.Row="1" Grid.Column="1" Height="30" Margin="10"/>
+                <TextBlock
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="补偿次数："/>
+                <TextBox Grid.Row="2" Grid.Column="1" Height="30" Margin="10"/>
             </Grid>
         </Grid>
     </Grid>

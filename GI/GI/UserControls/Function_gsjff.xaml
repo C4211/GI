@@ -155,14 +155,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice1"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="陆地区域" 
                     GroupName="xzqy" IsChecked="True"></RadioButton>
-                <RadioButton 
+                <RadioButton FontSize="14" 
                     x:Name="choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 

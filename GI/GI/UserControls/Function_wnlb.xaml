@@ -77,11 +77,48 @@
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <TextBlock 
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="深源埋深："/>
+                <Tools:SelectUnitBox
+                    Grid.Row="1" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">m</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="深源截距："/>
+                <Tools:SelectUnitBox
+                    Grid.Row="2" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">m</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                        Grid.Row="3" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="浅源埋深："/>
+                <Tools:SelectUnitBox
+                    Grid.Row="3" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">m</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                        Grid.Row="4" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="浅源截距："/>
+                <Tools:SelectUnitBox
+                    Grid.Row="4" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">m</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
+                </Tools:SelectUnitBox>
             </Grid>
         </Grid>
     </Grid>

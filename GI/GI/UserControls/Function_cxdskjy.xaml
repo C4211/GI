@@ -21,6 +21,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -82,6 +83,89 @@
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <TextBlock
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="阶数选择："/>
+                <RadioButton FontSize="14" 
+                    x:Name="choice1"
+                    Grid.Row="1" Grid.Column="1"  Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="一阶垂向导数" 
+                    GroupName="jsxz" IsChecked="True"></RadioButton>
+                <RadioButton FontSize="14" 
+                    x:Name="choice2"
+                    Grid.Row="1" Grid.Column="1" Height="30" Margin="150,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="二阶垂向导数" 
+                    GroupName="jsxz"></RadioButton>
+                <TextBlock
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="网格行距："/>
+                <TextBox Grid.Row="2" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Left" Margin="10"/>
+                <TextBlock
+                        Grid.Row="3" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="网格列距："/>
+                <TextBox Grid.Row="3" Grid.Column="1" Height="30" Width="150" HorizontalAlignment="Left" Margin="10"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <UserControls:BodyTitle Grid.Row="0" Title="选择公式"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <RadioButton FontSize="14" 
+                    x:Name="page3choice1"
+                    Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="哈克（Healck）公式" IsEnabled="False" 
+                    GroupName="xzgs" IsChecked="True"></RadioButton>
+                <RadioButton FontSize="14" 
+                    x:Name="page3choice2"
+                    Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="艾尔金斯（Elkins）Ⅰ公式" IsEnabled="False" 
+                    GroupName="xzgs"></RadioButton>
+                <RadioButton FontSize="14"
+                    x:Name="page3choice3"
+                    Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="艾尔金斯Ⅱ公式" IsEnabled="False" 
+                    GroupName="xzgs"></RadioButton>
+                <RadioButton FontSize="14"
+                    x:Name="page3choice4"
+                    Grid.Row="4" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="艾尔金斯Ⅲ公式"  IsEnabled="False"
+                    GroupName="xzgs"></RadioButton>
+                <RadioButton FontSize="14"
+                    x:Name="page3choice5"
+                    Grid.Row="5" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="罗森巴赫（Rosenbach）公式" IsEnabled="False"
+                    GroupName="xzgs"></RadioButton>
             </Grid>
         </Grid>
     </Grid>
