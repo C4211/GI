@@ -166,6 +166,7 @@ namespace GI.UserControls
         private async void ResourceManger_Addpath_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
+            
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string path = fbd.SelectedPath;
