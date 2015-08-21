@@ -21,6 +21,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -49,7 +50,7 @@
                     <TextBlock 
                         Grid.Row="1" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="输入文件："/>
+                        Text="界面数据文件："/>
                     <UserControls:SelectFileControl 
                         x:Name="inputPath1" 
                         Grid.Row="1" Grid.Column="1"
@@ -82,6 +83,76 @@
                     <ColumnDefinition Width="135"></ColumnDefinition>
                     <ColumnDefinition Width="320"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <TextBlock 
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="参考深度："/>
+                <Tools:SelectUnitBox Value="20.0"
+                    Grid.Row="1" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">km</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">m</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="密度差："/>
+                <Tools:SelectUnitBox  Value="-0.43"
+                    Grid.Row="2" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">g/cm^3</ComboBoxItem>
+                    <ComboBoxItem Tag="0.001">kg/m^3</ComboBoxItem>
+                </Tools:SelectUnitBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <UserControls:BodyTitle Grid.Row="0" Title="界面数据文件设置"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                    <ColumnDefinition Width="135"></ColumnDefinition>
+                    <ColumnDefinition Width="270"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                        Grid.Row="1" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="坐标单位："/>
+                <RadioButton FontSize="14"
+                    Grid.Row="1" Grid.Column="1" Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="度（°）" 
+                    GroupName="zbdw" IsChecked="True"></RadioButton>
+                <RadioButton FontSize="14"
+                    Grid.Row="1" Grid.Column="2" Height="30" Margin="10,10,156,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="千米（km）" 
+                    GroupName="zbdw"></RadioButton>
+                <TextBlock
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="界面深度单位："/>
+                <RadioButton FontSize="14"
+                    Grid.Row="2" Grid.Column="1" Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="千米（km）" 
+                    GroupName="jmsddw" IsChecked="True"></RadioButton>
+                <RadioButton FontSize="14"
+                    Grid.Row="2" Grid.Column="2" Height="30" Margin="10,10,156,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
+                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Content="米（m）" 
+                    GroupName="jmsddw"></RadioButton>
             </Grid>
         </Grid>
     </Grid>

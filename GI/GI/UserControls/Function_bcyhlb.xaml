@@ -86,12 +86,12 @@
                         Grid.Row="1" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="补偿系数："/>
-                <TextBox Grid.Row="1" Grid.Column="1" Height="30" Margin="10"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Height="30" Margin="10" Text="100"/>
                 <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="补偿次数："/>
-                <TextBox Grid.Row="2" Grid.Column="1" Height="30" Margin="10"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Height="30" Margin="10" Text="1"/>
             </Grid>
         </Grid>
     </Grid>
