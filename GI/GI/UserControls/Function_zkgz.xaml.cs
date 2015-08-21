@@ -96,12 +96,12 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                next.IsEnabled = false;
+                content.IsEnabled = false;buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; next.IsEnabled = true; };
+                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
@@ -113,6 +113,8 @@ namespace GI.UserControls
             string inPath = inputPath1.filePath.Text;
             string outPath = outputPath1.filePath.Text;
             int choice = 1;
+            HidePrevAndCancel();
+            loadingBar.Show();
             if (!FileNameFilter.CheckFileSuffix(inPath))
                 Msg("输入文件类型不正确！");
             else if (!FileNameFilter.CheckFileExistence(inPath))
@@ -154,6 +156,8 @@ namespace GI.UserControls
                     Task_zkgz = null;
                 }
             }
+            ShowPrevAndCancel();
+            loadingBar.Hide();
             Dispatcher.Invoke(delegate
             {
                 CurrentState = MaxState - 1;

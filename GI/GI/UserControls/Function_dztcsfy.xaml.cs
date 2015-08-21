@@ -28,6 +28,7 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "地质体参数反演";
             this.titleEn = "Geological Parameters Inversion";
+            cssz = content.Children[MaxState-1] as Grid;
         }
 
         /// <summary>
@@ -38,14 +39,47 @@ namespace GI.UserControls
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
         private bool IsCanceled = false;
+        private Grid cssz;
 
+        private void Page2_Reset()
+        {
+            Page1choice1.Visibility = Visibility.Hidden;
+            Page1choice2.Visibility = Visibility.Hidden;
+            Page1choice3.Visibility = Visibility.Hidden;
+            Page1choice4.Visibility = Visibility.Hidden;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Page2_Reset();
+            if (choice1.IsChecked == true)
+            {
+                Page1choice1.Visibility = Visibility.Visible;
+            }
+            else if (choice2.IsChecked == true)
+            {
+                Page1choice2.Visibility = Visibility.Visible;
+            }
+            else if (choice3.IsChecked == true)
+            {
+                Page1choice3.Visibility = Visibility.Visible;
+            }
+            else if (choice4.IsChecked == true)
+            {
+                Page1choice4.Visibility = Visibility.Visible;
+            }
+            if (choice4.IsChecked == false && MaxState == 3)
+            {
+                content.Children.Remove(content.Children[MaxState-1]);
+            }
+            else if(choice4.IsChecked == true && MaxState ==2)
+            {
+                content.Children.Add(cssz);
+            }
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
-                CurrentState = 1;
+                CurrentState += 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
@@ -62,12 +96,23 @@ namespace GI.UserControls
                 IsCanceled = false;
                 next.Content = "取消";
                 //开始计算
+                HidePrevAndCancel();
+                loadingBar.Show();
+                Msg("计算文件暂未添加");
+                ShowPrevAndCancel();
+                loadingBar.Hide();
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+                
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
                 //取消计算
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Msg("计算已取消");
             }
         }
 
@@ -76,12 +121,12 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                next.IsEnabled = false;
+                content.IsEnabled = false;buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
-                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; next.IsEnabled = true; };
+                sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
