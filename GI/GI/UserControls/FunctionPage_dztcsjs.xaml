@@ -26,6 +26,6 @@
                                   Icon="{StaticResource 占位}"
                                   TitleText="地质体参数反演"
                                   SummaryText="利用重力/重力梯度异常反演…"
-                                  ToolTip="利用重力/重力梯度异常反演目标地质体的质量以及重心方位、距离"/>
+                                  SummaryToolTip="利用重力/重力梯度异常反演目标地质体的质量以及重心方位、距离"/>
     </UniformGrid>
 </Tools:FunctionPage>

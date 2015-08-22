@@ -156,19 +156,19 @@
                                   Icon="{StaticResource zlycgz}"
                                   TitleText="重力异常改正"
                                   SummaryText="自空改正、布格改正..."
-                                  ToolTip="自空改正、布格改正、地形改正"/>
+                                  SummaryToolTip="自空改正、布格改正、地形改正"/>
                 <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="zlsjcl"   
                                   Icon="{StaticResource zlsjcl}"
                                   TitleText="重力数据处理"
                                   SummaryText="扩边、滤波、导数..."
-                                  ToolTip="扩边、滤波、导数、向上延拓、功率谱分析"/>
+                                  SummaryToolTip="扩边、滤波、导数、向上延拓、功率谱分析"/>
                 <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="zlzfyjs"   
                                   Icon="{StaticResource zlzfyjs}"
                                   TitleText="重力正反演计算"
                                   SummaryText="界面重力正演、重力..."
-                                  ToolTip="界面重力正演、重力界面反演"/>
+                                  SummaryToolTip="界面重力正演、重力界面反演"/>
                 <GI:FunctionGroup Grid.Row="1" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="zlsjjs"
                                   Icon="{StaticResource zlsjjs}"
@@ -178,8 +178,8 @@
                                   x:Name="dztcsjs"
                                   Icon="{StaticResource dztcsjs}"
                                   TitleText="地质体参数计算"
-                                  SummaryText="地质体参数反演、地..."
-                                  ToolTip="地质体参数反演、地质体重力"/>
+                                  SummaryText="地质体参数反演、地质..."
+                                  SummaryToolTip="地质体参数反演、地质体重力"/>
                 <GI:FunctionGroup Grid.Row="1" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="grdht"
                                   Icon="{StaticResource grdht}"

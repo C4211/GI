@@ -136,7 +136,7 @@
                                   Icon="{StaticResource lb}"
                                   TitleText="滤波"
                                   SummaryText="维纳滤波、匹配滤波..."
-                           ToolTip="维纳滤波、匹配滤波、正则化滤波、补偿圆滑滤波"/>
+                           SummaryToolTip="维纳滤波、匹配滤波、正则化滤波、补偿圆滑滤波"/>
         <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="xsyt"
                                   Icon="{StaticResource xsyt}"

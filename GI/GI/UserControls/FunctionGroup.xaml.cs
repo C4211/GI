@@ -78,6 +78,12 @@ namespace GI
             get { return (SolidColorBrush)GetValue(TitleFontFamilyProperty); }
             set { SetValue(SummaryForegroundProperty, value); }
         }
+
+        public string SummaryToolTip
+        {
+            get { return (string)GetValue(SummaryToolTipProperty); }
+            set { SetValue(SummaryToolTipProperty, value); }
+        }
         #endregion
 
         #region 注册依赖属性
@@ -101,6 +107,8 @@ namespace GI
         public static readonly DependencyProperty SummaryForegroundProperty =
             DependencyProperty.Register("SummaryForeground", typeof(SolidColorBrush), typeof(FunctionGroup),
                 new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+        public static readonly DependencyProperty SummaryToolTipProperty =
+            DependencyProperty.Register("SummaryToolTip",typeof(string),typeof(FunctionGroup));
         #endregion
     }
 }

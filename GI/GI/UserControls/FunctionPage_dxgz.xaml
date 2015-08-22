@@ -7,7 +7,7 @@
              xmlns:Tools="clr-namespace:GI.Tools"
              mc:Ignorable="d"
              d:DesignHeight="414" d:DesignWidth="680" 
-             Style="{DynamicResource GI.Body.Content.Style}">
+             Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
     <Tools:FunctionPage.Resources>
         <DrawingBrush x:Key="fxyf" Stretch="Uniform">
             <DrawingBrush.Drawing>
@@ -80,19 +80,19 @@
                           Icon="{StaticResource fxyf}"
                           TitleText="方形域法"
                           SummaryText="利用方形域法进行地形改正"
-                          ToolTip="利用方形域法进行地形改正。"/>
+                          />
         <GI:FunctionGroup Grid.Row="0" Grid.Column="2" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                           x:Name="flybhf"
                           Icon="{StaticResource flybhf}"
                           TitleText="傅里叶变换法"
                           SummaryText="利用傅里叶变换法进行地形改正"
-                          ToolTip="利用傅里叶变换法进行地形改正"/>
+                         />
         <GI:FunctionGroup Grid.Row="0" Grid.Column="1" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                           x:Name="gsjff"
                           Icon="{StaticResource gsjff}"
                           TitleText="高斯积分法"
                           SummaryText="利用高斯积分法进行地形改正"
-                          ToolTip="利用高斯积分法进行地形改正"/>
+                         />
 
     </UniformGrid>
 </Tools:FunctionPage>
