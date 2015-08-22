@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -38,7 +39,9 @@ namespace GI.Tools
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Storyboard sb = (this.FindResource("closeStoryboard") as Storyboard).Clone();
+            sb.Completed += delegate { this.Close(); };
+            content.BeginStoryboard(sb);
         }
 
     }
