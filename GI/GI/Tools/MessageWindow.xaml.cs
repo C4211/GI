@@ -39,7 +39,7 @@ namespace GI.Tools
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Storyboard sb = (this.FindResource("closeStoryboard") as Storyboard).Clone();
+            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
             sb.Completed += delegate { this.Close(); };
             content.BeginStoryboard(sb);
         }

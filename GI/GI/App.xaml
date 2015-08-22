@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="ViewModel/GI.Body.Styles.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Body.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Head.Storyboards.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Res/Storyboard/GI.Window.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Back.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.ResourceManager.Addpath.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Themes/Generic.xaml"></ResourceDictionary>
