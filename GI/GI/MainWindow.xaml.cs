@@ -72,7 +72,7 @@ namespace GI
                 Grid prev = contentStack.Peek();
                 current.BeginStoryboard(sb);
                 prev.BeginStoryboard(sbBack);
-                sb.Completed += delegate { body.Children.Remove(current); current.Children.Clear(); };
+                sb.Completed += delegate { body.Children.Remove(current); current = null; };
                 ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
             }
             if (contentStack.Count <= 1)

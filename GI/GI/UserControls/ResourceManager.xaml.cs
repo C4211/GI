@@ -31,7 +31,7 @@ namespace GI.UserControls
                 roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
         }
 
-        private static List<DirectoryInfo> roots = new List<DirectoryInfo>();
+        private List<DirectoryInfo> roots = new List<DirectoryInfo>();
 
         #region 控制LoadingBar
         private void StartLoading()
@@ -195,6 +195,7 @@ namespace GI.UserControls
                 }
             }
         }
+
     }
 
     /// <summary>
