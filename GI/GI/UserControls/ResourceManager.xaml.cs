@@ -39,7 +39,7 @@ namespace GI.UserControls
             Dispatcher.Invoke(delegate
             {
                 resourceTree.Visibility = Visibility.Hidden;
-                loadingBar.Visibility = Visibility.Visible;
+                loadingBar.Show();
             });
         }
 
@@ -47,7 +47,7 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate
             {
-                loadingBar.Visibility = Visibility.Hidden;
+                loadingBar.Hide();
                 resourceTree.Visibility = Visibility.Visible;
             });
         }

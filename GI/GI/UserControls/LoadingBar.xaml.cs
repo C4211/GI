@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,16 +24,33 @@ namespace GI.UserControls
         public LoadingBar()
         {
             InitializeComponent();
+            sb = this.FindResource("GI.UserControl.LoadingBar.Storyboard") as Storyboard;
+            sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+            sbhide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
         }
-
+        Storyboard sb;
+        Storyboard sbshow;
+        Storyboard sbhide;
         public void Show()
         {
-            Dispatcher.Invoke(delegate { this.Visibility = System.Windows.Visibility.Visible; });
+            Dispatcher.Invoke(
+                delegate
+                {
+                    this.Visibility = Visibility.Visible;
+                    this.BeginStoryboard(sbshow);
+                    sb.Begin();
+                });
         }
 
         public void Hide()
         {
-            Dispatcher.Invoke(delegate { this.Visibility = System.Windows.Visibility.Hidden; });
+            Dispatcher.Invoke(
+                delegate 
+                { 
+                    sb.Stop();
+                    this.BeginStoryboard(sbhide);
+                    sbhide.Completed += delegate{ this.Visibility = Visibility.Hidden; };
+                });
         }
     }
 }

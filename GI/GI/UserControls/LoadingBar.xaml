@@ -7,7 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="210">
     <UserControl.Resources>
-        <Storyboard x:Key="GI.UserControl.LoadingBar.Storyboard" RepeatBehavior="Forever"  BeginTime="0:0:0">
+        <Storyboard x:Key="GI.UserControl.LoadingBar.Show" BeginTime="0">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" From="0" To="1"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="GI.UserControl.LoadingBar.Hide" BeginTime="0">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="0"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="GI.UserControl.LoadingBar.Storyboard" RepeatBehavior="Forever" BeginTime="0:0:0">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Loading_Dot1">
                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.222" Value="1"/>
@@ -86,18 +92,13 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid  Width="210">
-        <Grid Height="30">
+    <Grid Background="#CCFFFFFF">
+        <Grid Height="30" Width="210">
             <Ellipse x:Name="Loading_Dot1" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot2" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot3" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot4" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot5" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
-            <Grid.Triggers>
-                <EventTrigger RoutedEvent="Grid.Loaded">
-                    <BeginStoryboard Storyboard="{StaticResource GI.UserControl.LoadingBar.Storyboard}"/>
-                </EventTrigger>
-            </Grid.Triggers>
         </Grid>
     </Grid>
 </UserControl>
