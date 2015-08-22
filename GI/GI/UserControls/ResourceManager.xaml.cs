@@ -38,7 +38,6 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate
             {
-                resourceTree.Visibility = Visibility.Hidden;
                 loadingBar.Show();
             });
         }
@@ -48,7 +47,6 @@ namespace GI.UserControls
             Dispatcher.Invoke(delegate
             {
                 loadingBar.Hide();
-                resourceTree.Visibility = Visibility.Visible;
             });
         }
         #endregion

@@ -86,12 +86,12 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <UserControls:ResourceManger_Addpath Grid.Column="1" Style="{StaticResource AddPathStyle}" Click="ResourceManger_Addpath_Click"/>
-            <UserControls:ResourceManger_Refreshpath Grid.Column="0" Style="{StaticResource RefreshPathStyle}" Click="ResourceManger_Refreshpath_Click"/>
+            <UserControls:ResourceManger_Addpath Grid.Column="1" Style="{StaticResource AddPathStyle}" ToolTip="添加路径" Click="ResourceManger_Addpath_Click"/>
+            <UserControls:ResourceManger_Refreshpath Grid.Column="0" Style="{StaticResource RefreshPathStyle}" ToolTip="刷新" Click="ResourceManger_Refreshpath_Click"/>
         </Grid>
     </Grid>
     <Grid Grid.Row="1">
         <TreeView x:Name="resourceTree" Loaded="resourceTree_Loaded" Style="{StaticResource TreeViewStyle}" SelectedItemChanged="resourceTree_SelectedItemChanged"/>
-        <UserControls:LoadingBar x:Name="loadingBar" Visibility="Collapsed"></UserControls:LoadingBar>
+        <UserControls:LoadingBar x:Name="loadingBar"></UserControls:LoadingBar>
     </Grid>
 </Grid>

@@ -48,8 +48,8 @@ namespace GI.UserControls
                 delegate 
                 { 
                     sb.Stop();
+                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; };
                     this.BeginStoryboard(sbhide);
-                    sbhide.Completed += delegate{ this.Visibility = Visibility.Hidden; };
                 });
         }
     }

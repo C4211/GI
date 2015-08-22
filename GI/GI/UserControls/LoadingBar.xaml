@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="210">
+             d:DesignHeight="300" d:DesignWidth="210" Visibility="Hidden">
     <UserControl.Resources>
         <Storyboard x:Key="GI.UserControl.LoadingBar.Show" BeginTime="0">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" From="0" To="1"></DoubleAnimation>
