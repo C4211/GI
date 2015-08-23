@@ -115,8 +115,8 @@ namespace GI.UserControls
                 childNode = new ResourceManagerTreeNode(level);
                 childNode.Path = child.Info;
                 childNode.Title = child.Info.Name;
-                if (child.IsDir && child.Children.Count == 0)
-                    continue;
+                //if (child.IsDir && child.Children.Count == 0)
+                //    continue;
                 if (!child.IsDir)
                 {
                     if (child.Info.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase))
@@ -185,10 +185,19 @@ namespace GI.UserControls
             
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                StartLoading();
                 string path = fbd.SelectedPath;
                 DirectoryInfo dir = new DirectoryInfo(path);
+                foreach (DirectoryInfo d in roots)
+                {
+                    if (d.FullName == dir.FullName)
+                    {
+                        MessageWindow.Show(Application.Current.MainWindow, "资源管理器中已存在该目录");
+                        StopLoading();
+                        return;
+                    }
+                }
                 roots.Add(dir);
-                StartLoading();
                 await Task.Factory.StartNew(RefreshTreeView);
                 StopLoading();
             }

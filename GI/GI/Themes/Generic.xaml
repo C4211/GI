@@ -6,7 +6,7 @@
         <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
         <Setter Property="Background" Value="Transparent"></Setter>
-        <Setter Property="Icon" Value="{x:Null}"></Setter>
+        <Setter Property="Icon" Value="{StaticResource GI.ResourceManager.Icons.Folder}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ResourceManagerTreeNode}">
@@ -97,7 +97,6 @@
                             <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="HasItems" Value="true">
-                            <Setter Property="Icon" Value="{StaticResource GI.ResourceManager.Icons.Folder}"/>
                             <Setter Property="Visibility" TargetName="Expander" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
