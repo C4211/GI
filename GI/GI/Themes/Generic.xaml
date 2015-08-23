@@ -6,6 +6,7 @@
         <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"></Setter>
         <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Icon" Value="{x:Null}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ResourceManagerTreeNode}">
@@ -18,14 +19,14 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="{Binding Path=LevelLeft,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"></ColumnDefinition>
-                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Rectangle x:Name="OnSelect" Fill="{StaticResource GI.Colors.Null}" Width="3"></Rectangle>
                             </Grid>
-                            <!--<Rectangle Grid.Column="2" Margin="10,0" Width="20" Height="20" Fill="{StaticResource GI.Colors.Body.text}" RadiusX="20" RadiusY="20"></Rectangle>-->
+                            <Rectangle Grid.Column="2" Margin="8,0" Width="20" Height="20" Fill="{TemplateBinding Icon}"></Rectangle>
                             <TextBlock Grid.Column="3" x:Name="Title" Text="{TemplateBinding Title}" VerticalAlignment="Center" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -38,7 +39,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <local:ResourceManagerToggleButton Grid.Column="4" x:Name="Expander" ClickMode="Press" HorizontalAlignment="Left"
+                            <local:ResourceManagerToggleButton Grid.Column="4" x:Name="Expander" Visibility="Collapsed" ClickMode="Press" HorizontalAlignment="Left"
                                             IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
                                 <local:ResourceManagerToggleButton.Style>
                                     <Style TargetType="local:ResourceManagerToggleButton">
@@ -95,12 +96,13 @@
                         <Trigger Property="IsExpanded" Value="false">
                             <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
                         </Trigger>
-                        <Trigger Property="HasItems" Value="false">
-                            <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+                        <Trigger Property="HasItems" Value="true">
+                            <Setter Property="Icon" Value="{StaticResource GI.ResourceManager.Icons.Folder}"/>
+                            <Setter Property="Visibility" TargetName="Expander" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Foreground" TargetName="Title" Value="{StaticResource GI.Colors.Essential}"></Setter>
-                            <Setter Property="Background" TargetName="Bd" Value="#f5f5f5"/>
+                            <Setter Property="Background" TargetName="Bd" Value="#FAFAFA"/>
                             <Setter Property="Fill" TargetName="OnSelect" Value="{StaticResource GI.Colors.Essential}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -108,7 +110,7 @@
                                 <Condition Property="IsSelected" Value="true"/>
                                 <Condition Property="IsSelectionActive" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="#f5f5f5"/>
+                            <Setter Property="Background" TargetName="Bd" Value="#FAFAFA"/>
                             <Setter Property="Fill" TargetName="OnSelect" Value="#AAAAAA"/>
                             <Setter Property="Foreground" TargetName="Title" Value="{StaticResource GI.Colors.Body.text}"></Setter>
                         </MultiTrigger>

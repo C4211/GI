@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingBrush x:Key="GI.ResourceManager.Icons.Folder" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Null}" Geometry="F1 M 0,26.6667L 26.6667,26.6667L 26.6667,0L 0,0L 0,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 22.6667,22.6667L 4,22.6667L 4,8L 22.6667,8M 4,4L 20,4L 20,6.66667L 4,6.66667M 24,6.66667L 21.3333,6.66667L 21.3333,2.66667L 2.66667,2.66667L 2.66667,24L 24,24L 24,6.66667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="GI.ResourceManager.Icons.Dat" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Null}" Geometry="F1 M 0,26.6667L 26.6667,26.6667L 26.6667,0L 0,0L 0,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,22.6667L 5.33333,22.6667L 5.33333,4L 21.3333,4L 21.3333,17.3333L 22.6667,17.3333L 22.6667,2.66667L 4,2.66667L 4,24L 6.66667,24L 6.66667,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 9.33333,8L 20,8L 20,6.66667L 9.33333,6.66667L 9.33333,8 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,12L 20,12L 20,10.6667L 6.66667,10.6667L 6.66667,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,16L 20,16L 20,14.6667L 6.66667,14.6667L 6.66667,16 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 13.3332,17.3331L 13.3332,19.9997L 9.3332,19.9997L 9.3332,21.3344L 13.3332,21.3344L 13.3332,25.3331L 9.3332,25.3331L 9.3332,26.6664L 14.6665,26.6664L 14.6665,17.3331L 13.3332,17.3331 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 8,25.3333L 9.33333,25.3333L 9.33333,21.3333L 8,21.3333L 8,25.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 15.9996,19.9995L 15.9996,21.3341L 20.0009,21.3341L 20.0009,22.6675L 17.3329,22.6675L 17.3329,24.0008L 15.9996,24.0008L 15.9996,26.6661L 21.3343,26.6661L 21.3343,19.9995M 20.0009,25.3341L 17.3329,25.3341L 17.3329,24.0008L 20.0009,24.0008L 20.0009,25.3341 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 24,18.6663L 24,19.9996L 22.6667,19.9996L 22.6667,21.3343L 24,21.3343L 24,26.6663L 26.6667,26.6663L 26.6667,25.3329L 25.3333,25.3329L 25.3333,21.3343L 26.6667,21.3343L 26.6667,19.9996L 25.3333,19.9996L 25.3333,18.6663L 24,18.6663 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="GI.ResourceManager.Icons.Txt" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Null}" Geometry="F1 M 0,26.6667L 26.6667,26.6667L 26.6667,0L 0,0L 0,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 9.3336,18.6663L 9.3336,19.9996L 8.00027,19.9996L 8.00027,21.3343L 9.3336,21.3343L 9.3336,26.6663L 12.0003,26.6663L 12.0003,25.3329L 10.6669,25.3329L 10.6669,21.3343L 12.0003,21.3343L 12.0003,19.9996L 10.6669,19.9996L 10.6669,18.6663L 9.3336,18.6663 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 13.3333,26.6667L 14.6667,26.6667L 14.6667,25.3333L 13.3333,25.3333L 13.3333,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 14.6667,25.3333L 16,25.3333L 16,24L 14.6667,24L 14.6667,25.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 16,24L 17.3333,24L 17.3333,22.6667L 16,22.6667L 16,24 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 14.6667,22.6667L 16,22.6667L 16,21.3333L 14.6667,21.3333L 14.6667,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 13.3333,21.3333L 14.6667,21.3333L 14.6667,19.9987L 13.3333,19.9987L 13.3333,21.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 18.6667,26.6667L 20,26.6667L 20,25.3333L 18.6667,25.3333L 18.6667,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 17.3333,25.3333L 18.668,25.3333L 18.668,24L 17.3333,24L 17.3333,25.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 17.3333,22.6667L 18.668,22.6667L 18.668,21.3333L 17.3333,21.3333L 17.3333,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 18.6667,21.3333L 20,21.3333L 20,19.9987L 18.6667,19.9987L 18.6667,21.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 22.6668,18.6663L 22.6668,19.9996L 21.3335,19.9996L 21.3335,21.3343L 22.6668,21.3343L 22.6668,26.6663L 25.3335,26.6663L 25.3335,25.3329L 24.0001,25.3329L 24.0001,21.3343L 25.3335,21.3343L 25.3335,19.9996L 24.0001,19.9996L 24.0001,18.6663L 22.6668,18.6663 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,22.6667L 5.33333,22.6667L 5.33333,4L 21.3333,4L 21.3333,17.3333L 22.6667,17.3333L 22.6667,2.66667L 4,2.66667L 4,24L 6.66667,24L 6.66667,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 9.33333,8L 20,8L 20,6.66667L 9.33333,6.66667L 9.33333,8 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,12L 20,12L 20,10.6667L 6.66667,10.6667L 6.66667,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,16L 20,16L 20,14.6667L 6.66667,14.6667L 6.66667,16 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="GI.ResourceManager.Icons.Grd" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Null}" Geometry="F1 M 0,26.6667L 26.6667,26.6667L 26.6667,0L 0,0L 0,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,22.6667L 4,22.6667L 4,4L 22.6667,4L 22.6667,16L 24,16L 24,2.66667L 2.66667,2.66667L 2.66667,24L 6.66667,24L 6.66667,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 8,22.6667L 9.33333,22.6667L 9.33333,18.6653L 8,18.6653L 8,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 9.33333,17.3333L 9.33333,18.6667L 13.3333,18.6667L 13.3333,22.6667L 9.33333,22.6667L 9.33333,24L 13.3333,24L 13.3333,25.3333L 14.6667,25.3333L 14.6667,17.3333L 9.33333,17.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 8,26.6667L 13.3333,26.6667L 13.3333,25.3333L 8,25.3333L 8,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 18.6667,17.3333L 16,17.3333L 16,24L 17.3333,24L 17.3333,18.6667L 18.6667,18.6667L 18.6667,17.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 20,22.6667L 21.3333,22.6667L 21.3333,18.6653L 20,18.6653L 20,22.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Essential}" Geometry="F1 M 25.3332,14.6667L 25.3332,17.3333L 21.3332,17.3333L 21.3332,18.6667L 25.3332,18.6667L 25.3332,22.6667L 21.3332,22.6667L 21.3332,24L 26.6665,24L 26.6665,14.6667L 25.3332,14.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 14.6667,10.6667L 16,10.6667L 16,7.99866L 14.6667,7.99866L 14.6667,10.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 18.6667,10.6667L 20,10.6667L 20,7.99866L 18.6667,7.99866L 18.6667,10.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 16,12L 18.668,12L 18.668,10.6667L 16,10.6667L 16,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 16,8L 18.668,8L 18.668,6.66667L 16,6.66667L 16,8 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 14.6667,16L 20.0013,16L 20.0013,14.6667L 14.6667,14.6667L 14.6667,16 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 13.3333,14.6667L 14.6667,14.6667L 14.6667,13.3333L 13.3333,13.3333L 13.3333,14.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 12,13.3333L 13.3333,13.3333L 13.3333,12L 12,12L 12,13.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 10.6667,12L 12,12L 12,10.6667L 10.6667,10.6667L 10.6667,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 9.33333,13.3333L 10.6667,13.3333L 10.6667,12L 9.33333,12L 9.33333,13.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 8,14.6667L 9.33333,14.6667L 9.33333,13.3333L 8,13.3333L 8,14.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,16L 8,16L 8,14.6667L 6.66667,14.6667L 6.66667,16 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="GI.ResourceManager.Icons.Other" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Null}" Geometry="F1 M 0,26.6667L 26.6667,26.6667L 26.6667,0L 0,0L 0,26.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 22,23.3333L 22,22.6667L 5.33333,22.6667L 5.33333,4L 21.3333,4L 21.3333,23.3333L 22,23.3333L 22,22.6667L 22,23.3333L 22.6667,23.3333L 22.6667,2.66667L 4,2.66667L 4,24L 22.6667,24L 22.6667,23.3333L 22,23.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 9.33333,8L 20,8L 20,6.66667L 9.33333,6.66667L 9.33333,8 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,12L 20,12L 20,10.6667L 6.66667,10.6667L 6.66667,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,16L 20,16L 20,14.6667L 6.66667,14.6667L 6.66667,16 Z "/>
+                    <GeometryDrawing Brush="{StaticResource GI.Colors.Body.text}" Geometry="F1 M 6.66667,20L 20,20L 20,18.6667L 6.66667,18.6667L 6.66667,20 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+</ResourceDictionary>

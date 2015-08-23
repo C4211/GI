@@ -117,6 +117,22 @@ namespace GI.UserControls
                 childNode.Title = child.Info.Name;
                 if (!child.IsDir)
                 {
+                    if (child.Info.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase))
+                    {
+                        childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Dat") as DrawingBrush;
+                    }
+                    else if (child.Info.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase))
+                    {
+                        childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Txt") as DrawingBrush;
+                    }
+                    else if (child.Info.Extension.Equals(".grd", StringComparison.OrdinalIgnoreCase))
+                    {
+                        childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Grd") as DrawingBrush;
+                    }
+                    else
+                    {
+                        childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Other") as DrawingBrush;
+                    }
                     childNode.PreviewMouseLeftButtonDown += delegate
                     {
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
