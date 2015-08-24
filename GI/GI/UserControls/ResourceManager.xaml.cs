@@ -139,6 +139,7 @@ namespace GI.UserControls
                     {
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
                     };
+                    childNode.MouseDoubleClick += FileDoubleClick;
                 }
                 list = FillDataToResourceTreeView(child, level + 1);
                 foreach (var l in list)
@@ -149,6 +150,16 @@ namespace GI.UserControls
             }
             list = null;
             return result;
+        }
+        /// <summary>
+        /// 预览文件点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FileDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ResourceManagerTreeNode rmtn = (ResourceManagerTreeNode)sender;
+            FilePreviewWindow.PreviwShow(Application.Current.MainWindow,rmtn);
         }
 
         private List<ResourceTreeNode> LoadResourceTree(List<DirectoryInfo> Roots)

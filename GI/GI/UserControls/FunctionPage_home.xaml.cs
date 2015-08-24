@@ -34,11 +34,5 @@ namespace GI.UserControls
             MessageWindow.Show(Application.Current.MainWindow, "版权所有：\n中国科学院测量与地球物理研究所");
         }
 
-
-        private void Help_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            FilePreviewWindow.PreviwShow();
-        }
-        
     }
 }
