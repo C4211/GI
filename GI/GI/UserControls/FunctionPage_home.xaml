@@ -194,6 +194,6 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="About_MouseLeftButtonUp">关于</TextBlock>
-        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}">使用帮助</TextBlock>
+        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="Help_MouseLeftButtonUp">使用帮助</TextBlock>
     </Grid>
 </Tools:FunctionPage>
