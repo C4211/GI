@@ -1,6 +1,8 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,13 +62,20 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                //计算
+                HidePrevAndCancel();
+                DoGSJFF();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState-1;
                 next.Content = "计算";
-                //停止计算
+                if (Task_gsjff != null)
+                {
+                    IsCanceled = true;
+                    GSJFF.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -102,6 +111,86 @@ namespace GI.UserControls
                 prev.Visibility = Visibility.Visible;
                 cancel.Visibility = Visibility.Visible;
             });
+        }
+
+        private async void DoGSJFF()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string path1 = inputPath1.filePath.Text;
+            string path2 = inputPath2.filePath.Text;
+            string path3 = inputPath3.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
+            double _arg1, _arg2, _arg3;
+            int choice = 1;
+            if (!FileNameFilter.CheckFileSuffix(path1))
+                Msg("站点文件类型不正确！");
+            else if (!FileNameFilter.CheckFileExistence(path1))
+                Msg("站点文件路径不存在！");
+            else if (!FileNameFilter.CheckFileSuffix(path2))
+                Msg("内区地形文件类型不正确！");
+            else if (!FileNameFilter.CheckFileExistence(path2))
+                Msg("内区地形文件路径不存在！");
+            else if (!FileNameFilter.CheckFileSuffix(path3))
+                Msg("外区地形文件类型不正确！");
+            else if (!FileNameFilter.CheckFileExistence(path3))
+                Msg("外区地形文件路径不存在！");
+            else if (!double.TryParse(arg1.Value, out _arg1))
+                Msg("密度值非法！");
+            else if (!double.TryParse(arg2.Value, out _arg2))
+                Msg("内区半径非法！");
+            else if (!double.TryParse(arg3.Value, out _arg3))
+                Msg("外区半径非法！");
+            else
+            {
+                try
+                {
+                    if (choice1.IsChecked == true)
+                        choice = 1;
+                    else if (choice2.IsChecked == true)
+                        choice = 0;
+                    _arg1 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
+                    _arg2 *= double.Parse((arg2.SelectedItem as ComboBoxItem).Tag.ToString());
+                    _arg3 *= double.Parse((arg3.SelectedItem as ComboBoxItem).Tag.ToString());
+                    Task_gsjff = GSJFF.Start(path1, path2, path3, _arg1, _arg2, _arg3, choice);
+                    await Task_gsjff;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(@"out.DAT", outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Msg(e.Message);
+                }
+                finally
+                {
+                    Task_gsjff = null;
+                }
+            }
+            loadingBar.Hide();
+            ShowPrevAndCancel();
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = 1;
+                next.Content = "计算";
+            });
+        }
+
+        private Task<string> Task_gsjff = null;
+
+        private void Msg(string msg)
+        {
+            Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
     }
 }

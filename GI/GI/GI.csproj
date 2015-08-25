@@ -93,6 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Functions\ZLYCGZ\DXGZ\FLYBHF.cs" />
+    <Compile Include="Functions\ZLYCGZ\DXGZ\FXYF.cs" />
+    <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\FilePreviewWindow.xaml.cs">
       <DependentUpon>FilePreviewWindow.xaml</DependentUpon>
@@ -225,8 +228,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Functions\BouguerCorrection.cs" />
-    <Compile Include="Functions\FreeAirCorrection.cs" />
+    <Compile Include="Functions\ZLYCGZ\BGGZ.cs" />
+    <Compile Include="Functions\ZLYCGZ\ZKGZ.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

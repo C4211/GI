@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,7 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
+                HidePrevAndCancel();
                 DoFreeAirCorrection();
             }
             else if (CurrentState == MaxState)
@@ -68,7 +70,7 @@ namespace GI.UserControls
                 if (Task_zkgz != null)
                 {
                     IsCanceled = true;
-                    FreeAirCorrectionStart.Stop();
+                    FreeAirCorrection.Stop();
                     loadingBar.Hide();
                     ShowPrevAndCancel();
                 }
@@ -132,7 +134,7 @@ namespace GI.UserControls
                     else if (choice4.IsChecked == true)
                         choice = 4;
                     Task_zkgz = null;
-                    Task_zkgz = FreeAirCorrectionStart.Start(inPath, outPath, choice);
+                    Task_zkgz = FreeAirCorrection.Start(inPath, outPath, choice);
                     await Task_zkgz;
                     if (IsCanceled)
                     {
