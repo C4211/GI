@@ -1,9 +1,15 @@
 ﻿<Window x:Class="GI.Tools.FilePreviewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FilePreviewWindow" MinWidth="600" MaxWidth="700" Height="700" ResizeMode="NoResize" BorderThickness="50" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="#00000000" WindowStyle="None" SizeToContent="Width" Closing="Window_Closing">
+        Title="FilePreviewWindow" MinWidth="600" MaxWidth="700" Height="700" ResizeMode="NoResize" BorderThickness="50" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="#00000000" WindowStyle="None" SizeToContent="Width" Closing="Window_Closing" Activated="Window_Activated" Deactivated="Window_Deactivated">
     <Grid>
-        <Border Margin="5" Background="White" BorderThickness="1" BorderBrush="#FF939393" RenderTransformOrigin="0.5,0.5" x:Name="content">
+        <Border Margin="5" Background="White" BorderThickness="1" RenderTransformOrigin="0.5,0.5" x:Name="content">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#333333" Opacity="0.4"/>
+            </Border.BorderBrush>
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#333333" Opacity="0.4"></DropShadowEffect>
+            </Border.Effect>
             <Border.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -18,9 +24,6 @@
                     </BeginStoryboard>
                 </EventTrigger>
             </Border.Triggers>
-            <Border.Effect>
-                <DropShadowEffect ShadowDepth="0" Color="#FFD1D1D1"></DropShadowEffect>
-            </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>

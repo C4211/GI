@@ -69,7 +69,6 @@ namespace GI.Tools
                 }
                 fpw.Show();
                 Application.Current.MainWindow.Cursor = Cursors.Arrow;
-                fpw.Activate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -99,6 +98,18 @@ namespace GI.Tools
             {
                 e.Cancel = false;
             }
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            Storyboard sb = (this.FindResource("GI.Window.Border.Focus") as Storyboard).Clone();
+            content.BeginStoryboard(sb);
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            Storyboard sb = (this.FindResource("GI.Window.Border.Default") as Storyboard).Clone();
+            content.BeginStoryboard(sb);
         }
     }
 }

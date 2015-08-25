@@ -658,12 +658,14 @@ namespace GI
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            content.Background = Application.Current.FindResource("GI.MainWindow.Effect.Shadow.Focus") as ImageBrush;
+            Storyboard sb = (this.FindResource("GI.MainWindow.Border.Focus") as Storyboard).Clone();
+            content.BeginStoryboard(sb);
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            content.Background = Application.Current.FindResource("GI.MainWindow.Effect.Shadow.Default") as ImageBrush;
+            Storyboard sb = (this.FindResource("GI.MainWindow.Border.Default") as Storyboard).Clone();
+            content.BeginStoryboard(sb);
         }
 
         private bool isClosed = false;

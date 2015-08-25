@@ -7,7 +7,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Res/Properties/GI.Details.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Properties/GI.Colors.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="Res/Properties/GI.Effects.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Properties/GI.Fonts.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Logo.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Close.xaml"></ResourceDictionary>

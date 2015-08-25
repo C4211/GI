@@ -76,4 +76,54 @@
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
+    <Storyboard x:Key="GI.MainWindow.Border.Default">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.2">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="GI.MainWindow.Border.Focus">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.4">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="GI.Window.Border.Default">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.2">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.2">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="GI.Window.Border.Focus">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.4">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.4">
+                <EasingDoubleKeyFrame.EasingFunction>
+                    <QuadraticEase EasingMode="EaseInOut"/>
+                </EasingDoubleKeyFrame.EasingFunction>
+            </EasingDoubleKeyFrame>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
 </ResourceDictionary>
