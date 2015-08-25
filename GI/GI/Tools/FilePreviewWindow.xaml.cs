@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GI.Tools
 {
@@ -26,7 +28,7 @@ namespace GI.Tools
             InitializeComponent();
         }
 
-        public static void PreviwShow(Window owner,ResourceManagerTreeNode fileInfo)
+        public static async void PreviwShow(Window owner, ResourceManagerTreeNode fileInfo)
         {
             if (!(fileInfo.Path.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase)
                   ||  fileInfo.Path.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase)
@@ -38,26 +40,39 @@ namespace GI.Tools
             FilePreviewWindow fpw = new FilePreviewWindow();
             fpw.Owner = owner;
             fpw.fileName.Text = fileInfo.Path.Name;
-            try
-            {
-                using (var stream = new StreamReader(fileInfo.Path.FullName, Encoding.Default))
-                {
-                    fpw.fileContent.Text = stream.ReadToEnd();
-                }
-            }
-            catch (Exception)
-            {
-                MessageWindow.Show(fpw,"读取文件失败！");
-                throw;
-            }
             fpw.Show();
+            
+            await Task.Run(() =>
+            {
+                try
+                {
+                    using (var stream = new StreamReader(fileInfo.Path.FullName, Encoding.Default))
+                    {
+                        StringBuilder result = new StringBuilder(stream.ReadToEnd());
+                        stream.Close();
+                        fpw.Dispatcher.Invoke(
+                            new Action(() =>
+                            {
+                                fpw.fileContent.AppendText(result.ToString());
+                            }));
+                    }
+                }
+                catch (Exception)
+                {
+                    fpw.Dispatcher.Invoke(
+                            new Action(() =>
+                            {
+                                MessageWindow.Show(fpw, "读取文件失败！");
+                                fpw.Close();
+                            }));
+                }
+            });
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
-            sb.Completed += delegate { this.Close(); };
-            content.BeginStoryboard(sb);
+            this.Close();
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,6 +80,22 @@ namespace GI.Tools
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 this.DragMove();
+            }
+        }
+
+        private bool isClosed = false;
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (isClosed == false)
+            {
+                e.Cancel = true;
+                Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+                sb.Completed += delegate { isClosed = true; this.Close(); };
+                content.BeginStoryboard(sb);
+            }
+            else
+            {
+                e.Cancel = false;
             }
         }
     }
