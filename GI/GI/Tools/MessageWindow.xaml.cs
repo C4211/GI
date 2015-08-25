@@ -39,10 +39,23 @@ namespace GI.Tools
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
-            sb.Completed += delegate { this.Close(); };
-            content.BeginStoryboard(sb);
+            this.Close();
         }
 
+        private bool isClosed = false;
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (isClosed == false)
+            {
+                e.Cancel = true;
+                Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+                sb.Completed += delegate { isClosed = true; this.Close(); };
+                content.BeginStoryboard(sb);
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
     }
 }
