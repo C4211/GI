@@ -181,7 +181,7 @@ namespace GI.UserControls
             ShowPrevAndCancel();
             Dispatcher.Invoke(delegate
             {
-                CurrentState = 1;
+                CurrentState = MaxState - 1;
                 next.Content = "计算";
             });
         }
