@@ -66,7 +66,7 @@
                     <QuarticEase EasingMode="EaseOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="0">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
                 <EasingDoubleKeyFrame.EasingFunction>
                     <QuarticEase EasingMode="EaseOut"/>
                 </EasingDoubleKeyFrame.EasingFunction>
@@ -80,7 +80,7 @@
                     <QuarticEase EasingMode="EaseIn"/>
                 </EasingDoubleKeyFrame.EasingFunction>
             </EasingDoubleKeyFrame>
-            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
                 <EasingDoubleKeyFrame.EasingFunction>
                     <QuarticEase EasingMode="EaseIn"/>
                 </EasingDoubleKeyFrame.EasingFunction>
