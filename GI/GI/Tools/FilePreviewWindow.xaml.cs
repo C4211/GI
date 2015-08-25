@@ -36,6 +36,7 @@ namespace GI.Tools
                   || fileInfo.Path.Extension.Equals(".grd", StringComparison.OrdinalIgnoreCase)))
             {
                 MessageWindow.Show(Application.Current.MainWindow,"只能预览txt/dat/grd文件！");
+                Application.Current.MainWindow.Cursor = Cursors.Arrow;
                 return;
             }
             FilePreviewWindow fpw = new FilePreviewWindow();
@@ -55,8 +56,6 @@ namespace GI.Tools
                             {
                                 fpw.fileContent.AppendText(result.ToString());
                             }));
-
-                        
                     }
                 }
                 catch (Exception)
@@ -67,7 +66,6 @@ namespace GI.Tools
                                 MessageWindow.Show(fpw, "读取文件失败！");
                                 fpw.Close();
                             }));
-                    throw;
                 }
                 fpw.Show();
                 Application.Current.MainWindow.Cursor = Cursors.Arrow;
