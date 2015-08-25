@@ -137,7 +137,9 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Min_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+            sb.Completed += delegate { this.WindowState = WindowState.Minimized; };
+            content.BeginStoryboard(sb);
         }
         #endregion
 
@@ -677,6 +679,15 @@ namespace GI
             else
             {
                 e.Cancel = false;
+            }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if(this.WindowState == WindowState.Normal)
+            {
+                Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
+                content.BeginStoryboard(sb);
             }
         }
     }
