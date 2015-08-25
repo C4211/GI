@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GI.Tools
+namespace GI.Functions
 {
     /// <summary>
     /// 自空校正工具类
     /// </summary>
-    class FreeAirCorrectionStart
+    class FreeAirCorrection
     {
         /// <summary>
         /// 开始自空校正
@@ -23,7 +23,7 @@ namespace GI.Tools
         public static Task Start(string inputPath, string outputPath, int choice)
         {
             IsRuning = true;
-            List<FreeAirCorrection> list;
+            List<FreeAirCorrectionClass> list;
             return Task.Run(() =>
             {
                 list = ReadAndCheckInputFormat(inputPath);
@@ -43,9 +43,9 @@ namespace GI.Tools
         /// </summary>
         /// <param name="inputPath">输入文件路径</param>
         /// <returns>输入内容</returns>
-        static List<FreeAirCorrection> ReadAndCheckInputFormat(string inputPath)
+        static List<FreeAirCorrectionClass> ReadAndCheckInputFormat(string inputPath)
         {
-            List<FreeAirCorrection> result = new List<FreeAirCorrection>();
+            List<FreeAirCorrectionClass> result = new List<FreeAirCorrectionClass>();
             using (StreamReader sr = new StreamReader(inputPath, Encoding.Default))
             {
                 string str = sr.ReadLine();
@@ -71,7 +71,7 @@ namespace GI.Tools
                         if (!double.TryParse(group[3], out observed))
                             throw new Exception(string.Format("第{0}行测量值格式错误！", line));
                         // 保存
-                        result.Add(new FreeAirCorrection(longitude, latitude, height, observed));
+                        result.Add(new FreeAirCorrectionClass(longitude, latitude, height, observed));
                         str = sr.ReadLine();
                     }
                     else
@@ -86,7 +86,7 @@ namespace GI.Tools
         /// </summary>
         /// <param name="list">自空校正对象列表</param>
         /// <param name="outputPath">输出路径</param>
-        static void WriteOutput(List<FreeAirCorrection> list, string outputPath)
+        static void WriteOutput(List<FreeAirCorrectionClass> list, string outputPath)
         {
             using (StreamWriter sw = new StreamWriter(outputPath, false, Encoding.Default))
             {
@@ -103,9 +103,9 @@ namespace GI.Tools
         /// </summary>
         /// <param name="list">自空校正对象列表</param>
         /// <param name="choice">校正方法</param>
-        static void CalculateFreeAirAnomaly(List<FreeAirCorrection> list, int choice)
+        static void CalculateFreeAirAnomaly(List<FreeAirCorrectionClass> list, int choice)
         {
-            FreeAirCorrection fac;
+            FreeAirCorrectionClass fac;
             for (int i = 0; i < list.Count; i++)
             {
                 fac = list[i];
@@ -132,7 +132,7 @@ namespace GI.Tools
         /// </summary>
         /// <param name="fac">自空校正对象</param>
         /// <param name="choice">校正方法</param>
-        static void CalculateNormalGravity(FreeAirCorrection fac, int choice)
+        static void CalculateNormalGravity(FreeAirCorrectionClass fac, int choice)
         {
             double a = 0.0, b = 0.0, c = 0.0;
             switch (choice)
@@ -159,7 +159,7 @@ namespace GI.Tools
         /// 高度校正
         /// </summary>
         /// <param name="fac">自空校正对象</param>
-        static void DoHeightCorrection(FreeAirCorrection fac)
+        static void DoHeightCorrection(FreeAirCorrectionClass fac)
         {
             fac.HeightCorrection = 0.3086 * (1 + 0.0007 * Math.Cos(2 * Radian(fac.Latitude))) * fac.Height - 7.2e-8 * fac.Height * fac.Height;
         }
@@ -179,7 +179,7 @@ namespace GI.Tools
     /// <summary>
     /// 自空类
     /// </summary>
-    class FreeAirCorrection
+    class FreeAirCorrectionClass
     {
         public double Longitude { get; set; }
         public double Latitude { get; set; }
@@ -188,7 +188,7 @@ namespace GI.Tools
         public double NormalGravity { get; set; }
         public double HeightCorrection { get; set; }
         public double FreeAirAnomaly { get; set; }
-        public FreeAirCorrection(double longitude, double latitude, double height, double observed)
+        public FreeAirCorrectionClass(double longitude, double latitude, double height, double observed)
         {
             this.Longitude = longitude;
             this.Latitude = latitude;

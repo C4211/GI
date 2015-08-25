@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -61,6 +62,7 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
+                HidePrevAndCancel();
                 DoBouguerCorrection();
             }
             else if (CurrentState == MaxState)

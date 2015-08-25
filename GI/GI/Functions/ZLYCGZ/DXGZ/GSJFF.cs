@@ -4,26 +4,26 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
-namespace GI.Tools
+namespace GI.Functions
 {
-    class BouguerCorrection
+    class GSJFF
     {
         #region 属性 各种路径
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"FA2BA_F.exe";
+        public static string exePath = @"TC_Gauss_F.exe";
         /// <summary>
         /// TC.inp临时文件路径
         /// </summary>
-        public static string tcPath = @"TC.inp";
+        public static string tcPath = @"parameter.inp";
         /// <summary>
         /// 站点文件(*.dat)路径
         /// </summary>
-        public static string datPath = @"obs1_FA.dat";
+        public static string datPath = @"obs.dat";
         /// <summary>
         /// 内区地形数据文件(*.grd)路径
         /// </summary>
@@ -43,7 +43,7 @@ namespace GI.Tools
         #endregion
 
         /// <summary>
-        /// 执行布格改正exe
+        /// 执行地形改正高斯积分法exe
         /// </summary>
         /// <param name="dat">站点文件(*.dat)</param>
         /// <param name="srtm30">内区地形数据文件(*.grd)</param>
@@ -51,9 +51,10 @@ namespace GI.Tools
         /// <param name="density">密度</param>
         /// <param name="innerRadius">内区半径</param>
         /// <param name="outterRadius">外区半径</param>
+        /// <param name="location">陆地区域=1，海洋区域=0</param>
         /// <returns>异步执行Task，返回值为结果</returns>
         /// 
-        public static Task<string> Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius)
+        public static Task<string> Start(string dat, string srtm30, string srtm60, double density, double innerRadius, double outterRadius, int location)
         {
             //判断传入文件是否存在
             if (!File.Exists(dat))
@@ -72,10 +73,11 @@ namespace GI.Tools
             File.Copy(dat, datPath, true);
             File.Copy(srtm30, srtm30GrdPath, true);
             File.Copy(srtm60, srtm60GrdPath, true);
-            // 构造TC.inp内容
-            string tc = String.Format("obs1_FA.dat\nsrtm30.grd\nsrtm60.grd\nout.DAT\n5 3 0 2 {0}\n20.00416666 24.99583334 97.00416666 101.9958334\n{1} {2}", density, innerRadius, outterRadius);
+            // 构造parameter.inp内容
+            string tc = String.Format("{0}\n{1}\n{2}\n{3}\n{4} {5}\n{6}\n{7}", datPath, srtm30GrdPath, srtm60GrdPath, outPath, innerRadius, outterRadius, location, density);
+            MessageBox.Show(tc);
             // 写入TC.inp
-            using (var writer = new StreamWriter(tcPath, false))
+            using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {
                 writer.Write(tc);
             }
@@ -95,11 +97,10 @@ namespace GI.Tools
                 }
                 catch
                 {
-                    throw new Exception("执行EXE失败！");
+                    MessageBox.Show("找不到EXE！");
+                    return "";
                 }
             });
         }
     }
-
 }
-
