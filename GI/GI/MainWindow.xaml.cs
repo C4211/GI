@@ -646,6 +646,38 @@ namespace GI
         }
         #endregion
 
+        #region Window事件效果
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
+            content.BeginStoryboard(sb);
+        }
+        #endregion
 
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            content.Background = Application.Current.FindResource("GI.MainWindow.Effect.Shadow.Focus") as ImageBrush;
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            content.Background = Application.Current.FindResource("GI.MainWindow.Effect.Shadow.Default") as ImageBrush;
+        }
+
+        private bool isClosed = false;
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (isClosed == false)
+            {
+                e.Cancel = true;
+                Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+                sb.Completed += delegate { isClosed = true; this.Close(); };
+                content.BeginStoryboard(sb);
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
     }
 }

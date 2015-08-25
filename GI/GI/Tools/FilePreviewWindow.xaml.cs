@@ -28,8 +28,9 @@ namespace GI.Tools
             InitializeComponent();
         }
 
-        public static async void PreviwShow(Window owner, ResourceManagerTreeNode fileInfo)
+        public static void PreviwShow(Window owner, ResourceManagerTreeNode fileInfo)
         {
+            Application.Current.MainWindow.Cursor = Cursors.Wait;
             if (!(fileInfo.Path.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase)
                   ||  fileInfo.Path.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase)
                   || fileInfo.Path.Extension.Equals(".grd", StringComparison.OrdinalIgnoreCase)))
@@ -39,11 +40,10 @@ namespace GI.Tools
             }
             FilePreviewWindow fpw = new FilePreviewWindow();
             fpw.Owner = owner;
+            fpw.Title = fileInfo.Path.Name;
             fpw.fileName.Text = fileInfo.Path.Name;
-            fpw.Show();
+            fpw.fileName.ToolTip = fileInfo.Path.FullName;
             
-            await Task.Run(() =>
-            {
                 try
                 {
                     using (var stream = new StreamReader(fileInfo.Path.FullName, Encoding.Default))
@@ -55,6 +55,8 @@ namespace GI.Tools
                             {
                                 fpw.fileContent.AppendText(result.ToString());
                             }));
+
+                        
                     }
                 }
                 catch (Exception)
@@ -65,9 +67,11 @@ namespace GI.Tools
                                 MessageWindow.Show(fpw, "读取文件失败！");
                                 fpw.Close();
                             }));
+                    throw;
                 }
-            });
-
+                fpw.Show();
+                Application.Current.MainWindow.Cursor = Cursors.Arrow;
+                fpw.Activate();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
