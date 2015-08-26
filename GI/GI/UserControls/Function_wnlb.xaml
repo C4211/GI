@@ -88,16 +88,8 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="深源埋深："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg0"
                     Grid.Row="1" Grid.Column="1" Margin="10">
-                    <ComboBoxItem Tag="1">m</ComboBoxItem>
-                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
-                </Tools:SelectUnitBox>
-                <TextBlock 
-                        Grid.Row="2" Grid.Column="0" 
-                        Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="深源截距："/>
-                <Tools:SelectUnitBox
-                    Grid.Row="2" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -106,7 +98,18 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="浅源埋深："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg1"
                     Grid.Row="3" Grid.Column="1" Margin="10">
+                    <ComboBoxItem Tag="1">m</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">km</ComboBoxItem>
+                </Tools:SelectUnitBox>
+                <TextBlock 
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="深源截距："/>
+                <Tools:SelectUnitBox
+                    x:Name="arg2"
+                    Grid.Row="2" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -115,6 +118,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="浅源截距："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg3"
                     Grid.Row="4" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>

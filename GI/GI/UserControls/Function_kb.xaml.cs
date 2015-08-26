@@ -158,8 +158,7 @@ namespace GI.UserControls
                     File.Copy(Expand.outPath, outPath, true);
                     loadingBar.Hide();
                     ShowPrevAndCancel();
-                    //Msg("计算完成");
-                    Msg(task.Result);
+                    Msg("计算完成");
                 }
             }
             catch (Exception e)
