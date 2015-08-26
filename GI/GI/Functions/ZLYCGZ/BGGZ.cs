@@ -36,7 +36,7 @@ namespace GI.Functions
         /// <summary>
         /// 输出文件(*.dat)路径
         /// </summary>
-        public static string outPath = @"out.DAT";
+        public static string outPath = @"out.dat";
         /// <summary>
         /// 任务控制
         /// </summary>

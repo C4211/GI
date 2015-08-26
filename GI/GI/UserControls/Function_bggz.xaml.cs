@@ -189,11 +189,18 @@ namespace GI.UserControls
                     }
                     catch (Exception e)
                     {
+<<<<<<< HEAD
                         Msg(e.Message);
                     }
                     finally
                     {
                         Task_bggz = null;
+=======
+                        File.Copy(BouguerCorrection.outPath, outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+>>>>>>> ed879fcc4f1c6fc845387caba1f53f570eb99b42
                     }
                 }
                 loadingBar.Hide();

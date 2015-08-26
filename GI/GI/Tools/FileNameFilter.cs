@@ -34,6 +34,34 @@ namespace GI.Tools
                 return false;
             }
         }
+
+        /// <summary>
+        /// 检查GRD文件格式
+        /// </summary>
+        /// <param name="filePath">文件名</param>
+        /// <returns>格式正确返回Nx Ny, 错误返回null</returns>
+        public static int[] CheckGRDFileFormat(string filePath)
+        {
+            try
+            {
+                using (var reader = new StreamReader(filePath))
+                {
+                    string firstLine = reader.ReadLine();
+                    string[] strData;
+                    int Nx_input = 0, Ny_input = 0;
+                    strData = reader.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    Nx_input = int.Parse(strData[0]);
+                    Ny_input = int.Parse(strData[1]);
+                    int Nx_output = (int)Math.Pow(2.0, ((int)(Math.Log(Nx_input) / Math.Log(2.0)) + 1));
+                    int Ny_output = (int)Math.Pow(2.0, ((int)(Math.Log(Ny_input) / Math.Log(2.0)) + 1));
+                    return new int[] { Nx_input, Ny_input, Nx_output, Ny_output };
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 
 }

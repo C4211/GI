@@ -89,23 +89,31 @@
                         Grid.Row="1" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="输入行数："/>
-                <TextBox Grid.Row="1" Grid.Column="1" Height="30" Margin="10"/>
+                <TextBox Grid.Row="1" Grid.Column="1" 
+                         x:Name="Nx_input"
+                         Height="30" Margin="10" IsReadOnly="True"/>
                 <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="输入列数："/>
-                <TextBox Grid.Row="2" Grid.Column="1" Height="30" Margin="10"/>
+                <TextBox Grid.Row="2" Grid.Column="1" 
+                         x:Name="Ny_input"
+                         Height="30" Margin="10" IsReadOnly="True"/>
                 <TextBlock Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Text="扩充到>" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="{StaticResource GI.Colors.Essential}"></TextBlock>
                 <TextBlock
                         Grid.Row="1" Grid.Column="3" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="输出行数："/>
-                <TextBox Grid.Row="1" Grid.Column="4" Height="30" Margin="10" VerticalContentAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="4" 
+                         x:Name="Nx_output" PreviewTextInput="N_output_PreviewTextInput"
+                         Height="30" Margin="10" VerticalContentAlignment="Center"/>
                 <TextBlock
                         Grid.Row="2" Grid.Column="3" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="输出列数："/>
-                <TextBox Grid.Row="2" Grid.Column="4" Height="30" Margin="10" VerticalContentAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="4" 
+                         x:Name="Ny_output" PreviewTextInput="N_output_PreviewTextInput"
+                         Height="30" Margin="10" VerticalContentAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>
