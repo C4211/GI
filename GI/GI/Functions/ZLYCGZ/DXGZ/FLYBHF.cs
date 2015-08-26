@@ -29,7 +29,7 @@ namespace GI.Functions
         /// </summary>
         public static string srtm60GrdPath = @"srtm60.grd";
         /// <summary>
-        /// 输出文件(*.dat)路径
+        /// 输出文件(*.grd)路径
         /// </summary>
         public static string outPath = @"out.grd";
         /// <summary>

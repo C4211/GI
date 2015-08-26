@@ -93,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Functions\ZLSJCL\Expand.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FLYBHF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FXYF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />

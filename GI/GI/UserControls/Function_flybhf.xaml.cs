@@ -151,7 +151,7 @@ namespace GI.UserControls
                     }
                     else
                     {
-                        File.Copy(@"out.DAT", outPath, true);
+                        File.Copy(FLYBHF.outPath, outPath, true);
                         loadingBar.Hide();
                         ShowPrevAndCancel();
                         Msg("计算完成");

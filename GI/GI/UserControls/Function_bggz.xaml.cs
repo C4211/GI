@@ -157,7 +157,7 @@ namespace GI.UserControls
                     }
                     else
                     {
-                        File.Copy(@"out.DAT", outPath, true);
+                        File.Copy(BouguerCorrection.outPath, outPath, true);
                         loadingBar.Hide();
                         ShowPrevAndCancel();
                         Msg("计算完成");
