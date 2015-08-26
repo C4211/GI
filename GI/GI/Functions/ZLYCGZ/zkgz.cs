@@ -13,14 +13,15 @@ namespace GI.Functions
     /// </summary>
     class FreeAirCorrection
     {
+        public static string outPath = "out.DAT";
+
         /// <summary>
         /// 开始自空校正
         /// </summary>
         /// <param name="inputPath">输入文件路径</param>
-        /// <param name="outputPath">输出文件路径</param>
         /// <param name="choice">计算方法</param>
         /// <returns>异步执行Task</returns>
-        public static Task<string> Start(string inputPath, string outputPath, int choice)
+        public static Task<string> Start(string inputPath, int choice)
         {
             IsRuning = true;
             List<FreeAirCorrectionClass> list;
@@ -30,7 +31,7 @@ namespace GI.Functions
                 {
                     list = ReadAndCheckInputFormat(inputPath);
                     CalculateFreeAirAnomaly(list, choice);
-                    WriteOutput(list, outputPath);
+                    WriteOutput(list, outPath);
                     return null;
                 }
                 catch (Exception e)

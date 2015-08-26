@@ -127,7 +127,7 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState + 1)
             {
-                FileInfo fi = new FileInfo(@"out.DAT");
+                FileInfo fi = new FileInfo(FreeAirCorrection.outPath);
                 FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
@@ -148,28 +148,7 @@ namespace GI.UserControls
                     Msg("输入文件路径不存在！");
                 else
                 {
-<<<<<<< HEAD
                     try
-=======
-                    if (choice1.IsChecked == true)
-                        choice = 1;
-                    else if (choice2.IsChecked == true)
-                        choice = 2;
-                    else if (choice3.IsChecked == true)
-                        choice = 3;
-                    else if (choice4.IsChecked == true)
-                        choice = 4;
-                    Task_zkgz = null;
-                    Task_zkgz = FreeAirCorrection.Start(inPath, outPath, choice);
-                    await Task_zkgz;
-                    if (Task_zkgz.Result != null)
-                    {
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg(Task_zkgz.Result);
-                    }
-                    else if (IsCanceled)
->>>>>>> ed879fcc4f1c6fc845387caba1f53f570eb99b42
                     {
                         if (choice1.IsChecked == true)
                             choice = 1;
@@ -180,7 +159,7 @@ namespace GI.UserControls
                         else if (choice4.IsChecked == true)
                             choice = 4;
                         Task_zkgz = null;
-                        Task_zkgz = FreeAirCorrection.Start(inPath, @"out.DAT", choice);
+                        Task_zkgz = FreeAirCorrection.Start(inPath, choice);
                         await Task_zkgz;
                         if (!IsCanceled)
                         {
@@ -197,18 +176,9 @@ namespace GI.UserControls
                         Task_zkgz = null;
                     }
                 }
-<<<<<<< HEAD
                 ShowPrevAndCancel();
                 loadingBar.Hide();
                 Dispatcher.Invoke(delegate
-=======
-                catch (Exception e)
-                {
-                    //Msg(e.Message);
-                    MessageBox.Show(e.Message);
-                }
-                finally
->>>>>>> ed879fcc4f1c6fc845387caba1f53f570eb99b42
                 {
                     CurrentState = MaxState - 1;
                     next.Content = "计算";
