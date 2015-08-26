@@ -70,8 +70,9 @@ namespace GI.UserControls
                 {
                     IsCanceled = true;
                     FreeAirCorrection.Stop();
-                    loadingBar.Hide();
                     ShowPrevAndCancel();
+                    loadingBar.Hide();
+                    Msg("计算取消！");
                 }
             }
             else if (CurrentState == MaxState + 1)
@@ -143,18 +144,7 @@ namespace GI.UserControls
                     Task_zkgz = null;
                     Task_zkgz = FreeAirCorrection.Start(inPath, outPath, choice);
                     await Task_zkgz;
-                    if (IsCanceled)
-                    {
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算取消!");
-                    }
-                    else
-                    {                       
-                        Completed();
-                        Task_zkgz = null;
-                        return;
-                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -164,6 +154,11 @@ namespace GI.UserControls
                 {
                     Task_zkgz = null;
                 }
+            }
+            if (!IsCanceled)
+            {
+                Completed();
+                return;
             }
             ShowPrevAndCancel();
             loadingBar.Hide();

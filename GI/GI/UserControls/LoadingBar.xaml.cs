@@ -98,13 +98,14 @@ namespace GI.UserControls
         public void Hide()
         {
             Dispatcher.Invoke(
-                delegate 
+                delegate
                 {
                     loadingTitle.BeginStoryboard(titlehide);
                     loading.BeginStoryboard(loadinghide);
-                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); };
+                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop();  };
                     this.BeginStoryboard(sbhide);
                 });
         }
+
     }
 }
