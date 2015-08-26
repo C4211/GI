@@ -20,15 +20,23 @@ namespace GI.Functions
         /// <param name="outputPath">输出文件路径</param>
         /// <param name="choice">计算方法</param>
         /// <returns>异步执行Task</returns>
-        public static Task Start(string inputPath, string outputPath, int choice)
+        public static Task<string> Start(string inputPath, string outputPath, int choice)
         {
             IsRuning = true;
             List<FreeAirCorrectionClass> list;
-            return Task.Run(() =>
+            return Task<string>.Run(() =>
             {
-                list = ReadAndCheckInputFormat(inputPath);
-                CalculateFreeAirAnomaly(list, choice);
-                WriteOutput(list, outputPath);
+                try
+                {
+                    list = ReadAndCheckInputFormat(inputPath);
+                    CalculateFreeAirAnomaly(list, choice);
+                    WriteOutput(list, outputPath);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    return e.Message;
+                }
             });
         }
 

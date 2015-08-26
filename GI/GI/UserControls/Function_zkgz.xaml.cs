@@ -136,7 +136,13 @@ namespace GI.UserControls
                     Task_zkgz = null;
                     Task_zkgz = FreeAirCorrection.Start(inPath, outPath, choice);
                     await Task_zkgz;
-                    if (IsCanceled)
+                    if (Task_zkgz.Result != null)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg(Task_zkgz.Result);
+                    }
+                    else if (IsCanceled)
                     {
                         loadingBar.Hide();
                         ShowPrevAndCancel();
@@ -151,7 +157,8 @@ namespace GI.UserControls
                 }
                 catch (Exception e)
                 {
-                    Msg(e.Message);
+                    //Msg(e.Message);
+                    MessageBox.Show(e.Message);
                 }
                 finally
                 {
@@ -167,7 +174,7 @@ namespace GI.UserControls
             });
         }
 
-        private Task Task_zkgz = null;
+        private Task<string> Task_zkgz = null;
 
         private void Msg(string msg)
         {
