@@ -56,14 +56,14 @@
                         x:Name="inputPath1"
                         Grid.Row="1" Grid.Column="1" Margin="10" 
                         Style="{StaticResource SelectFileControl.Style}"/>
-                    <TextBlock 
+                    <!--<TextBlock 
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="输出文件路径："/>
                     <UserControls:SelectFileControl 
                         x:Name="outputPath1"
                         Grid.Row="2" Grid.Column="1" Margin="10" 
-                        Style="{StaticResource SelectFileControl.Style}"/>
+                        Style="{StaticResource SelectFileControl.Style}"/>-->
                 </Grid>
             </Grid>
         </Grid>

@@ -71,6 +71,48 @@ namespace GI.Tools
                 Application.Current.MainWindow.Cursor = Cursors.Arrow;
         }
 
+        public static void PreviwShow(Window owner, FileSystemInfo fileInfo)
+        {
+            Application.Current.MainWindow.Cursor = Cursors.Wait;
+            if (!(fileInfo.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase)
+                  || fileInfo.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase)
+                  || fileInfo.Extension.Equals(".grd", StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageWindow.Show(Application.Current.MainWindow, "只能预览txt/dat/grd文件！");
+                Application.Current.MainWindow.Cursor = Cursors.Arrow;
+                return;
+            }
+            FilePreviewWindow fpw = new FilePreviewWindow();
+            fpw.Owner = owner;
+            fpw.Title = fileInfo.Name;
+            fpw.fileName.Text = fileInfo.Name;
+            fpw.fileName.ToolTip = fileInfo.FullName;
+
+            try
+            {
+                using (var stream = new StreamReader(fileInfo.FullName, Encoding.Default))
+                {
+                    StringBuilder result = new StringBuilder(stream.ReadToEnd());
+                    stream.Close();
+                    fpw.Dispatcher.Invoke(
+                        new Action(() =>
+                        {
+                            fpw.fileContent.AppendText(result.ToString());
+                        }));
+                }
+            }
+            catch (Exception)
+            {
+                fpw.Dispatcher.Invoke(
+                        new Action(() =>
+                        {
+                            MessageWindow.Show(fpw, "读取文件失败！");
+                            fpw.Close();
+                        }));
+            }
+            fpw.Show();
+            Application.Current.MainWindow.Cursor = Cursors.Arrow;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -2,6 +2,7 @@
 using GI.Tools;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,9 +58,6 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState - 1)
             {
-                CurrentState = MaxState;
-                IsCanceled = false;
-                next.Content = "取消";
                 DoFreeAirCorrection();
             }
             else if (CurrentState == MaxState)
@@ -77,7 +75,21 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState + 1)
             {
-                Msg("暂未添加该功能");
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(@"out.DAT", ofd.FileName, true);
+                        Msg("已保存！");
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
             }
         }
 
@@ -100,9 +112,9 @@ namespace GI.UserControls
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0 && CurrentState<=MaxState )
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -113,73 +125,65 @@ namespace GI.UserControls
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
             }
-            if (CurrentState == MaxState + 1)
+            else if (CurrentState == MaxState + 1)
             {
-                Msg("暂未添加该功能");
+                FileInfo fi = new FileInfo(@"out.DAT");
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private async void DoFreeAirCorrection()
         {
-            string inPath = inputPath1.filePath.Text;
-            string outPath = outputPath1.filePath.Text;
-            int choice = 1;
-            HidePrevAndCancel();
-            loadingBar.Show("计算中");
-            if (!FileNameFilter.CheckFileSuffix(inPath))
-                Msg("输入文件类型不正确！");
-            else if (!FileNameFilter.CheckFileExistence(inPath))
-                Msg("输入文件路径不存在！");
-            else
+            if (loadingBar.Show("计算中"))
             {
-                try
-                {
-                    if (choice1.IsChecked == true)
-                        choice = 1;
-                    else if (choice2.IsChecked == true)
-                        choice = 2;
-                    else if (choice3.IsChecked == true)
-                        choice = 3;
-                    else if (choice4.IsChecked == true)
-                        choice = 4;
-                    Task_zkgz = null;
-                    Task_zkgz = FreeAirCorrection.Start(inPath, outPath, choice);
-                    await Task_zkgz;
-                    
-                }
-                catch (Exception e)
-                {
-                    Msg(e.Message);
-                }
-                finally
-                {
-                    Task_zkgz = null;
-                }
-            }
-            if (!IsCanceled)
-            {
-                Completed();
-                return;
-            }
-            ShowPrevAndCancel();
-            loadingBar.Hide();
-            Dispatcher.Invoke(delegate
-            {
-                CurrentState = MaxState - 1;
-                next.Content = "计算";
-            });
-        }
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                string inPath = inputPath1.filePath.Text;
+                int choice = 1;
+                HidePrevAndCancel();
 
-        private void Completed()
-        {
-            loadingBar.changeState("计算完成", false);
-            CurrentState = MaxState + 1;
-            prev.Content = "预览";
-            prev.Visibility = Visibility.Visible;
-            next.Content = "保存";
-            next.Visibility = Visibility.Visible;
-            cancel.Visibility = Visibility.Collapsed;
-            back.Visibility = Visibility.Visible;
-            
+                if (!FileNameFilter.CheckFileSuffix(inPath))
+                    Msg("输入文件类型不正确！");
+                else if (!FileNameFilter.CheckFileExistence(inPath))
+                    Msg("输入文件路径不存在！");
+                else
+                {
+                    try
+                    {
+                        if (choice1.IsChecked == true)
+                            choice = 1;
+                        else if (choice2.IsChecked == true)
+                            choice = 2;
+                        else if (choice3.IsChecked == true)
+                            choice = 3;
+                        else if (choice4.IsChecked == true)
+                            choice = 4;
+                        Task_zkgz = null;
+                        Task_zkgz = FreeAirCorrection.Start(inPath, @"out.DAT", choice);
+                        await Task_zkgz;
+                        if (!IsCanceled)
+                        {
+                            Completed();
+                            return;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Msg(e.Message);
+                    }
+                    finally
+                    {
+                        Task_zkgz = null;
+                    }
+                }
+                ShowPrevAndCancel();
+                loadingBar.Hide();
+                Dispatcher.Invoke(delegate
+                {
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
+            }
         }
 
         private Task Task_zkgz = null;
@@ -199,6 +203,18 @@ namespace GI.UserControls
             next.Content = "计算";
             next.Visibility = Visibility.Visible;
             CurrentState = MaxState - 1;
+        }
+
+        private void Completed()
+        {
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
         }
     }
 }

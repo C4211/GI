@@ -51,11 +51,18 @@ namespace GI.UserControls
                 });
         }
 
-        public void Show(string state)
+        public bool Show(string state)
         {
+            if (!isHiding) { 
             Dispatcher.Invoke(
                 delegate
                 {
+                    titlehide.Stop();
+                    titlehide.Completed += delegate { };
+                    loadinghide.Stop();
+                    loadinghide.Completed += delegate { };
+                    sbhide.Stop();
+                    sbhide.Completed += delegate { };
                     this.Visibility = Visibility.Visible;
                     loadingTitle.Text = state;
                     loadingTitle.BeginStoryboard(titleshow);
@@ -63,6 +70,8 @@ namespace GI.UserControls
                     sb.Begin();
                     loading.BeginStoryboard(loadingshow);
                 });
+            }
+            return !isHiding;
         }
 
         public void changeState(string state)
@@ -95,14 +104,15 @@ namespace GI.UserControls
                 });
         }
 
+        private bool isHiding = false;
         public void Hide()
         {
             Dispatcher.Invoke(
                 delegate
                 {
-                    loadingTitle.BeginStoryboard(titlehide);
+                    isHiding = true;
                     loading.BeginStoryboard(loadinghide);
-                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop();  };
+                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); isHiding = false; };
                     this.BeginStoryboard(sbhide);
                 });
         }
