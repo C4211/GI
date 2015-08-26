@@ -5,10 +5,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GI.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="210" Visibility="Hidden">
+             d:DesignHeight="300" d:DesignWidth="210" Opacity="0">
     <UserControl.Resources>
+        <Storyboard x:Key="GI.UserControl.Title.Show">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="GI.UserControl.Title.Hide">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         <Storyboard x:Key="GI.UserControl.LoadingBar.Show" BeginTime="0">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" From="0" To="1"></DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="1"></DoubleAnimation>
         </Storyboard>
         <Storyboard x:Key="GI.UserControl.LoadingBar.Hide" BeginTime="0">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="0"></DoubleAnimation>
@@ -93,12 +154,21 @@
         </Style>
     </UserControl.Resources>
     <Grid Background="#CCFFFFFF">
-        <Grid Height="30" Width="210">
+        <Grid Height="30" Width="210 " x:Name="loading">
             <Ellipse x:Name="Loading_Dot1" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot2" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot3" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot4" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
             <Ellipse x:Name="Loading_Dot5" Style="{StaticResource GI.UserControl.LoadingBar.Dots.Style}"/>
         </Grid>
+        <TextBlock x:Name="loadingTitle" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,60" FontSize="26" Foreground="{StaticResource GI.Colors.Essential}" Opacity="0" RenderTransformOrigin="0.5,0.5" FontFamily="Microsoft YaHei UI Light">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform></TextBlock>
     </Grid>
 </UserControl>

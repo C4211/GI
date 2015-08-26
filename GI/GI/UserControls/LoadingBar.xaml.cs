@@ -27,10 +27,18 @@ namespace GI.UserControls
             sb = this.FindResource("GI.UserControl.LoadingBar.Storyboard") as Storyboard;
             sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
             sbhide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
+            loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+            loadinghide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
+            titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
+            titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
         }
         Storyboard sb;
         Storyboard sbshow;
         Storyboard sbhide;
+        Storyboard titleshow;
+        Storyboard titlehide;
+        Storyboard loadingshow;
+        Storyboard loadinghide;
         public void Show()
         {
             Dispatcher.Invoke(
@@ -39,6 +47,51 @@ namespace GI.UserControls
                     this.Visibility = Visibility.Visible;
                     this.BeginStoryboard(sbshow);
                     sb.Begin();
+                    loading.BeginStoryboard(loadingshow);
+                });
+        }
+
+        public void Show(string state)
+        {
+            Dispatcher.Invoke(
+                delegate
+                {
+                    this.Visibility = Visibility.Visible;
+                    loadingTitle.Text = state;
+                    loadingTitle.BeginStoryboard(titleshow);
+                    this.BeginStoryboard(sbshow);
+                    sb.Begin();
+                    loading.BeginStoryboard(loadingshow);
+                });
+        }
+
+        public void changeState(string state)
+        {
+            Dispatcher.Invoke(
+                delegate
+                {
+                    titlehide.Completed += delegate { loadingTitle.Text = state; loadingTitle.BeginStoryboard(titleshow); };
+                    loadingTitle.BeginStoryboard(titlehide);
+                });
+        }
+
+        public void changeState(string state, bool showloading)
+        {
+            Dispatcher.Invoke(
+                delegate
+                {
+                    titlehide.Completed += delegate { loadingTitle.Text = state; loadingTitle.BeginStoryboard(titleshow); };
+                    loadingTitle.BeginStoryboard(titlehide);
+                    if (showloading == true)
+                    {
+                        sb.Begin();
+                        loading.BeginStoryboard(loadingshow);
+                    }
+                    else
+                    {
+                        loadinghide.Completed += delegate { sb.Stop(); };
+                        loading.BeginStoryboard(loadinghide);
+                    }
                 });
         }
 
@@ -46,9 +99,10 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(
                 delegate 
-                { 
-                    sb.Stop();
-                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; };
+                {
+                    loadingTitle.BeginStoryboard(titlehide);
+                    loading.BeginStoryboard(loadinghide);
+                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); };
                     this.BeginStoryboard(sbhide);
                 });
         }

@@ -60,7 +60,6 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                HidePrevAndCancel();
                 DoFreeAirCorrection();
             }
             else if (CurrentState == MaxState)
@@ -74,6 +73,10 @@ namespace GI.UserControls
                     loadingBar.Hide();
                     ShowPrevAndCancel();
                 }
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                Msg("暂未添加该功能");
             }
         }
 
@@ -96,7 +99,7 @@ namespace GI.UserControls
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState<=MaxState )
             {
                 content.IsEnabled = false;buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -109,6 +112,10 @@ namespace GI.UserControls
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
             }
+            if (CurrentState == MaxState + 1)
+            {
+                Msg("暂未添加该功能");
+            }
         }
         private async void DoFreeAirCorrection()
         {
@@ -116,7 +123,7 @@ namespace GI.UserControls
             string outPath = outputPath1.filePath.Text;
             int choice = 1;
             HidePrevAndCancel();
-            loadingBar.Show();
+            loadingBar.Show("计算中");
             if (!FileNameFilter.CheckFileSuffix(inPath))
                 Msg("输入文件类型不正确！");
             else if (!FileNameFilter.CheckFileExistence(inPath))
@@ -143,10 +150,10 @@ namespace GI.UserControls
                         Msg("计算取消!");
                     }
                     else
-                    {
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算完成！");
+                    {                       
+                        Completed();
+                        Task_zkgz = null;
+                        return;
                     }
                 }
                 catch (Exception e)
@@ -167,11 +174,37 @@ namespace GI.UserControls
             });
         }
 
+        private void Completed()
+        {
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
+            
+        }
+
         private Task Task_zkgz = null;
 
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            Task_zkgz = null;
+            loadingBar.Hide();
+            cancel.Visibility = Visibility.Visible;
+            back.Visibility = Visibility.Collapsed;
+            prev.Content = "上一步";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "计算";
+            next.Visibility = Visibility.Visible;
+            CurrentState = MaxState - 1;
         }
     }
 }
