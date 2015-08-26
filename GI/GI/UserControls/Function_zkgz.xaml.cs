@@ -191,7 +191,6 @@ namespace GI.UserControls
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            Task_zkgz = null;
             loadingBar.Hide();
             cancel.Visibility = Visibility.Visible;
             back.Visibility = Visibility.Collapsed;
