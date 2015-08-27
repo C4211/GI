@@ -93,8 +93,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Functions\ZLSJCL\ContinueExpand.cs" />
     <Compile Include="Functions\ZLSJCL\Expand.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\MatchingFilter.cs" />
+    <Compile Include="Functions\ZLSJCL\Filter\RegularizationFilter.cs" />
+    <Compile Include="Functions\ZLSJCL\Filter\SmoothCompensationFilter.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\WienerFilter.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FLYBHF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FXYF.cs" />
