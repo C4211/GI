@@ -88,14 +88,14 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="网格数据单位："/>
                 <RadioButton FontSize="14" 
-                    x:Name="choice1"
+                    x:Name="choice0"
                     Grid.Row="1" Grid.Column="1" Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="度（°）" 
                     GroupName="xzlb" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
-                    x:Name="choice2"
+                    x:Name="choice1"
                     Grid.Row="1" Grid.Column="2" Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
@@ -106,7 +106,8 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="向上延拓高度："/>
                 <Tools:SelectUnitBox
-                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Width="220" HorizontalAlignment="Left" Margin="10">
+                    x:Name="arg0" PreviewTextInput="arg0_PreviewTextInput"
+                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Width="220" HorizontalAlignment="Left" Margin="10" Value="0">
                     <ComboBoxItem Tag="1">km</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">m</ComboBoxItem>
                 </Tools:SelectUnitBox>
