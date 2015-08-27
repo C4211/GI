@@ -1,5 +1,4 @@
-﻿using GI.Tools;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -8,15 +7,15 @@ using System.Windows;
 
 namespace GI.Functions
 {
-    class Expand
+    class RegularizationFilter
     {
         #region 属性 各种路径
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"Expand_F.exe";
+        public static string exePath = @"RegularizationFilter_F.exe";
         /// <summary>
-        /// parameter.inp临时文件路径
+        /// parameters.inp临时文件路径
         /// </summary>
         public static string tcPath = @"parameters.inp";
         /// <summary>
@@ -34,30 +33,21 @@ namespace GI.Functions
         #endregion
 
         /// <summary>
-        /// 校验输入文件
+        /// 正则化滤波
         /// </summary>
         /// <param name="input">输入文件路径</param>
-        /// <returns>文件存在且合法:new int[]{Nx_input, Ny_input, Nx_output, Ny_output}</returns>
-        public static int[] Init(string input)
+        /// <param name="choice">低通滤波=0 高通滤波=1 带通滤波=2</param>
+        /// <returns></returns>
+        public static Task<string> Start(string input, double a1, double b1, double f01, double a2, double b2, double f02, int choice)
         {
-            if (!File.Exists(input))
-                throw new Exception("输入文件不存在！");
-            // 输入文件存入临时文件夹
+            // 输入文件全部存入临时文件夹
             File.Copy(input, inPath, true);
-            int[] data = FileNameFilter.CheckGRDFileFormat(inPath);
-            if (data == null)
-                throw new Exception("输入文件不是GRD数据格式！");
-            return data;
-        }
-
-        public static Task<string> Start(int Nx_output, int Ny_output)
-        {
-            //如果输出文件不存在则自动创建输出文件
+            // 如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
-            // 构造parameter.inp内容
-            string tc = string.Format("{0}\n{1}\n{2} {3}", inPath, outPath, Nx_output, Ny_output);
-            // 写入parameter.inp
+            // 构造parameters.inp内容
+            string tc = String.Format("{0}\n{1}\n{2} {3} {4}\n{5} {6} {7}\n{8}", inPath, outPath, a1, b1, f01, a2, b2, f02, choice);
+            // 写入parameters.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {
                 writer.Write(tc);
