@@ -40,14 +40,16 @@ namespace GI.Tools
         private void PropertyChanged()
         {
             double tmp;
-            if (Value == string.Empty || (!Value.Contains(' ') && double.TryParse(Value, out tmp)))
-            {
-                PreviousValue = Value;
-            }
-            else
+            if (Value.Contains(' ') || (!double.TryParse(Value, out tmp) && Value != string.Empty))
             {
                 Value = PreviousValue;
             }
+            else
+            {
+                PreviousValue = Value;
+            }
         }
+
+        
     }
 }

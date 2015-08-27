@@ -117,7 +117,7 @@ namespace GI.UserControls
                 Msg("输入文件路径不存在！");
             else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
                 Msg("输入文件不是GRD数据格式！");
-            else if (!double.TryParse(arg0.Text, out _arg0))
+            else if (!double.TryParse(arg0.Value, out _arg0) || _arg0 < 0)
                 Msg("延拓高度不合法！");
             else
             {
@@ -166,12 +166,6 @@ namespace GI.UserControls
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
-        }
-
-        private void arg0_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            double tmp;
-            e.Handled = !double.TryParse(e.Text, out tmp) && tmp >= 0;
         }
     }
 }

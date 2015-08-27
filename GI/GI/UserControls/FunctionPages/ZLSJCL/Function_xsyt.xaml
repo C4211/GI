@@ -106,7 +106,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="向上延拓高度："/>
                 <Tools:SelectUnitBox
-                    x:Name="arg0" PreviewTextInput="arg0_PreviewTextInput"
+                    x:Name="arg0"
                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Width="220" HorizontalAlignment="Left" Margin="10" Value="0">
                     <ComboBoxItem Tag="1">km</ComboBoxItem>
                     <ComboBoxItem Tag="0.001">m</ComboBoxItem>
