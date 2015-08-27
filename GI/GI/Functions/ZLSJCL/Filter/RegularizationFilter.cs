@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace GI.Functions
 {
-    class MatchingFilter
+    class RegularizationFilter
     {
         #region 属性 各种路径
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"MatchingFilter_F.exe";
+        public static string exePath = @"RegularizationFilter_F.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>
@@ -33,15 +33,12 @@ namespace GI.Functions
         #endregion
 
         /// <summary>
-        /// 匹配滤波
+        /// 正则化滤波
         /// </summary>
         /// <param name="input">输入文件路径</param>
-        /// <param name="arg0">深源埋深</param>
-        /// <param name="arg1">浅源埋深</param>
-        /// <param name="arg2">纵轴截距</param>
-        /// <param name="choice">区域场=0 局域场=1 </param>
+        /// <param name="choice">低通滤波=0 高通滤波=1 带通滤波=2</param>
         /// <returns></returns>
-        public static Task<string> Start(string input, double arg0, double arg1, double arg2, int choice)
+        public static Task<string> Start(string input, double a1, double b1, double f01, double a2, double b2, double f02, int choice)
         {
             //判断传入文件是否存在
             if (!File.Exists(input))
@@ -49,11 +46,10 @@ namespace GI.Functions
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
-            ////如果临时文件夹不存在则自动创建临时文件夹
             // 输入文件全部存入临时文件夹
             File.Copy(input, inPath, true);
             // 构造parameters.inp内容
-            string tc = String.Format("{0}\n{1}\n{2} {3} {4} {5}", inPath, outPath, arg0, arg1, arg2, choice);
+            string tc = String.Format("{0}\n{1}\n{2} {3} {4}\n{5} {6} {7}\n{8}", inPath, outPath, a1, b1, f01, a2, b2, f02, choice);
             // 写入parameters.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {

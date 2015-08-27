@@ -187,7 +187,7 @@ namespace GI.UserControls
 
         private void N_output_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex re = new Regex("[^0-9.-]+");
+            Regex re = new Regex("[^0-9]+");
             e.Handled = re.IsMatch(e.Text);
         }
 
