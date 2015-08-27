@@ -1,6 +1,8 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,13 +60,20 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                //计算
+                HidePrevAndCancel();
+                DoPSD();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //停止计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    PSD.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -100,6 +109,63 @@ namespace GI.UserControls
                 prev.Visibility = Visibility.Visible;
                 cancel.Visibility = Visibility.Visible;
             });
+        }
+
+        private async void DoPSD()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string path1 = inputPath1.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
+            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                Msg("输入文件类型不正确！");
+            else if (!File.Exists(path1))
+                Msg("输入文件路径不存在！");
+            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                Msg("输入文件不是GRD数据格式！");
+            else
+            {
+                try
+                {
+                    task = PSD.Start(path1);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(PSD.outPath, outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Msg(e.Message);
+                }
+                finally
+                {
+                    task = null;
+                }
+            }
+            loadingBar.Hide();
+            ShowPrevAndCancel();
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+            });
+        }
+
+        private Task<string> task = null;
+
+        private void Msg(string msg)
+        {
+            Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
     }
 }

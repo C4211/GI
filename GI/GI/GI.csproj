@@ -100,6 +100,7 @@
     <Compile Include="Functions\ZLSJCL\Filter\RegularizationFilter.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\SmoothCompensationFilter.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\WienerFilter.cs" />
+    <Compile Include="Functions\ZLSJCL\PSD.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FLYBHF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FXYF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />
