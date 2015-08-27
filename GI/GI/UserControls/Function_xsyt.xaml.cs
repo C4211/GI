@@ -27,7 +27,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "向上延拓";
-            this.titleEn = "Upward Continuation";
+            this.titleEn = "Continue Expand";
         }
 
         /// <summary>

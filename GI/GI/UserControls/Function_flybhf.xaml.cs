@@ -28,7 +28,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "傅里叶变换法";
-            this.titleEn = "Fourier Transform Method";
+            this.titleEn = "TC FFT";
         }
         /// <summary>
         /// 0 : 输入文件

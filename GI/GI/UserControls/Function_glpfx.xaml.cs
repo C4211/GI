@@ -26,7 +26,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "功率谱分析";
-            this.titleEn = "Power Spectrumanalysis";
+            this.titleEn = "Power Spectrum Analysis";
         }
         /// <summary>
         /// 0 : 输入文件

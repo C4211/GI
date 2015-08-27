@@ -28,7 +28,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "方形域法";
-            this.titleEn = "Square Domain Method";
+            this.titleEn = "TC";
         }
         /// <summary>
         /// 0 : 输入文件

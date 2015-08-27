@@ -88,6 +88,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="深源埋深："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg0"
                     Grid.Row="1" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -97,6 +98,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="浅源埋深："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg1"
                     Grid.Row="2" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -106,6 +108,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="纵轴截距："/>
                 <Tools:SelectUnitBox
+                    x:Name="arg2"
                     Grid.Row="3" Grid.Column="1" Margin="10">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -129,14 +132,14 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="14" 
-                    x:Name="choice1"
+                    x:Name="choice0"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="区域场" 
                     GroupName="scxx" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
-                    x:Name="choice2"
+                    x:Name="choice1"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 

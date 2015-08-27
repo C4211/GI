@@ -28,7 +28,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "高斯积分法";
-            this.titleEn = "Gauss Integral Method";
+            this.titleEn = "TC Gauss";
         }
         /// <summary>
         /// 0 : 输入文件

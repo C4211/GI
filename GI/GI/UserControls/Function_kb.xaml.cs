@@ -29,7 +29,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "扩边";
-            this.titleEn = "Edge Expansion";
+            this.titleEn = "Expand";
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "维纳滤波";
-            this.titleEn = "Wiener Filtering";
+            this.titleEn = "Wiener Filter";
         }
 
         /// <summary>

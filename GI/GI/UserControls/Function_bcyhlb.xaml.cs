@@ -27,7 +27,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "补偿圆滑滤波";
-            this.titleEn = "Compensated Smooth Filtering";
+            this.titleEn = "Sleek Compensation Filter";
         }
 
         /// <summary>

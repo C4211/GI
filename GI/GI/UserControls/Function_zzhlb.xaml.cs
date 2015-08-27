@@ -27,7 +27,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "正则化滤波";
-            this.titleEn = "Regularized Filtering";
+            this.titleEn = "Regularization Filter";
         }
 
         /// <summary>
