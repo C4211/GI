@@ -11,10 +11,10 @@
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Logo.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Close.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.ResourceManager.Files.Icons.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="ViewModel/GI.Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/GI.Styles.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Head.Min.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Icons/GI.Window.Body.Ico_.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="ViewModel/GI.Body.Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/GI.Body.Styles.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Body.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Head.Storyboards.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Res/Storyboard/GI.Window.Storyboards.xaml"></ResourceDictionary>

@@ -109,118 +109,118 @@
     </Compile>
     <Compile Include="Tools\ResourceManagerTreeNode.cs" />
     <Compile Include="Tools\SelectUnitBox.cs" />
-    <Compile Include="UserControls\BodyTitle.xaml.cs">
+    <Compile Include="UserControls\Others\BodyTitle.xaml.cs">
       <DependentUpon>BodyTitle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionGroup.xaml.cs">
+    <Compile Include="UserControls\Others\FunctionGroup.xaml.cs">
       <DependentUpon>FunctionGroup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_dztcsjs.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\DZTCSJS\FunctionPage_dztcsjs.xaml.cs">
       <DependentUpon>FunctionPage_dztcsjs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_zlsjjs.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJJS\FunctionPage_zlsjjs.xaml.cs">
       <DependentUpon>FunctionPage_zlsjjs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_zlzfyjs.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLZFYJS\FunctionPage_zlzfyjs.xaml.cs">
       <DependentUpon>FunctionPage_zlzfyjs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_lb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\LB\FunctionPage_lb.xaml.cs">
       <DependentUpon>FunctionPage_lb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_ds.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\FunctionPage_ds.xaml.cs">
       <DependentUpon>FunctionPage_ds.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_zlsjcl.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\FunctionPage_zlsjcl.xaml.cs">
       <DependentUpon>FunctionPage_zlsjcl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_home.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\FunctionPage_home.xaml.cs">
       <DependentUpon>FunctionPage_home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_dxgz.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\FunctionPage_dxgz.xaml.cs">
       <DependentUpon>FunctionPage_dxgz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPage_zlycgz.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\FunctionPage_zlycgz.xaml.cs">
       <DependentUpon>FunctionPage_zlycgz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_bcyhlb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\LB\Function_bcyhlb.xaml.cs">
       <DependentUpon>Function_bcyhlb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_cxdsply.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\Function_cxdsply.xaml.cs">
       <DependentUpon>Function_cxdsply.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_cxdskjy.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\Function_cxdskjy.xaml.cs">
       <DependentUpon>Function_cxdskjy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_swjm.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJJS\Function_swjm.xaml.cs">
       <DependentUpon>Function_swjm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_fxds.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\Function_fxds.xaml.cs">
       <DependentUpon>Function_fxds.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_glpfx.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\Function_glpfx.xaml.cs">
       <DependentUpon>Function_glpfx.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_ewjm.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJJS\Function_ewjm.xaml.cs">
       <DependentUpon>Function_ewjm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_dztzlzltdjs.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\DZTCSJS\Function_dztzlzltdjs.xaml.cs">
       <DependentUpon>Function_dztzlzltdjs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_dztcsfy.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\DZTCSJS\Function_dztcsfy.xaml.cs">
       <DependentUpon>Function_dztcsfy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_grdht.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\GRDHT\Function_grdht.xaml.cs">
       <DependentUpon>Function_grdht.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_zljmfy.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLZFYJS\Function_zljmfy.xaml.cs">
       <DependentUpon>Function_zljmfy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_xsyt.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\Function_xsyt.xaml.cs">
       <DependentUpon>Function_xsyt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_jmzlzy.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLZFYJS\Function_jmzlzy.xaml.cs">
       <DependentUpon>Function_jmzlzy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_zzhlb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\LB\Function_zzhlb.xaml.cs">
       <DependentUpon>Function_zzhlb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_pplb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\LB\Function_pplb.xaml.cs">
       <DependentUpon>Function_pplb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_wnlb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\LB\Function_wnlb.xaml.cs">
       <DependentUpon>Function_wnlb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_kb.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLSJCL\Function_kb.xaml.cs">
       <DependentUpon>Function_kb.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_flybhf.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_flybhf.xaml.cs">
       <DependentUpon>Function_flybhf.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_fxyf.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_fxyf.xaml.cs">
       <DependentUpon>Function_fxyf.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_gsjff.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_gsjff.xaml.cs">
       <DependentUpon>Function_gsjff.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_zkgz.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\Function_zkgz.xaml.cs">
       <DependentUpon>Function_zkgz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Function_bggz.xaml.cs">
+    <Compile Include="UserControls\FunctionPages\ZLYCGZ\Function_bggz.xaml.cs">
       <DependentUpon>Function_bggz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LoadingBar.xaml.cs">
+    <Compile Include="UserControls\Others\LoadingBar.xaml.cs">
       <DependentUpon>LoadingBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ResourceManager.xaml.cs">
+    <Compile Include="UserControls\Others\ResourceManager.xaml.cs">
       <DependentUpon>ResourceManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ResourceManger_Refreshpath.xaml.cs">
+    <Compile Include="UserControls\Others\ResourceManger_Refreshpath.xaml.cs">
       <DependentUpon>ResourceManger_Refreshpath.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ResourceManger_Addpath.xaml.cs">
+    <Compile Include="UserControls\Others\ResourceManger_Addpath.xaml.cs">
       <DependentUpon>ResourceManger_Addpath.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SelectFileControl.xaml.cs">
+    <Compile Include="UserControls\Others\SelectFileControl.xaml.cs">
       <DependentUpon>SelectFileControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -301,163 +301,163 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\BodyTitle.xaml">
+    <Page Include="UserControls\Others\BodyTitle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\FunctionGroup.xaml">
+    <Page Include="UserControls\Others\FunctionGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\FunctionPage_dztcsjs.xaml">
+    <Page Include="UserControls\FunctionPages\DZTCSJS\FunctionPage_dztcsjs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_zlsjjs.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJJS\FunctionPage_zlsjjs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_zlzfyjs.xaml">
+    <Page Include="UserControls\FunctionPages\ZLZFYJS\FunctionPage_zlzfyjs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_lb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\LB\FunctionPage_lb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_ds.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\DS\FunctionPage_ds.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_zlsjcl.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\FunctionPage_zlsjcl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_home.xaml">
+    <Page Include="UserControls\FunctionPages\FunctionPage_home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\FunctionPage_dxgz.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\FunctionPage_dxgz.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPage_zlycgz.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\FunctionPage_zlycgz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Function_bcyhlb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\LB\Function_bcyhlb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_cxdsply.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\DS\Function_cxdsply.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_cxdskjy.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\DS\Function_cxdskjy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_swjm.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJJS\Function_swjm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_fxds.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\DS\Function_fxds.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_glpfx.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\Function_glpfx.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_ewjm.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJJS\Function_ewjm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_dztzlzltdjs.xaml">
+    <Page Include="UserControls\FunctionPages\DZTCSJS\Function_dztzlzltdjs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_dztcsfy.xaml">
+    <Page Include="UserControls\FunctionPages\DZTCSJS\Function_dztcsfy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_grdht.xaml">
+    <Page Include="UserControls\FunctionPages\GRDHT\Function_grdht.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_zljmfy.xaml">
+    <Page Include="UserControls\FunctionPages\ZLZFYJS\Function_zljmfy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_xsyt.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\Function_xsyt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_jmzlzy.xaml">
+    <Page Include="UserControls\FunctionPages\ZLZFYJS\Function_jmzlzy.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_zzhlb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\LB\Function_zzhlb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_pplb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\LB\Function_pplb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_wnlb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\LB\Function_wnlb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_kb.xaml">
+    <Page Include="UserControls\FunctionPages\ZLSJCL\Function_kb.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_flybhf.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_flybhf.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_fxyf.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_fxyf.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_gsjff.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\DXGZ\Function_gsjff.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_zkgz.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\Function_zkgz.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\Function_bggz.xaml">
+    <Page Include="UserControls\FunctionPages\ZLYCGZ\Function_bggz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\LoadingBar.xaml">
+    <Page Include="UserControls\Others\LoadingBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ResourceManager.xaml">
+    <Page Include="UserControls\Others\ResourceManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ResourceManger_Refreshpath.xaml">
+    <Page Include="UserControls\Others\ResourceManger_Refreshpath.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\ResourceManger_Addpath.xaml">
+    <Page Include="UserControls\Others\ResourceManger_Addpath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\SelectFileControl.xaml">
+    <Page Include="UserControls\Others\SelectFileControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\GI.Body.Styles.xaml">
+    <Page Include="Styles\GI.Body.Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModel\GI.Styles.xaml">
+    <Page Include="Styles\GI.Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -515,6 +515,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
