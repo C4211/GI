@@ -161,7 +161,11 @@ namespace GI.UserControls
                         Task_zkgz = null;
                         Task_zkgz = FreeAirCorrection.Start(inPath, choice);
                         await Task_zkgz;
-                        if (!IsCanceled)
+                        if (Task_zkgz.Result!=null)
+                        {
+                            Msg(Task_zkgz.Result);
+                        }
+                        else if (!IsCanceled)
                         {
                             Completed();
                             return;
