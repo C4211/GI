@@ -43,15 +43,11 @@ namespace GI.Functions
         /// <returns></returns>
         public static Task<string> Start(string input, double arg0, double arg1, double arg2, int choice)
         {
-            //判断传入文件是否存在
-            if (!File.Exists(input))
-                throw new Exception("输入文件不存在！");
+            // 输入文件全部存入临时文件夹
+            File.Copy(input, inPath, true);
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
-            ////如果临时文件夹不存在则自动创建临时文件夹
-            // 输入文件全部存入临时文件夹
-            File.Copy(input, inPath, true);
             // 构造parameters.inp内容
             string tc = String.Format("{0}\n{1}\n{2} {3} {4} {5}", inPath, outPath, arg0, arg1, arg2, choice);
             // 写入parameters.inp

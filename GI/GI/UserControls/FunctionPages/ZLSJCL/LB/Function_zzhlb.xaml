@@ -90,35 +90,35 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="α1："/>
                 <TextBox
-                    x:Name="a1"
+                    x:Name="a1" PreviewTextInput="param_PreviewTextInput"
                     Grid.Row="1" Grid.Column="1" Height="30" Margin="10" Text="2.8"/>
                 <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="β1："/>
                 <TextBox
-                    x:Name="b1"
+                    x:Name="b1" PreviewTextInput="param_PreviewTextInput"
                     Grid.Row="2" Grid.Column="1" Height="30" Margin="10" Text="3"/>
                 <TextBlock
                         Grid.Row="3" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="f01："/>
                 <TextBox 
-                    x:Name="f01"
+                    x:Name="f01" PreviewTextInput="param_PreviewTextInput"
                     Grid.Row="3" Grid.Column="1" Height="30" Margin="10" Text="0"/>
                 <TextBlock
                         Grid.Row="1" Grid.Column="2" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="α2："/>
                 <TextBox 
-                    x:Name="a2"
+                    x:Name="a2" PreviewTextInput="param_PreviewTextInput"
                     Grid.Row="1" Grid.Column="3" Height="30" Margin="10" Text="2.8"/>
                 <TextBlock
                         Grid.Row="2" Grid.Column="2" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="β2："/>
                 <TextBox 
-                    x:Name="b2"
+                    x:Name="b2" PreviewTextInput="param_PreviewTextInput"
                     Grid.Row="2" Grid.Column="3" Height="30" Margin="10" Text="3"/>
                 <TextBlock
                         Grid.Row="3" Grid.Column="2" 

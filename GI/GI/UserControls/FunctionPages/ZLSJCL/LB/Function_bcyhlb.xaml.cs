@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +28,7 @@ namespace GI.UserControls
         {
             InitializeComponent();
             this.titleCn = "补偿圆滑滤波";
-            this.titleEn = "Sleek Compensation Filter";
+            this.titleEn = "Smooth Compensation Filter";
         }
 
         /// <summary>
@@ -60,14 +61,20 @@ namespace GI.UserControls
             {
                 CurrentState = MaxState;
                 IsCanceled = false;
-                next.Content = "取消";
-                //开始计算
+                HidePrevAndCancel();
+                DoSmoothCompensationFilter();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    SmoothCompensationFilter.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -105,24 +112,73 @@ namespace GI.UserControls
             });
         }
 
+        private async void DoSmoothCompensationFilter()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string path1 = inputPath1.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
+            double _coefficient;
+            int _number;
+            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                Msg("输入文件类型不正确！");
+            else if (!File.Exists(path1))
+                Msg("输入文件路径不存在！");
+            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                Msg("输入文件不是GRD数据格式！");
+            else if (!double.TryParse(coefficient.Text, out _coefficient))
+                Msg("补偿系数非法！");
+            else if (!int.TryParse(number.Text, out _number))
+                Msg("浅源埋深非法！");
+            else
+            {
+                try
+                {
+                    task = SmoothCompensationFilter.Start(path1, _coefficient, _number);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(SmoothCompensationFilter.outPath, outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Msg(e.Message);
+                }
+                finally
+                {
+                    task = null;
+                }
+            }
+            loadingBar.Hide();
+            ShowPrevAndCancel();
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+            });
+        }
+
+        private Task<string> task = null;
+
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
+
+        private void param_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            double tmp;
+            e.Handled = !double.TryParse(e.Text, out tmp);
+        }
     }
 }

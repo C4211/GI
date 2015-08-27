@@ -183,7 +183,7 @@ namespace GI.UserControls
         private void param_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             double tmp;
-            e.Handled = double.TryParse(e.Text, out tmp);
+            e.Handled = !double.TryParse(e.Text, out tmp);
         }
     }
 }
