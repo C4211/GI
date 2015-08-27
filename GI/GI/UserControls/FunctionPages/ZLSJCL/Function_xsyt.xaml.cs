@@ -1,20 +1,11 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GI.UserControls
 {
@@ -61,13 +52,20 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                //开始计算
+                HidePrevAndCancel();
+                DoContinueExpand();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    ContinueExpand.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -76,7 +74,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -105,24 +103,75 @@ namespace GI.UserControls
             });
         }
 
+        private async void DoContinueExpand()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string path1 = inputPath1.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
+            double _arg0;
+            int choice = 0;
+            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                Msg("输入文件类型不正确！");
+            else if (!File.Exists(path1))
+                Msg("输入文件路径不存在！");
+            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                Msg("输入文件不是GRD数据格式！");
+            else if (!double.TryParse(arg0.Text, out _arg0))
+                Msg("延拓高度不合法！");
+            else
+            {
+                try
+                {
+                    if (choice0.IsChecked == true)
+                        choice = 0;
+                    else if (choice1.IsChecked == true)
+                        choice = 1;
+                    task = ContinueExpand.Start(path1, _arg0, choice);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(ContinueExpand.outPath, outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Msg(e.Message);
+                }
+                finally
+                {
+                    task = null;
+                }
+            }
+            loadingBar.Hide();
+            ShowPrevAndCancel();
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+            });
+        }
+
+        private Task<string> task = null;
+
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
+
+        private void arg0_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            double tmp;
+            e.Handled = !double.TryParse(e.Text, out tmp) && tmp >= 0;
+        }
     }
 }
