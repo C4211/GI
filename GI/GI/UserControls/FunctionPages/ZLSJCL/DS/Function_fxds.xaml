@@ -88,6 +88,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="方向（角度）："/>
                 <Tools:SelectUnitBox
+                    x:Name="angle"
                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="220" HorizontalAlignment="Left" Margin="10">
                     <ComboBoxItem Tag="1">度（°）</ComboBoxItem>
                     <ComboBoxItem Tag="57.2958">弧度(rad)</ComboBoxItem>

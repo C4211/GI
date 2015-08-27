@@ -94,6 +94,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Functions\ZLSJCL\ContinueExpand.cs" />
+    <Compile Include="Functions\ZLSJCL\Derivatives\DirectionalDerivative.cs" />
     <Compile Include="Functions\ZLSJCL\Expand.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\MatchingFilter.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\RegularizationFilter.cs" />
