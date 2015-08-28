@@ -130,12 +130,24 @@
         </Setter>
     </Style>
     <Style x:Key="GI.Window.Head.Min.Style" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Font.Head}"/>
         <Setter Property="Focusable" Value="False"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Background="Transparent">
-                        <Rectangle x:Name="windowHeadMin" Width="11" Height="11" Fill="{DynamicResource GI.Window.Head.Min}" RenderTransformOrigin="0.5,0.5" >
+                        <Rectangle x:Name="windowHeadMin" Width="11" Height="11" RenderTransformOrigin="0.5,0.5" >
+                            <Rectangle.Fill>
+                                <DrawingBrush Stretch="Uniform">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" Geometry="F1 M -6.35783e-007,5L 11,5L 11,6L -6.35783e-007,6L -6.35783e-007,5 Z "/>
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
                             <Rectangle.RenderTransform>
                                 <TransformGroup>
                                     <TranslateTransform Y="0" X="0"/>

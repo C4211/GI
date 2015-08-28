@@ -153,5 +153,33 @@ namespace GI.Tools
             Storyboard sb = (this.FindResource("GI.Window.Border.Default") as Storyboard).Clone();
             content.BeginStoryboard(sb);
         }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
+                content.BeginStoryboard(sb);
+            }
+        }
+
+        private void Head_Min_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+            sb.Completed += delegate { this.WindowState = WindowState.Minimized; };
+            content.BeginStoryboard(sb);
+        }
+
+        public void Min()
+        {
+            Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
+            sb.Completed += delegate { this.WindowState = WindowState.Minimized; };
+            content.BeginStoryboard(sb);
+        }
+
+        public void Normal()
+        {
+            this.WindowState = WindowState.Normal;
+        }
     }
 }
