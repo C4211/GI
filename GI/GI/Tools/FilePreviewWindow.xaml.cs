@@ -81,6 +81,14 @@ namespace GI.Tools
 
         public static void PreviwShow(Window owner, FileSystemInfo fileInfo)
         {
+            foreach (FilePreviewWindow w in Application.Current.MainWindow.OwnedWindows)
+            {
+                if (w.fileName.ToolTip.ToString() == fileInfo.FullName)
+                {
+                    w.Activate();
+                    return;
+                }
+            }
             Application.Current.MainWindow.Cursor = Cursors.Wait;
             if (!(fileInfo.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase)
                   || fileInfo.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase)
