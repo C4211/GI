@@ -49,6 +49,8 @@ namespace GI.UserControls
                 catch (Exception ex)
                 {
                     Msg(ex.Message);
+                    content.IsEnabled = true;
+                    buttons.IsEnabled = true;
                     return;
                 }
                 CurrentState = 1;

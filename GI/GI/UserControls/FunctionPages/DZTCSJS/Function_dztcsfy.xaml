@@ -42,30 +42,22 @@
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="14"
                     x:Name="choice1"
-                    Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center"
                     Content="反演目标地质体质量" 
                     GroupName="xzfycs" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="重力异常反演目标质心坐标" 
                     GroupName="xzfycs"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice3"
                     Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="重力梯度异常反演目标质心坐标" 
                     GroupName="xzfycs"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice4"
                     Grid.Row="4" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="重力-重力梯度异常联合反演目标质心坐标" 
                     GroupName="xzfycs"></RadioButton>
             </Grid>

@@ -44,29 +44,21 @@
                 <RadioButton FontSize="14"
                     x:Name="choice1"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="球体" 
                     GroupName="xzdztmx" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="垂直圆柱体" 
                     GroupName="xzdztmx"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice3"
                     Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="水平圆柱体" 
                     GroupName="xzdztmx"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice4"
                     Grid.Row="4" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="长方体" 
                     GroupName="xzdztmx"></RadioButton>
             </Grid>
@@ -564,15 +556,12 @@
                 <RadioButton FontSize="14"
                     x:Name="Page4choice1"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+ 
                     Content="重力异常" 
                     GroupName="xzjslx" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="Page4choice2"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="重力梯度异常" 
                     GroupName="xzjslx"></RadioButton>
             </Grid>

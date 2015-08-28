@@ -20,9 +20,9 @@
     <Grid x:Name="content">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}" />
-            <!--<ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>-->
+            <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Visibility="Hidden">
+        <Grid Grid.Column="0" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"></ColumnDefinition>
                 <ColumnDefinition Width="1"></ColumnDefinition>
@@ -65,7 +65,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Visibility="Visible">
+        <Grid Grid.Column="1" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -90,15 +90,11 @@
                 <RadioButton FontSize="14" 
                     x:Name="choice0"
                     Grid.Row="1" Grid.Column="1" Height="30" Margin="10" Width="70" HorizontalAlignment="Left" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="度（°）" 
                     GroupName="xzlb" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
                     x:Name="choice1"
                     Grid.Row="1" Grid.Column="2" Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="公里（km）" 
                     GroupName="xzlb"></RadioButton>
                 <TextBlock

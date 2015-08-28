@@ -148,22 +148,16 @@
                 <RadioButton FontSize="14" 
                     x:Name="choice0"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="低通滤波" 
                     GroupName="xzlb" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
                     x:Name="choice1"
                     Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="高通滤波" 
                     GroupName="xzlb"></RadioButton>
                 <RadioButton FontSize="14"
                     x:Name="choice2"
                     Grid.Row="3" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="带通滤波" 
                     GroupName="xzlb"></RadioButton>
             </Grid>

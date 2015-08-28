@@ -90,15 +90,11 @@
                 <RadioButton FontSize="14" 
                     x:Name="choice1"
                     Grid.Row="1" Grid.Column="1"  Height="30" Margin="10" Width="110" HorizontalAlignment="Left" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="一阶垂向导数" 
                     GroupName="jsxz" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
                     x:Name="choice2"
                     Grid.Row="1" Grid.Column="1" Height="30" Margin="150,10,10,10" Cursor="Hand" Width="110" VerticalContentAlignment="Center" HorizontalAlignment="Left" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="二阶垂向导数" 
                     GroupName="jsxz"></RadioButton>
                 <TextBlock

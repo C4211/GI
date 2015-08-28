@@ -137,15 +137,11 @@
                 <RadioButton FontSize="14" 
                     x:Name="choice0"
                     Grid.Row="1" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="区域场" 
                     GroupName="scxx" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
                     x:Name="choice1"
-                    Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
-                    Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
-                    BorderBrush="{DynamicResource GI.Colors.Body.text}" 
+                    Grid.Row="2" Height="30" Margin="50,10,10,10" Cursor="Hand" VerticalContentAlignment="Center"  
                     Content="局部场" 
                     GroupName="scxx"></RadioButton>
             </Grid>
