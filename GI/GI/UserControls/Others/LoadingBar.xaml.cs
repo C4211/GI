@@ -44,6 +44,7 @@ namespace GI.UserControls
             Dispatcher.Invoke(
                 delegate
                 {
+                    loadingTitle.Text = "";
                     this.Visibility = Visibility.Visible;
                     this.BeginStoryboard(sbshow);
                     sb.Begin();
@@ -111,9 +112,18 @@ namespace GI.UserControls
                 delegate
                 {
                     isHiding = true;
-                    loading.BeginStoryboard(loadinghide);
-                    sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); isHiding = false; };
-                    this.BeginStoryboard(sbhide);
+                    if (loadingTitle.Text == "")
+                    {
+                        sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); isHiding = false; };
+                        this.BeginStoryboard(sbhide);
+                    }
+                    else
+                    {
+                        sbhide.Completed += delegate { this.Visibility = Visibility.Hidden; sb.Stop(); isHiding = false; };
+                        titlehide.Completed += delegate { this.BeginStoryboard(sbhide); };
+                        loadingTitle.BeginStoryboard(titlehide);
+                        loading.BeginStoryboard(loadinghide);
+                    }
                 });
         }
 
