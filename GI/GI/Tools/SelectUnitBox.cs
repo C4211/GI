@@ -28,12 +28,19 @@ namespace GI.Tools
             get { return (string)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
+        public double ComboBoxWidth
+        {
+            get { return (double)GetValue(ComboBoxWidthProperty); }
+            set { SetValue(ComboBoxWidthProperty, value); }
+        }
         #endregion
 
         #region 注册依赖属性
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox),
             new PropertyMetadata("0", new PropertyChangedCallback((d, e) => ((SelectUnitBox)d).PropertyChanged())));
+        public static readonly DependencyProperty ComboBoxWidthProperty =
+            DependencyProperty.Register("ComboBoxWidth", typeof(double), typeof(SelectUnitBox));
         #endregion
 
         private string PreviousValue = "0";

@@ -41,11 +41,23 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (CurrentState == 0)
+            {
+                reset_Pagechoice();
+                if (choice1.IsChecked == true)
+                    Page1choice1.Visibility = Visibility.Visible;
+                else if (choice2.IsChecked == true)
+                    Page1choice2.Visibility = Visibility.Visible;
+                else if (choice3.IsChecked == true)
+                    Page1choice3.Visibility = Visibility.Visible;
+                else if (choice4.IsChecked == true)
+                    Page1choice4.Visibility = Visibility.Visible;
+            }
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
-                CurrentState = 1;
+                CurrentState += 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
@@ -71,12 +83,20 @@ namespace GI.UserControls
             }
         }
 
+        private void reset_Pagechoice()
+        {
+            Page1choice1.Visibility = Visibility.Hidden;
+            Page1choice2.Visibility = Visibility.Hidden;
+            Page1choice3.Visibility = Visibility.Hidden;
+            Page1choice4.Visibility = Visibility.Hidden;
+        }
+
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -109,6 +129,7 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
+
         //private void Button_Click_1(object sender, RoutedEventArgs e)
         //{
         //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();

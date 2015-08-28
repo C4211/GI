@@ -174,7 +174,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="Part_Value" Text="{Binding Value, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Grid x:Name="templateRoot" Grid.Column="2" Width="80" SnapsToDevicePixels="true">
+            <Grid x:Name="templateRoot" Grid.Column="2" Width="{TemplateBinding ComboBoxWidth}" SnapsToDevicePixels="true">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
@@ -198,6 +198,7 @@
     </ControlTemplate>
     <Style TargetType="{x:Type local:SelectUnitBox}">
         <Setter Property="SelectedIndex" Value="0"/>
+        <Setter Property="ComboBoxWidth" Value="80"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"/>
         <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
