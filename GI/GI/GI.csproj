@@ -104,6 +104,7 @@
     <Compile Include="Functions\ZLYCGZ\DXGZ\FLYBHF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\FXYF.cs" />
     <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />
+    <Compile Include="Functions\ZLZFYJS\InterfaceForward.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\FilePreviewWindow.xaml.cs">
       <DependentUpon>FilePreviewWindow.xaml</DependentUpon>
