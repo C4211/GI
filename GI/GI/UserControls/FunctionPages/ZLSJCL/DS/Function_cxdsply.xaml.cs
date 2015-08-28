@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -62,12 +63,21 @@ namespace GI.UserControls
                 IsCanceled = false;
                 next.Content = "取消";
                 //开始计算
+                HidePrevAndCancel();
+                DoVerticalDerivativeFrequency();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
                 //取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    VerticalDerivativeFrequency.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -105,24 +115,70 @@ namespace GI.UserControls
             });
         }
 
+        private async void DoVerticalDerivativeFrequency()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string path1 = inputPath1.filePath.Text;
+            string outPath = outputPath1.filePath.Text;
+            int choice = 0, nunit = 0;
+            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                Msg("输入文件类型不正确！");
+            else if (!File.Exists(path1))
+                Msg("输入文件路径不存在！");
+            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                Msg("输入文件不是GRD数据格式！");
+            else
+            {
+                try
+                {
+                    if (choice1.IsChecked == true)
+                        choice = 1;
+                    else if (choice2.IsChecked == true)
+                        choice = 2;
+                    if (nunit0.IsChecked == true)
+                        nunit = 0;
+                    else if (nunit1.IsChecked == true)
+                        nunit = 1;
+                    task = VerticalDerivativeFrequency.Start(path1, choice, nunit);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        File.Copy(VerticalDerivativeFrequency.outPath, outPath, true);
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算完成");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Msg(e.Message);
+                }
+                finally
+                {
+                    task = null;
+                }
+            }
+            loadingBar.Hide();
+            ShowPrevAndCancel();
+            Dispatcher.Invoke(delegate
+            {
+                CurrentState = MaxState - 1;
+                next.Content = "计算";
+            });
+        }
+
+        private Task<string> task = null;
+
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
     }
 }

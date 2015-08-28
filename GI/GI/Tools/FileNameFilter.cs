@@ -39,7 +39,7 @@ namespace GI.Tools
         /// 检查GRD文件格式
         /// </summary>
         /// <param name="filePath">文件名</param>
-        /// <returns>格式正确返回Nx Ny, 错误返回null</returns>
+        /// <returns>格式正确返回{ Nx_input, Ny_input, Nx_output, Ny_output }, 错误返回null</returns>
         public static int[] CheckGRDFileFormat(string filePath)
         {
             try
@@ -47,6 +47,8 @@ namespace GI.Tools
                 using (var reader = new StreamReader(filePath))
                 {
                     string firstLine = reader.ReadLine();
+                    if (firstLine.Trim() != "DSAA")
+                        return null;
                     string[] strData;
                     int Nx_input = 0, Ny_input = 0;
                     strData = reader.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
