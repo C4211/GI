@@ -95,6 +95,8 @@
     </ApplicationDefinition>
     <Compile Include="Functions\ZLSJCL\ContinueExpand.cs" />
     <Compile Include="Functions\ZLSJCL\Derivatives\DirectionalDerivative.cs" />
+    <Compile Include="Functions\ZLSJCL\Derivatives\VerticalDerivativeFrequency.cs" />
+    <Compile Include="Functions\ZLSJCL\Derivatives\VerticalDerivativeSpace.cs" />
     <Compile Include="Functions\ZLSJCL\Expand.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\MatchingFilter.cs" />
     <Compile Include="Functions\ZLSJCL\Filter\RegularizationFilter.cs" />
