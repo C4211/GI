@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GI.Tools;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -35,16 +36,48 @@ namespace GI.Functions
         #endregion
 
         /// <summary>
+        /// 校验输入文件
+        /// </summary>
+        /// <param name="input">输入文件路径</param>
+        /// <returns>文件存在且合法:{dx, dy}</returns>
+        public static double[] Init(string input)
+        {
+            if (!File.Exists(input))
+                throw new Exception("输入文件不存在！");
+            // 输入文件存入临时文件夹
+            File.Copy(input, inPath, true);
+            using (var reader = new StreamReader(inPath))
+            {
+                string firstLine = reader.ReadLine();
+                if (firstLine.Trim() != "DSAA")
+                    throw new Exception("打开文件错误，不是GRD数据格式！\n请检查数据文件格式！");
+                string[] strData, strData1, strData2;
+                int Nx_input = 0, Ny_input = 0;
+                double xmin, xmax, ymin, ymax;
+                strData = reader.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                strData1 = reader.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                strData2 = reader.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (!int.TryParse(strData[0], out Nx_input) || !int.TryParse(strData[1], out Ny_input))
+                    throw new Exception("GRD数据第2行参数格式错误！");
+                if (!double.TryParse(strData1[0], out xmin) || !double.TryParse(strData1[1], out xmax))
+                    throw new Exception("GRD数据第3行参数格式错误！");
+                if (!double.TryParse(strData2[0], out ymin) || !double.TryParse(strData2[1], out ymax))
+                    throw new Exception("GRD数据第3行参数格式错误！");
+                double dx = (xmax - xmin) / (Nx_input - 1);
+                double dy = (ymax - ymin) / (Ny_input - 1);
+                return new double[] { dx, dy };
+            }
+        }
+
+        /// <summary>
         /// 空间域垂向导数
         /// </summary>
         /// <param name="input">输入文件路径</param>
         /// <param name="order">一阶导数=1 二阶导数=2</param>
         /// <param name="choice">算法选择 Healck=0 ElkinsI=1 ElkinsII=2 ElkinsIII=3 Rosenbach=4</param>
         /// <returns></returns>
-        public static Task<string> Start(string input, int order, int choice)
+        public static Task<string> Start(int order, int choice)
         {
-            // 输入文件全部存入临时文件夹
-            File.Copy(input, inPath, true);
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
