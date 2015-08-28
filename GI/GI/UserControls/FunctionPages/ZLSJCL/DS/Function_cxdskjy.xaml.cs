@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +39,7 @@ namespace GI.UserControls
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
         private bool IsCanceled = false;
+        private double[] data;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -45,6 +47,20 @@ namespace GI.UserControls
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
+                string inPath = inputPath1.filePath.Text;
+                try
+                {
+                    data = VerticalDerivativeSpace.Init(inPath);
+                    dx.Text = data[0].ToString();
+                    dy.Text = data[1].ToString();
+                }
+                catch (Exception ex)
+                {
+                    content.IsEnabled = true;
+                    buttons.IsEnabled = true;
+                    Msg(ex.Message);
+                    return;
+                }
                 CurrentState += 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -62,12 +78,21 @@ namespace GI.UserControls
                 IsCanceled = false;
                 next.Content = "取消";
                 //开始计算
+                HidePrevAndCancel();
+                DoVerticalDerivativeSpace();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
                 //取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    VerticalDerivativeSpace.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
         }
 
@@ -76,7 +101,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -105,24 +130,66 @@ namespace GI.UserControls
             });
         }
 
+        private async void DoVerticalDerivativeSpace()
+        {
+            HidePrevAndCancel();
+            loadingBar.Show();
+            string outPath = outputPath1.filePath.Text;
+            int order = 1, choice = 0;
+            try
+            {
+                if (order1.IsChecked == true)
+                    order = 1;
+                else if (order2.IsChecked == true)
+                    order = 2;
+                if (choice0.IsChecked == true)
+                    choice = 0;
+                else if (choice1.IsChecked == true)
+                    choice = 1;
+                else if (choice2.IsChecked == true)
+                    choice = 2;
+                else if (choice3.IsChecked == true)
+                    choice = 3;
+                else if (choice4.IsChecked == true)
+                    choice = 4;
+                task = VerticalDerivativeSpace.Start(order, choice);
+                await task;
+                if (IsCanceled)
+                {
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                    Msg("计算取消!");
+                }
+                else
+                {
+                    File.Copy(VerticalDerivativeSpace.outPath, outPath, true);
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                    Msg("计算完成");
+                }
+            }
+            catch (Exception e)
+            {
+                Msg(e.Message);
+            }
+            finally
+            {
+                task = null;
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Dispatcher.Invoke(delegate
+                {
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
+            }
+        }
+
+        private Task<string> task = null;
+
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
     }
 }
