@@ -39,7 +39,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="14"
                     x:Name="choice1"
@@ -130,7 +130,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="半径："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -140,7 +140,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="密度："/>
                     <Tools:SelectUnitBox  Value="200"
-                    Grid.Row="3" Grid.Column="1" Margin="10" Width="150" HorizontalAlignment="Left">
+                    Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
                         <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
@@ -206,7 +206,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="顶面深度："/>
                     <Tools:SelectUnitBox Value="30"
-                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2" Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -216,7 +216,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="半径："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2" Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -226,7 +226,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="高度："/>
                     <Tools:SelectUnitBox Value="60"
-                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2" Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -236,7 +236,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="密度："/>
                     <Tools:SelectUnitBox  Value="200"
-                    Grid.Row="5" Grid.Column="1" Margin="10" Width="150" HorizontalAlignment="Left">
+                    Grid.Row="5" Grid.Column="1" Margin="10" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
                         <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
@@ -302,7 +302,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="顶面深度："/>
                     <Tools:SelectUnitBox Value="50"
-                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2" Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -312,7 +312,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="半径："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2"  Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -322,7 +322,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="长度："/>
                     <Tools:SelectUnitBox Value="60"
-                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" Grid.ColumnSpan="2" Width="270" HorizontalAlignment="Left"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -332,7 +332,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="密度："/>
                     <Tools:SelectUnitBox  Value="200"
-                    Grid.Row="5" Grid.Column="1" Margin="10" Width="150" HorizontalAlignment="Left">
+                    Grid.Row="5" Grid.Column="1" Margin="10" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
                         <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
@@ -506,7 +506,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="X方向观测面边长："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -516,7 +516,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="X方向观测面分辨率："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -526,7 +526,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="Y方向观测面边长："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -536,7 +536,7 @@
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="Y方向观测面分辨率："/>
                     <Tools:SelectUnitBox Value="10"
-                    Grid.Row="5" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="120"
+                    Grid.Row="5" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>

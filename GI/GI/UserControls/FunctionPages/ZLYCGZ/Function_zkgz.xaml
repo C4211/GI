@@ -82,7 +82,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="14" 
                     x:Name="choice1"

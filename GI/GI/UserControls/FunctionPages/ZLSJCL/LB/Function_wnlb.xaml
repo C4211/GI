@@ -81,7 +81,7 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="135"></ColumnDefinition>
-                    <ColumnDefinition Width="320"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock 
                         Grid.Row="1" Grid.Column="0" 
@@ -89,7 +89,8 @@
                         Text="深源埋深："/>
                 <Tools:SelectUnitBox
                     x:Name="arg0"
-                    Grid.Row="1" Grid.Column="1" Margin="10">
+                    Grid.Row="1" Grid.Column="1" Margin="10" Width="270" HorizontalAlignment="Left"
+                    ComboBoxWidth="50">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -99,7 +100,8 @@
                         Text="浅源埋深："/>
                 <Tools:SelectUnitBox
                     x:Name="arg1"
-                    Grid.Row="3" Grid.Column="1" Margin="10">
+                    Grid.Row="3" Grid.Column="1" Margin="10" Width="270" HorizontalAlignment="Left"
+                    ComboBoxWidth="50">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -109,7 +111,8 @@
                         Text="深源截距："/>
                 <Tools:SelectUnitBox
                     x:Name="arg2"
-                    Grid.Row="2" Grid.Column="1" Margin="10">
+                    Grid.Row="2" Grid.Column="1" Margin="10" Width="270" HorizontalAlignment="Left"
+                    ComboBoxWidth="50">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>
@@ -119,7 +122,8 @@
                         Text="浅源截距："/>
                 <Tools:SelectUnitBox
                     x:Name="arg3"
-                    Grid.Row="4" Grid.Column="1" Margin="10">
+                    Grid.Row="4" Grid.Column="1" Margin="10" Width="270" HorizontalAlignment="Left"
+                    ComboBoxWidth="50">
                     <ComboBoxItem Tag="1">m</ComboBoxItem>
                     <ComboBoxItem Tag="1000">km</ComboBoxItem>
                 </Tools:SelectUnitBox>

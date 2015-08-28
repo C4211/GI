@@ -23,7 +23,7 @@
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
             <ColumnDefinition Width="{Binding Width, ElementName=functionPage, Mode=OneWay}"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="210"></ColumnDefinition>
                 <ColumnDefinition Width="1"></ColumnDefinition>
@@ -89,14 +89,14 @@
                         Text="阶数选择："/>
                 <RadioButton FontSize="14" 
                     x:Name="choice1"
-                    Grid.Row="1" Grid.Column="1"  Height="30" Margin="10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Grid.Row="1" Grid.Column="1"  Height="30" Margin="10" Width="110" HorizontalAlignment="Left" Cursor="Hand" VerticalContentAlignment="Center" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="一阶垂向导数" 
                     GroupName="jsxz" IsChecked="True"></RadioButton>
                 <RadioButton FontSize="14" 
                     x:Name="choice2"
-                    Grid.Row="1" Grid.Column="1" Height="30" Margin="150,10,10,10" Cursor="Hand" VerticalContentAlignment="Center" 
+                    Grid.Row="1" Grid.Column="1" Height="30" Margin="150,10,10,10" Cursor="Hand" Width="110" VerticalContentAlignment="Center" HorizontalAlignment="Left" 
                     Foreground="{DynamicResource GI.Colors.Body.text}" Background="{x:Null}" 
                     BorderBrush="{DynamicResource GI.Colors.Body.text}" 
                     Content="二阶垂向导数" 
@@ -129,7 +129,7 @@
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <RadioButton FontSize="14" 
                     x:Name="page3choice1"
