@@ -142,7 +142,6 @@ namespace GI.UserControls
                 string path1 = inputPath1.filePath.Text;
                 string path2 = inputPath2.filePath.Text;
                 string path3 = inputPath3.filePath.Text;
-                string outPath = outputPath1.filePath.Text;
                 double _arg1, _arg2, _arg3;
                 if (!FileNameFilter.CheckFileSuffix(path1))
                     Msg("站点文件类型不正确！");
