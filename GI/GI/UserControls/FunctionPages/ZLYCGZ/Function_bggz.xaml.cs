@@ -46,7 +46,7 @@ namespace GI.UserControls
             {
                 content.IsEnabled = false;
                 buttons.IsEnabled = false;
-                CurrentState = 1;
+                CurrentState += 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
