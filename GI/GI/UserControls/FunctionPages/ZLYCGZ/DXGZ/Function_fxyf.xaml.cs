@@ -81,7 +81,7 @@ namespace GI.UserControls
                 {
                     try
                     {
-                        File.Copy(BouguerCorrection.outPath, ofd.FileName, true);
+                        File.Copy(FXYF.outPath, ofd.FileName, true);
                         Msg("已保存！");
                     }
                     catch
@@ -110,7 +110,7 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState + 1)
             {
-                FileInfo fi = new FileInfo(@"out.DAT");
+                FileInfo fi = new FileInfo(FXYF.outPath);
                 FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }

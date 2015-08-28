@@ -111,7 +111,7 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState + 1)
             {
-                FileInfo fi = new FileInfo(@"out.DAT");
+                FileInfo fi = new FileInfo(BouguerCorrection.outPath);
                 FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }

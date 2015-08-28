@@ -75,13 +75,13 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "txt文件(*.txt)|*.txt|dat文件(*.dat)|*.dat";
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
                 ofd.FilterIndex = 2;
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
-                        File.Copy(BouguerCorrection.outPath, ofd.FileName, true);
+                        File.Copy(FLYBHF.outPath, ofd.FileName, true);
                         Msg("已保存！");
                     }
                     catch
@@ -110,7 +110,7 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState + 1)
             {
-                FileInfo fi = new FileInfo(@"out.grd");
+                FileInfo fi = new FileInfo(FLYBHF.outPath);
                 FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
