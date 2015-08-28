@@ -128,6 +128,8 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
+            foreach (Window w in this.OwnedWindows)
+                w.Close();
             this.Close();
         }
         /// <summary>
