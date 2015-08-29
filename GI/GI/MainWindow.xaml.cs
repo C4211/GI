@@ -128,9 +128,16 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Window w in this.OwnedWindows)
-                w.Close();
-            this.Close();
+            if (CloseAndBackConfirm() == false)
+            {
+                return;
+            }
+            else
+            {
+                foreach (Window w in this.OwnedWindows)
+                    w.Close();
+                this.Close();
+            }
         }
         /// <summary>
         /// 实现顶栏最小化功能
@@ -723,6 +730,25 @@ namespace GI
                     w.Normal();
                 }
             }
+        }
+        #endregion
+
+        #region 关闭前确认事件
+        public bool IsNeedConfirm = false;
+        private bool? CloseAndBackConfirm()
+        {
+            if (IsNeedConfirm)
+            {
+                if (MessageWindow.Show(this,"计算结果未保存,确认退出？",MessageBoxButton.OKCancel) ==  MessageBoxResult.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return null;
         }
         #endregion
     }

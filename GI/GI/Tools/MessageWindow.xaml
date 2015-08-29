@@ -31,7 +31,11 @@
             </Grid>
             <Grid Grid.Row="1">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,20,50" TextWrapping="Wrap" FontSize="14" Foreground="{DynamicResource GI.Colors.Body.text}" x:Name="messageText"></TextBlock>
-                <Button Style="{DynamicResource GI.Window.Body.NextButton.Style}" Width="80" Height="30" Margin="0,0,10,10" Content="确定"  VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Click="Button_Click"></Button>
+                <Button x:Name="OK" Style="{DynamicResource GI.Window.Body.NextButton.Style}" Width="80" Height="30" Margin="0,0,10,10" Content="确定"  VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Click="Button_Click" Visibility="Hidden"></Button>
+                <Grid x:Name="OKCancel" Visibility="Hidden">
+                <Button x:Name="OKCancelOK" Style="{DynamicResource GI.Window.Body.NextButton.Style}" Width="80" Height="30" Margin="0,0,100,10" Content="确定"  VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Click="OKCancelOK_Click"></Button>
+                <Button x:Name="OKCancelCancel" Style="{DynamicResource GI.Window.Body.CancelButton.Style}" Width="80" Height="30" Margin="0,0,10,10" Content="取消"  VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14" Click="OKCancelCancel_Click"></Button>
+                </Grid>
             </Grid>
         </Grid>
     </Border>

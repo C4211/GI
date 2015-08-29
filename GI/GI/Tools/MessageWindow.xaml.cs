@@ -25,12 +25,34 @@ namespace GI.Tools
             InitializeComponent();
         }
 
+        public static void Show(string message)
+        {
+            MessageWindow mw = new MessageWindow();
+            mw.OK.Visibility = Visibility.Visible;
+            mw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            mw.messageText.Text = message;
+            mw.ShowDialog();
+        }
         public static void Show(Window owner,string message)
         {
             MessageWindow mw = new MessageWindow();
             mw.messageText.Text = message;
+            mw.OK.Visibility = Visibility.Visible;
             mw.Owner = owner;
             mw.ShowDialog();
+        }
+
+        public static MessageBoxResult Show(Window owner, string message, MessageBoxButton btn)
+        {
+            MessageWindow mw = new MessageWindow();
+            mw.messageText.Text = message;
+            mw.Owner = owner;
+            if (btn == MessageBoxButton.OKCancel)
+            {
+                mw.OKCancel.Visibility = Visibility.Visible;
+                mw.ShowDialog();
+            }
+            return mw.mbr;
         }
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -39,6 +61,7 @@ namespace GI.Tools
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
         }
 
@@ -56,6 +79,19 @@ namespace GI.Tools
             {
                 e.Cancel = false;
             }
+        }
+
+        private MessageBoxResult mbr = new MessageBoxResult();
+        private void OKCancelOK_Click(object sender, RoutedEventArgs e)
+        {
+            mbr = MessageBoxResult.OK;
+            this.Close();
+        }
+
+        private void OKCancelCancel_Click(object sender, RoutedEventArgs e)
+        {
+            mbr = MessageBoxResult.Cancel;
+            this.Close();
         }
 
     }
