@@ -65,18 +65,21 @@ namespace GI
         }
         private void Page_Back()
         {
-            if (contentStack.Count > 1)
+            if (CloseAndBackConfirm("计算结果未保存,确认返回？"))
             {
-                Storyboard sb = sbBackward.Clone();
-                Grid current = contentStack.Pop();
-                Grid prev = contentStack.Peek();
-                current.BeginStoryboard(sb);
-                prev.BeginStoryboard(sbBack);
-                sb.Completed += delegate { body.Children.Remove(current); current = null; };
-                ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
+                if (contentStack.Count > 1)
+                {
+                    Storyboard sb = sbBackward.Clone();
+                    Grid current = contentStack.Pop();
+                    Grid prev = contentStack.Peek();
+                    current.BeginStoryboard(sb);
+                    prev.BeginStoryboard(sbBack);
+                    sb.Completed += delegate { body.Children.Remove(current); current = null; };
+                    ChangeHeadTitle((prev as FunctionPage).titleCn, (prev as FunctionPage).titleEn);
+                }
+                if (contentStack.Count <= 1)
+                    headLogo.BeginStoryboard(sbBackDefault);
             }
-            if (contentStack.Count <= 1)
-                headLogo.BeginStoryboard(sbBackDefault);
         }
         /// <summary>
         /// 阻止返回按钮事件冒泡到标题栏
@@ -128,11 +131,7 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
-            if (CloseAndBackConfirm() == false)
-            {
-                return;
-            }
-            else
+            if (CloseAndBackConfirm("计算结果未保存,确认退出？"))
             {
                 foreach (Window w in this.OwnedWindows)
                     w.Close();
@@ -735,11 +734,11 @@ namespace GI
 
         #region 关闭前确认事件
         public bool IsNeedConfirm = false;
-        private bool? CloseAndBackConfirm()
+        private bool CloseAndBackConfirm(string message)
         {
             if (IsNeedConfirm)
             {
-                if (MessageWindow.Show(this,"计算结果未保存,确认退出？",MessageBoxButton.OKCancel) ==  MessageBoxResult.OK)
+                if (MessageWindow.Show(this,message,MessageBoxButton.OKCancel) ==  MessageBoxResult.OK)
                 {
                     return true;
                 }
@@ -748,7 +747,7 @@ namespace GI
                     return false;
                 }
             }
-            return null;
+            return true;
         }
         #endregion
     }
