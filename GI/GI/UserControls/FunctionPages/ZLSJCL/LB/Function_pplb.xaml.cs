@@ -59,10 +59,6 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState - 1)
             {
-                CurrentState = MaxState;
-                IsCanceled = false;
-                next.Content = "取消";
-                HidePrevAndCancel();
                 DoMatchingFilter();
             }
             else if (CurrentState == MaxState)
@@ -77,12 +73,30 @@ namespace GI.UserControls
                     ShowPrevAndCancel();
                 }
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(MatchingFilter.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
+            }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false;buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -94,6 +108,11 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(MatchingFilter.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()
@@ -115,67 +134,73 @@ namespace GI.UserControls
 
         private async void DoMatchingFilter()
         {
-            HidePrevAndCancel();
-            loadingBar.Show();
-            string path1 = inputPath1.filePath.Text;
-            string outPath = outputPath1.filePath.Text;
-            double _arg0, _arg1, _arg2;
-            int choice = 0;
-            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
-                Msg("输入文件类型不正确！");
-            else if (!File.Exists(path1))
-                Msg("输入文件路径不存在！");
-            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
-                Msg("输入文件不是GRD数据格式！");
-            else if (!double.TryParse(arg0.Value, out _arg0))
-                Msg("深源埋深非法！");
-            else if (!double.TryParse(arg1.Value, out _arg1))
-                Msg("浅源埋深非法！");
-            else if (!double.TryParse(arg2.Value, out _arg2))
-                Msg("纵轴截距非法！");
-            else
+            if (loadingBar.Show("计算中"))
             {
-                try
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                string path1 = inputPath1.filePath.Text;
+                double _arg0, _arg1, _arg2;
+                int choice = 0;
+                if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                    Msg("输入文件类型不正确！");
+                else if (!File.Exists(path1))
+                    Msg("输入文件路径不存在！");
+                else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                    Msg("输入文件不是GRD数据格式！");
+                else if (!double.TryParse(arg0.Value, out _arg0))
+                    Msg("深源埋深非法！");
+                else if (!double.TryParse(arg1.Value, out _arg1))
+                    Msg("浅源埋深非法！");
+                else if (!double.TryParse(arg2.Value, out _arg2))
+                    Msg("纵轴截距非法！");
+                else
                 {
-                    _arg0 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
-                    _arg1 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
-                    _arg2 *= double.Parse((arg2.SelectedItem as ComboBoxItem).Tag.ToString());
-                    if (choice0.IsChecked == true)
-                        choice = 0;
-                    else if (choice1.IsChecked == true)
-                        choice = 1;
-                    task = MatchingFilter.Start(path1, _arg0, _arg1, _arg2, choice);
-                    await task;
-                    if (IsCanceled)
+                    try
                     {
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算取消!");
+                        _arg0 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        _arg1 *= double.Parse((arg1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        _arg2 *= double.Parse((arg2.SelectedItem as ComboBoxItem).Tag.ToString());
+                        if (choice0.IsChecked == true)
+                            choice = 0;
+                        else if (choice1.IsChecked == true)
+                            choice = 1;
+                        task = MatchingFilter.Start(path1, _arg0, _arg1, _arg2, choice);
+                        await task;
+                        if (IsCanceled)
+                        {
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                            Msg("计算取消!");
+                        }
+                        else
+                        {
+                            Completed();
+                            return;
+                            //File.Copy(MatchingFilter.outPath, outPath, true);
+                            //loadingBar.Hide();
+                            //ShowPrevAndCancel();
+                            //Msg("计算完成");
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        File.Copy(MatchingFilter.outPath, outPath, true);
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算完成");
+                        Msg(e.Message);
+                    }
+                    finally
+                    {
+                        task = null;
                     }
                 }
-                catch (Exception e)
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Dispatcher.Invoke(delegate
                 {
-                    Msg(e.Message);
-                }
-                finally
-                {
-                    task = null;
-                }
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
             }
-            loadingBar.Hide();
-            ShowPrevAndCancel();
-            Dispatcher.Invoke(delegate
-            {
-                CurrentState = MaxState - 1;
-                next.Content = "计算";
-            });
         }
 
         private Task<string> task = null;
@@ -183,6 +208,30 @@ namespace GI.UserControls
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            loadingBar.Hide();
+            cancel.Visibility = Visibility.Visible;
+            back.Visibility = Visibility.Collapsed;
+            prev.Content = "上一步";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "计算";
+            next.Visibility = Visibility.Visible;
+            CurrentState = MaxState - 1;
+        }
+
+        private void Completed()
+        {
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
         }
     }
 }

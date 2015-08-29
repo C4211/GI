@@ -74,11 +74,6 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState - 1)
             {
-                CurrentState = MaxState;
-                IsCanceled = false;
-                next.Content = "取消";
-                //开始计算
-                HidePrevAndCancel();
                 DoVerticalDerivativeSpace();
             }
             else if (CurrentState == MaxState)
@@ -94,12 +89,30 @@ namespace GI.UserControls
                     ShowPrevAndCancel();
                 }
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(VerticalDerivativeSpace.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
+            }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -111,6 +124,11 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(VerticalDerivativeSpace.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()
@@ -132,49 +150,55 @@ namespace GI.UserControls
 
         private async void DoVerticalDerivativeSpace()
         {
-            HidePrevAndCancel();
-            loadingBar.Show();
-            string outPath = outputPath1.filePath.Text;
-            int order = 1, choice = 0;
-            try
+            if (loadingBar.Show("计算中"))
             {
-                if (order1.IsChecked == true)
-                    order = 1;
-                else if (order2.IsChecked == true)
-                    order = 2;
-                if (choice0.IsChecked == true)
-                    choice = 0;
-                else if (choice1.IsChecked == true)
-                    choice = 1;
-                else if (choice2.IsChecked == true)
-                    choice = 2;
-                else if (choice3.IsChecked == true)
-                    choice = 3;
-                else if (choice4.IsChecked == true)
-                    choice = 4;
-                task = VerticalDerivativeSpace.Start(order, choice);
-                await task;
-                if (IsCanceled)
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                int order = 1, choice = 0;
+                try
                 {
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg("计算取消!");
+                    if (order1.IsChecked == true)
+                        order = 1;
+                    else if (order2.IsChecked == true)
+                        order = 2;
+                    if (choice0.IsChecked == true)
+                        choice = 0;
+                    else if (choice1.IsChecked == true)
+                        choice = 1;
+                    else if (choice2.IsChecked == true)
+                        choice = 2;
+                    else if (choice3.IsChecked == true)
+                        choice = 3;
+                    else if (choice4.IsChecked == true)
+                        choice = 4;
+                    task = VerticalDerivativeSpace.Start(order, choice);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        Completed();
+                        return;
+                        //File.Copy(VerticalDerivativeSpace.outPath, outPath, true);
+                        //loadingBar.Hide();
+                        //ShowPrevAndCancel();
+                        //Msg("计算完成");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    File.Copy(VerticalDerivativeSpace.outPath, outPath, true);
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg("计算完成");
+                    Msg(e.Message);
                 }
-            }
-            catch (Exception e)
-            {
-                Msg(e.Message);
-            }
-            finally
-            {
-                task = null;
+                finally
+                {
+                    task = null;
+                }
                 loadingBar.Hide();
                 ShowPrevAndCancel();
                 Dispatcher.Invoke(delegate
@@ -190,6 +214,30 @@ namespace GI.UserControls
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            loadingBar.Hide();
+            cancel.Visibility = Visibility.Visible;
+            back.Visibility = Visibility.Collapsed;
+            prev.Content = "上一步";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "计算";
+            next.Visibility = Visibility.Visible;
+            CurrentState = MaxState - 1;
+        }
+
+        private void Completed()
+        {
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
         }
     }
 }
