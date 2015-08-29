@@ -655,19 +655,32 @@ namespace GI
         #endregion
 
         #region Window事件效果
+        /// <summary>
+        /// 加载动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
             content.BeginStoryboard(sb);
         }
-        #endregion
-
+        
+        /// <summary>
+        /// 激活动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Activated(object sender, EventArgs e)
         {
             Storyboard sb = (this.FindResource("GI.MainWindow.Border.Focus") as Storyboard).Clone();
             content.BeginStoryboard(sb);
         }
-
+        /// <summary>
+        /// 未激活动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Storyboard sb = (this.FindResource("GI.MainWindow.Border.Default") as Storyboard).Clone();
@@ -675,6 +688,11 @@ namespace GI
         }
 
         private bool isClosed = false;
+        /// <summary>
+        /// 关闭动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (isClosed == false)
@@ -689,7 +707,11 @@ namespace GI
                 e.Cancel = false;
             }
         }
-
+        /// <summary>
+        /// 状态变化动画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e)
         {
             if(this.WindowState == WindowState.Normal)
@@ -702,5 +724,6 @@ namespace GI
                 }
             }
         }
+        #endregion
     }
 }
