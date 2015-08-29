@@ -65,7 +65,7 @@ namespace GI
         }
         private void Page_Back()
         {
-            if (CloseAndBackConfirm("计算结果未保存,确认返回？"))
+            if (CloseAndBackConfirm.Start("计算结果未保存,确认返回？"))
             {
                 if (contentStack.Count > 1)
                 {
@@ -131,7 +131,7 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
-            if (CloseAndBackConfirm("计算结果未保存,确认退出？"))
+            if (CloseAndBackConfirm.Start("计算结果未保存,确认退出？"))
             {
                 foreach (Window w in this.OwnedWindows)
                     w.Close();
@@ -732,23 +732,24 @@ namespace GI
         }
         #endregion
 
-        #region 关闭前确认事件
-        public bool IsNeedConfirm = false;
-        private bool CloseAndBackConfirm(string message)
-        {
-            if (IsNeedConfirm)
-            {
-                if (MessageWindow.Show(this,message,MessageBoxButton.OKCancel) ==  MessageBoxResult.OK)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        #endregion
+        //#region 关闭前确认事件
+        //public bool IsNeedConfirm = false;
+        //private bool CloseAndBackConfirm(string message)
+        //{
+        //    if (IsNeedConfirm)
+        //    {
+        //        if (MessageWindow.Show(this,message,MessageBoxButton.OKCancel) ==  MessageBoxResult.OK)
+        //        {
+        //            IsNeedConfirm = false;
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+        //#endregion
     }
 }

@@ -82,8 +82,9 @@ namespace GI.UserControls
                 {
                     try
                     {
-                        File.Copy(@"out.DAT", ofd.FileName, true);
+                        File.Copy(FreeAirCorrection.outPath, ofd.FileName, true);
                         Msg("已保存！");
+                        CloseAndBackConfirm.IsNeedConfirm = false;
                     }
                     catch
                     {
@@ -199,14 +200,17 @@ namespace GI.UserControls
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            loadingBar.Hide();
-            cancel.Visibility = Visibility.Visible;
-            back.Visibility = Visibility.Collapsed;
-            prev.Content = "上一步";
-            prev.Visibility = Visibility.Visible;
-            next.Content = "计算";
-            next.Visibility = Visibility.Visible;
-            CurrentState = MaxState - 1;
+            if (CloseAndBackConfirm.Start("计算结果未保存,确认退出？"))
+            {
+                loadingBar.Hide();
+                cancel.Visibility = Visibility.Visible;
+                back.Visibility = Visibility.Collapsed;
+                prev.Content = "上一步";
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+                next.Visibility = Visibility.Visible;
+                CurrentState = MaxState - 1;
+            }
         }
 
         private void Completed()
@@ -219,6 +223,7 @@ namespace GI.UserControls
             next.Visibility = Visibility.Visible;
             cancel.Visibility = Visibility.Collapsed;
             back.Visibility = Visibility.Visible;
+            CloseAndBackConfirm.IsNeedConfirm = true;
         }
     }
 }
