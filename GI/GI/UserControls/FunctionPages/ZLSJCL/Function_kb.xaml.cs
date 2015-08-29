@@ -74,10 +74,6 @@ namespace GI.UserControls
                     Msg("扩边后的列数小于原始列数！请重新输入！");
                 else
                 {
-                    CurrentState = MaxState;
-                    IsCanceled = false;
-                    next.Content = "取消";
-                    HidePrevAndCancel();
                     DoExpand(Nx_out, Ny_out);
                 }
             }
@@ -93,12 +89,30 @@ namespace GI.UserControls
                     ShowPrevAndCancel();
                 }
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(Expand.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
+            }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -110,6 +124,11 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(Expand.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()
@@ -131,34 +150,40 @@ namespace GI.UserControls
 
         private async void DoExpand(int Nx_out, int Ny_out)
         {
-            HidePrevAndCancel();
-            loadingBar.Show();
-            string outPath = outputPath1.filePath.Text;
-            try
+            if (loadingBar.Show("计算中"))
             {
-                task = Expand.Start(Nx_out, Ny_out);
-                await task;
-                if (IsCanceled)
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                try
                 {
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg("计算取消!");
+                    task = Expand.Start(Nx_out, Ny_out);
+                    await task;
+                    if (IsCanceled)
+                    {
+                        loadingBar.Hide();
+                        ShowPrevAndCancel();
+                        Msg("计算取消!");
+                    }
+                    else
+                    {
+                        Completed();
+                        return;
+                        //File.Copy(Expand.outPath, outPath, true);
+                        //loadingBar.Hide();
+                        //ShowPrevAndCancel();
+                        //Msg("计算完成");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    File.Copy(Expand.outPath, outPath, true);
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                    Msg("计算完成");
+                    Msg(e.Message);
                 }
-            }
-            catch (Exception e)
-            {
-                Msg(e.Message);
-            }
-            finally
-            {
-                task = null;
+                finally
+                {
+                    task = null;
+                }
                 loadingBar.Hide();
                 ShowPrevAndCancel();
                 Dispatcher.Invoke(delegate
@@ -168,7 +193,6 @@ namespace GI.UserControls
                 });
             }
         }
-
         private Task<string> task = null;
 
         private void Msg(string msg)
@@ -180,6 +204,30 @@ namespace GI.UserControls
         {
             int tmp;
             e.Handled = !int.TryParse(e.Text, out tmp);
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            loadingBar.Hide();
+            cancel.Visibility = Visibility.Visible;
+            back.Visibility = Visibility.Collapsed;
+            prev.Content = "上一步";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "计算";
+            next.Visibility = Visibility.Visible;
+            CurrentState = MaxState - 1;
+        }
+
+        private void Completed()
+        {
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
         }
     }
 }

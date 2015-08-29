@@ -25,25 +25,27 @@ namespace GI.UserControls
         {
             InitializeComponent();
             sb = this.FindResource("GI.UserControl.LoadingBar.Storyboard") as Storyboard;
-            sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
-            sbhide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
-            loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
-            loadinghide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
-            titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
-            titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
+            //sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+            //sbhide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
+            //loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+            //loadinghide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
+            //titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
+            //titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
         }
         Storyboard sb;
-        Storyboard sbshow;
-        Storyboard sbhide;
-        Storyboard titleshow;
-        Storyboard titlehide;
-        Storyboard loadingshow;
-        Storyboard loadinghide;
+        //Storyboard sbshow;
+        //Storyboard sbhide;
+        //Storyboard titleshow;
+        //Storyboard titlehide;
+        //Storyboard loadingshow;
+        //Storyboard loadinghide;
         public void Show()
         {
             Dispatcher.Invoke(
                 delegate
                 {
+                    Storyboard sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+                    Storyboard loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
                     loadingTitle.Text = "";
                     this.Visibility = Visibility.Visible;
                     this.BeginStoryboard(sbshow);
@@ -58,12 +60,9 @@ namespace GI.UserControls
             Dispatcher.Invoke(
                 delegate
                 {
-                    titlehide.Stop();
-                    titlehide.Completed += delegate { };
-                    loadinghide.Stop();
-                    loadinghide.Completed += delegate { };
-                    sbhide.Stop();
-                    sbhide.Completed += delegate { };
+                    Storyboard titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
+                    Storyboard sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+                    Storyboard loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
                     this.Visibility = Visibility.Visible;
                     loadingTitle.Text = state;
                     loadingTitle.BeginStoryboard(titleshow);
@@ -80,6 +79,8 @@ namespace GI.UserControls
             Dispatcher.Invoke(
                 delegate
                 {
+                    Storyboard titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
+                    Storyboard titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
                     titlehide.Completed += delegate { loadingTitle.Text = state; loadingTitle.BeginStoryboard(titleshow); };
                     loadingTitle.BeginStoryboard(titlehide);
                 });
@@ -90,6 +91,10 @@ namespace GI.UserControls
             Dispatcher.Invoke(
                 delegate
                 {
+                    Storyboard titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
+                    Storyboard titleshow = (this.FindResource("GI.UserControl.Title.Show") as Storyboard).Clone();
+                    Storyboard loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+                    Storyboard loadinghide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
                     titlehide.Completed += delegate { loadingTitle.Text = state; loadingTitle.BeginStoryboard(titleshow); };
                     loadingTitle.BeginStoryboard(titlehide);
                     if (showloading == true)
@@ -111,6 +116,11 @@ namespace GI.UserControls
             Dispatcher.Invoke(
                 delegate
                 {
+                    Storyboard titlehide = (this.FindResource("GI.UserControl.Title.Hide") as Storyboard).Clone();
+                    Storyboard sbshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+                    Storyboard sbhide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
+                    Storyboard loadingshow = (this.FindResource("GI.UserControl.LoadingBar.Show") as Storyboard).Clone();
+                    Storyboard loadinghide = (this.FindResource("GI.UserControl.LoadingBar.Hide") as Storyboard).Clone();
                     isHiding = true;
                     if (loadingTitle.Text == "")
                     {
