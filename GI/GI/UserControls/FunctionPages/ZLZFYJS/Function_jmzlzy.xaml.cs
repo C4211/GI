@@ -56,11 +56,6 @@ namespace GI.UserControls
             }
             else if (CurrentState == MaxState - 1)
             {
-                CurrentState = MaxState;
-                IsCanceled = false;
-                next.Content = "取消";
-                //计算
-                HidePrevAndCancel();
                 DoInterfaceForward();
             }
             else if (CurrentState == MaxState)
@@ -76,12 +71,31 @@ namespace GI.UserControls
                     ShowPrevAndCancel();
                 }
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 2;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(InterfaceForward.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                        CloseAndBackConfirm.Reset();
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
+            }
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false;buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -93,6 +107,11 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(InterfaceForward.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()
@@ -114,73 +133,108 @@ namespace GI.UserControls
 
         private async void DoInterfaceForward()
         {
-            HidePrevAndCancel();
-            loadingBar.Show();
-            string path1 = inputPath1.filePath.Text;
-            string outPath = outputPath1.filePath.Text;
-            double _referenceDepth, _densityContrast;
-            int _coordinateUnit = 0, _depthUnit = 0;
-            if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
-                Msg("输入文件类型不正确！");
-            else if (!File.Exists(path1))
-                Msg("输入文件路径不存在！");
-            else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
-                Msg("输入文件不是GRD数据格式！");
-            else if (!double.TryParse(referenceDepth.Value, out _referenceDepth))
-                Msg("参考深度不合法！");
-            else if (!double.TryParse(densityContrast.Value, out _densityContrast))
-                Msg("密度差不合法！");
-            else
+            if (loadingBar.Show("计算中"))
             {
-                try
+                CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                string path1 = inputPath1.filePath.Text;
+                double _referenceDepth, _densityContrast;
+                int _coordinateUnit = 0, _depthUnit = 0;
+                if (!path1.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                    Msg("输入文件类型不正确！");
+                else if (!File.Exists(path1))
+                    Msg("输入文件路径不存在！");
+                else if (FileNameFilter.CheckGRDFileFormat(path1) == null)
+                    Msg("输入文件不是GRD数据格式！");
+                else if (!double.TryParse(referenceDepth.Value, out _referenceDepth))
+                    Msg("参考深度不合法！");
+                else if (!double.TryParse(densityContrast.Value, out _densityContrast))
+                    Msg("密度差不合法！");
+                else
                 {
-                    if (coordinateUnit0.IsChecked == true)
-                        _coordinateUnit = 0;
-                    else if (coordinateUnit1.IsChecked == true)
-                        _coordinateUnit = 1;
-                    if (depthUnit0.IsChecked == true)
-                        _depthUnit = 0;
-                    else if (coordinateUnit1.IsChecked == true)
-                        _depthUnit = 1;
-                    task = InterfaceForward.Start(path1, _referenceDepth, _densityContrast, _coordinateUnit, _depthUnit);
-                    await task;
-                    if (IsCanceled)
+                    try
                     {
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算取消!");
+                        if (coordinateUnit0.IsChecked == true)
+                            _coordinateUnit = 0;
+                        else if (coordinateUnit1.IsChecked == true)
+                            _coordinateUnit = 1;
+                        if (depthUnit0.IsChecked == true)
+                            _depthUnit = 0;
+                        else if (coordinateUnit1.IsChecked == true)
+                            _depthUnit = 1;
+                        task = InterfaceForward.Start(path1, _referenceDepth, _densityContrast, _coordinateUnit, _depthUnit);
+                        await task;
+                        if (IsCanceled)
+                        {
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                            Msg("计算取消!");
+                        }
+                        else
+                        {
+                            Completed();
+                            return;
+                            //File.Copy(InterfaceForward.outPath, outPath, true);
+                            //loadingBar.Hide();
+                            //ShowPrevAndCancel();
+                            //Msg("计算完成");
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        File.Copy(InterfaceForward.outPath, outPath, true);
-                        loadingBar.Hide();
-                        ShowPrevAndCancel();
-                        Msg("计算完成");
+                        Msg(e.Message);
+                        CloseAndBackConfirm.Reset();
+                    }
+                    finally
+                    {
+                        task = null;
                     }
                 }
-                catch (Exception e)
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Dispatcher.Invoke(delegate
                 {
-                    Msg(e.Message);
-                }
-                finally
-                {
-                    task = null;
-                }
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
+                CloseAndBackConfirm.Reset();
             }
-            loadingBar.Hide();
-            ShowPrevAndCancel();
-            Dispatcher.Invoke(delegate
-            {
-                CurrentState = MaxState - 1;
-                next.Content = "计算";
-            });
         }
-
         private Task<string> task = null;
 
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
+        }
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
+            {
+                loadingBar.Hide();
+                cancel.Visibility = Visibility.Visible;
+                back.Visibility = Visibility.Collapsed;
+                prev.Content = "上一步";
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+                next.Visibility = Visibility.Visible;
+                CurrentState = MaxState - 1;
+            }
+        }
+
+        private void Completed()
+        {
+            CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
         }
     }
 }
