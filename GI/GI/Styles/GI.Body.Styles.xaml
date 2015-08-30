@@ -31,6 +31,17 @@
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.Tile}"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
         <Setter Property="BorderBrush" Value="{StaticResource GI.Colors.Null}"></Setter>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -85,6 +96,17 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
         <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -100,6 +122,9 @@
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{StaticResource GI.Colors.Secondary}"></Setter>
+            </Trigger>-->
+             <!--<Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" Value="{StaticResource GI.Colors.Body.NextButton.Disable}"/>
             </Trigger>-->
             <EventTrigger RoutedEvent="Mouse.MouseEnter">
                 <BeginStoryboard>
@@ -209,7 +234,7 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="SelectFileControl.Style" TargetType="UserControls:SelectFileControl">
-        <Setter Property="BorderBrush" Value="{StaticResource GI.Colors.Bosy.TextBox.Border}"></Setter>
+        <Setter Property="BorderBrush" Value="{StaticResource GI.Colors.Body.TextBox.Border}"></Setter>
         <Setter Property="Margin" Value="10"></Setter>
         <Style.Triggers>
             <Trigger Property="IsKeyboardFocused" Value="True">

@@ -51,9 +51,11 @@ namespace GI.UserControls
                 ((ThicknessAnimation)sb.Children[0]).To = new Thickness(-CurrentState * 680, 0, 0, 0);
                 sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
-                prev.Visibility = Visibility.Visible;
+                //prev.Visibility = Visibility.Visible;
+                ButtonShow(prev);
                 if (CurrentState == MaxState - 1)
-                    next.Content = "计算";
+                    //next.Content = "计算";
+                    ButtonChangeContent(next, "计算");
                 return;
             }
             else if (CurrentState == MaxState - 1)
@@ -63,7 +65,8 @@ namespace GI.UserControls
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
-                next.Content = "计算";
+                //next.Content = "计算";
+                ButtonChangeContent(next, "计算");
                 if (Task_zkgz != null)
                 {
                     IsCanceled = true;
@@ -98,16 +101,20 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate
             {
-                prev.Visibility = Visibility.Hidden;
-                cancel.Visibility = Visibility.Hidden;
+                //prev.Visibility = Visibility.Hidden;
+                ButtonHide(prev);
+                ButtonHide(cancel);
+                //cancel.Visibility = Visibility.Hidden;
             });
         }
         private void ShowPrevAndCancel()
         {
             Dispatcher.Invoke(delegate
             {
-                prev.Visibility = Visibility.Visible;
-                cancel.Visibility = Visibility.Visible;
+                //prev.Visibility = Visibility.Visible;
+                ButtonShow(prev);
+                //cancel.Visibility = Visibility.Visible;
+                ButtonShow(cancel);
             });
         }
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -123,8 +130,10 @@ namespace GI.UserControls
                 sb.Completed += delegate { content.Children[CurrentState + 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 if (CurrentState <= 0)
-                    prev.Visibility = Visibility.Hidden;
-                next.Content = "下一步";
+                    //prev.Visibility = Visibility.Hidden;
+                    ButtonHide(prev);
+                //next.Content = "下一步";
+                ButtonChangeContent(next, "下一步");
             }
             else if (CurrentState == MaxState + 1)
             {
@@ -139,7 +148,8 @@ namespace GI.UserControls
                 CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
                 CurrentState = MaxState;
                 IsCanceled = false;
-                next.Content = "取消";
+                //next.Content = "取消";
+                ButtonChangeContent(next, "取消");
                 string inPath = inputPath1.filePath.Text;
                 int choice = 1;
                 HidePrevAndCancel();
@@ -163,7 +173,7 @@ namespace GI.UserControls
                         Task_zkgz = null;
                         Task_zkgz = FreeAirCorrection.Start(inPath, choice);
                         await Task_zkgz;
-                        if (Task_zkgz.Result!=null)
+                        if (Task_zkgz.Result != null)
                         {
                             Msg(Task_zkgz.Result);
                         }
@@ -188,7 +198,8 @@ namespace GI.UserControls
                 Dispatcher.Invoke(delegate
                 {
                     CurrentState = MaxState - 1;
-                    next.Content = "计算";
+                    //next.Content = "计算";
+                    ButtonChangeContent(next, "计算");
                 });
                 CloseAndBackConfirm.Reset();
             }
@@ -206,12 +217,18 @@ namespace GI.UserControls
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
             {
                 loadingBar.Hide();
-                cancel.Visibility = Visibility.Visible;
-                back.Visibility = Visibility.Collapsed;
-                prev.Content = "上一步";
-                prev.Visibility = Visibility.Visible;
-                next.Content = "计算";
-                next.Visibility = Visibility.Visible;
+                //cancel.Visibility = Visibility.Visible;
+                ButtonShow(cancel);
+                //back.Visibility = Visibility.Collapsed;
+                ButtonRemove(back);
+                //prev.Content = "上一步";
+                ButtonChangeContent(prev, "上一步");
+                //prev.Visibility = Visibility.Visible;
+                ButtonShow(prev);
+                //next.Content = "计算";
+                ButtonChangeContent(next, "计算");
+                //next.Visibility = Visibility.Visible;
+                ButtonShow(next);
                 CurrentState = MaxState - 1;
             }
         }
@@ -220,13 +237,45 @@ namespace GI.UserControls
         {
             loadingBar.changeState("计算完成", false);
             CurrentState = MaxState + 1;
-            prev.Content = "预览";
-            prev.Visibility = Visibility.Visible;
-            next.Content = "保存";
-            next.Visibility = Visibility.Visible;
-            cancel.Visibility = Visibility.Collapsed;
-            back.Visibility = Visibility.Visible;
+            //prev.Content = "预览";
+            ButtonChangeContent(prev, "预览");
+            //prev.Visibility = Visibility.Visible;
+            ButtonShow(prev);
+            //next.Content = "保存";
+            ButtonChangeContent(next, "保存");
+            //next.Visibility = Visibility.Visible;
+            ButtonShow(next);
+            //cancel.Visibility = Visibility.Collapsed;
+            ButtonRemove(cancel);
+            //back.Visibility = Visibility.Visible;
+            ButtonShow(back);
             CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
+        }
+
+        private void ButtonChangeContent(Button sender, string content)
+        {
+            Storyboard sbhide = (Application.Current.FindResource("GI.Body.Button.Content.Hide") as Storyboard).Clone();
+            Storyboard sbshow = (Application.Current.FindResource("GI.Body.Button.Content.Show") as Storyboard).Clone();
+            sbhide.Completed += delegate { sender.Content = content; sender.BeginStoryboard(sbshow); };
+            sender.BeginStoryboard(sbhide);
+        }
+
+        private void ButtonShow(Button sender)
+        {
+            Storyboard sb = (Application.Current.FindResource("GI.Body.Button.Show") as Storyboard).Clone();
+            sender.BeginStoryboard(sb);
+        }
+
+        private void ButtonHide(Button sender)
+        {
+            Storyboard sb = (Application.Current.FindResource("GI.Body.Button.Hide") as Storyboard).Clone();
+            sender.BeginStoryboard(sb);
+        }
+
+        private void ButtonRemove(Button sender)
+        {
+            Storyboard sb = (Application.Current.FindResource("GI.Body.Button.Remove") as Storyboard).Clone();
+            sender.BeginStoryboard(sb);
         }
     }
 }

@@ -22,7 +22,8 @@
     <Color x:Key="GI.Colors.Body.text.Color">#555555</Color>
     <SolidColorBrush x:Key="GI.Colors.Body.Summary">#999999</SolidColorBrush>
     <SolidColorBrush x:Key="GI.Colors.Body.Line">#DDDDDD</SolidColorBrush>
-    <SolidColorBrush x:Key="GI.Colors.Bosy.TextBox.Border">#666666</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Body.TextBox.Border">#666666</SolidColorBrush>
+    <SolidColorBrush x:Key="GI.Colors.Body.NextButton.Disable">#CCCCCC</SolidColorBrush>
     <Color x:Key="GI.Colors.Body.FunctionGroup.Default">#00CCCCCC</Color>
     <Color x:Key="GI.Colors.Body.FunctionGroup.Hover">#FFCCCCCC</Color>
     <Color x:Key="GI.Colors.Body.FunctionGroup.Press">#FF2C77DE</Color>

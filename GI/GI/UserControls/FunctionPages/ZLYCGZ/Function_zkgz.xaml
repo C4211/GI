@@ -110,9 +110,21 @@
     </Grid>
     <UserControls:LoadingBar x:Name="loadingBar"  Visibility="Hidden" Background="#CCFFFFFF"/>
     <UniformGrid x:Name="buttons" Width="260" Height="30" Rows="1" Margin="410,362,10,22" ClipToBounds="False">
-        <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
-        <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
+        <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Opacity="0" Visibility="Hidden" Click="prev_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"/>
         <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
-        <Button x:Name="back" Width="80" Content="返回" Visibility="Collapsed" Style="{StaticResource GI.Window.Body.CancelButton.Style}" Click="back_Click"/>
-    </UniformGrid>  
+        <Button x:Name="back" Width="80" Content="返回" Visibility="Collapsed" Style="{StaticResource GI.Window.Body.CancelButton.Style}" Click="back_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+    </UniformGrid>
 </Tools:FunctionPage>
