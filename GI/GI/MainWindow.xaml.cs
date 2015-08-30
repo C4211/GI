@@ -65,7 +65,7 @@ namespace GI
         }
         private void Page_Back()
         {
-            if (CloseAndBackConfirm.Start("计算结果未保存,确认返回？"))
+            if (CloseAndBackConfirm.Start("返回"))
             {
                 if (contentStack.Count > 1)
                 {
@@ -131,7 +131,7 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Close_Click(object sender, RoutedEventArgs e)
         {
-            if (CloseAndBackConfirm.Start("计算结果未保存,确认退出？"))
+            if (CloseAndBackConfirm.Start("退出"))
             {
                 foreach (Window w in this.OwnedWindows)
                     w.Close();

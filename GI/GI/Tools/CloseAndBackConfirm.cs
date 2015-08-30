@@ -9,12 +9,13 @@ namespace GI.Tools
 {
     class CloseAndBackConfirm
     {
-        public static bool IsNeedConfirm = false;
-        public static bool Start(string message)
+        private static bool IsNeedConfirm = false;
+        private static string State = null;
+        public static bool Start(string action)
         {
             if (IsNeedConfirm)
             {
-                if (MessageWindow.Show(Application.Current.MainWindow, message, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageWindow.Show(Application.Current.MainWindow, State+",确认"+action+"？", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     IsNeedConfirm = false;
                     return true;
@@ -25,6 +26,18 @@ namespace GI.Tools
                 }
             }
             return true;
+        }
+
+        public static void Reset()
+        {
+            IsNeedConfirm = false;
+            State = null;
+        }
+
+        public static void Set(string state)
+        {
+            IsNeedConfirm = true;
+            State = state;
         }
     }
 }
