@@ -126,7 +126,8 @@ namespace GI.Tools
                             fpw.Close();
                         }));
             }
-            fpw.Show();
+            fpw.ShowInTaskbar = false;
+            fpw.ShowDialog();
             Application.Current.MainWindow.Cursor = Cursors.Arrow;
         }
         private void Button_Click(object sender, RoutedEventArgs e)

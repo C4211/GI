@@ -83,6 +83,7 @@ namespace GI.UserControls
                     {
                         File.Copy(FXYF.outPath, ofd.FileName, true);
                         Msg("已保存！");
+                        CloseAndBackConfirm.Reset();
                     }
                     catch
                     {
@@ -135,6 +136,7 @@ namespace GI.UserControls
         {
             if (loadingBar.Show("计算中"))
             {
+                CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
@@ -185,6 +187,7 @@ namespace GI.UserControls
                     catch (Exception e)
                     {
                         Msg(e.Message);
+                        CloseAndBackConfirm.Reset();
                     }
                     finally
                     {
@@ -198,6 +201,7 @@ namespace GI.UserControls
                     CurrentState = MaxState - 1;
                     next.Content = "计算";
                 });
+                CloseAndBackConfirm.Reset();
             }
         }
 
@@ -210,18 +214,22 @@ namespace GI.UserControls
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            loadingBar.Hide();
-            cancel.Visibility = Visibility.Visible;
-            back.Visibility = Visibility.Collapsed;
-            prev.Content = "上一步";
-            prev.Visibility = Visibility.Visible;
-            next.Content = "计算";
-            next.Visibility = Visibility.Visible;
-            CurrentState = MaxState - 1;
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
+            {
+                loadingBar.Hide();
+                cancel.Visibility = Visibility.Visible;
+                back.Visibility = Visibility.Collapsed;
+                prev.Content = "上一步";
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+                next.Visibility = Visibility.Visible;
+                CurrentState = MaxState - 1;
+            }
         }
 
         private void Completed()
         {
+            CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
             loadingBar.changeState("计算完成", false);
             CurrentState = MaxState + 1;
             prev.Content = "预览";

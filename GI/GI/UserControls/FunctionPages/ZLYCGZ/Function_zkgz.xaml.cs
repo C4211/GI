@@ -136,7 +136,7 @@ namespace GI.UserControls
         {
             if (loadingBar.Show("计算中"))
             {
-                CloseAndBackConfirm.Set("正在计算中");
+                CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
@@ -203,7 +203,7 @@ namespace GI.UserControls
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            if (CloseAndBackConfirm.Start("返回"))
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
             {
                 loadingBar.Hide();
                 cancel.Visibility = Visibility.Visible;
@@ -226,7 +226,7 @@ namespace GI.UserControls
             next.Visibility = Visibility.Visible;
             cancel.Visibility = Visibility.Collapsed;
             back.Visibility = Visibility.Visible;
-            CloseAndBackConfirm.Set("计算结果未保存");
+            CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
         }
     }
 }
