@@ -114,7 +114,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "grd文件(*.grd)";
+                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
                 ofd.FilterIndex = 2;
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

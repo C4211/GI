@@ -20,21 +20,6 @@ namespace GI.Tools
             return false;
         }
 
-        public static bool CheckFileExistence(string filePath)
-        {
-            FileInfo file = new FileInfo(filePath);
-            if (file.Exists)
-            {
-                file = null;
-                return true;
-            }
-            else
-            {
-                file = null;
-                return false;
-            }
-        }
-
         /// <summary>
         /// 检查GRD文件格式
         /// </summary>
