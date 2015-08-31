@@ -34,6 +34,7 @@ namespace GI.UserControls
         /// <summary>
         /// 0 : 输入文件
         /// 1 : 输入参数
+        /// 2 : 计算中
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
@@ -41,6 +42,40 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 输入文件路径判断
+                string inPath = inputPath1.filePath.Text;
+                if (!FileNameFilter.CheckFileSuffix(inPath))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                DoFreeAirCorrection();
+            }
+            else if (CurrentState == 2)
+            {
+                if (Task_zkgz != null)
+                {
+                    IsCanceled = true;
+                    FreeAirCorrection.Stop();
+                    ShowPrevAndCancel();
+                    loadingBar.Hide();
+                    Msg("计算取消！");
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -58,23 +93,11 @@ namespace GI.UserControls
                     ButtonChangeContent(next, "计算");
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoFreeAirCorrection();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 //next.Content = "计算";
                 ButtonChangeContent(next, "计算");
-                if (Task_zkgz != null)
-                {
-                    IsCanceled = true;
-                    FreeAirCorrection.Stop();
-                    ShowPrevAndCancel();
-                    loadingBar.Hide();
-                    Msg("计算取消！");
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
@@ -95,6 +118,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void HidePrevAndCancel()
@@ -156,7 +180,7 @@ namespace GI.UserControls
 
                 if (!FileNameFilter.CheckFileSuffix(inPath))
                     Msg("输入文件类型不正确！");
-                else if (!FileNameFilter.CheckFileExistence(inPath))
+                else if (!File.Exists(inPath))
                     Msg("输入文件路径不存在！");
                 else
                 {

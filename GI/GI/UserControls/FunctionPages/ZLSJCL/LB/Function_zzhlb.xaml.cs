@@ -24,7 +24,8 @@ namespace GI.UserControls
         /// <summary>
         /// 0 : 输入文件
         /// 1 : 输入参数
-        /// 2 : 计算中
+        /// 2 : 选择滤波
+        /// 3 : 计算中
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
@@ -32,6 +33,80 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 检查输入文件路径
+                string inPath = inputPath1.filePath.Text;
+                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+                else if (FileNameFilter.CheckGRDFileFormat(inPath) == null)
+                {
+                    Msg("输入文件不是GRD数据格式！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                // 检查参数
+                double _a1, _b1, _f01, _a2, _b2, _f02;
+                if (!double.TryParse(a1.Text, out _a1))
+                {
+                    Msg("α1非法！");
+                    return;
+                }
+                else if (!double.TryParse(b1.Text, out _b1))
+                {
+                    Msg("β1非法！");
+                    return;
+                }
+                else if (!double.TryParse(f01.Text, out _f01))
+                {
+                    Msg("f01非法！");
+                    return;
+                }
+                else if (!double.TryParse(a2.Text, out _a2))
+                {
+                    Msg("α2非法！");
+                    return;
+                }
+                else if (!double.TryParse(b2.Text, out _b2))
+                {
+                    Msg("β2非法！");
+                    return;
+                }
+                else if (!double.TryParse(f02.Text, out _f02))
+                {
+                    Msg("f02非法！");
+                    return;
+                }
+            }
+            else if (CurrentState == 2)
+            {
+                DoRagularizationFilter();
+            }
+            else if (CurrentState == 3)
+            {
+                // 取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    RegularizationFilter.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -47,27 +122,15 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoRagularizationFilter();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    RegularizationFilter.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
-                ofd.FilterIndex = 2;
+                ofd.Filter = "grd文件(*.grd)|*.grd";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
@@ -82,6 +145,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)

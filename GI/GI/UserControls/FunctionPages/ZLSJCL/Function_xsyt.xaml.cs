@@ -32,6 +32,51 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 检查输入文件路径
+                string inPath = inputPath1.filePath.Text;
+                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+                else if (FileNameFilter.CheckGRDFileFormat(inPath) == null)
+                {
+                    Msg("输入文件不是GRD数据格式！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                // 检查参数
+                double _arg0;
+                if (!double.TryParse(arg0.Value, out _arg0) || _arg0 < 0)
+                {
+                    Msg("延拓高度不合法！");
+                    return;
+                }
+                DoContinueExpand();
+            }
+            else if (CurrentState == 2)
+            {
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    ContinueExpand.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -47,26 +92,15 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoContinueExpand();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    ContinueExpand.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.Filter = "grd文件(*.grd)|*.grd";
                 ofd.FilterIndex = 2;
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -82,6 +116,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)

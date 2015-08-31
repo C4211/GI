@@ -39,6 +39,60 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 检查输入文件路径
+                string inPath = inputPath1.filePath.Text;
+                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+                else if (FileNameFilter.CheckGRDFileFormat(inPath) == null)
+                {
+                    Msg("输入文件不是GRD数据格式！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                // 检查参数
+                double _referenceDepth, _densityContrast;
+                if (!double.TryParse(referenceDepth.Value, out _referenceDepth))
+                {
+                    Msg("参考深度不合法！");
+                    return;
+                }
+                else if (!double.TryParse(densityContrast.Value, out _densityContrast))
+                {
+                    Msg("密度差不合法！");
+                    return;
+                }
+            }
+            else if (CurrentState == 2)
+            {
+                DoInterfaceForward();
+            }
+            else if (CurrentState == 3)
+            {
+                // 取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    InterfaceForward.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -54,28 +108,15 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoInterfaceForward();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //取消计算
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    InterfaceForward.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
-                ofd.FilterIndex = 2;
+                ofd.Filter = "grd文件(*.grd)|*.grd";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
@@ -90,6 +131,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -97,7 +139,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0 && CurrentState <= MaxState)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();

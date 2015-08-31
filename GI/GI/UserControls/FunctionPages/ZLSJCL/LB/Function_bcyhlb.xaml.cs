@@ -42,6 +42,58 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 检查输入文件路径
+                string inPath = inputPath1.filePath.Text;
+                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+                else if (FileNameFilter.CheckGRDFileFormat(inPath) == null)
+                {
+                    Msg("输入文件不是GRD数据格式！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                // 参数判断
+                double _coefficient;
+                int _number;
+                if (!double.TryParse(coefficient.Text, out _coefficient))
+                {
+                    Msg("补偿系数非法！");
+                    return;
+                }
+                else if (!int.TryParse(number.Text, out _number) || _number < 0)
+                {
+                    Msg("补偿次数非法！");
+                    return;
+                }
+                DoSmoothCompensationFilter();
+            }
+            else if (CurrentState == 2)
+            {
+                // 取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    SmoothCompensationFilter.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -57,21 +109,10 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoSmoothCompensationFilter();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    SmoothCompensationFilter.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
@@ -92,6 +133,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -99,7 +141,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0 && CurrentState <= MaxState)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -154,7 +196,7 @@ namespace GI.UserControls
                 else if (!double.TryParse(coefficient.Text, out _coefficient))
                     Msg("补偿系数非法！");
                 else if (!int.TryParse(number.Text, out _number))
-                    Msg("浅源埋深非法！");
+                    Msg("补偿次数非法！");
                 else
                 {
                     try

@@ -34,7 +34,8 @@ namespace GI.UserControls
         /// <summary>
         /// 0 : 输入文件
         /// 1 : 输入参数
-        /// 2 : 计算中
+        /// 2 : 选择公式
+        /// 3 : 计算中
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
@@ -43,6 +44,45 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 检查输入文件路径
+                string inPath = inputPath1.filePath.Text;
+                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                {
+                    Msg("输入文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(inPath))
+                {
+                    Msg("输入文件路径不存在！");
+                    return;
+                }
+                else if (FileNameFilter.CheckGRDFileFormat(inPath) == null)
+                {
+                    Msg("输入文件不是GRD数据格式！");
+                    return;
+                }
+            }
+            else if (CurrentState == 2)
+            {
+                DoVerticalDerivativeSpace();
+            }
+            else if (CurrentState == 3)
+            {
+                //取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    VerticalDerivativeSpace.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -72,22 +112,10 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoVerticalDerivativeSpace();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //取消计算
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    VerticalDerivativeSpace.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
@@ -108,6 +136,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)

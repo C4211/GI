@@ -42,6 +42,81 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 0)
+            {
+                // 输入文件路径判断
+                string path1 = inputPath1.filePath.Text;
+                string path2 = inputPath2.filePath.Text;
+                string path3 = inputPath3.filePath.Text;
+                if (!FileNameFilter.CheckFileSuffix(path1))
+                {
+                    Msg("站点文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(path1))
+                {
+                    Msg("站点文件路径不存在！");
+                    return;
+                }
+                else if (!FileNameFilter.CheckFileSuffix(path2))
+                {
+                    Msg("内区地形文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(path2))
+                {
+                    Msg("内区地形文件路径不存在！");
+                    return;
+                }
+                else if (!FileNameFilter.CheckFileSuffix(path3))
+                {
+                    Msg("外区地形文件类型不正确！");
+                    return;
+                }
+                else if (!File.Exists(path3))
+                {
+                    Msg("外区地形文件路径不存在！");
+                    return;
+                }
+            }
+            else if (CurrentState == 1)
+            {
+                // 参数判断
+                double _arg1, _arg2, _arg3;
+                if (!double.TryParse(arg1.Value, out _arg1))
+                {
+                    Msg("密度值非法！");
+                    return;
+                }
+                else if (!double.TryParse(arg2.Value, out _arg2))
+                {
+                    Msg("内区半径非法！");
+                    return;
+                }
+                else if (!double.TryParse(arg3.Value, out _arg3))
+                {
+                    Msg("外区半径非法！");
+                    return;
+                }
+            }
+            else if (CurrentState == 2)
+            {
+                DoGSJFF();
+            }
+            else if (CurrentState == 3)
+            {
+                if (Task_gsjff != null)
+                {
+                    IsCanceled = true;
+                    GSJFF.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
             if (CurrentState < MaxState - 1)
             {
                 content.IsEnabled = false;
@@ -57,21 +132,10 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                DoGSJFF();
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState-1;
                 next.Content = "计算";
-                if (Task_gsjff != null)
-                {
-                    IsCanceled = true;
-                    GSJFF.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
@@ -92,6 +156,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -149,15 +214,15 @@ namespace GI.UserControls
                 int choice = 1;
                 if (!FileNameFilter.CheckFileSuffix(path1))
                     Msg("站点文件类型不正确！");
-                else if (!FileNameFilter.CheckFileExistence(path1))
+                else if (!File.Exists(path1))
                     Msg("站点文件路径不存在！");
                 else if (!FileNameFilter.CheckFileSuffix(path2))
                     Msg("内区地形文件类型不正确！");
-                else if (!FileNameFilter.CheckFileExistence(path2))
+                else if (!File.Exists(path2))
                     Msg("内区地形文件路径不存在！");
                 else if (!FileNameFilter.CheckFileSuffix(path3))
                     Msg("外区地形文件类型不正确！");
-                else if (!FileNameFilter.CheckFileExistence(path3))
+                else if (!File.Exists(path3))
                     Msg("外区地形文件路径不存在！");
                 else if (!double.TryParse(arg1.Value, out _arg1))
                     Msg("密度值非法！");

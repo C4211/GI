@@ -33,10 +33,10 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentState < MaxState - 1)
+            #region 逻辑
+            if (CurrentState == 0)
             {
-                content.IsEnabled = false;
-                buttons.IsEnabled = false;
+                // 检查输入文件路径
                 string inPath = inputPath1.filePath.Text;
                 try
                 {
@@ -48,11 +48,53 @@ namespace GI.UserControls
                 }
                 catch (Exception ex)
                 {
-                    content.IsEnabled = true;
-                    buttons.IsEnabled = true;
                     Msg(ex.Message);
                     return;
                 }
+            }
+            else if (CurrentState == 1)
+            {
+                // 检查扩边后行列数
+                int Nx_out, Ny_out;
+                if (!int.TryParse(Nx_output.Text, out Nx_out))
+                {
+                    Msg("扩边后行数非法！");
+                    return;
+                }
+                if (!int.TryParse(Ny_output.Text, out Ny_out))
+                {
+                    Msg("扩边后列数非法！");
+                    return;
+                }
+                if (Nx_out < data[0])
+                {
+                    Msg("扩边后的行数小于原始行数！");
+                    return;
+                }
+                if (Ny_out < data[1])
+                {
+                    Msg("扩边后的列数小于原始列数！");
+                    return;
+                }
+                DoExpand(Nx_out, Ny_out);
+            }
+            else if (CurrentState == 2)
+            {
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    Expand.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
+            }
+            #endregion
+
+            #region 界面
+            if (CurrentState < MaxState - 1)
+            {
+                content.IsEnabled = false;
+                buttons.IsEnabled = false;
                 CurrentState = 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -64,35 +106,15 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
-            else if (CurrentState == MaxState - 1)
-            {
-                int Nx_out = int.Parse(Nx_output.Text);
-                int Ny_out = int.Parse(Ny_output.Text);
-                if (Nx_out < data[0])
-                    Msg("扩边后的行数小于原始行数！请重新输入！");
-                else if (Ny_out < data[1])
-                    Msg("扩边后的列数小于原始列数！请重新输入！");
-                else
-                {
-                    DoExpand(Nx_out, Ny_out);
-                }
-            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    Expand.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-                ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
+                ofd.Filter = "grd文件(*.grd)";
                 ofd.FilterIndex = 2;
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -108,6 +130,7 @@ namespace GI.UserControls
                     }
                 }
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
