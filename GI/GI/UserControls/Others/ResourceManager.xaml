@@ -101,7 +101,7 @@
         </Grid>
     </Grid>
     <Grid Grid.Row="1">
-        <TreeView x:Name="resourceTree" Loaded="resourceTree_Loaded" Style="{StaticResource TreeViewStyle}" SelectedItemChanged="resourceTree_SelectedItemChanged"/>
+        <TreeView x:Name="resourceTree" Loaded="resourceTree_Loaded" Style="{StaticResource TreeViewStyle}" SelectedItemChanged="resourceTree_SelectedItemChanged" PreviewMouseRightButtonDown="resourceTree_PreviewMouseRightButtonDown"/>
         <UserControls:LoadingBar x:Name="loadingBar"></UserControls:LoadingBar>
     </Grid>
 </Grid>

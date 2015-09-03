@@ -76,7 +76,7 @@ namespace GI.UserControls
                 result = LoadResourceTree(roots);
                 Dispatcher.Invoke(delegate
                 {
-                    resourceTree.Items.Refresh();
+                    //resourceTree.Items.Refresh();
                     resourceTree.Items.Clear();
                     foreach (var node in result)
                     {
@@ -88,6 +88,12 @@ namespace GI.UserControls
                         {
                             parentNode.Items.Add(l);
                         }
+                        ContextMenu menu = new ContextMenu();
+                        MenuItem item = new MenuItem();
+                        item.Header = "删除路径";
+                        item.Click += item_Click;
+                        menu.Items.Add(item);
+                        parentNode.ContextMenu = menu;
                         resourceTree.Items.Add(parentNode);
                     }
                 });
@@ -102,6 +108,29 @@ namespace GI.UserControls
                     result = null;
                 if (list != null)
                     list = null;
+            }
+        }
+
+        private async void item_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceManagerTreeNode node = resourceTree.SelectedItem as ResourceManagerTreeNode;
+            if (node != null)
+            {
+                while (node.Parent as ResourceManagerTreeNode != null && (node.Parent as ResourceManagerTreeNode).Parent != null)
+                    node = node.Parent as ResourceManagerTreeNode;
+                MessageBox.Show(node.Path.FullName);
+                StartLoading();
+                for (int i=0; i<roots.Count; i++)
+                {
+                    var root = roots[i];
+                    if (root.FullName == node.Path.FullName)
+                    {
+                        roots.RemoveAt(i);
+                        break;
+                    }
+                }
+                await Task.Factory.StartNew(RefreshTreeView);
+                StopLoading();
             }
         }
 
@@ -159,7 +188,7 @@ namespace GI.UserControls
         private void FileDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ResourceManagerTreeNode rmtn = (ResourceManagerTreeNode)sender;
-            FilePreviewWindow.PreviwShow(Application.Current.MainWindow,rmtn);
+            FilePreviewWindow.PreviwShow(Application.Current.MainWindow, rmtn);
         }
 
         private List<ResourceTreeNode> LoadResourceTree(List<DirectoryInfo> Roots)
@@ -193,7 +222,7 @@ namespace GI.UserControls
         private async void ResourceManger_Addpath_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog fbd = new System.Windows.Forms.FolderBrowserDialog();
-            
+
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 StartLoading();
@@ -230,6 +259,22 @@ namespace GI.UserControls
                     e.Handled = true;
                 }
             }
+        }
+
+        private void resourceTree_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var node = VisualUpwardSearch<ResourceManagerTreeNode>(e.OriginalSource as DependencyObject) as ResourceManagerTreeNode;
+            if (node != null)
+            {
+                node.Focus();
+            }
+        }
+
+        private static DependencyObject VisualUpwardSearch<T>(DependencyObject source)
+        {
+            while (source != null && source.GetType() != typeof(T))
+                source = VisualTreeHelper.GetParent(source);
+            return source;
         }
 
     }
@@ -282,6 +327,6 @@ namespace GI.UserControls
             _FileInfo = fileInfo;
             Children = new List<ResourceTreeNode>();
         }
-        
+
     }
 }
