@@ -72,6 +72,7 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -119,6 +120,7 @@
     </Compile>
     <Compile Include="Tools\ResourceManagerTreeNode.cs" />
     <Compile Include="Tools\SelectUnitBox.cs" />
+    <Compile Include="Tools\UserConfigUtil.cs" />
     <Compile Include="UserControls\Others\BodyTitle.xaml.cs">
       <DependentUpon>BodyTitle.xaml</DependentUpon>
     </Compile>

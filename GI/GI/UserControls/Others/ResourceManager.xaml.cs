@@ -27,8 +27,7 @@ namespace GI.UserControls
         public ResourceManager()
         {
             InitializeComponent();
-            if (roots.Count == 0)
-                roots.Add(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)));
+            roots = UserConfigUtil.GetPaths();
         }
 
         private List<DirectoryInfo> roots = new List<DirectoryInfo>();
@@ -108,9 +107,13 @@ namespace GI.UserControls
                     result = null;
                 if (list != null)
                     list = null;
+                UserConfigUtil.SavePaths(roots);
             }
         }
 
+        /// <summary>
+        /// 右键菜单：删除
+        /// </summary>
         private async void item_Click(object sender, RoutedEventArgs e)
         {
             ResourceManagerTreeNode node = resourceTree.SelectedItem as ResourceManagerTreeNode;
@@ -118,19 +121,22 @@ namespace GI.UserControls
             {
                 while (node.Parent as ResourceManagerTreeNode != null && (node.Parent as ResourceManagerTreeNode).Parent != null)
                     node = node.Parent as ResourceManagerTreeNode;
-                MessageBox.Show(node.Path.FullName);
-                StartLoading();
-                for (int i=0; i<roots.Count; i++)
+                //MessageBox.Show(node.Path.FullName);
+                if (MessageBox.Show("确定要删除这条路径？\n" + node.Path.FullName, "提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    var root = roots[i];
-                    if (root.FullName == node.Path.FullName)
+                    StartLoading();
+                    for (int i = 0; i < roots.Count; i++)
                     {
-                        roots.RemoveAt(i);
-                        break;
+                        var root = roots[i];
+                        if (root.FullName == node.Path.FullName)
+                        {
+                            roots.RemoveAt(i);
+                            break;
+                        }
                     }
+                    await Task.Factory.StartNew(RefreshTreeView);
+                    StopLoading();
                 }
-                await Task.Factory.StartNew(RefreshTreeView);
-                StopLoading();
             }
         }
 
@@ -180,6 +186,7 @@ namespace GI.UserControls
             list = null;
             return result;
         }
+
         /// <summary>
         /// 预览文件点击事件
         /// </summary>
@@ -200,16 +207,24 @@ namespace GI.UserControls
             foreach (DirectoryInfo rootDir in Roots)
             {
                 if (!rootDir.Exists)
-                    throw new Exception();
-                rootNode = new ResourceTreeNode(rootDir);
-                dirs = rootDir.GetDirectories().ToList();
-                rootNode.Children = LoadResourceTree(dirs);
-                files = rootDir.GetFiles().ToList();
-                foreach (var file in files)
+                    continue;
+                try
                 {
-                    rootNode.Children.Add(new ResourceTreeNode(file));
+                    rootNode = new ResourceTreeNode(rootDir);
+                    dirs = rootDir.GetDirectories().ToList();
+                    rootNode.Children = LoadResourceTree(dirs);
+                    files = rootDir.GetFiles().ToList();
+                    foreach (var file in files)
+                    {
+                        rootNode.Children.Add(new ResourceTreeNode(file));
+                    }
+                    list.Add(rootNode);
                 }
-                list.Add(rootNode);
+                catch (UnauthorizedAccessException)
+                {
+                    Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, string.Format("目录{0}拒绝访问！\n", rootDir.FullName)); });
+                    return list;
+                }
             }
             return list;
         }
@@ -261,6 +276,9 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 右键选中节点
+        /// </summary>
         private void resourceTree_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             var node = VisualUpwardSearch<ResourceManagerTreeNode>(e.OriginalSource as DependencyObject) as ResourceManagerTreeNode;
@@ -270,6 +288,9 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 向上寻找目标节点
+        /// </summary>
         private static DependencyObject VisualUpwardSearch<T>(DependencyObject source)
         {
             while (source != null && source.GetType() != typeof(T))
