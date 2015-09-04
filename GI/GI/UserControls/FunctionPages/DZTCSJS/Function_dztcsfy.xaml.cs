@@ -28,13 +28,14 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "地质体参数反演";
             this.titleEn = "Geological Parameters Inversion";
-            cssz = content.Children[MaxState-1] as Grid;
+            cssz = content.Children[MaxState - 1] as Grid;
         }
 
         /// <summary>
-        /// 0 : 输入文件
-        /// 1 : 输入参数
-        /// 2 : 计算中
+        /// 0 : 选项
+        /// 1 : 输入文件
+        /// 2 : choice1-3=计算中 choice4=输入参数
+        /// 3 :                  choice4=计算中
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
@@ -50,6 +51,167 @@ namespace GI.UserControls
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            #region 逻辑
+            if (CurrentState == 1)
+            {
+                if (choice1.IsChecked == true)
+                {
+                    string path1 = choice1path1.filePath.Text;
+                    string path2 = choice1path2.filePath.Text;
+                    if (!FileNameFilter.CheckFileSuffix(path1))
+                    {
+                        Msg("重力异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path1))
+                    {
+                        Msg("重力异常数据路径不存在！");
+                        return;
+                    }
+                    try
+                    {
+                        if (!File.Exists(path2))
+                            File.Create(path2).Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Msg("输出文件路径异常！\n" + ex.Message);
+                        return;
+                    }
+                    // TODO: 计算1
+                }
+                else if (choice2.IsChecked == true)
+                {
+                    string path1 = choice2path1.filePath.Text;
+                    string path2 = choice2path2.filePath.Text;
+                    if (!FileNameFilter.CheckFileSuffix(path1))
+                    {
+                        Msg("重力异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path1))
+                    {
+                        Msg("重力异常数据路径不存在！");
+                        return;
+                    }
+                    try
+                    {
+                        if (!File.Exists(path2))
+                            File.Create(path2).Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Msg("输出文件路径异常！\n" + ex.Message);
+                        return;
+                    }
+                    // TODO: 计算2
+                }
+                else if (choice3.IsChecked == true)
+                {
+                    string path1 = choice3path1.filePath.Text;
+                    string path2 = choice3path2.filePath.Text;
+                    string path3 = choice3path3.filePath.Text;
+                    if (!FileNameFilter.CheckFileSuffix(path1))
+                    {
+                        Msg("重力异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path1))
+                    {
+                        Msg("重力异常数据路径不存在！");
+                        return;
+                    }
+                    if (!FileNameFilter.CheckFileSuffix(path2))
+                    {
+                        Msg("重力梯度异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path2))
+                    {
+                        Msg("重力梯度异常数据路径不存在！");
+                        return;
+                    }
+                    try
+                    {
+                        if (!File.Exists(path3))
+                            File.Create(path3).Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Msg("输出文件路径异常！\n" + ex.Message);
+                        return;
+                    }
+                    // TODO: 计算3
+                }
+                else if (choice4.IsChecked == true)
+                {
+                    string path1 = choice4path1.filePath.Text;
+                    string path2 = choice4path2.filePath.Text;
+                    string path3 = choice4path3.filePath.Text;
+                    if (!FileNameFilter.CheckFileSuffix(path1))
+                    {
+                        Msg("重力异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path1))
+                    {
+                        Msg("重力异常数据路径不存在！");
+                        return;
+                    }
+                    if (!FileNameFilter.CheckFileSuffix(path2))
+                    {
+                        Msg("重力梯度异常数据文件类型不正确！");
+                        return;
+                    }
+                    else if (!File.Exists(path2))
+                    {
+                        Msg("重力梯度异常数据路径不存在！");
+                        return;
+                    }
+                    try
+                    {
+                        if (!File.Exists(path3))
+                            File.Create(path3).Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Msg("输出文件路径异常！\n" + ex.Message);
+                        return;
+                    }
+                }
+            }
+            else if (CurrentState == 2)
+            {
+                if (choice1.IsChecked == true || choice2.IsChecked == true || choice3.IsChecked == true)
+                {
+                    // TODO: 取消计算
+                }
+                else if (choice4.IsChecked == true)
+                {
+                    double arg1, arg2;
+                    if (!double.TryParse(choice4arg1.Text, out arg1))
+                    {
+                        Msg("重力异常相对误差不合法！");
+                        return;
+                    }
+                    else if (!double.TryParse(choice4arg2.Text, out arg2))
+                    {
+                        Msg("重力梯度异常相对误差不合法！");
+                        return;
+                    }
+                    // TODO: 计算4
+                }
+            }
+            else if (CurrentState == 3)
+            {
+                if (choice4.IsChecked == true)
+                {
+                    // TODO: 取消计算
+                }
+            }
+            #endregion
+
+            #region 界面
             Page2_Reset();
             if (choice1.IsChecked == true)
             {
@@ -69,9 +231,9 @@ namespace GI.UserControls
             }
             if (choice4.IsChecked == false && MaxState == 3)
             {
-                content.Children.Remove(content.Children[MaxState-1]);
+                content.Children.Remove(content.Children[MaxState - 1]);
             }
-            else if(choice4.IsChecked == true && MaxState ==2)
+            else if (choice4.IsChecked == true && MaxState == 2)
             {
                 content.Children.Add(cssz);
             }
@@ -103,7 +265,6 @@ namespace GI.UserControls
                 loadingBar.Hide();
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                
             }
             else if (CurrentState == MaxState)
             {
@@ -114,6 +275,7 @@ namespace GI.UserControls
                 ShowPrevAndCancel();
                 Msg("计算已取消");
             }
+            #endregion
         }
 
         private void prev_Click(object sender, RoutedEventArgs e)
@@ -121,7 +283,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
