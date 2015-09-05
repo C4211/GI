@@ -17,7 +17,7 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0" x:Name="Bd" Background="{TemplateBinding Background}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="0"></ColumnDefinition>
                                 <ColumnDefinition Width="{Binding Path=LevelLeft,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
                                 <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -101,15 +101,15 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Foreground" TargetName="Title" Value="{StaticResource GI.Colors.Essential}"></Setter>
-                            <Setter Property="Background" TargetName="Bd" Value="#FAFAFA"/>
+                            <Setter Property="Background" TargetName="Bd" Value="#F5F5F5"/>
                             <Setter Property="Fill" TargetName="OnSelect" Value="{StaticResource GI.Colors.Essential}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="IsSelectionActive" Value="false"/>
+                                <Condition Property="IsFocused" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="#FAFAFA"/>
+                            <Setter Property="Background" TargetName="Bd" Value="#F5F5F5"/>
                             <Setter Property="Fill" TargetName="OnSelect" Value="#AAAAAA"/>
                             <Setter Property="Foreground" TargetName="Title" Value="{StaticResource GI.Colors.Body.text}"></Setter>
                         </MultiTrigger>
@@ -313,5 +313,50 @@
                 <Setter Property="Opacity" Value="0.5"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style TargetType="ContextMenu">
+        <Setter Property="Background" Value="white"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}" BorderThickness="1" Margin="5" SnapsToDevicePixels="true">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#333333" Opacity="0.6"/>
+                        </Border.BorderBrush>
+                        <ItemsPresenter></ItemsPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="SubmenuHeaderTemplateKey" TargetType="{x:Type MenuItem}">
+        <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Height="auto" SnapsToDevicePixels="true">
+            <Grid Margin="-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ContentPresenter ContentSource="Header" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                <TextBlock Margin="{TemplateBinding Padding}" Opacity="0.7" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" TargetName="templateRoot" Value="#f0f0f0"/>
+                <Setter Property="Foreground" Value="black"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="MenuItem">
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"/>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Padding" Value="20,8,40,8"/>
+        <Setter Property="Template" Value="{StaticResource SubmenuHeaderTemplateKey}"/>
     </Style>
 </ResourceDictionary>
