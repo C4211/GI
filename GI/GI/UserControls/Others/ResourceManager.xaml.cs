@@ -1,6 +1,7 @@
 ﻿using GI.Tools;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -87,12 +88,26 @@ namespace GI.UserControls
                         {
                             parentNode.Items.Add(l);
                         }
-                        ContextMenu menu = new ContextMenu();
-                        MenuItem item = new MenuItem();
-                        item.Header = "删除路径";
-                        item.Click += item_Click;
-                        menu.Items.Add(item);
-                        parentNode.ContextMenu = menu;
+                        if (parentNode.ContextMenu == null)
+                        {
+                            ContextMenu menu = new ContextMenu();
+                            MenuItem item = new MenuItem();
+                            item.Header = "移除路径";
+                            item.Click += item_Click;
+                            menu.Items.Add(item);
+                            parentNode.ContextMenu = menu;
+                        }
+                        else
+                        {
+                            MenuItem item = new MenuItem();
+                            item.Header = "移除路径";
+                            item.Click += item_Click;
+                            parentNode.ContextMenu.Items.Add(item);
+                        }
+                        MenuItem item1 = new MenuItem();
+                        item1.Header = "打开目录";
+                        item1.Click += delegate { Open_File(parentNode.Path.FullName); };
+                        parentNode.ContextMenu.Items.Add(item1);
                         resourceTree.Items.Add(parentNode);
                     }
                 });
@@ -112,6 +127,38 @@ namespace GI.UserControls
         }
 
         /// <summary>
+        /// 右键菜单打开文件位置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Open_File(string fileFullName)
+        {
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo("Explorer.exe");
+                psi.Arguments = "/root,/select," + fileFullName;
+                System.Diagnostics.Process.Start(psi);
+            }
+            catch (Exception e)
+            {
+                MessageWindow.Show(Application.Current.MainWindow, e.Message);
+            }
+        }
+        private void Open_FilePath(string fileFullName)
+        {
+            try
+            {
+                ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe");
+                psi.Arguments = "/n,/select," + fileFullName;
+                System.Diagnostics.Process.Start(psi);
+            }
+            catch (Exception e)
+            {
+                MessageWindow.Show(Application.Current.MainWindow, e.Message);
+            }
+        }
+
+        /// <summary>
         /// 右键菜单：删除
         /// </summary>
         private async void item_Click(object sender, RoutedEventArgs e)
@@ -122,7 +169,7 @@ namespace GI.UserControls
                 while (node.Parent as ResourceManagerTreeNode != null && (node.Parent as ResourceManagerTreeNode).Parent != null)
                     node = node.Parent as ResourceManagerTreeNode;
                 //MessageBox.Show(node.Path.FullName);
-                if (MessageBox.Show("确定要删除这条路径？\n" + node.Path.FullName, "提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (MessageWindow.Show(Application.Current.MainWindow,"确定从资源管理器中要移除该路径？\n" + node.Path.FullName, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     StartLoading();
                     for (int i = 0; i < roots.Count; i++)
@@ -157,24 +204,116 @@ namespace GI.UserControls
                     if (child.Info.Extension.Equals(".dat", StringComparison.OrdinalIgnoreCase))
                     {
                         childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Dat") as DrawingBrush;
+                        if (childNode.ContextMenu == null)
+                        {
+                            ContextMenu menu = new ContextMenu();
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            menu.Items.Add(item);
+                            childNode.ContextMenu = menu;
+                        }
+                        else
+                        {
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            childNode.ContextMenu.Items.Add(item);
+                        }
                     }
                     else if (child.Info.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase))
                     {
                         childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Txt") as DrawingBrush;
+                        if (childNode.ContextMenu == null)
+                        {
+                            ContextMenu menu = new ContextMenu();
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            menu.Items.Add(item);
+                            childNode.ContextMenu = menu;
+                        }
+                        else
+                        {
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            childNode.ContextMenu.Items.Add(item);
+                        }
                     }
                     else if (child.Info.Extension.Equals(".grd", StringComparison.OrdinalIgnoreCase))
                     {
                         childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Grd") as DrawingBrush;
+                        if (childNode.ContextMenu == null)
+                        {
+                            ContextMenu menu = new ContextMenu();
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            menu.Items.Add(item);
+                            childNode.ContextMenu = menu;
+                        }
+                        else
+                        {
+                            MenuItem item = new MenuItem();
+                            item.Header = "预览文件";
+                            item.Click += delegate { Preview_File(childNode); };
+                            childNode.ContextMenu.Items.Add(item);
+                        }
                     }
                     else
                     {
                         childNode.Icon = Application.Current.FindResource("GI.ResourceManager.Icons.Other") as DrawingBrush;
                     }
+                    if (childNode.ContextMenu == null)
+                    {
+                        ContextMenu menu = new ContextMenu();
+                        MenuItem item = new MenuItem();
+                        item.Header = "打开文件";
+                        item.Click += delegate { Open_File(childNode.Path.FullName); };
+                        menu.Items.Add(item);
+                        MenuItem item1 = new MenuItem();
+                        item1.Header = "打开位置";
+                        item1.Click += delegate { Open_FilePath(childNode.Path.FullName); };
+                        menu.Items.Add(item1);
+                        childNode.ContextMenu = menu;
+                    }
+                    else
+                    {
+                        MenuItem item = new MenuItem();
+                        item.Header = "打开文件";
+                        item.Click += delegate { Open_File(childNode.Path.FullName); };
+                        childNode.ContextMenu.Items.Add(item);
+                        MenuItem item1 = new MenuItem();
+                        item1.Header = "打开位置";
+                        item1.Click += delegate { Open_FilePath(childNode.Path.FullName); };
+                        childNode.ContextMenu.Items.Add(item1);
+                    }
+                    
                     childNode.PreviewMouseLeftButtonDown += delegate
                     {
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
                     };
-                    childNode.MouseDoubleClick += FileDoubleClick;
+                    childNode.MouseDoubleClick += delegate { Preview_File(childNode); };
+                }
+                else
+                {
+                    if (childNode.ContextMenu == null)
+                    {
+                        ContextMenu menu = new ContextMenu();
+                        MenuItem item = new MenuItem();
+                        item.Header = "打开目录";
+                        item.Click += delegate { Open_File(childNode.Path.FullName); };
+                        menu.Items.Add(item);
+                        childNode.ContextMenu = menu;
+                    }
+                    else
+                    {
+                        MenuItem item = new MenuItem();
+                        item.Header = "打开目录";
+                        item.Click += delegate { Open_File(childNode.Path.FullName); };
+                        childNode.ContextMenu.Items.Add(item);
+                    }
                 }
                 list = FillDataToResourceTreeView(child, level + 1);
                 foreach (var l in list)
@@ -182,7 +321,9 @@ namespace GI.UserControls
                     childNode.Items.Add(l);
                 }
                 result.Add(childNode);
+                
             }
+
             list = null;
             return result;
         }
@@ -190,11 +331,9 @@ namespace GI.UserControls
         /// <summary>
         /// 预览文件点击事件
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FileDoubleClick(object sender, MouseButtonEventArgs e)
+        /// <param name="rmtn"></param>
+        private void Preview_File(ResourceManagerTreeNode rmtn)
         {
-            ResourceManagerTreeNode rmtn = (ResourceManagerTreeNode)sender;
             FilePreviewWindow.PreviwShow(Application.Current.MainWindow, rmtn);
         }
 
