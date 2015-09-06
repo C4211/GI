@@ -58,21 +58,6 @@ namespace GI.UserControls
                     return;
                 }
             }
-            else if (CurrentState == 1)
-            {
-                DoFreeAirCorrection();
-            }
-            else if (CurrentState == 2)
-            {
-                if (Task_zkgz != null)
-                {
-                    IsCanceled = true;
-                    FreeAirCorrection.Stop();
-                    ShowPrevAndCancel();
-                    loadingBar.Hide();
-                    Msg("计算取消！");
-                }
-            }
             #endregion
 
             #region 界面
@@ -93,8 +78,20 @@ namespace GI.UserControls
                     ButtonChangeContent(next, "计算");
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoFreeAirCorrection();
+            }
             else if (CurrentState == MaxState)
             {
+                if (Task_zkgz != null)
+                {
+                    IsCanceled = true;
+                    FreeAirCorrection.Stop();
+                    ShowPrevAndCancel();
+                    loadingBar.Hide();
+                    Msg("计算取消！");
+                }
                 CurrentState = MaxState - 1;
                 //next.Content = "计算";
                 ButtonChangeContent(next, "计算");
