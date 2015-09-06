@@ -87,17 +87,6 @@ namespace GI.UserControls
                     Msg("外区半径非法！");
                     return;
                 }
-                DoFLYBHF();
-            }
-            else if (CurrentState == 2)
-            {
-                if (Task_flybhf != null)
-                {
-                    IsCanceled = true;
-                    FLYBHF.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             #endregion
 
@@ -117,10 +106,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoFLYBHF();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (Task_flybhf != null)
+                {
+                    IsCanceled = true;
+                    FLYBHF.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

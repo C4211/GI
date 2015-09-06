@@ -33,7 +33,9 @@ namespace GI.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            int Nx_out = 0, Ny_out = 0;
             #region 逻辑
+            
             if (CurrentState == 0)
             {
                 // 检查输入文件路径
@@ -55,7 +57,6 @@ namespace GI.UserControls
             else if (CurrentState == 1)
             {
                 // 检查扩边后行列数
-                int Nx_out, Ny_out;
                 if (!int.TryParse(Nx_output.Text, out Nx_out))
                 {
                     Msg("扩边后行数非法！");
@@ -76,17 +77,7 @@ namespace GI.UserControls
                     Msg("扩边后的列数小于原始列数！");
                     return;
                 }
-                DoExpand(Nx_out, Ny_out);
-            }
-            else if (CurrentState == 2)
-            {
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    Expand.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
+                
             }
             #endregion
 
@@ -106,10 +97,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoExpand(Nx_out, Ny_out);
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    Expand.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

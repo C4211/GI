@@ -62,17 +62,7 @@ namespace GI.UserControls
                     Msg("延拓高度不合法！");
                     return;
                 }
-                DoContinueExpand();
-            }
-            else if (CurrentState == 2)
-            {
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    ContinueExpand.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
+                
             }
             #endregion
 
@@ -92,10 +82,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoContinueExpand();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    ContinueExpand.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

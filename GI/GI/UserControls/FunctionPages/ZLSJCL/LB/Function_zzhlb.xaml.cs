@@ -89,21 +89,6 @@ namespace GI.UserControls
                     return;
                 }
             }
-            else if (CurrentState == 2)
-            {
-                DoRagularizationFilter();
-            }
-            else if (CurrentState == 3)
-            {
-                // 取消计算
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    RegularizationFilter.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
-            }
             #endregion
 
             #region 界面
@@ -122,10 +107,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoRagularizationFilter();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    RegularizationFilter.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

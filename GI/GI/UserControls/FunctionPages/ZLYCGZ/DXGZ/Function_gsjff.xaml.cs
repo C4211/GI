@@ -100,20 +100,6 @@ namespace GI.UserControls
                     return;
                 }
             }
-            else if (CurrentState == 2)
-            {
-                DoGSJFF();
-            }
-            else if (CurrentState == 3)
-            {
-                if (Task_gsjff != null)
-                {
-                    IsCanceled = true;
-                    GSJFF.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
-            }
             #endregion
 
             #region 界面
@@ -132,11 +118,23 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoGSJFF();
+            }
             else if (CurrentState == MaxState)
             {
-                CurrentState = MaxState-1;
+                CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (Task_gsjff != null)
+                {
+                    IsCanceled = true;
+                    GSJFF.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
+
             else if (CurrentState == MaxState + 1)
             {
                 System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();

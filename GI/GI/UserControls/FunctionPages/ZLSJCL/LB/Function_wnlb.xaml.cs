@@ -87,18 +87,6 @@ namespace GI.UserControls
                     Msg("浅源截距非法！");
                     return;
                 }
-                DoWienerFilter();
-            }
-            else if (CurrentState == 2)
-            {
-                // 取消计算
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    WienerFilter.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
             }
             #endregion
 
@@ -118,10 +106,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoWienerFilter();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    WienerFilter.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

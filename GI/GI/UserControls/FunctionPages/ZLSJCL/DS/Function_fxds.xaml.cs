@@ -77,17 +77,7 @@ namespace GI.UserControls
                     Msg("方向角度不合法！");
                     return;
                 }
-                DoDirectionalDerivative();
-            }
-            else if (CurrentState == 2)
-            {
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    DirectionalDerivative.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
+                
             }
             #endregion
 
@@ -107,10 +97,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoDirectionalDerivative();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    DirectionalDerivative.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {

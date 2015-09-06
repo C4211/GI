@@ -60,17 +60,7 @@ namespace GI.UserControls
                     Msg("输入文件不是GRD数据格式！");
                     return;
                 }
-                DoPSD();
-            }
-            else if (CurrentState == 1)
-            {
-                if (task != null)
-                {
-                    IsCanceled = true;
-                    PSD.p.Kill();
-                    loadingBar.Hide();
-                    ShowPrevAndCancel();
-                }
+                
             }
             #endregion
 
@@ -90,10 +80,21 @@ namespace GI.UserControls
                     next.Content = "计算";
                 return;
             }
+            else if (CurrentState == MaxState - 1)
+            {
+                DoPSD();
+            }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    PSD.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             else if (CurrentState == MaxState + 1)
             {
