@@ -488,7 +488,7 @@
                         Grid.Row="1" Grid.Column="3" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="Z：" HorizontalAlignment="Left"/>
-                    <Tools:SelectUnitBox Value="-60" x:Name="arg5_3"
+                    <Tools:SelectUnitBox Value="0" x:Name="arg5_3"
                     Grid.Row="1" Grid.Column="3" Margin="40,10,10,10" HorizontalAlignment="Left" Width="120"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
@@ -498,7 +498,7 @@
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="X方向观测面边长："/>
-                    <Tools:SelectUnitBox Value="10" x:Name="arg5_4"
+                    <Tools:SelectUnitBox Value="200" x:Name="arg5_4"
                     Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
@@ -507,9 +507,9 @@
                     <TextBlock
                         Grid.Row="3" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="X方向观测面分辨率："/>
-                    <Tools:SelectUnitBox Value="10" x:Name="arg5_5"
-                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
+                        Text="Y方向观测面边长："/>
+                    <Tools:SelectUnitBox Value="200" x:Name="arg5_6"
+                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -517,9 +517,9 @@
                     <TextBlock
                         Grid.Row="4" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="Y方向观测面边长："/>
-                    <Tools:SelectUnitBox Value="10" x:Name="arg5_6"
-                    Grid.Row="4" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
+                        Text="X方向观测面分辨率："/>
+                    <Tools:SelectUnitBox Value="1" x:Name="arg5_5"
+                    Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
                         <ComboBoxItem Tag="1000">km</ComboBoxItem>
@@ -528,7 +528,7 @@
                         Grid.Row="5" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="Y方向观测面分辨率："/>
-                    <Tools:SelectUnitBox Value="10" x:Name="arg5_7"
+                    <Tools:SelectUnitBox Value="1" x:Name="arg5_7"
                     Grid.Row="5" Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Left" Width="270" Grid.ColumnSpan="2"
                     ComboBoxWidth="50">
                         <ComboBoxItem Tag="1">m</ComboBoxItem>
@@ -573,5 +573,6 @@
         <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
         <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
         <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
+        <Button x:Name="back" Width="80" Content="返回" Visibility="Collapsed" Style="{StaticResource GI.Window.Body.CancelButton.Style}" Click="back_Click"/>
     </UniformGrid>
 </Tools:FunctionPage>

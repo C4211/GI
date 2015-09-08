@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,6 +42,7 @@ namespace GI.UserControls
         private int MaxState { get { return content.Children.Count; } }
         private bool IsCanceled = false;
         double[] page2args, page3args;
+        double cenZ1, sizeZ1;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -60,10 +62,11 @@ namespace GI.UserControls
             else if (CurrentState == 2)
             {
                 page2args = new double[8];
-                switch(choice)
+                switch (choice)
                 {
                     case 1:
                         // 球形
+                        page2args[0] = 1;
                         if (!double.TryParse(arg1_1.Value, out page2args[1]))
                         { Msg("球心X坐标非法！"); return; }
                         else if (!double.TryParse(arg1_2.Value, out page2args[2]))
@@ -72,11 +75,19 @@ namespace GI.UserControls
                         { Msg("球心Z坐标非法！"); return; }
                         else if (!double.TryParse(arg1_4.Value, out page2args[4]))
                         { Msg("球形半径非法！"); return; }
-                        else if (!double.TryParse(arg1_5.Value, out page2args[5]))
+                        else if (!double.TryParse(arg1_5.Value, out page2args[5]) || page2args[5] > 23000)
                         { Msg("球形密度非法！"); return; }
+                        page2args[1] *= double.Parse((arg1_1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[2] *= double.Parse((arg1_2.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[3] *= double.Parse((arg1_3.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[4] *= double.Parse((arg1_4.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[5] *= double.Parse((arg1_5.SelectedItem as ComboBoxItem).Tag.ToString());
+                        cenZ1 = page2args[3];
+                        sizeZ1 = page2args[4] * 2;
                         break;
                     case 2:
                         // 垂直圆柱体
+                        page2args[0] = 2;
                         if (!double.TryParse(arg2_1.Value, out page2args[1]))
                         { Msg("顶面中心X坐标非法！"); return; }
                         else if (!double.TryParse(arg2_2.Value, out page2args[2]))
@@ -91,9 +102,23 @@ namespace GI.UserControls
                         { Msg("垂直圆柱体高度非法！"); return; }
                         else if (!double.TryParse(arg2_7.Value, out page2args[7]))
                         { Msg("垂直圆柱体密度非法！"); return; }
+                        else if (page2args[2] + page2args[3] != 0)
+                        { Msg("模型参数设置不合理！"); return; }
+                        page2args[1] *= double.Parse((arg2_1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[2] *= double.Parse((arg2_2.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[3] *= double.Parse((arg2_3.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[4] *= double.Parse((arg2_4.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[5] *= double.Parse((arg2_5.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[6] *= double.Parse((arg2_6.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[7] *= double.Parse((arg2_7.SelectedItem as ComboBoxItem).Tag.ToString());
+                        if (page2args[7] > 23000)
+                        { Msg("垂直圆柱体密度非法！"); return; }
+                        cenZ1 = page2args[3] - page2args[6] / 2;
+                        sizeZ1 = page2args[6];
                         break;
                     case 3:
                         // 水平圆柱体
+                        page2args[0] = 3;
                         if (!double.TryParse(arg3_1.Value, out page2args[1]))
                         { Msg("左面中心X坐标非法！"); return; }
                         else if (!double.TryParse(arg3_2.Value, out page2args[2]))
@@ -108,9 +133,23 @@ namespace GI.UserControls
                         { Msg("水平圆柱体高度非法！"); return; }
                         else if (!double.TryParse(arg3_7.Value, out page2args[7]))
                         { Msg("水平圆柱体密度非法！"); return; }
+                        else if (page2args[2] + page2args[3] + page2args[4] != 0)
+                        { Msg("模型参数设置不合理！"); return; }
+                        page2args[1] *= double.Parse((arg3_1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[2] *= double.Parse((arg3_2.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[3] *= double.Parse((arg3_3.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[4] *= double.Parse((arg3_4.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[5] *= double.Parse((arg3_5.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[6] *= double.Parse((arg3_6.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[7] *= double.Parse((arg3_7.SelectedItem as ComboBoxItem).Tag.ToString());
+                        if (page2args[7] > 23000)
+                        { Msg("水平圆柱体密度非法！"); return; }
+                        cenZ1 = page2args[3];
+                        sizeZ1 = page2args[5] * 2;
                         break;
                     case 4:
                         // 长方体
+                        page2args[0] = 4;
                         if (!double.TryParse(arg4_1.Value, out page2args[1]))
                         { Msg("X方向下界非法！"); return; }
                         else if (!double.TryParse(arg4_2.Value, out page2args[2]))
@@ -125,6 +164,19 @@ namespace GI.UserControls
                         { Msg("Z方向上界非法！"); return; }
                         else if (!double.TryParse(arg4_7.Value, out page2args[7]))
                         { Msg("长方体密度非法！"); return; }
+                        page2args[1] *= double.Parse((arg4_1.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[2] *= double.Parse((arg4_2.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[3] *= double.Parse((arg4_3.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[4] *= double.Parse((arg4_4.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[5] *= double.Parse((arg4_5.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[6] *= double.Parse((arg4_6.SelectedItem as ComboBoxItem).Tag.ToString());
+                        page2args[7] *= double.Parse((arg4_7.SelectedItem as ComboBoxItem).Tag.ToString());
+                        if (page2args[7] > 23000)
+                        { Msg("长方体密度非法！"); return; }
+                        else if (page2args[1] >= page2args[2] || page2args[3] >= page2args[4] || page2args[5] >= page2args[6])
+                        { Msg("模型参数设置不合理！"); return; }
+                        cenZ1 = (page2args[5] + page2args[6]) / 2;
+                        sizeZ1 = page2args[6] - page2args[5];
                         break;
                     default:
                         Msg("模型错误");
@@ -133,6 +185,7 @@ namespace GI.UserControls
             }
             else if (CurrentState == 3)
             {
+                page3args = new double[8];
                 if (!double.TryParse(arg5_1.Value, out page3args[1]))
                 { Msg("重心位置X坐标非法！"); return; }
                 else if (!double.TryParse(arg5_2.Value, out page3args[2]))
@@ -147,25 +200,19 @@ namespace GI.UserControls
                 { Msg("Y方向观测面边长非法！"); return; }
                 else if (!double.TryParse(arg5_7.Value, out page3args[7]))
                 { Msg("Y方向观测面分辨率非法！"); return; }
-                // TODO: 开始计算
-                switch(choice)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3: 
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        Msg("模型错误");
-                        return;
-                }
-            }
-            else if (CurrentState == 4)
-            {
-                // TODO: 取消计算
+                page3args[1] *= double.Parse((arg5_1.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[2] *= double.Parse((arg5_2.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[3] *= double.Parse((arg5_3.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[4] *= double.Parse((arg5_4.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[5] *= double.Parse((arg5_5.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[6] *= double.Parse((arg5_6.SelectedItem as ComboBoxItem).Tag.ToString());
+                page3args[7] *= double.Parse((arg5_7.SelectedItem as ComboBoxItem).Tag.ToString());
+                if (page3args[5] > page3args[4])
+                { Msg("观测面分辨率大于观测面边长！"); return; }
+                else if (page3args[7] > page3args[6])
+                { Msg("观测面分辨率大于观测面边长！"); return; }
+                else if (page3args[3] <= cenZ1 + sizeZ1 * 1.0 / 2)
+                { Msg("观测面位置和模型位置不匹配！"); return; }
             }
             #endregion
 
@@ -202,11 +249,21 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
+                // TODO: 开始计算
+                DoGeoForward();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
+                // TODO: 取消计算
+                if (task != null)
+                {
+                    IsCanceled = true;
+                    GeoForward.p.Kill();
+                    loadingBar.Hide();
+                    ShowPrevAndCancel();
+                }
             }
             #endregion
         }
@@ -236,6 +293,65 @@ namespace GI.UserControls
                 next.Content = "下一步";
             }
         }
+
+        private async void DoGeoForward()
+        {
+            if (loadingBar.Show("计算中"))
+            {
+                CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                {
+                    int choice = 1;
+                    if (Page4choice1.IsChecked == true)
+                        choice = 1;
+                    else if (Page4choice2.IsChecked == true)
+                        choice = 2;
+                    try
+                    {
+                        task = GeoForward.Start(page2args, page3args, choice);
+                        await task;
+                        if (IsCanceled)
+                        {
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                            Msg("计算取消!");
+                        }
+                        else
+                        {
+                            Completed();
+                            return;
+                            //File.Copy(@"out.DAT", outPath, true);
+                            //loadingBar.Hide();
+                            //ShowPrevAndCancel();
+                            //Msg("计算完成");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Msg(e.Message);
+                        CloseAndBackConfirm.Reset();
+                    }
+                    finally
+                    {
+                        task = null;
+                    }
+                }
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Dispatcher.Invoke(delegate
+                {
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
+                CloseAndBackConfirm.Reset();
+            }
+        }
+
+        private Task<string> task = null;
+
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -258,20 +374,32 @@ namespace GI.UserControls
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
+            {
+                loadingBar.Hide();
+                cancel.Visibility = Visibility.Visible;
+                back.Visibility = Visibility.Collapsed;
+                prev.Content = "上一步";
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+                next.Visibility = Visibility.Visible;
+                CurrentState = MaxState - 1;
+            }
+        }
+
+        private void Completed()
+        {
+            CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
+        }
     }
 }
