@@ -279,6 +279,7 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
+
         private void back_Click(object sender, RoutedEventArgs e)
         {
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
