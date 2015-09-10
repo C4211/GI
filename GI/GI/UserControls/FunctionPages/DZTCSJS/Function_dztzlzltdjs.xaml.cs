@@ -265,6 +265,25 @@ namespace GI.UserControls
                     ShowPrevAndCancel();
                 }
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 1;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(GeoForward.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                        CloseAndBackConfirm.Reset();
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
+            }
             #endregion
         }
 
@@ -291,6 +310,11 @@ namespace GI.UserControls
                 if (CurrentState <= 0)
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(GeoForward.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
 
