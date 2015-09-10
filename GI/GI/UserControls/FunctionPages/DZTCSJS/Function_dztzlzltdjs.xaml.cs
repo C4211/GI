@@ -43,11 +43,11 @@ namespace GI.UserControls
         private bool IsCanceled = false;
         double[] page2args, page3args;
         double cenZ1, sizeZ1;
+        int choice = 1;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             #region 逻辑
-            int choice = 1;
             if (CurrentState == 0)
             {
                 if (choice1.IsChecked == true)
@@ -59,7 +59,7 @@ namespace GI.UserControls
                 else if (choice4.IsChecked == true)
                     choice = 4;
             }
-            else if (CurrentState == 2)
+            else if (CurrentState == 1)
             {
                 page2args = new double[8];
                 switch (choice)
@@ -102,7 +102,7 @@ namespace GI.UserControls
                         { Msg("垂直圆柱体高度非法！"); return; }
                         else if (!double.TryParse(arg2_7.Value, out page2args[7]))
                         { Msg("垂直圆柱体密度非法！"); return; }
-                        else if (page2args[2] + page2args[3] != 0)
+                        else if (page2args[3] + page2args[4] != 0)
                         { Msg("模型参数设置不合理！"); return; }
                         page2args[1] *= double.Parse((arg2_1.SelectedItem as ComboBoxItem).Tag.ToString());
                         page2args[2] *= double.Parse((arg2_2.SelectedItem as ComboBoxItem).Tag.ToString());
@@ -133,7 +133,7 @@ namespace GI.UserControls
                         { Msg("水平圆柱体高度非法！"); return; }
                         else if (!double.TryParse(arg3_7.Value, out page2args[7]))
                         { Msg("水平圆柱体密度非法！"); return; }
-                        else if (page2args[2] + page2args[3] + page2args[4] != 0)
+                        else if (page2args[3] + page2args[4] + page2args[5] != 0)
                         { Msg("模型参数设置不合理！"); return; }
                         page2args[1] *= double.Parse((arg3_1.SelectedItem as ComboBoxItem).Tag.ToString());
                         page2args[2] *= double.Parse((arg3_2.SelectedItem as ComboBoxItem).Tag.ToString());
@@ -183,7 +183,7 @@ namespace GI.UserControls
                         return;
                 }
             }
-            else if (CurrentState == 3)
+            else if (CurrentState == 2)
             {
                 page3args = new double[8];
                 if (!double.TryParse(arg5_1.Value, out page3args[1]))
@@ -321,6 +321,7 @@ namespace GI.UserControls
                         }
                         else
                         {
+                            MessageBox.Show(task.Result);
                             Completed();
                             return;
                             //File.Copy(@"out.DAT", outPath, true);
