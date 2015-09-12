@@ -78,7 +78,7 @@ namespace GI.Tools
             }
             catch
             {
-                MessageBox.Show("保存配置文件出错！");
+                // MessageBox.Show("保存配置文件出错！");
             }
         }
     }

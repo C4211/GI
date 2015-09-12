@@ -36,12 +36,12 @@ namespace GI.Tools
         #endregion
 
         #region 注册依赖属性
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox),
-            new PropertyMetadata("0"));
         //public static readonly DependencyProperty ValueProperty =
         //    DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox),
-        //    new PropertyMetadata("0", new PropertyChangedCallback((d, e) => ((SelectUnitBox)d).PropertyChanged())));
+        //    new PropertyMetadata("0"));
+        public static readonly DependencyProperty ValueProperty =
+            DependencyProperty.Register("Value", typeof(string), typeof(SelectUnitBox),
+            new PropertyMetadata("0", new PropertyChangedCallback((d, e) => ((SelectUnitBox)d).PropertyChanged())));
         public static readonly DependencyProperty ComboBoxWidthProperty =
             DependencyProperty.Register("ComboBoxWidth", typeof(double), typeof(SelectUnitBox));
         #endregion
@@ -50,7 +50,17 @@ namespace GI.Tools
         private void PropertyChanged()
         {
             double tmp;
-            if (Value.Contains(' ') || (!double.TryParse(Value, out tmp) && Value != string.Empty))
+            if (Value == string.Empty)
+            {
+                PreviousValue = "0";
+                Value = "0";
+            }
+            else if (Value == "-")
+            {
+                PreviousValue = "0";
+                Value = "0";
+            }
+            else if (Value.Contains(' ') || (!double.TryParse(Value, out tmp)))
             {
                 Value = PreviousValue;
             }
