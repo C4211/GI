@@ -94,6 +94,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Functions\DZTCSJS\GeoBackward.cs" />
     <Compile Include="Functions\DZTCSJS\GeoForward.cs" />
     <Compile Include="Functions\ZLSJCL\ContinueExpand.cs" />
     <Compile Include="Functions\ZLSJCL\Derivatives\DirectionalDerivative.cs" />

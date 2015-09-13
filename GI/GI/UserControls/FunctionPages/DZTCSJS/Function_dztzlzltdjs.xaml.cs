@@ -195,9 +195,9 @@ namespace GI.UserControls
                 else if (!double.TryParse(arg5_4.Value, out page3args[4]))
                 { Msg("X方向观测面边长非法！"); return; }
                 else if (!double.TryParse(arg5_5.Value, out page3args[5]))
-                { Msg("X方向观测面分辨率非法！"); return; }
-                else if (!double.TryParse(arg5_6.Value, out page3args[6]))
                 { Msg("Y方向观测面边长非法！"); return; }
+                else if (!double.TryParse(arg5_6.Value, out page3args[6]))
+                { Msg("X方向观测面分辨率非法！"); return; }
                 else if (!double.TryParse(arg5_7.Value, out page3args[7]))
                 { Msg("Y方向观测面分辨率非法！"); return; }
                 page3args[1] *= double.Parse((arg5_1.SelectedItem as ComboBoxItem).Tag.ToString());
@@ -249,14 +249,14 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                // TODO: 开始计算
+                // 开始计算
                 DoGeoForward();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                // TODO: 取消计算
+                // 取消计算
                 if (task != null)
                 {
                     IsCanceled = true;
@@ -298,7 +298,7 @@ namespace GI.UserControls
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -343,9 +343,14 @@ namespace GI.UserControls
                             ShowPrevAndCancel();
                             Msg("计算取消!");
                         }
+                        else if (task.Result != "")
+                        {
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                            Msg(task.Result);
+                        }
                         else
                         {
-                            MessageBox.Show(task.Result);
                             Completed();
                             return;
                             //File.Copy(@"out.DAT", outPath, true);

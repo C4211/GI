@@ -1,22 +1,25 @@
 ﻿using GI.Tools;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace GI.Functions
 {
-    class GeoForward
+    class GeoBackward
     {
         #region 属性 各种路径
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"DZTZY.exe";
+        public static string exePath = @"DZTFY.exe";
+        /// <summary>
+        /// 重力异常数据文件(*.txt)路径
+        /// </summary>
+        public static string inPath1 = @"in1.txt";
+        /// <summary>
+        /// 重力梯度异常数据文件(*.txt)路径
+        /// </summary>
+        public static string inPath2 = @"in2.txt";
         /// <summary>
         /// 输出文件(*.txt)路径
         /// </summary>
@@ -27,32 +30,25 @@ namespace GI.Functions
         public static Process p = null;
         #endregion
 
-        /// <summary>
-        /// 地质体正演
-        /// </summary>
-        /// <returns></returns>
-        public static Task<string> Start(double[] modelArgs, double[] planeArgs, int choice)
+        public static Task<string> Start(int choice, string inFile1, string inFile2 = "", double arg1 = 0.0, double arg2 = 0.0)
         {
+            File.Copy(inFile1, inPath1, true);
+            if (inFile2 != "")
+                File.Copy(inFile2, inPath2, true);
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
             // 构造参数内容
-            StringBuilder sb = new StringBuilder();
-            int n = 8;
-            if (modelArgs[0] == 1)
-                n = 6;
-            for (int i = 0; i < n; i++)
-            {
-                sb.Append(modelArgs[i]);
-                sb.Append(' ');
-            }
-            for (int i = 1; i < 8; i++)
-            {
-                sb.Append(planeArgs[i]);
-                sb.Append(' ');
-            }
-            sb.AppendFormat("{0} {1}", choice, outPath);
-            string tc = sb.ToString();
+            string tc;
+            if (choice == 0)
+                tc = string.Format("{0} {1} {2} {3}", choice, inFile1, inPath1, outPath);
+            else if (choice == 1)
+                tc = string.Format("{0} {1} {2} {3}", choice, inFile1, inPath1, outPath);
+            else if (choice == 2)
+                tc = string.Format("{0} {1} {2} {3} {4} {5}", choice, inFile1, inPath1, inFile2, inPath2, outPath);
+            else
+                tc = string.Format("{0} {1} {2} {3} {4} {5} {6} {7}", choice, inFile1, inPath1, inFile2, inPath2, outPath, arg1, arg2);
+
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {

@@ -94,14 +94,6 @@
                         x:Name="choice1path1"
                         Grid.Row="1" Grid.Column="1"
                         Style="{StaticResource SelectFileControl.Style}"/>
-                    <TextBlock
-                        Grid.Row="2" Grid.Column="0" 
-                        Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="结果存储路径："/>
-                    <UserControls:SelectFileControl
-                        x:Name="choice1path2"
-                        Grid.Row="2" Grid.Column="1"
-                        Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Column="2" Visibility="Hidden" x:Name="Page1choice2">
@@ -127,14 +119,6 @@
                     <UserControls:SelectFileControl
                         x:Name="choice2path1"
                         Grid.Row="1" Grid.Column="1"
-                        Style="{StaticResource SelectFileControl.Style}"/>
-                    <TextBlock
-                        Grid.Row="2" Grid.Column="0" 
-                        Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="结果存储路径："/>
-                    <UserControls:SelectFileControl
-                        x:Name="choice2path2"
-                        Grid.Row="2" Grid.Column="1"
                         Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>
             </Grid>
@@ -171,14 +155,6 @@
                         x:Name="choice3path2"
                         Grid.Row="2" Grid.Column="1"
                         Style="{StaticResource SelectFileControl.Style}"/>
-                    <TextBlock
-                        Grid.Row="3" Grid.Column="0" 
-                        Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="结果存储路径："/>
-                    <UserControls:SelectFileControl
-                        x:Name="choice3path3"
-                        Grid.Row="3" Grid.Column="1"
-                        Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>
             </Grid>
             <Grid Grid.Column="2" Visibility="Hidden" x:Name="Page1choice4">
@@ -213,14 +189,6 @@
                     <UserControls:SelectFileControl
                         x:Name="choice4path2"
                         Grid.Row="2" Grid.Column="1"
-                        Style="{StaticResource SelectFileControl.Style}"/>
-                    <TextBlock
-                        Grid.Row="3" Grid.Column="0" 
-                        Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="结果存储路径："/>
-                    <UserControls:SelectFileControl
-                        x:Name="choice4path3"
-                        Grid.Row="3" Grid.Column="1"
                         Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>
             </Grid>
@@ -267,5 +235,6 @@
         <Button x:Name="prev" Width="80" Content="上一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Visibility="Hidden" Click="prev_Click"></Button>
         <Button x:Name="next" Width="80" Content="下一步" Style="{StaticResource GI.Window.Body.NextButton.Style}" Click="Button_Click"></Button>
         <Button x:Name="cancel" Width="80" Content="取消" Style="{StaticResource GI.Window.Body.CancelButton.Style}"/>
+        <Button x:Name="back" Width="80" Content="返回" Visibility="Collapsed" Style="{StaticResource GI.Window.Body.CancelButton.Style}" Click="back_Click"/>
     </UniformGrid>
 </Tools:FunctionPage>

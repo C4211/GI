@@ -169,6 +169,7 @@
                     <RotateTransform/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </TextBlock.RenderTransform></TextBlock>
+            </TextBlock.RenderTransform>
+        </TextBlock>
     </Grid>
 </UserControl>

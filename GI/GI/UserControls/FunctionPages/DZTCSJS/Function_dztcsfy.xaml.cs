@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,6 +43,10 @@ namespace GI.UserControls
         private bool IsCanceled = false;
         private Grid cssz;
 
+        private int choice;
+        private string inPath1, inPath2;
+        private double arg1, arg2;
+
         private void Page2_Reset()
         {
             Page1choice1.Visibility = Visibility.Hidden;
@@ -51,144 +56,106 @@ namespace GI.UserControls
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            #region 逻辑
-            if (CurrentState == 1)
+            #region 校验
+            if (CurrentState == 0)
             {
                 if (choice1.IsChecked == true)
-                {
-                    string path1 = choice1path1.filePath.Text;
-                    string path2 = choice1path2.filePath.Text;
-                    if (!FileNameFilter.CheckFileSuffix(path1))
-                    {
-                        Msg("重力异常数据文件类型不正确！");
-                        return;
-                    }
-                    else if (!File.Exists(path1))
-                    {
-                        Msg("重力异常数据路径不存在！");
-                        return;
-                    }
-                    try
-                    {
-                        if (!File.Exists(path2))
-                            File.Create(path2).Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        Msg("输出文件路径异常！\n" + ex.Message);
-                        return;
-                    }
-                    // TODO: 计算1
-                }
+                    choice = 0;
                 else if (choice2.IsChecked == true)
-                {
-                    string path1 = choice2path1.filePath.Text;
-                    string path2 = choice2path2.filePath.Text;
-                    if (!FileNameFilter.CheckFileSuffix(path1))
-                    {
-                        Msg("重力异常数据文件类型不正确！");
-                        return;
-                    }
-                    else if (!File.Exists(path1))
-                    {
-                        Msg("重力异常数据路径不存在！");
-                        return;
-                    }
-                    try
-                    {
-                        if (!File.Exists(path2))
-                            File.Create(path2).Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        Msg("输出文件路径异常！\n" + ex.Message);
-                        return;
-                    }
-                    // TODO: 计算2
-                }
+                    choice = 1;
                 else if (choice3.IsChecked == true)
+                    choice = 2;
+                else
+                    choice = 3;
+            }
+            else if (CurrentState == 1)
+            {
+                switch (choice)
                 {
-                    string path1 = choice3path1.filePath.Text;
-                    string path2 = choice3path2.filePath.Text;
-                    string path3 = choice3path3.filePath.Text;
-                    if (!FileNameFilter.CheckFileSuffix(path1))
-                    {
-                        Msg("重力异常数据文件类型不正确！");
+                    case 0:
+                        inPath1 = choice1path1.filePath.Text;
+                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        {
+                            Msg("重力异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath1))
+                        {
+                            Msg("重力异常数据路径不存在！");
+                            return;
+                        }
+                        break;
+                    case 1:
+                        inPath1 = choice2path1.filePath.Text;
+                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        {
+                            Msg("重力异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath1))
+                        {
+                            Msg("重力异常数据路径不存在！");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        inPath1 = choice3path1.filePath.Text;
+                        inPath2 = choice3path2.filePath.Text;
+                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        {
+                            Msg("重力异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath1))
+                        {
+                            Msg("重力异常数据路径不存在！");
+                            return;
+                        }
+                        if (!FileNameFilter.CheckFileSuffix(inPath2))
+                        {
+                            Msg("重力梯度异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath2))
+                        {
+                            Msg("重力梯度异常数据路径不存在！");
+                            return;
+                        }
+                        break;
+                    case 3:
+                        inPath1 = choice4path1.filePath.Text;
+                        inPath2 = choice4path2.filePath.Text;
+                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        {
+                            Msg("重力异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath1))
+                        {
+                            Msg("重力异常数据路径不存在！");
+                            return;
+                        }
+                        if (!FileNameFilter.CheckFileSuffix(inPath2))
+                        {
+                            Msg("重力梯度异常数据文件类型不正确！");
+                            return;
+                        }
+                        else if (!File.Exists(inPath2))
+                        {
+                            Msg("重力梯度异常数据路径不存在！");
+                            return;
+                        }
+                        break;
+                    default:
+                        Msg("选项异常！");
                         return;
-                    }
-                    else if (!File.Exists(path1))
-                    {
-                        Msg("重力异常数据路径不存在！");
-                        return;
-                    }
-                    if (!FileNameFilter.CheckFileSuffix(path2))
-                    {
-                        Msg("重力梯度异常数据文件类型不正确！");
-                        return;
-                    }
-                    else if (!File.Exists(path2))
-                    {
-                        Msg("重力梯度异常数据路径不存在！");
-                        return;
-                    }
-                    try
-                    {
-                        if (!File.Exists(path3))
-                            File.Create(path3).Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        Msg("输出文件路径异常！\n" + ex.Message);
-                        return;
-                    }
-                    // TODO: 计算3
                 }
-                else if (choice4.IsChecked == true)
-                {
-                    string path1 = choice4path1.filePath.Text;
-                    string path2 = choice4path2.filePath.Text;
-                    string path3 = choice4path3.filePath.Text;
-                    if (!FileNameFilter.CheckFileSuffix(path1))
-                    {
-                        Msg("重力异常数据文件类型不正确！");
-                        return;
-                    }
-                    else if (!File.Exists(path1))
-                    {
-                        Msg("重力异常数据路径不存在！");
-                        return;
-                    }
-                    if (!FileNameFilter.CheckFileSuffix(path2))
-                    {
-                        Msg("重力梯度异常数据文件类型不正确！");
-                        return;
-                    }
-                    else if (!File.Exists(path2))
-                    {
-                        Msg("重力梯度异常数据路径不存在！");
-                        return;
-                    }
-                    try
-                    {
-                        if (!File.Exists(path3))
-                            File.Create(path3).Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        Msg("输出文件路径异常！\n" + ex.Message);
-                        return;
-                    }
-                }
+
             }
             else if (CurrentState == 2)
             {
-                if (choice1.IsChecked == true || choice2.IsChecked == true || choice3.IsChecked == true)
+                if (choice == 3)
                 {
-                    // TODO: 取消计算
-                }
-                else if (choice4.IsChecked == true)
-                {
-                    double arg1, arg2;
                     if (!double.TryParse(choice4arg1.Text, out arg1))
                     {
                         Msg("重力异常相对误差不合法！");
@@ -199,14 +166,6 @@ namespace GI.UserControls
                         Msg("重力梯度异常相对误差不合法！");
                         return;
                     }
-                    // TODO: 计算4
-                }
-            }
-            else if (CurrentState == 3)
-            {
-                if (choice4.IsChecked == true)
-                {
-                    // TODO: 取消计算
                 }
             }
             #endregion
@@ -257,31 +216,114 @@ namespace GI.UserControls
                 CurrentState = MaxState;
                 IsCanceled = false;
                 next.Content = "取消";
-                //开始计算
-                HidePrevAndCancel();
-                loadingBar.Show();
-                Msg("计算文件暂未添加");
-                ShowPrevAndCancel();
-                loadingBar.Hide();
-                CurrentState = MaxState - 1;
-                next.Content = "计算";
+                // 开始计算
+                DoGeoBackward();
             }
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
                 next.Content = "计算";
-                //取消计算
-                loadingBar.Hide();
-                ShowPrevAndCancel();
-                Msg("计算已取消");
+                // 取消计算
+                CancelGeoBackward();
+            }
+            else if (CurrentState == MaxState + 1)
+            {
+                System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
+                ofd.Filter = "txt文件(*.txt)|*.txt|dat文件(*.dat)|*.dat";
+                ofd.FilterIndex = 1;
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        File.Copy(GeoBackward.outPath, ofd.FileName, true);
+                        Msg("已保存！");
+                        CloseAndBackConfirm.Reset();
+                    }
+                    catch
+                    {
+                        Msg("保存失败！");
+                    }
+                }
             }
             #endregion
         }
 
+        private async void DoGeoBackward()
+        {
+            if (loadingBar.Show("计算中"))
+            {
+                CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算正在进行中);
+                CurrentState = MaxState;
+                IsCanceled = false;
+                next.Content = "取消";
+                HidePrevAndCancel();
+                {
+                    try
+                    {
+                        if (choice == 0 || choice == 1)
+                            task = GeoBackward.Start(choice, inPath1);
+                        else if (choice == 2)
+                            task = GeoBackward.Start(choice, inPath1, inPath2);
+                        else
+                            task = GeoBackward.Start(choice, inPath1, inPath2, arg1, arg2);
+
+                        await task;
+                        if (IsCanceled)
+                        {
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                            Msg("计算取消!");
+                        }
+                        else if (task.Result != "")
+                        {
+                            Msg(task.Result);
+                            loadingBar.Hide();
+                            ShowPrevAndCancel();
+                        }
+                        else
+                        {
+                            Completed();
+                            return;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Msg(e.Message);
+                        CloseAndBackConfirm.Reset();
+                    }
+                    finally
+                    {
+                        task = null;
+                    }
+                }
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+                Dispatcher.Invoke(delegate
+                {
+                    CurrentState = MaxState - 1;
+                    next.Content = "计算";
+                });
+                CloseAndBackConfirm.Reset();
+            }
+        }
+
+        private void CancelGeoBackward()
+        {
+            if (task != null)
+            {
+                IsCanceled = true;
+                GeoBackward.p.Kill();
+                loadingBar.Hide();
+                ShowPrevAndCancel();
+            }
+        }
+
+        private Task<string> task = null;
+
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
-            if (CurrentState > 0)
+            if (CurrentState > 0 && CurrentState <= MaxState)
             {
                 content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
@@ -294,7 +336,13 @@ namespace GI.UserControls
                     prev.Visibility = Visibility.Hidden;
                 next.Content = "下一步";
             }
+            else if (CurrentState == MaxState + 1)
+            {
+                FileInfo fi = new FileInfo(GeoBackward.outPath);
+                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+            }
         }
+
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -316,20 +364,33 @@ namespace GI.UserControls
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    string unit = ((ComboBoxItem)midu.SelectedItem).Content.ToString();
-        //    string Converter = ((ComboBoxItem)midu.SelectedItem).Tag.ToString();
-        //    string value;
-        //    if(midu.Value!=null)
-        //    {
-        //        value = midu.Value.ToString();
-        //    }
-        //    else
-        //    {
-        //        value = "null";
-        //    }
-        //    MessageWindow.Show("值：" + value + "\n" + "单位:" + unit + "\n" + "转换:" + Converter);
-        //}
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
+            {
+                loadingBar.Hide();
+                cancel.Visibility = Visibility.Visible;
+                back.Visibility = Visibility.Collapsed;
+                prev.Content = "上一步";
+                prev.Visibility = Visibility.Visible;
+                next.Content = "计算";
+                next.Visibility = Visibility.Visible;
+                CurrentState = MaxState - 1;
+            }
+        }
+
+        private void Completed()
+        {
+            CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);
+            loadingBar.changeState("计算完成", false);
+            CurrentState = MaxState + 1;
+            prev.Content = "预览";
+            prev.Visibility = Visibility.Visible;
+            next.Content = "保存";
+            next.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Collapsed;
+            back.Visibility = Visibility.Visible;
+        }
     }
 }
