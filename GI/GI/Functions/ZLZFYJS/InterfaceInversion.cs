@@ -15,7 +15,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"InterfaceInversion_F.exe";
+        public static string exePath = @"InterfaceInversion.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>
@@ -23,11 +23,15 @@ namespace GI.Functions
         /// <summary>
         /// 输入文件(*.grd)路径
         /// </summary>
-        public static string inPath = @"in.grd";
+        public static string inPath = @"b10_NCC_sedcorr.grd";
         /// <summary>
-        /// 输出文件(*.grd)路径
+        /// 地形输出文件(*.grd)路径
         /// </summary>
-        public static string outPath = @"out.grd";
+        public static string outPath1 = @"Moho_3dinver_32km0.4.grd";
+        /// <summary>
+        /// 重力输出文件(*.grd)路径
+        /// </summary>
+        public static string outPath2 = @"boufrominv_32km0.4.grd";
         /// <summary>
         /// 任务控制
         /// </summary>
@@ -46,15 +50,17 @@ namespace GI.Functions
         /// <param name="tolerance">收敛准则</param>
         /// <param name="coordinateUnit">坐标单位 度(°)=0 千米(km)=1</param>
         /// <returns></returns>
-        public static Task<string> Start(string input, double referenceDepth, double densityContrast, double filterParameterWh, double filterParameterSh, int maxIteration, double tolerance, int coordinateUnit)
+        public static Task<string> Start(string bouin, double contrast, double criterio, double z0, double WH, double SH, double truncation, int maxiter)
         {
             // 输入文件全部存入临时文件夹
-            File.Copy(input, inPath, true);
+            File.Copy(bouin, inPath, true);
             //如果输出文件不存在则自动创建输出文件
-            if (!File.Exists(outPath))
-                File.Create(outPath).Dispose();
+            if (!File.Exists(outPath1))
+                File.Create(outPath1).Dispose();
+            if (!File.Exists(outPath2))
+                File.Create(outPath2).Dispose();
             // 构造parameters.inp内容
-            string tc = String.Format("{0}\n{1}\n{2} {3}\n{4} {5}\n{6} {7}\n{8}", inPath, outPath, referenceDepth, densityContrast, filterParameterWh, filterParameterSh, maxIteration, tolerance, coordinateUnit);
+            string tc = String.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}", inPath, outPath1, outPath2, contrast, criterio, z0, WH, SH, truncation, maxiter);
             // 写入parameters.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {
