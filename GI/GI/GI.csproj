@@ -113,6 +113,9 @@
     <Compile Include="Functions\ZLZFYJS\InterfaceForward.cs" />
     <Compile Include="Tools\CloseAndBackConfirm.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
+    <Compile Include="Tools\PSDPreviewWindow.xaml.cs">
+      <DependentUpon>PSDPreviewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\FilePreviewWindow.xaml.cs">
       <DependentUpon>FilePreviewWindow.xaml</DependentUpon>
     </Compile>
@@ -296,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\PSDPreviewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

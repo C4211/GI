@@ -137,7 +137,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 FileInfo fi = new FileInfo(PSD.outPath);
-                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+                PSDPreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()

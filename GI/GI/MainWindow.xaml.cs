@@ -145,10 +145,22 @@ namespace GI
         /// <param name="e"></param>
         private void Head_Min_Click(object sender, RoutedEventArgs e)
         {
-            foreach (FilePreviewWindow w in this.OwnedWindows)
+            try
             {
-                w.Min();
+                foreach (FilePreviewWindow w in this.OwnedWindows)
+                {
+                    w.Min();
+                }
             }
+            catch { }
+            try
+            {
+                foreach (PSDPreviewWindow w in this.OwnedWindows)
+                {
+                    w.Min();
+                }
+            }
+            catch { }
             Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();
             sb.Completed += delegate { this.WindowState = WindowState.Minimized; };
             content.BeginStoryboard(sb);
@@ -724,10 +736,22 @@ namespace GI
             {
                 Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
                 content.BeginStoryboard(sb);
-                foreach (FilePreviewWindow w in this.OwnedWindows)
+                try
                 {
-                    w.Normal();
+                    foreach (FilePreviewWindow w in this.OwnedWindows)
+                    {
+                        w.Normal();
+                    }
                 }
+                catch { }
+                try
+                {
+                    foreach (PSDPreviewWindow w in this.OwnedWindows)
+                    {
+                        w.Normal();
+                    }
+                }
+                catch { }
             }
         }
         #endregion
