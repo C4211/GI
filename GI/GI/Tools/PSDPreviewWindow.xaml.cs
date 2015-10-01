@@ -51,50 +51,90 @@ namespace GI.Tools
                 double ExpandY = 350 / (pointsY_Max - pointsY_Min);
                 double UnitX = (pointsX_Max - pointsX_Min) / 5;
                 double UnitY = (pointsY_Max - pointsY_Min) / 10;
-                #region 画刻度
-                PathGeometry pgunit = new PathGeometry();
-                for (int i = 0; i <= 10; i++)
+                if (UnitY == 0)
                 {
-                    PathFigure Unit = new PathFigure();
-                    Unit.IsClosed = false;
-                    Unit.StartPoint = new Point(0,35 * i);
-                    Unit.Segments.Add(new LineSegment(new Point(500,35*i), true));
-                    pgunit.Figures.Add(Unit);
-                    (unity.Children[unity.Children.Count - i - 1] as TextBlock).Text = (pointsY_Min + UnitY * i).ToString("0.000");
-                }
-                for (int i = 0; i <= 5; i++)
-                {
-                    PathFigure Unit = new PathFigure();
-                    Unit.IsClosed = false;
-                    Unit.StartPoint = new Point(100*i, 0);
-                    Unit.Segments.Add(new LineSegment(new Point(100*i, 350), true));
-                    pgunit.Figures.Add(Unit);
-                    (unitx.Children[i] as TextBlock).Text = (pointsX_Min + UnitX * i).ToString("0.00");
-                }
-                unit.Data = pgunit;
-                #endregion
-                #region 画线
-                PathGeometry pgPSD = new PathGeometry();
-                PathFigure PSD = new PathFigure();
-                PSD.IsClosed = false;
-                bool PSDn = true;
-                for (int i = 0; i < pointsX.Count; i++)
-                {
-                    if (PSDn)
+                    (unity.Children[5] as TextBlock).Text = (pointsY_Min).ToString("0.000");
+                    #region 画刻度
+                    PathGeometry pgunit = new PathGeometry();
+                    for (int i = 0; i <= 10; i++)
                     {
-                        PSD.StartPoint = new Point(pointsX[i] * ExpandX, -pointsY[i] * ExpandY);
-                        PSDn = false;
+                        
+                        PathFigure Unit = new PathFigure();
+                        Unit.IsClosed = false;
+                        Unit.StartPoint = new Point(0, 35 * i);
+                        Unit.Segments.Add(new LineSegment(new Point(500, 35 * i), true));
+                        pgunit.Figures.Add(Unit);
+
                     }
-                    else
+                    for (int i = 0; i <= 5; i++)
                     {
-                        LineSegment ls = new LineSegment(new Point(pointsX[i] * ExpandX, -pointsY[i] * ExpandY), true);
-                        PSD.Segments.Add(ls);
+                        PathFigure Unit = new PathFigure();
+                        Unit.IsClosed = false;
+                        Unit.StartPoint = new Point(100 * i, 0);
+                        Unit.Segments.Add(new LineSegment(new Point(100 * i, 350), true));
+                        pgunit.Figures.Add(Unit);
+                        (unitx.Children[i] as TextBlock).Text = (pointsX_Min + UnitX * i).ToString("0.00");
                     }
+                    unit.Data = pgunit;
+                    #endregion
+                    #region 画线
+                    PathGeometry pgPSD = new PathGeometry();
+                    PathFigure PSD = new PathFigure();
+                    PSD.IsClosed = false;
+                    PSD.StartPoint = new Point(0, 35 * 5);
+                    PSD.Segments.Add(new LineSegment(new Point(500, 35 * 5), true));
+                    pgPSD.Figures.Add(PSD);
+                    path.Data = pgPSD;
+                    path.Stretch = Stretch.None;
+                    #endregion
                 }
-                pgPSD.Figures.Add(PSD);
-                path.Data = pgPSD;
-                #endregion
-            
+                else
+                {
+                    #region 画刻度
+                    PathGeometry pgunit = new PathGeometry();
+                    for (int i = 0; i <= 10; i++)
+                    {
+                        PathFigure Unit = new PathFigure();
+                        Unit.IsClosed = false;
+                        Unit.StartPoint = new Point(0, 35 * i);
+                        Unit.Segments.Add(new LineSegment(new Point(500, 35 * i), true));
+                        pgunit.Figures.Add(Unit);
+                        (unity.Children[unity.Children.Count - i - 1] as TextBlock).Text = (pointsY_Min + UnitY * i).ToString("0.000");
+                    }
+                    for (int i = 0; i <= 5; i++)
+                    {
+                        PathFigure Unit = new PathFigure();
+                        Unit.IsClosed = false;
+                        Unit.StartPoint = new Point(100 * i, 0);
+                        Unit.Segments.Add(new LineSegment(new Point(100 * i, 350), true));
+                        pgunit.Figures.Add(Unit);
+                        (unitx.Children[i] as TextBlock).Text = (pointsX_Min + UnitX * i).ToString("0.00");
+                    }
+                    unit.Data = pgunit;
+                    #endregion
+                    #region 画线
+                    PathGeometry pgPSD = new PathGeometry();
+                    PathFigure PSD = new PathFigure();
+                    PSD.IsClosed = false;
+                    bool PSDn = true;
+                    for (int i = 0; i < pointsX.Count; i++)
+                    {
+                        if (PSDn)
+                        {
+                            PSD.StartPoint = new Point(pointsX[i] * ExpandX, -pointsY[i] * ExpandY);
+                            PSDn = false;
+                        }
+                        else
+                        {
+                            LineSegment ls = new LineSegment(new Point(pointsX[i] * ExpandX, -pointsY[i] * ExpandY), true);
+                            PSD.Segments.Add(ls);
+                        }
+                    }
+                    pgPSD.Figures.Add(PSD);
+                    path.Data = pgPSD;
+                    path.Stretch = Stretch.Fill;
+                    #endregion
+                }
         }
 
         private List<List<double>> LoadPoint(string filepath)
