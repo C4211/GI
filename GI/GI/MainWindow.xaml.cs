@@ -1,4 +1,5 @@
-﻿using GI.Tools;
+﻿using GI.Functions;
+using GI.Tools;
 using GI.UserControls;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,7 @@ namespace GI
         {
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
             {
+
                 if (contentStack.Count > 1)
                 {
                     Storyboard sb = sbBackward.Clone();
@@ -80,6 +82,28 @@ namespace GI
                 if (contentStack.Count <= 1)
                     headLogo.BeginStoryboard(sbBackDefault);
             }
+        }
+        private void KillAll()
+        {
+            if (GeoBackward.p != null) GeoBackward.p.Kill();
+            if (GeoForward.p != null) GeoForward.p.Kill();
+            if (DirectionalDerivative.p != null) DirectionalDerivative.p.Kill();
+            if (VerticalDerivativeFrequency.p != null) VerticalDerivativeFrequency.p.Kill();
+            if (VerticalDerivativeSpace.p != null) VerticalDerivativeSpace.p.Kill();
+            if (MatchingFilter.p != null) MatchingFilter.p.Kill();
+            if (RegularizationFilter.p != null) RegularizationFilter.p.Kill();
+            if (SmoothCompensationFilter.p != null) SmoothCompensationFilter.p.Kill();
+            if (WienerFilter.p != null) WienerFilter.p.Kill();
+            if (ContinueExpand.p != null) ContinueExpand.p.Kill();
+            if (Expand.p != null) Expand.p.Kill();
+            if (PSD.p != null) PSD.p.Kill();
+            if (FLYBHF.p != null) FLYBHF.p.Kill();
+            if (FXYF.p != null) FXYF.p.Kill();
+            if (GSJFF.p != null) GSJFF.p.Kill();
+            if (BouguerCorrection.p != null) BouguerCorrection.p.Kill();
+            FreeAirCorrection.Stop();
+            if (InterfaceForward.p != null) InterfaceForward.p.Kill();
+            if (InterfaceInversion.p != null) InterfaceInversion.p.Kill();
         }
         /// <summary>
         /// 阻止返回按钮事件冒泡到标题栏

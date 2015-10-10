@@ -353,10 +353,6 @@ namespace GI.UserControls
                         {
                             Completed();
                             return;
-                            //File.Copy(@"out.DAT", outPath, true);
-                            //loadingBar.Hide();
-                            //ShowPrevAndCancel();
-                            //Msg("计算完成");
                         }
                     }
                     catch (Exception e)
