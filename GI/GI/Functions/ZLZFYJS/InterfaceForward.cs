@@ -15,7 +15,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"InterfaceForward_F.exe";
+        public static string exePath = @"bin\InterfaceForward_F.exe";
         /// <summary>
         /// parameter.inp临时文件路径
         /// </summary>

@@ -16,7 +16,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"DZTZY.exe";
+        public static string exePath = @"bin\DZTZY.exe";
         /// <summary>
         /// 输出文件(*.txt)路径
         /// </summary>

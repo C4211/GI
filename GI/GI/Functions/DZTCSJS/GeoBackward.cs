@@ -11,7 +11,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"DZTFY.exe";
+        public static string exePath = @"bin\DZTFY.exe";
         /// <summary>
         /// 重力异常数据文件(*.txt)路径
         /// </summary>

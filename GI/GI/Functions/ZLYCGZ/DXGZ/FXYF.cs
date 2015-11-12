@@ -16,7 +16,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"TC_F.exe";
+        public static string exePath = @"bin\TC_F.exe";
         /// <summary>
         /// TC.inp临时文件路径
         /// </summary>

@@ -18,7 +18,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"PSD_F.exe";
+        public static string exePath = @"bin\PSD_F.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>

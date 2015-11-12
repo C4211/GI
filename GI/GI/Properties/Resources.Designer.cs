@@ -59,5 +59,185 @@ namespace GI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] BCYHFilter_F {
+            get {
+                object obj = ResourceManager.GetObject("BCYHFilter_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Continue_Exp_F {
+            get {
+                object obj = ResourceManager.GetObject("Continue_Exp_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] DirectionalDerivative_F {
+            get {
+                object obj = ResourceManager.GetObject("DirectionalDerivative_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] DZTFY {
+            get {
+                object obj = ResourceManager.GetObject("DZTFY", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] DZTZY {
+            get {
+                object obj = ResourceManager.GetObject("DZTZY", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Expand_F {
+            get {
+                object obj = ResourceManager.GetObject("Expand_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] FA2BA_F {
+            get {
+                object obj = ResourceManager.GetObject("FA2BA_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] InterfaceForward_F {
+            get {
+                object obj = ResourceManager.GetObject("InterfaceForward_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] InterfaceInversion {
+            get {
+                object obj = ResourceManager.GetObject("InterfaceInversion", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] MatchingFilter_F {
+            get {
+                object obj = ResourceManager.GetObject("MatchingFilter_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] PSD_F {
+            get {
+                object obj = ResourceManager.GetObject("PSD_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] RegularizationFilter_F {
+            get {
+                object obj = ResourceManager.GetObject("RegularizationFilter_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] TC_F {
+            get {
+                object obj = ResourceManager.GetObject("TC_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] TC_FFT_F {
+            get {
+                object obj = ResourceManager.GetObject("TC_FFT_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] TC_Gauss_F {
+            get {
+                object obj = ResourceManager.GetObject("TC_Gauss_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] VerticalDerivative_F {
+            get {
+                object obj = ResourceManager.GetObject("VerticalDerivative_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] VerticalDerivative_Space_F {
+            get {
+                object obj = ResourceManager.GetObject("VerticalDerivative_Space_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] WienerFilter_F {
+            get {
+                object obj = ResourceManager.GetObject("WienerFilter_F", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

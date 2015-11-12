@@ -15,7 +15,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"WienerFilter_F.exe";
+        public static string exePath = @"bin\WienerFilter_F.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>

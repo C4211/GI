@@ -15,7 +15,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"InterfaceInversion.exe";
+        public static string exePath = @"bin\InterfaceInversion.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GI.exe" version="2.0.0.1" publicKeyToken="496fd7f9d54b9073" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="Res\Icons\GI.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GI.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC 清单选项
+          如果要更改 Windows 用户帐户控制级别，请用以下节点之一替换
+          requestedExecutionLevel 节点。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+          如果要利用文件和注册表虚拟化提供
+          向后兼容性，请删除 requestedExecutionLevel 节点。
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GI.exe" size="9662376">
+      <assemblyIdentity name="GI" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>I0lmB0xixGW51j3pL2yb5zH7lLGJNsq0UfRU3rl19Lc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="GI.exe.config" size="177">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3+VugGtjotJCsZODa/VHh98lQxLplH0tYcJWn31jnP0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Res\Icons\GI.ico" size="59552">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ah1HxYZSbMgHoe0GdpRfCNQ3gw88Q7VzHQCwHgVoris=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=IFZZZH\zhang" issuerKeyHash="fd172343e49ec9d1adccc4f5a2abed34c0744ba2" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Oxqf/OuqVE1gQGxc1YmdxV6plofurhHARyNhVXeurys=</DigestValue></Reference></SignedInfo><SignatureValue>m9ooHzCftsxXfouqD8S0m5FqV6spk4Pf+9JD6of1FLsNixJk6NfZbRSJEtUdWh/vd6RzHuIgWrzmGiBJs5DtiL1GjsWmb/j5LJTl/Bm+scAGb0PShbBGBcPOty0VsLQLMXDgW7/Do5k/QOc+5VicnBNbW6xUMqlPhAywJ5jr1NY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>1JU0SZKb5QR2MVQDzox2lwd92cN8jd4soznI5v1S9sCNOHVAhM7tdh46XYpwfQ75004KMLeUsQ1Udw4S1Z31Th3y//Wp46l3w8nrPh95pcfL4taONT1BX8Pm5uuuzk8CG1hnYEqc5RTFURe/NtEbA9GGg4nhxM+JS6r7WoO5L2E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="2bafae7755612347c011aeee8796a95ec59d89d55c6c40604d54aaebfc9f1a3b" Description="" Url=""><as:assemblyIdentity name="GI.exe" version="2.0.0.1" publicKeyToken="496fd7f9d54b9073" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=IFZZZH\zhang</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>nvw8JRPMnvVaXsxNOfBHFDkJsuuB3cCLkZFGobW+C5k=</DigestValue></Reference></SignedInfo><SignatureValue>VTFKz+8yC14n7M3dJOnTzquPrugcTtyIIrxjZWXv4ft0OALjH7vc2DRR/QUlyJBNr8yGtny66MX9iVjiji9xxrD26MNWh4ijZZI7aZum+ZZbE3crMk5nsBY5Nelsmv6K5sRvQOFxwFMp9waQJfv6YjDGoWRPPoeaoyz8Zdw+kH8=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>1JU0SZKb5QR2MVQDzox2lwd92cN8jd4soznI5v1S9sCNOHVAhM7tdh46XYpwfQ75004KMLeUsQ1Udw4S1Z31Th3y//Wp46l3w8nrPh95pcfL4taONT1BX8Pm5uuuzk8CG1hnYEqc5RTFURe/NtEbA9GGg4nhxM+JS6r7WoO5L2E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIByTCCATKgAwIBAgIQIax57VS/yq1A5WdT+8EAIzANBgkqhkiG9w0BAQsFADAjMSEwHwYDVQQDHhgASQBGAFoAWgBaAEgAXAB6AGgAYQBuAGcwHhcNMTUxMDE1MDMzODM0WhcNMTYxMDE0MDkzODM0WjAjMSEwHwYDVQQDHhgASQBGAFoAWgBaAEgAXAB6AGgAYQBuAGcwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANSVNEmSm+UEdjFUA86MdpcHfdnDfI3eLKM5yOb9UvbAjTh1QITO7XYeOl2KcH0O+dNOCjC3lLENVHcOEtWd9U4d8v/1qeOpd8PJ6z4feaXHy+LWjjU9QV/D5ubrrs5PAhtYZ2BKnOUUxVEXvzbRGwPRhoOJ4cTPiUuq+1qDuS9hAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAlf8tmgkZ8XzLVBuZDB5Xi/9T/JDiPmj2Kj1csdOpqzxUjDc8jwNLLdqj6lQTM40D5rV5EAfNJwhYWxL/c3NLYwgKDBOJRfOwCTF9avlJnpuHcQvJmd8sE6T4uro7U80+daxIMiTmpld2ZDCJvIn2oHwa5ImuA/hQqlpP7ibx6Tk=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
