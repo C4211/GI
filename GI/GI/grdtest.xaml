@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:UserControls="clr-namespace:GI.UserControls" x:Class="GI.grdtest"
+        Title="grdtest" Height="800" Width="600">
+    <Grid>
+
+        <UserControls:SelectFileControl x:Name="path" HorizontalAlignment="Left" Margin="10,10,0,0" BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top" Width="297"/>
+        <Button Content="画图" HorizontalAlignment="Left" Margin="312,10,0,0" VerticalAlignment="Top" Width="84" Height="30" Style="{DynamicResource GI.Window.Body.NextButton.Style}" Click="Button_Click"/>
+        <Image x:Name="img" RenderTransformOrigin="0.5,0.5">
+        </Image>
+    </Grid>
+</Window>

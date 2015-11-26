@@ -119,57 +119,57 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BCYHFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\BCYHFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\BCYHFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Continue_Exp_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Continue_Exp_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\Continue_Exp_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="DirectionalDerivative_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\DirectionalDerivative_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\DirectionalDerivative_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="DZTFY" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\DZTFY.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\DZTFY.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="DZTZY" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\DZTZY.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\DZTZY.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Expand_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Expand_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\Expand_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="FA2BA_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\FA2BA_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\FA2BA_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="InterfaceForward_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\InterfaceForward_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\InterfaceForward_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="InterfaceInversion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\InterfaceInversion.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\InterfaceInversion.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MatchingFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\MatchingFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\MatchingFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="PSD_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\PSD_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\PSD_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="RegularizationFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\RegularizationFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\RegularizationFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TC_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\TC_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\TC_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TC_FFT_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\TC_FFT_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\TC_FFT_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TC_Gauss_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\TC_Gauss_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\TC_Gauss_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="VerticalDerivative_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\VerticalDerivative_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\VerticalDerivative_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="VerticalDerivative_Space_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\VerticalDerivative_Space_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\VerticalDerivative_Space_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WienerFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\WienerFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\bin\WienerFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

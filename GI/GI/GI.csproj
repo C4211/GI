@@ -84,7 +84,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -98,9 +98,14 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="VChart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\VChart\VChart\bin\Release\VChart.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -124,8 +129,15 @@
     <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />
     <Compile Include="Functions\ZLZFYJS\InterfaceInversion.cs" />
     <Compile Include="Functions\ZLZFYJS\InterfaceForward.cs" />
+    <Compile Include="grdtest.xaml.cs">
+      <DependentUpon>grdtest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\CloseAndBackConfirm.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
+    <Compile Include="Tools\Grd.cs" />
+    <Compile Include="Tools\GrdPreviewWindow.xaml.cs">
+      <DependentUpon>GrdPreviewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\PSDPreviewWindow.xaml.cs">
       <DependentUpon>PSDPreviewWindow.xaml</DependentUpon>
     </Compile>
@@ -253,6 +265,10 @@
     <Compile Include="UserControls\Others\SelectFileControl.xaml.cs">
       <DependentUpon>SelectFileControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="grdtest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -312,6 +328,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\GrdPreviewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -505,6 +525,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

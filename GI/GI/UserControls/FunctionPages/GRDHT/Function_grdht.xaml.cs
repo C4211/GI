@@ -52,6 +52,7 @@ namespace GI.UserControls
                 sb.Completed += delegate { content.Children[CurrentState - 1].Visibility = Visibility.Hidden; content.IsEnabled = true; buttons.IsEnabled = true; };
                 content.BeginStoryboard(sb);
                 prev.Visibility = Visibility.Visible;
+                GrdPreviewWindow.PreviwShow(Application.Current.MainWindow);
                 if (CurrentState == MaxState - 1)
                     next.Content = "计算";
                 return;
