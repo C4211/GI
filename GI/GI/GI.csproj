@@ -135,9 +135,6 @@
     <Compile Include="Tools\CloseAndBackConfirm.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\Grd.cs" />
-    <Compile Include="Tools\GrdPreviewWindow.xaml.cs">
-      <DependentUpon>GrdPreviewWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Tools\PSDPreviewWindow.xaml.cs">
       <DependentUpon>PSDPreviewWindow.xaml</DependentUpon>
     </Compile>
@@ -328,10 +325,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Tools\GrdPreviewWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

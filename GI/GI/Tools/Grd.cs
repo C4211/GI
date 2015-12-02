@@ -184,13 +184,13 @@ namespace GI.Tools
         /// </summary>
         private double interval
         {
-            get { return (_max - _min) / 768; }
+            get { return (_max - _min) / 1280; }
         }
 
         /// <summary>
         /// 最小颜色值
         /// </summary>
-        private Color colorMin = new Color() { R = 255, G = 255, B = 0 };
+        private Color colorMin = new Color() { R = 255, G = 0, B = 255 };
         #endregion
 
         #region 构造函数
@@ -254,14 +254,28 @@ namespace GI.Tools
             if (value <= 511)
             {
                 c.R = 0;
-                c.B += (byte)(value - 255);
+                c.G = (byte)(value - 256);
                 return c;
             }
             if (value <= 767)
             {
                 c.R = 0;
-                c.G -= (byte)(value - 511);
-                c.B = 255;
+                c.G = 255;
+                c.B = (byte)(767 - value);
+                return c;
+            }
+            if (value <= 1023)
+            {
+                c.R = (byte)(value - 768);
+                c.G = 255;
+                c.B = 0;
+                return c;
+            }
+            if (value <= 1279)
+            {
+                c.R = 255;
+                c.G = (byte)(1279 - value);
+                c.B = 0;
                 return c;
             }
             return c;
