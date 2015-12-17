@@ -33,7 +33,7 @@ namespace GI
         {
 
             Grd grd = new Grd(path.filePath.Text);
-            WriteableBitmap wb = grd.GrdImage();
+            WriteableBitmap wb = grd.GrdImage(new ColorMap("C:/Users/WangShuo/Desktop/项目相关/ColorScales/rainbow2.clr"));
             img.Source = wb;
 
         }

@@ -57,9 +57,9 @@
                     <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="    输出路径："/>
+                        Text="    颜色文件："/>
                     <UserControls:SelectFileControl 
-                        x:Name="outputPath1" 
+                        x:Name="inputPath2"
                         Grid.Row="2" Grid.Column="1"
                         Style="{StaticResource SelectFileControl.Style}"/>
                 </Grid>

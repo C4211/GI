@@ -133,14 +133,15 @@ namespace GI.Tools
         /// Grd颜色矩阵
         /// </summary>
         /// <returns>颜色矩阵</returns>
-        public Color[,] ColorMatrix()
+        public Color[,] ColorMatrix(ColorMap colorMap)
         {
+            
             Color[,] colorMatrix = new Color[height, width];
             ColorTransformer ct = new ColorTransformer(max, min);
             for (int i = 0; i < height; i++)
                 for (int j = 0; j < width; j++)
                 {
-                    colorMatrix[i, j] = ct.ColorTransform(matrix[i, j]);
+                    colorMatrix[i, j] = ct.ColorTransform(matrix[i, j], colorMap);
                 }
             return colorMatrix;
         }
@@ -149,10 +150,11 @@ namespace GI.Tools
         /// 绘制Grd图片
         /// </summary>
         /// <returns>绘制好的图片</returns>
-        public WriteableBitmap GrdImage()
+        public WriteableBitmap GrdImage(ColorMap colorMap)
         {
+            
             WriteableBitmap wb = new WriteableBitmap(width, height, 72, 72, PixelFormats.Bgr24, null);
-            Color[,] matrix = ColorMatrix();
+            Color[,] matrix = ColorMatrix(colorMap);
             for (int i = 0; i < wb.PixelHeight; i++)
                 for (int j = 0; j < wb.PixelWidth; j++)
                 {
@@ -167,7 +169,7 @@ namespace GI.Tools
 
     }
 
-    class ColorTransformer
+    public class ColorTransformer
     {
         #region 变量
         /// <summary>
@@ -184,13 +186,9 @@ namespace GI.Tools
         /// </summary>
         private double interval
         {
-            get { return (_max - _min) / 1280; }
+            get { return (_max - _min) / 17; }
         }
 
-        /// <summary>
-        /// 最小颜色值
-        /// </summary>
-        private Color colorMin = new Color() { R = 255, G = 0, B = 255 };
         #endregion
 
         #region 构造函数
@@ -212,74 +210,82 @@ namespace GI.Tools
         /// </summary>
         /// <param name="value">传入的区间内数值</param>
         /// <returns>输出的Color</returns>
-        public Color ColorTransform(double value)
+        public Color ColorTransform(double value, ColorMap colorMap)
         {
-            int convert = ValueToInt(value);
-            return IntToColor(convert);
-        }
-        #endregion
-
-        #region 内部方法
-        /// <summary>
-        /// 传入区间内数值转换为Int
-        /// </summary>
-        /// <param name="value">传入的区间内数值</param>
-        /// <returns>输出的整型数值</returns>
-        private int ValueToInt(double value)
-        {
+            int index = 0;
             try
             {
-                int result = (int)((value - _min) / interval);
-                return result;
+                index = (int)((value - _min) / interval);
             }
-            catch
+            catch { }
+
+
+            return colorMap[index];
+
+        }
+        #endregion
+    }
+
+    public class ColorMap : List<Color>
+    {
+        public ColorMap(string fileName)
+            : base()
+        {
+            List<KeyValuePair<double, Color>> colorCollection = new List<KeyValuePair<double, Color>>();
+            using (StreamReader sr = new StreamReader(fileName))
             {
-                return 0;
+                sr.ReadLine();
+                string str;
+                string[] strs;
+                double index;
+                byte r, g, b;
+
+
+                while ((str = sr.ReadLine()) != null)
+                {
+                    //MessageBox.Show(str);
+                    strs = str.Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        index = double.Parse(strs[0]);
+                        r = (byte)int.Parse(strs[1]);
+                        g = (byte)int.Parse(strs[2]);
+                        b = (byte)int.Parse(strs[3]);
+                        colorCollection.Add(new KeyValuePair<double, Color>(index, Color.FromRgb(r, g, b)));
+                    }
+                    catch
+                    {
+                        throw new Exception("读取颜色文件失败！");
+                    }
+                }
+            }
+
+            for (int i = 0; i < 18; i++)
+            {
+
+                for (int j = 0; j < colorCollection.Count(); j++)
+                {
+                    if (((double)i) * 100 / 17 < colorCollection[j].Key)
+                    {
+                        KeyValuePair<double, Color> kvp1 = colorCollection[j - 1];
+                        KeyValuePair<double, Color> kvp2 = colorCollection[j];
+                        double rate = (((double)i) * 100 / 17 - kvp1.Key) / (kvp2.Key - kvp1.Key);
+                        byte r = (byte)(kvp1.Value.R * (1 - rate) + kvp2.Value.R * rate);
+                        byte g = (byte)(kvp1.Value.G * (1 - rate) + kvp2.Value.G * rate);
+                        byte b = (byte)(kvp1.Value.B * (1 - rate) + kvp2.Value.B * rate);
+                        Color color = Color.FromRgb(r, g, b);
+                        this.Add(color);
+                        break;
+                    }
+                    else if (((double)i) * 100 / 17 == colorCollection[j].Key)
+                    {
+                        this.Add(colorCollection[j].Value);
+                    }
+                }
+
             }
         }
 
-        /// <summary>
-        /// 整形数值转换为Color
-        /// </summary>
-        /// <param name="value">传入的整形数值</param>
-        /// <returns>输出的Color</returns>
-        private Color IntToColor(int value)
-        {
-            Color c = colorMin;
-            if (value <= 255)
-            {
-                c.R -= (byte)value;
-                return c;
-            }
-            if (value <= 511)
-            {
-                c.R = 0;
-                c.G = (byte)(value - 256);
-                return c;
-            }
-            if (value <= 767)
-            {
-                c.R = 0;
-                c.G = 255;
-                c.B = (byte)(767 - value);
-                return c;
-            }
-            if (value <= 1023)
-            {
-                c.R = (byte)(value - 768);
-                c.G = 255;
-                c.B = 0;
-                return c;
-            }
-            if (value <= 1279)
-            {
-                c.R = 255;
-                c.G = (byte)(1279 - value);
-                c.B = 0;
-                return c;
-            }
-            return c;
-        }
-        #endregion
+
     }
 }
