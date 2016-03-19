@@ -98,10 +98,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="VChart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\VChart\VChart\bin\Release\VChart.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -563,6 +559,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\MathNet.Numerics.dll" />
+    <Content Include="bin\Moho3.exe" />
     <Content Include="bin\WienerFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
