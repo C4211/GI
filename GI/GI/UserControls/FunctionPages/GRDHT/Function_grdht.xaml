@@ -58,10 +58,10 @@
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
                         Text="    颜色文件："/>
-                    <UserControls:SelectFileControl 
+                    <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1"
-                        Style="{StaticResource SelectFileControl.Style}"/>
+                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10" Width="160">
+                    </Tools:SelectColorBox>
                 </Grid>
             </Grid>
         </Grid>

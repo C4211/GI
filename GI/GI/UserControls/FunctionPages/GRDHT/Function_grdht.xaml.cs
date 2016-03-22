@@ -28,7 +28,14 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "GRD画图";
             this.titleEn = "GRD Drawing";
+            //this.Loaded += Function_grdht_Loaded;
         }
+
+        //void Function_grdht_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    DirectoryInfo dir = new DirectoryInfo("/ColorScales/")
+        //}
+
 
         /// <summary>
         /// 0 : 输入文件
@@ -80,7 +87,7 @@ namespace GI.UserControls
                     Msg("输入文件不是GRD数据格式！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow,new FileInfo(inPath),new FileInfo(inputPath2.filePath.Text));
+                //GRDPreviewWindow.PreviewShow(Application.Current.MainWindow,new FileInfo(inPath),new FileInfo(inputPath2.filePath.Text));
 
 
                 
