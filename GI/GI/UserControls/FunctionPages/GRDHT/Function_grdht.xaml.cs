@@ -28,13 +28,19 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "GRD画图";
             this.titleEn = "GRD Drawing";
-            //this.Loaded += Function_grdht_Loaded;
+            this.Loaded += Function_grdht_Loaded;
         }
 
-        //void Function_grdht_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    DirectoryInfo dir = new DirectoryInfo("/ColorScales/")
-        //}
+        void Function_grdht_Loaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo("ColorScales");
+            foreach (var file in dir.GetFiles("*.clr"))
+            {
+                SelectColorItem sci = new SelectColorItem();
+                sci.ColorFilePath = file.FullName;
+                inputPath2.Items.Add(sci);
+            }
+        }
 
 
         /// <summary>
@@ -87,10 +93,10 @@ namespace GI.UserControls
                     Msg("输入文件不是GRD数据格式！");
                     return;
                 }
-                //GRDPreviewWindow.PreviewShow(Application.Current.MainWindow,new FileInfo(inPath),new FileInfo(inputPath2.filePath.Text));
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), new FileInfo(((SelectColorItem)inputPath2.SelectedItem).ColorFilePath));
 
 
-                
+
             }
             else if (CurrentState == MaxState)
             {
