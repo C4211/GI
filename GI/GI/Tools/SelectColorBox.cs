@@ -42,7 +42,7 @@ namespace GI.Tools
 
     public class SelectColorItem : Grid
     {
-        public SelectColorItem():base()
+        public SelectColorItem() : base()
         {
             this.Loaded += SelectColorItem_Loaded;
         }
@@ -58,12 +58,12 @@ namespace GI.Tools
             get { return (string)GetValue(ColorFilePathProperty); }
             set { SetValue(ColorFilePathProperty, value); }
         }
-        
+
         #endregion
 
         #region 注册依赖属性
         public static readonly DependencyProperty ColorFilePathProperty =
-            DependencyProperty.Register("ColorFilePath", typeof(string), typeof(SelectColorItem),new PropertyMetadata(""));
+            DependencyProperty.Register("ColorFilePath", typeof(string), typeof(SelectColorItem));
         #endregion
 
         private void SetColorBrush()
@@ -71,7 +71,6 @@ namespace GI.Tools
             LinearGradientBrush brush = new LinearGradientBrush();
             brush.StartPoint = new Point(0, 0.5);
             brush.EndPoint = new Point(1, 0.5);
-
             using (StreamReader sr = new StreamReader(ColorFilePath))
             {
                 sr.ReadLine();
@@ -90,7 +89,7 @@ namespace GI.Tools
                         r = (byte)int.Parse(strs[1]);
                         g = (byte)int.Parse(strs[2]);
                         b = (byte)int.Parse(strs[3]);
-                        brush.GradientStops.Add(new GradientStop(Color.FromRgb(r, g, b), index/100));
+                        brush.GradientStops.Add(new GradientStop(Color.FromRgb(r, g, b), index / 100));
                     }
                     catch
                     {

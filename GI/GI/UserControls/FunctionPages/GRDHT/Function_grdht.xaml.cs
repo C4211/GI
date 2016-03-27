@@ -28,18 +28,22 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "GRD画图";
             this.titleEn = "GRD Drawing";
-            this.Loaded += Function_grdht_Loaded;
+            inputPath2.Loaded += Function_grdht_Loaded;
         }
 
         void Function_grdht_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo dir = new DirectoryInfo("ColorScales");
+            List<SelectColorItem> colors = new List<SelectColorItem>();
+            SelectColorItem sci;
             foreach (var file in dir.GetFiles("*.clr"))
             {
-                SelectColorItem sci = new SelectColorItem();
+                sci = new SelectColorItem();
                 sci.ColorFilePath = file.FullName;
-                inputPath2.Items.Add(sci);
+                colors.Add(sci);
             }
+            inputPath2.ItemsSource = colors;
+            inputPath2.SelectedIndex = 0;
         }
 
 
@@ -71,7 +75,7 @@ namespace GI.UserControls
             //    return;
             //}
             //else 
-                if (CurrentState == 0)
+            if (CurrentState == 0)
             {
                 //CurrentState = MaxState;
                 //IsCanceled = false;
@@ -93,7 +97,13 @@ namespace GI.UserControls
                     Msg("输入文件不是GRD数据格式！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), new FileInfo(((SelectColorItem)inputPath2.SelectedItem).ColorFilePath));
+                SelectColorItem sci = (SelectColorItem)inputPath2.SelectedItem;
+                if (sci == null)
+                {
+                    Msg("请选择颜色文件！");
+                    return;
+                }
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), new FileInfo(sci.ColorFilePath));
 
 
 
@@ -111,7 +121,7 @@ namespace GI.UserControls
 
             if (CurrentState > 0)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();

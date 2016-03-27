@@ -60,7 +60,7 @@
                         Text="    颜色文件："/>
                     <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10" Width="160">
+                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10" Width="160" Text="请选择" SelectedIndex="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" >
                     </Tools:SelectColorBox>
                 </Grid>
             </Grid>
