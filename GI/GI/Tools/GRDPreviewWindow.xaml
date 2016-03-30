@@ -56,8 +56,19 @@
                     </Tools:SelectColorBox>
                     <Button x:Name="saveButton" Grid.Row="2" Grid.Column="2" Width="80" HorizontalAlignment="Right" Style="{StaticResource GI.Window.Body.NextButton.Style}" Margin="10" Click="saveButton_Click">保存</Button>
                 </Grid>
-                <Grid Grid.Row="2" x:Name="fileContentGrid" Background="#eeeeee">
-                    <Canvas x:Name="grdContent" Background="#FFFFFF" ClipToBounds="True" Width="900" Height="600">
+                <Grid Grid.Row="2" x:Name="fileContentGrid" Background="#eeeeee" ClipToBounds="True">
+                    <Grid.Resources>
+                        <TransformGroup x:Key="TfGroup1">
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform X="0" Y="0"/>
+                        </TransformGroup>
+                    </Grid.Resources>
+                    <Canvas x:Name="grdContent" Background="#FFFFFF" ClipToBounds="True" Width="900" Height="600"
+                      MouseLeftButtonDown="ContentControl_MouseLeftButtonDown"
+                            MouseLeftButtonUp="ContentControl_MouseLeftButtonUp"
+                            MouseMove="ContentControl_MouseMove"
+                            MouseWheel="ContentControl_MouseWheel"
+                       RenderTransform="{StaticResource TfGroup1}">
                         <Grid Width="700" Height="500" Canvas.Left="60" Canvas.Top="45">
                             <Image x:Name="grdImage"  Stretch="Fill">
                             </Image>
