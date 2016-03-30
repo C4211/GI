@@ -186,7 +186,7 @@ namespace GI.Tools
         /// </summary>
         private double interval
         {
-            get { return (_max - _min) / 17; }
+            get { return (_max - _min); }
         }
 
         #endregion
@@ -215,7 +215,7 @@ namespace GI.Tools
             int index = 0;
             try
             {
-                index = (int)((value - _min) / interval);
+                index = (int)((value - _min)*colorMap.colors / interval);
             }
             catch { }
 
@@ -228,9 +228,11 @@ namespace GI.Tools
 
     public class ColorMap : List<Color>
     {
-        public ColorMap(string fileName)
+        public int colors;
+        public ColorMap(string fileName,int colors)
             : base()
         {
+            this.colors = colors;
             List<KeyValuePair<double, Color>> colorCollection = new List<KeyValuePair<double, Color>>();
             using (StreamReader sr = new StreamReader(fileName))
             {
@@ -260,16 +262,16 @@ namespace GI.Tools
                 }
             }
 
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < colors; i++)
             {
 
                 for (int j = 0; j < colorCollection.Count(); j++)
                 {
-                    if (((double)i) * 100 / 17 < colorCollection[j].Key)
+                    if (((double)i) * 100 / colors < colorCollection[j].Key)
                     {
                         KeyValuePair<double, Color> kvp1 = colorCollection[j - 1];
                         KeyValuePair<double, Color> kvp2 = colorCollection[j];
-                        double rate = (((double)i) * 100 / 17 - kvp1.Key) / (kvp2.Key - kvp1.Key);
+                        double rate = (((double)i) * 100 / colors - kvp1.Key) / (kvp2.Key - kvp1.Key);
                         byte r = (byte)(kvp1.Value.R * (1 - rate) + kvp2.Value.R * rate);
                         byte g = (byte)(kvp1.Value.G * (1 - rate) + kvp2.Value.G * rate);
                         byte b = (byte)(kvp1.Value.B * (1 - rate) + kvp2.Value.B * rate);
@@ -277,7 +279,7 @@ namespace GI.Tools
                         this.Add(color);
                         break;
                     }
-                    else if (((double)i) * 100 / 17 == colorCollection[j].Key)
+                    else if (((double)i) * 100 / colors == colorCollection[j].Key)
                     {
                         this.Add(colorCollection[j].Value);
                     }

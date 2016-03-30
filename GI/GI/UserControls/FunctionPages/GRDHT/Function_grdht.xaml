@@ -57,10 +57,10 @@
                     <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="    颜色文件："/>
+                        Text="        配色方案："/>
                     <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10" Width="160" Text="请选择" SelectedIndex="0" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" >
+                        Grid.Row="2" Grid.Column="1" ColorFilePath="/ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" >
                     </Tools:SelectColorBox>
                 </Grid>
             </Grid>

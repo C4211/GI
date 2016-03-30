@@ -173,27 +173,35 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                 </Grid.ColumnDefinitions>
+                <Popup x:Name="PART_Popup" AllowsTransparency="True" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="Slide" Placement="Bottom">
+                    <Border x:Name="dropDownBorder" BorderBrush="{StaticResource GI.Colors.Essential}" BorderThickness="1,0,1,1" Background="{x:Null}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Width="{Binding ActualWidth, ElementName=templateRoot}">
+                        <ScrollViewer x:Name="DropDownScrollViewer" 
+                                  Background="{TemplateBinding Background}" 
+                                  CanContentScroll="false" 
+                                  Focusable="false" 
+                                  HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                  VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" 
+                                  Template="{DynamicResource ScrollViewerControlTemplate}">
+                            <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                    <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                </Canvas>
+                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+                <ToggleButton x:Name="toggleButton" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ToggleButtonStyle1}" Background="{x:Null}"/>
+                <ContentPresenter x:Name="contentPresenter" VerticalAlignment="Center" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
             </Grid>
-            <Popup x:Name="PART_Popup" AllowsTransparency="True" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="Slide" Placement="Bottom">
-                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource GI.Colors.Essential}" BorderThickness="1,0,1,1" Background="{x:Null}" MaxHeight="{TemplateBinding MaxDropDownHeight}" Width="{Binding ActualWidth, ElementName=templateRoot}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" BorderBrush="{x:Null}">
-                        <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
-                            </Canvas>
-                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </Grid>
-                    </ScrollViewer>
-                </Border>
-            </Popup>
-            <ToggleButton x:Name="toggleButton" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ToggleButtonStyle1}" Background="{x:Null}"/>
-            <ContentPresenter x:Name="contentPresenter" VerticalAlignment="Center" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         </Grid>
     </ControlTemplate>
     <Style TargetType="{x:Type local:SelectColorBox}">
         <Setter Property="SelectedIndex" Value="0"/>
         <Setter Property="Width" Value="80"/>
         <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="{StaticResource GI.Colors.Body.text}"/>
         <Setter Property="Template" Value="{StaticResource SelectColorBoxTemplate}"/>
         <Setter Property="IsTabStop" Value="False"/>
@@ -393,7 +401,7 @@
         <Setter Property="Template" Value="{StaticResource SubmenuHeaderTemplateKey}"/>
     </Style>
     <Style TargetType="{x:Type local:SelectColorItem}">
-        <Setter Property="Width" Value="130"/>
+        <Setter Property="Width" Value="133"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>

@@ -125,9 +125,6 @@
     <Compile Include="Functions\ZLYCGZ\DXGZ\GSJFF.cs" />
     <Compile Include="Functions\ZLZFYJS\InterfaceInversion.cs" />
     <Compile Include="Functions\ZLZFYJS\InterfaceForward.cs" />
-    <Compile Include="grdtest.xaml.cs">
-      <DependentUpon>grdtest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Tools\CloseAndBackConfirm.cs" />
     <Compile Include="Tools\FileNameFilter.cs" />
     <Compile Include="Tools\Grd.cs" />
@@ -262,10 +259,6 @@
     <Compile Include="UserControls\Others\SelectFileControl.xaml.cs">
       <DependentUpon>SelectFileControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="grdtest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -534,9 +527,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Res\images\Function占位.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Res\images\GI.MainWindow.Shadow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -566,6 +556,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
+    <Resource Include="Res\images\grdunit.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\BCYHFilter_F.exe">

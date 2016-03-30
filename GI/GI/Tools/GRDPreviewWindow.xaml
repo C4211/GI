@@ -1,7 +1,7 @@
-﻿<Window x:Class="GI.Tools.GRDPreviewWindow"
+﻿<Window xmlns:Tools="clr-namespace:GI.Tools"  x:Class="GI.Tools.GRDPreviewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FilePreviewWindow" Width="830" Height="660" ResizeMode="CanMinimize" BorderThickness="20" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="#00000000" WindowStyle="None" Closing="Window_Closing" Activated="Window_Activated" Deactivated="Window_Deactivated" StateChanged="Window_StateChanged">
+        Title="GRDPreviewWindow" Width="970" Height="750" ResizeMode="CanMinimize" BorderThickness="20" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="#00000000" WindowStyle="None" Closing="Window_Closing" Activated="Window_Activated" Deactivated="Window_Deactivated" StateChanged="Window_StateChanged">
     <Grid>
         <Border Margin="5" Background="White" BorderThickness="1" RenderTransformOrigin="0.5,0.5" x:Name="content">
             <Border.BorderBrush>
@@ -27,6 +27,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="{StaticResource GI.Colors.Null}">
@@ -39,42 +40,89 @@
                     <Button Grid.Column="1" Width="31" Height="31" Style="{DynamicResource GI.Window.Head.Min.Style}" Click="Head_Min_Click" Foreground="{StaticResource GI.Colors.Body.text}"></Button>
                     <Button  Grid.Column="2" Width="31" Height="31" Style="{DynamicResource GI.Window.Head.Close.Style}" Click="Button_Click" Foreground="{StaticResource GI.Colors.Body.text}"></Button>
                 </Grid>
-                <Grid Grid.Row="1" x:Name="fileContentGrid">
-                    <Grid Height="540" Width="706">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                            <ColumnDefinition Width="20"></ColumnDefinition>
-                            <ColumnDefinition Width="30"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid Width="656" Height="540" Grid.Column="0">
-                            <Image x:Name="grdImage" Stretch="Fill" ></Image>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Row="2" Grid.Column="0" 
+                        Style="{StaticResource GI.Window.Body.Text.Style}" 
+                        Text="  配色方案："/>
+                    <Tools:SelectColorBox 
+                        x:Name="inputPath2"
+                        Grid.Row="2" Grid.Column="1" ColorFilePath="/ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="inputPath2_SelectionChanged" >
+                    </Tools:SelectColorBox>
+                    <Button x:Name="saveButton" Grid.Row="2" Grid.Column="2" Width="80" HorizontalAlignment="Right" Style="{StaticResource GI.Window.Body.NextButton.Style}" Margin="10" Click="saveButton_Click">保存</Button>
+                </Grid>
+                <Grid Grid.Row="2" x:Name="fileContentGrid" Background="#eeeeee">
+                    <Canvas x:Name="grdContent" Background="#FFFFFF" ClipToBounds="True" Width="900" Height="600">
+                        <Grid Width="700" Height="500" Canvas.Left="60" Canvas.Top="45">
+                            <Image x:Name="grdImage"  Stretch="Fill">
+                            </Image>
                         </Grid>
-                        <UniformGrid Columns="1" x:Name="colors" Grid.Column="2">
+                        <Rectangle x:Name="colorRect" Width="35" Height="500" Canvas.Left="781" Canvas.Top="45">
+                        </Rectangle>
+                        <UniformGrid x:Name="grdZ" Width="75" Height="528" Columns="1" Canvas.Top="38" Canvas.Right="0">
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
                         </UniformGrid>
-                        <!--<Grid  Height="410" Width="730">
-                            <UniformGrid Columns="6" Width="600" Height="20" VerticalAlignment="Bottom" x:Name="unitx">
-                                <TextBlock Width="100" TextAlignment="Center" />
-                                <TextBlock Width="100" TextAlignment="Center" />
-                                <TextBlock Width="100" TextAlignment="Center" />
-                                <TextBlock Width="100" TextAlignment="Center" />
-                                <TextBlock Width="100" TextAlignment="Center" />
-                                <TextBlock Width="100" TextAlignment="Center" />
-                            </UniformGrid>
-                            <UniformGrid Columns="1" Rows="11" Width="100" Height="385" Margin="0,18,0,0" HorizontalAlignment="Left" x:Name="unity">
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                                <TextBlock Width="100" Height="35" TextAlignment="Right" VerticalAlignment="Center"/>
-                            </UniformGrid>
-                        </Grid>-->
-                    </Grid>
+                        <UniformGrid x:Name="grdY" Height="548" Columns="1" Canvas.Top="38" Canvas.Left="6" >
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                            <TextBlock></TextBlock>
+                        </UniformGrid>
+                        <UniformGrid x:Name="grdX" Width="750" Rows="1" Canvas.Bottom="30" Canvas.Right="0" Canvas.Left="24" Canvas.Top="565">
+                            <UniformGrid.Resources>
+                                <TransformGroup x:Key="TfGroup">
+                                    <RotateTransform Angle="-40"/>
+                                </TransformGroup>
+                            </UniformGrid.Resources>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                            <TextBlock RenderTransformOrigin="0.5,0.5" RenderTransform="{StaticResource TfGroup}"></TextBlock>
+                        </UniformGrid>
+                        <Grid Width="900" Height="600">
+                            <Image Source="/GI;component/Res/images/grdunit.png"></Image>
+                        </Grid>
+                    </Canvas>
                 </Grid>
             </Grid>
         </Border>

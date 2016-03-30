@@ -28,23 +28,8 @@ namespace GI.UserControls
             InitializeComponent();
             this.titleCn = "GRD画图";
             this.titleEn = "GRD Drawing";
-            inputPath2.Loaded += Function_grdht_Loaded;
         }
 
-        void Function_grdht_Loaded(object sender, RoutedEventArgs e)
-        {
-            DirectoryInfo dir = new DirectoryInfo("ColorScales");
-            List<SelectColorItem> colors = new List<SelectColorItem>();
-            SelectColorItem sci;
-            foreach (var file in dir.GetFiles("*.clr"))
-            {
-                sci = new SelectColorItem();
-                sci.ColorFilePath = file.FullName;
-                colors.Add(sci);
-            }
-            inputPath2.ItemsSource = colors;
-            inputPath2.SelectedIndex = 0;
-        }
 
 
         /// <summary>
@@ -103,7 +88,7 @@ namespace GI.UserControls
                     Msg("请选择颜色文件！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), new FileInfo(sci.ColorFilePath));
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2);
 
 
 

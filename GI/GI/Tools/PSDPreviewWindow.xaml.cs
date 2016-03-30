@@ -216,6 +216,7 @@ namespace GI.Tools
             }
         }
 
+
         private void Head_Min_Click(object sender, RoutedEventArgs e)
         {
             Storyboard sb = (this.FindResource("GI.Window.closeStoryboard") as Storyboard).Clone();

@@ -21,6 +21,22 @@ namespace GI.Tools
         public SelectColorBox()
             : base()
         {
+            this.Loaded += SelectColorBox_Loaded;
+        }
+
+        void SelectColorBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo(ColorFilePath);
+            List<SelectColorItem> colors = new List<SelectColorItem>();
+            SelectColorItem sci;
+            foreach (var file in dir.GetFiles("*.clr"))
+            {
+                sci = new SelectColorItem();
+                sci.ColorFilePath = file.FullName;
+                colors.Add(sci);
+            }
+            this.ItemsSource = colors;
+            this.SelectedIndex = 0;
         }
 
         #region 获取设置依赖属性
@@ -98,6 +114,41 @@ namespace GI.Tools
                 }
 
                 this.Background = brush;
+            }
+        }
+
+        public static Brush ColorBrush(string ColorFilePath)
+        {
+            LinearGradientBrush brush = new LinearGradientBrush();
+            brush.StartPoint = new Point(0.5, 0);
+            brush.EndPoint = new Point(0.5, 1);
+            using (StreamReader sr = new StreamReader(ColorFilePath))
+            {
+                sr.ReadLine();
+                string str;
+                string[] strs;
+                double index;
+                byte r, g, b;
+
+                while ((str = sr.ReadLine()) != null)
+                {
+                    //MessageBox.Show(str);
+                    strs = str.Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    try
+                    {
+                        index = double.Parse(strs[0]);
+                        r = (byte)int.Parse(strs[1]);
+                        g = (byte)int.Parse(strs[2]);
+                        b = (byte)int.Parse(strs[3]);
+                        brush.GradientStops.Add(new GradientStop(Color.FromRgb(r, g, b), index / 100));
+                    }
+                    catch
+                    {
+                        throw new Exception("读取颜色文件失败！");
+                    }
+                }
+
+                return brush;
             }
         }
     }
