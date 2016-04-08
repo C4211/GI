@@ -88,7 +88,7 @@ namespace GI.UserControls
                     Msg("请选择颜色文件！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2, Int16.Parse(((ComboBoxItem)(round.SelectedItem)).Tag.ToString()),90,round.SelectedIndex);
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2,2,90,2);
 
 
 

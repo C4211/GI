@@ -250,26 +250,26 @@ namespace GI.Tools
             //获取拖拽后的鼠标坐标
             var position = e.GetPosition(fileContentGrid);
             //修改图片偏移量
-            if (transform.X - mouseXY.X + position.X >= (transform2.ScaleX - 1) * grdContent.Width / 2)
+            if (transform.X - mouseXY.X + position.X >= 0)
             {
-                transform.X = (transform2.ScaleX - 1) * grdContent.Width / 2;
+                transform.X = 0;
 
             }
-            else if (transform.X - mouseXY.X + position.X <= -(transform2.ScaleX - 1) * grdContent.Width / 2)
+            else if (transform.X - mouseXY.X + position.X <= -(grdContent.Width*(transform2.ScaleX-1)))
             {
-                transform.X = -(transform2.ScaleX - 1) * grdContent.Width / 2;
+                transform.X = -(transform2.ScaleX - 1) * grdContent.Width;
             }
             else
             {
                 transform.X -= mouseXY.X - position.X;
             }
-            if (transform.Y - mouseXY.Y + position.Y >= (transform2.ScaleY - 1) * grdContent.Height / 2)
+            if (transform.Y - mouseXY.Y + position.Y >= 0)
             {
-                transform.Y = (transform2.ScaleY - 1) * grdContent.Height / 2;
+                transform.Y = 0;
             }
-            else if (transform.Y - mouseXY.Y + position.Y <= -(transform2.ScaleY - 1) * grdContent.Height / 2)
+            else if (transform.Y - mouseXY.Y + position.Y <= -(transform2.ScaleY - 1) * grdContent.Height)
             {
-                transform.Y = -(transform2.ScaleY - 1) * grdContent.Height / 2;
+                transform.Y = -(transform2.ScaleY - 1) * grdContent.Height;
             }
             else
             {
@@ -305,6 +305,14 @@ namespace GI.Tools
                 transform.ScaleY += delta;
                 transform1.X = -((pointToContent.X * transform.ScaleX) - point.X);
                 transform1.Y = -((pointToContent.Y * transform.ScaleY) - point.Y);
+            }
+            if (transform.ScaleX <= 1)
+            {
+                grdContent.Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                grdContent.Cursor = Cursors.Hand;
             }
 
         }

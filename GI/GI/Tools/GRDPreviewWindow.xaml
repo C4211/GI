@@ -53,18 +53,18 @@
                     <TextBlock
                         Grid.Row="2" Grid.Column="0" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="  配色方案："/>
+                        Text="  配色方案：" Margin="10,10,0,10"/>
                     <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1" ColorFilePath="ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="inputPath2_SelectionChanged" >
+                        Grid.Row="2" Grid.Column="1" ColorFilePath="ColorScales" HorizontalAlignment="Left" Margin="0,10,20,10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="inputPath2_SelectionChanged" >
                     </Tools:SelectColorBox>
                     <TextBlock
                         Grid.Row="2" Grid.Column="2" 
                         Style="{StaticResource GI.Window.Body.Text.Style}" 
-                        Text="坐标精度："/>
+                        Text="坐标精度：" Margin="10,10,0,10"/>
                     <ComboBox
                         x:Name="round"
-                        Grid.Row="2" Grid.Column="3" Width="110" HorizontalAlignment="Left" Margin="10" SelectionChanged="round_SelectionChanged">
+                        Grid.Row="2" Grid.Column="3" Width="110" HorizontalAlignment="Left" Margin="0,10,20,10" SelectionChanged="round_SelectionChanged">
                         <ComboBoxItem Tag="1">保留一位小数</ComboBoxItem>
                         <ComboBoxItem Tag="2">保留两位小数</ComboBoxItem>
                         <ComboBoxItem Tag="3">保留三位小数</ComboBoxItem>
@@ -85,11 +85,11 @@
                     </Grid.Resources>
                     <Grid x:Name="saveToImageContent" Background="#eeeeee">
                         <Grid Width="900" Height="600">
-                            <Canvas x:Name="grdContent" ClipToBounds="True" Width="900" Height="600" Cursor="Hand"
+                            <Canvas x:Name="grdContent" ClipToBounds="True" Width="900" Height="600"
                             MouseLeftButtonDown="ContentControl_MouseLeftButtonDown"
                             MouseLeftButtonUp="ContentControl_MouseLeftButtonUp"
                             MouseMove="ContentControl_MouseMove"
-                            MouseWheel="ContentControl_MouseWheel" RenderTransformOrigin="0.5,0.5" RenderTransform="{DynamicResource TfGroup1}">
+                            MouseWheel="ContentControl_MouseWheel" RenderTransformOrigin="0,0" RenderTransform="{DynamicResource TfGroup1}">
                                 <Grid Width="700" Height="500" Canvas.Left="60" Canvas.Top="45">
                                     <Image x:Name="grdImage"  Stretch="Fill">
                                     </Image>
