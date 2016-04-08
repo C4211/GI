@@ -62,7 +62,7 @@
                         Text="        配色方案："/>
                     <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1" ColorFilePath="ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" >
+                        Grid.Row="2" Grid.Column="1" ColorFilePath="/ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" >
                     </Tools:SelectColorBox>
                     <TextBlock
                         Grid.Row="3" Grid.Column="0" 

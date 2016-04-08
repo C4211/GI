@@ -56,7 +56,7 @@
                         Text="  配色方案："/>
                     <Tools:SelectColorBox 
                         x:Name="inputPath2"
-                        Grid.Row="2" Grid.Column="1" ColorFilePath="ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="inputPath2_SelectionChanged" >
+                        Grid.Row="2" Grid.Column="1" ColorFilePath="/ColorScales" HorizontalAlignment="Left" Margin="10" Width="160" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="inputPath2_SelectionChanged" >
                     </Tools:SelectColorBox>
                     <TextBlock
                         Grid.Row="2" Grid.Column="2" 
@@ -85,11 +85,12 @@
                     </Grid.Resources>
                     <Grid x:Name="saveToImageContent" Background="#eeeeee">
                         <Grid Width="900" Height="600">
-                            <Canvas x:Name="grdContent" ClipToBounds="True" Width="900" Height="600" Cursor="Hand"
+                            <Canvas x:Name="grdContent" Background="#EEEEEE" ClipToBounds="True" Width="900" Height="600" Cursor="Hand"
                             MouseLeftButtonDown="ContentControl_MouseLeftButtonDown"
                             MouseLeftButtonUp="ContentControl_MouseLeftButtonUp"
                             MouseMove="ContentControl_MouseMove"
-                            MouseWheel="ContentControl_MouseWheel" RenderTransformOrigin="0.5,0.5" RenderTransform="{DynamicResource TfGroup1}">
+                            MouseWheel="ContentControl_MouseWheel"
+                            RenderTransform="{StaticResource TfGroup1}">
                                 <Grid Width="700" Height="500" Canvas.Left="60" Canvas.Top="45">
                                     <Image x:Name="grdImage"  Stretch="Fill">
                                     </Image>
