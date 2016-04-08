@@ -135,13 +135,13 @@ namespace GI.Tools
             BitmapEncoder encoder = null;
             switch (img)
             {
-                case 0:
+                case 1:
                     encoder = new PngBitmapEncoder();
                     break;
-                case 1:
+                case 2:
                     encoder = new JpegBitmapEncoder();
                     break;
-                case 2:
+                case 3:
                     encoder = new BmpBitmapEncoder();
                     break;
                 default:
@@ -236,7 +236,7 @@ namespace GI.Tools
 
         private bool mouseDown;
         private Point mouseXY;
-        private double min = 0.6, max = 3.0;//最小/最大放大倍数
+        private double min = 1, max = 1.5;//最小/最大放大倍数
 
         private void Domousemove(Canvas img, MouseEventArgs e)
         {
@@ -250,8 +250,32 @@ namespace GI.Tools
             //获取拖拽后的鼠标坐标
             var position = e.GetPosition(fileContentGrid);
             //修改图片偏移量
-            transform.X -= mouseXY.X - position.X;
-            transform.Y -= mouseXY.Y - position.Y;
+            if (transform.X - mouseXY.X + position.X >= (transform2.ScaleX - 1) * grdContent.Width / 2)
+            {
+                transform.X = (transform2.ScaleX - 1) * grdContent.Width / 2;
+
+            }
+            else if (transform.X - mouseXY.X + position.X <= -(transform2.ScaleX - 1) * grdContent.Width / 2)
+            {
+                transform.X = -(transform2.ScaleX - 1) * grdContent.Width / 2;
+            }
+            else
+            {
+                transform.X -= mouseXY.X - position.X;
+            }
+            if (transform.Y - mouseXY.Y + position.Y >= (transform2.ScaleY - 1) * grdContent.Height / 2)
+            {
+                transform.Y = (transform2.ScaleY - 1) * grdContent.Height / 2;
+            }
+            else if (transform.Y - mouseXY.Y + position.Y <= -(transform2.ScaleY - 1) * grdContent.Height / 2)
+            {
+                transform.Y = -(transform2.ScaleY - 1) * grdContent.Height / 2;
+            }
+            else
+            {
+                transform.Y -= mouseXY.Y - position.Y;
+            }
+            
             mouseXY = position;
         }
 
@@ -260,8 +284,6 @@ namespace GI.Tools
         {
             //修改缩放中心(跟随鼠标）
             var transform1 = group.Children[1] as TranslateTransform;
-            //point.X += transform1.X;
-            //point.Y += transform1.Y;
             var pointToContent = group.Inverse.Transform(point);
             //控制图片缩放倍数
             var transform = group.Children[0] as ScaleTransform;
@@ -269,6 +291,8 @@ namespace GI.Tools
             {
                 transform.ScaleX = min;
                 transform.ScaleY = min;
+                transform1.X = 0;
+                transform1.Y = 0;
             }
             else if (transform.ScaleX + delta > max)
             {
@@ -279,9 +303,10 @@ namespace GI.Tools
             {
                 transform.ScaleX += delta;
                 transform.ScaleY += delta;
+                transform1.X = -((pointToContent.X * transform.ScaleX) - point.X);
+                transform1.Y = -((pointToContent.Y * transform.ScaleY) - point.Y);
             }
-            transform1.X = -1 * ((pointToContent.X * transform.ScaleX) - point.X);
-            transform1.Y = -1 * ((pointToContent.Y * transform.ScaleY) - point.Y);
+
         }
 
 
@@ -329,9 +354,9 @@ namespace GI.Tools
             {
                 return;
             }
-            var point = e.GetPosition(fileContentGrid);
+            var point = e.GetPosition(saveToImageContent);
             var group = grdContent.FindResource("TfGroup1") as TransformGroup;
-            var delta = e.Delta * 0.0005;
+            var delta = e.Delta * 0.001;
             DowheelZoom(group, point, delta);
         }
 
