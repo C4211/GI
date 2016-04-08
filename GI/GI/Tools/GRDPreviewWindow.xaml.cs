@@ -23,36 +23,46 @@ namespace GI.Tools
     /// </summary>
     public partial class GRDPreviewWindow : Window
     {
-        public GRDPreviewWindow()
+        private GRDPreviewWindow()
         {
             InitializeComponent();
         }
 
-        private static int colors = 90;
+        private GRDPreviewWindow(string filePath)
+        {
+            InitializeComponent();
+            this.filePath = filePath;
+        }
 
-        public void PreviewShow(FileInfo grdFileInfo)
+        private int colors = 90;
+        private int roundDecimals = 3;
+
+        public void PreviewShow(FileInfo grdFileInfo, int roundDecimals,int colors)
         {
             Application.Current.MainWindow.Cursor = Cursors.Wait;
-            GRDPreviewWindow gpw = new GRDPreviewWindow();
+            GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
             SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
+            gpw.colors = colors;
+            gpw.roundDecimals = roundDecimals;
             gpw.GRDDrawing(grdFileInfo.FullName, sci.ColorFilePath, colors);
-            gpw.UnitFill(grdFileInfo.FullName);
-            filePath = grdFileInfo.FullName;
-            gpw.inputPath2.Loaded += delegate { gpw.SaveImage(gpw.grdContent); };
+            gpw.UnitFill(grdFileInfo.FullName, roundDecimals);
+            //gpw.inputPath2.Loaded += delegate { gpw.SaveImage(gpw.grdContent); };
             gpw.ShowDialog();
             Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
 
-        public static void PreviewShow(Window owner, FileInfo grdFileInfo, SelectColorBox colorBox)
+        public static void PreviewShow(Window owner, FileInfo grdFileInfo, SelectColorBox colorBox, int roundDecimals, int colors,int roundIndex)
         {
+            
             Application.Current.MainWindow.Cursor = Cursors.Wait;
-            GRDPreviewWindow gpw = new GRDPreviewWindow();
+            GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
             gpw.Owner = owner;
+            gpw.colors = colors;
+            gpw.roundDecimals = roundDecimals;
             SelectColorItem sci = (SelectColorItem)colorBox.SelectedItem;
             gpw.GRDDrawing(grdFileInfo.FullName, sci.ColorFilePath, colors);
-            gpw.UnitFill(grdFileInfo.FullName);
-            gpw.filePath = grdFileInfo.FullName;
-            gpw.inputPath2.Loaded += delegate { gpw.inputPath2.SelectedIndex = colorBox.SelectedIndex; gpw.SaveImage(gpw.grdContent); };
+            gpw.UnitFill(grdFileInfo.FullName, roundDecimals);
+            gpw.inputPath2.Loaded += delegate { gpw.inputPath2.SelectedIndex = colorBox.SelectedIndex; gpw.round.SelectedIndex = roundIndex; };
             gpw.ShowDialog();
             Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
@@ -65,46 +75,51 @@ namespace GI.Tools
             colorRect.Fill = SelectColorItem.ColorBrush(colorMapPath);
         }
 
-        private void UnitFill(string filePath)
+        private void UnitFill(string filePath,int decimals)
         {
             Grd grd = new Grd(filePath);
             double intervalX = (grd.maxx-grd.minx)/grdX.Children.Count;
             for(int i = 0;i<grdX.Children.Count;i++)
             {
-                ((TextBlock)grdX.Children[i]).Text = (grd.minx + intervalX*i).ToString("0.000000").Substring(0,7);
+                ((TextBlock)grdX.Children[i]).Text = (Math.Round((grd.minx + intervalX * i), decimals)).ToString("f"+decimals);
             }
 
             double intervalY = (grd.maxy - grd.miny) / grdY.Children.Count;
             for (int i = 0; i < grdY.Children.Count; i++)
             {
-                ((TextBlock)grdY.Children[i]).Text = (grd.maxy - intervalY * i).ToString("0.000000").Substring(0,7);
+                ((TextBlock)grdY.Children[i]).Text = (Math.Round((grd.miny + intervalY * i), decimals)).ToString("f" + decimals);
             }
 
             double intervalZ = (grd.max - grd.min) / grdZ.Children.Count;
             for (int i = 0; i < grdZ.Children.Count; i++)
             {
-                ((TextBlock)grdZ.Children[i]).Text = (grd.max - intervalZ * i).ToString("0.0000000000").Substring(0,10);
+                ((TextBlock)grdZ.Children[i]).Text = (grd.max - intervalZ * i).ToString("0.000");
             }
             
         }
 
-        private string filePath = "";
+        private string filePath;
         private void inputPath2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GRDDrawing(filePath, ((SelectColorItem)(((SelectColorBox)sender).SelectedItem)).ColorFilePath, colors);
         }
+        private void round_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var decimals = (ComboBoxItem)((ComboBox)sender).SelectedItem;
+            roundDecimals = Int16.Parse(decimals.Tag.ToString());
+            UnitFill(filePath, roundDecimals);
+        }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveImage(grdContent);
             System.Windows.Forms.SaveFileDialog ofd = new System.Windows.Forms.SaveFileDialog();
-            ofd.Filter = "png文件(*.png)|*.png";
+            ofd.Filter = "png文件(*.png)|*.png|jpeg文件(*.jpeg)|*.jpeg|bmp文件(*.bmp)|*.bmp";
             ofd.FilterIndex = 1;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
-                    SaveToImage(grdbmp, ofd.FileName);
+                    SaveToImage(saveToImageContent, ofd.FileName, ofd.FilterIndex);
                     Msg("已保存！");
                 }
                 catch
@@ -114,22 +129,34 @@ namespace GI.Tools
             }
         }
 
-        private RenderTargetBitmap grdbmp;
-        private void SaveImage(FrameworkElement ui)
+        //private RenderTargetBitmap grdbmp;
+        private void SaveToImage(FrameworkElement ui, string fileName,int img)
         {
-            grdbmp = new RenderTargetBitmap((int)ui.Width, (int)ui.Height, 96d, 96d,
+            BitmapEncoder encoder = null;
+            switch (img)
+            {
+                case 0:
+                    encoder = new PngBitmapEncoder();
+                    break;
+                case 1:
+                    encoder = new JpegBitmapEncoder();
+                    break;
+                case 2:
+                    encoder = new BmpBitmapEncoder();
+                    break;
+                default:
+                    throw new Exception("图像编码失败！");
+            }
+            RenderTargetBitmap grdbmp = new RenderTargetBitmap((int)ui.ActualWidth, (int)ui.ActualHeight, 96d, 96d,
                 PixelFormats.Pbgra32);
             grdbmp.Render(ui);
-        }
-        private void SaveToImage(RenderTargetBitmap grdbmp, string fileName)
-        {
             System.IO.FileStream fs = new System.IO.FileStream(fileName, System.IO.FileMode.Create);
-            BitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(grdbmp));
             encoder.Save(fs);
             fs.Close();
-        }  
+        }
 
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -142,6 +169,7 @@ namespace GI.Tools
                 this.DragMove();
             }
         }
+
 
         private bool isClosed = false;
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -208,8 +236,7 @@ namespace GI.Tools
 
         private bool mouseDown;
         private Point mouseXY;
-        private double min = 0.1, max = 3.0;//最小/最大放大倍数
-
+        private double min = 0.6, max = 3.0;//最小/最大放大倍数
 
         private void Domousemove(Canvas img, MouseEventArgs e)
         {
@@ -232,10 +259,12 @@ namespace GI.Tools
         private void DowheelZoom(TransformGroup group, Point point, double delta)
         {
             //修改缩放中心(跟随鼠标）
-            var pointToContent = group.Inverse.Transform(point);
-            var transform = group.Children[0] as ScaleTransform;
-            //控制图片缩放倍数
             var transform1 = group.Children[1] as TranslateTransform;
+            //point.X += transform1.X;
+            //point.Y += transform1.Y;
+            var pointToContent = group.Inverse.Transform(point);
+            //控制图片缩放倍数
+            var transform = group.Children[0] as ScaleTransform;
             if (transform.ScaleX + delta < min)
             {
                 transform.ScaleX = min;
@@ -300,13 +329,25 @@ namespace GI.Tools
             {
                 return;
             }
-            var point = e.GetPosition(img);
+            var point = e.GetPosition(fileContentGrid);
             var group = grdContent.FindResource("TfGroup1") as TransformGroup;
-            var delta = e.Delta * 0.001;
+            var delta = e.Delta * 0.0005;
             DowheelZoom(group, point, delta);
         }
 
         #endregion
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            grdGrid.Visibility = Visibility.Visible;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            grdGrid.Visibility = Visibility.Hidden;
+        }
+
+        
 
     }
 }

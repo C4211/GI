@@ -556,6 +556,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
+    <Resource Include="Res\images\grdunitgrid.png" />
     <Resource Include="Res\images\grdunit.png" />
   </ItemGroup>
   <ItemGroup>
