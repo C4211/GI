@@ -70,60 +70,60 @@ namespace GI.UserControls
             List<ResourceTreeNode> result = null;
             List<ResourceManagerTreeNode> list = null;
             ResourceManagerTreeNode parentNode;
-            try
+            //try
+            //{
+            Thread.Sleep(600);
+            result = LoadResourceTree(roots);
+            Dispatcher.Invoke(delegate
             {
-                Thread.Sleep(600);
-                result = LoadResourceTree(roots);
-                Dispatcher.Invoke(delegate
-                {
                     //resourceTree.Items.Refresh();
                     resourceTree.Items.Clear();
-                    foreach (var node in result)
+                foreach (var node in result)
+                {
+                    parentNode = new ResourceManagerTreeNode();
+                    parentNode.Path = node.Info;
+                    parentNode.Title = node.Info.Name;
+                    list = FillDataToResourceTreeView(node);
+                    foreach (var l in list)
                     {
-                        parentNode = new ResourceManagerTreeNode();
-                        parentNode.Path = node.Info;
-                        parentNode.Title = node.Info.Name;
-                        list = FillDataToResourceTreeView(node);
-                        foreach (var l in list)
-                        {
-                            parentNode.Items.Add(l);
-                        }
-                        if (parentNode.ContextMenu == null)
-                        {
-                            ContextMenu menu = new ContextMenu();
-                            MenuItem item = new MenuItem();
-                            item.Header = "移除路径";
-                            item.Click += item_Click;
-                            menu.Items.Add(item);
-                            parentNode.ContextMenu = menu;
-                        }
-                        else
-                        {
-                            MenuItem item = new MenuItem();
-                            item.Header = "移除路径";
-                            item.Click += item_Click;
-                            parentNode.ContextMenu.Items.Add(item);
-                        }
-                        MenuItem item1 = new MenuItem();
-                        item1.Header = "打开目录";
-                        item1.Click += delegate { Open_File(parentNode.Path.FullName); };
-                        parentNode.ContextMenu.Items.Add(item1);
-                        resourceTree.Items.Add(parentNode);
+                        parentNode.Items.Add(l);
                     }
-                });
-            }
-            catch
-            {
-                Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, @"读取目录失败！"); });
-            }
-            finally
-            {
-                if (result != null)
-                    result = null;
-                if (list != null)
-                    list = null;
-                UserConfigUtil.SavePaths(roots);
-            }
+                    if (parentNode.ContextMenu == null)
+                    {
+                        ContextMenu menu = new ContextMenu();
+                        MenuItem item = new MenuItem();
+                        item.Header = "移除路径";
+                        item.Click += item_Click;
+                        menu.Items.Add(item);
+                        parentNode.ContextMenu = menu;
+                    }
+                    else
+                    {
+                        MenuItem item = new MenuItem();
+                        item.Header = "移除路径";
+                        item.Click += item_Click;
+                        parentNode.ContextMenu.Items.Add(item);
+                    }
+                    MenuItem item1 = new MenuItem();
+                    item1.Header = "打开目录";
+                    item1.Click += delegate { Open_File(parentNode.Path.FullName); };
+                    parentNode.ContextMenu.Items.Add(item1);
+                    resourceTree.Items.Add(parentNode);
+                }
+            });
+            //}
+            //catch
+            //{
+            //    Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, @"读取目录失败！"); });
+            //}
+            //finally
+            //{
+            if (result != null)
+                result = null;
+            if (list != null)
+                list = null;
+            UserConfigUtil.SavePaths(roots);
+            //}
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace GI.UserControls
                 while (node.Parent as ResourceManagerTreeNode != null && (node.Parent as ResourceManagerTreeNode).Parent != null)
                     node = node.Parent as ResourceManagerTreeNode;
                 //MessageBox.Show(node.Path.FullName);
-                if (MessageWindow.Show(Application.Current.MainWindow,"确定从资源管理器中要移除该路径？\n" + node.Path.FullName, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageWindow.Show(Application.Current.MainWindow, "确定从资源管理器中要移除该路径？\n" + node.Path.FullName, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     StartLoading();
                     for (int i = 0; i < roots.Count; i++)
@@ -289,7 +289,7 @@ namespace GI.UserControls
                         item1.Click += delegate { Open_FilePath(childNode.Path.FullName); };
                         childNode.ContextMenu.Items.Add(item1);
                     }
-                    
+
                     childNode.PreviewMouseLeftButtonDown += delegate
                     {
                         DragDrop.DoDragDrop(childNode, childNode.Path.FullName, DragDropEffects.All);
@@ -321,7 +321,7 @@ namespace GI.UserControls
                     childNode.Items.Add(l);
                 }
                 result.Add(childNode);
-                
+
             }
 
             list = null;
@@ -343,10 +343,9 @@ namespace GI.UserControls
             ResourceTreeNode rootNode;
             List<DirectoryInfo> dirs;
             List<FileInfo> files;
-            foreach (DirectoryInfo rootDir in Roots)
+            for (int i = 0; i < Roots.Count; i++)
             {
-                if (!rootDir.Exists)
-                    continue;
+                DirectoryInfo rootDir = Roots[i];
                 try
                 {
                     rootNode = new ResourceTreeNode(rootDir);
@@ -363,6 +362,11 @@ namespace GI.UserControls
                 {
                     Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, string.Format("目录{0}拒绝访问！\n", rootDir.FullName)); });
                     return list;
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Roots.RemoveAt(i);
+                    i--;
                 }
             }
             return list;
