@@ -142,9 +142,6 @@
   <data name="InterfaceForward_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\InterfaceForward_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="InterfaceInversion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\InterfaceInversion.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="MatchingFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\MatchingFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -171,5 +168,11 @@
   </data>
   <data name="WienerFilter_F" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\WienerFilter_F.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MathNet_Numerics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\MathNet.Numerics.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Moho3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Moho3.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

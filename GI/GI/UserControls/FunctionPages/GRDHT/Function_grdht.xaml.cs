@@ -39,7 +39,6 @@ namespace GI.UserControls
         /// </summary>
         private int CurrentState = 0;
         private int MaxState { get { return content.Children.Count; } }
-        private bool IsCanceled = false;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -85,7 +84,7 @@ namespace GI.UserControls
                 SelectColorItem sci = (SelectColorItem)inputPath2.SelectedItem;
                 if (sci == null)
                 {
-                    Msg("请选择颜色文件！");
+                    Msg("未找到颜色文件！");
                     return;
                 }
                 GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2,2,90,2);
@@ -96,7 +95,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState)
             {
                 CurrentState = MaxState - 1;
-                next.Content = "计算";
+                next.Content = "画图";
                 //取消计算
             }
         }

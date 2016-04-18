@@ -89,6 +89,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -517,6 +518,175 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="ColorScales\AngledBlack.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\BluSteel.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\BrownBlue.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\BrownYellow.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\BYWaves.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Carnival.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\ChromaDepth.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Cold.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Colors1.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Colors2.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\CottonCandy.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\CyanBands.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Dirt.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Electric.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Forest.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\GrassWhite.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Grayscale.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Greens.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\HighPoints.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\HighPoints2.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Land.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\LandArid.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\LandSea.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Midnight.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Mist.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Pastel1.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Pastel2.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\PinkPea.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\PurpleBands.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\PurpleGreen.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Rainbow.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Rainbow2.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\RedHot.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\RedZebra.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Swamp.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Taffy.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Terrain.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Terrain2.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\TieDie.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\USflag.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\USzebra.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <Content Include="ColorScales\Zebra.clr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>
+    </Content>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -550,8 +720,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\MathNet.Numerics.dll" />
-    <Content Include="bin\Moho3.exe" />
+    <Content Include="bin\MathNet.Numerics.dll">
+      <CustomToolNamespace>GI.bin</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Moho3.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.bin</CustomToolNamespace>
+    </Content>
     <Content Include="bin\WienerFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
@@ -602,12 +778,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\InterfaceForward_F.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CustomToolNamespace>GI.bin</CustomToolNamespace>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\InterfaceInversion.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>

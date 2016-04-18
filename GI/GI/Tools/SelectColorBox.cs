@@ -26,6 +26,10 @@ namespace GI.Tools
 
         void SelectColorBox_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!Directory.Exists(ColorFilePath))
+            {
+                Directory.CreateDirectory(ColorFilePath);
+            }
             DirectoryInfo dir = new DirectoryInfo(ColorFilePath);
             List<SelectColorItem> colors = new List<SelectColorItem>();
             SelectColorItem sci;
