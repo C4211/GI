@@ -47,7 +47,12 @@ namespace GI.UserControls
             {
                 // 输入文件路径判断
                 string inPath = inputPath1.filePath.Text;
-                if (!FileNameFilter.CheckFileSuffix(inPath))
+                if (inPath.Trim() == "")
+                {
+                    Msg("未选择文件！");
+                    return;
+                }
+                else if (!FileNameFilter.CheckFileSuffix(inPath))
                 {
                     Msg("输入文件类型不正确！");
                     return;

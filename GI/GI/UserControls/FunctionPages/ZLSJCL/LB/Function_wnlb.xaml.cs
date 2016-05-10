@@ -47,7 +47,12 @@ namespace GI.UserControls
             {
                 // 检查输入文件路径
                 string inPath = inputPath1.filePath.Text;
-                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                if (inPath.Trim() == "")
+                {
+                    Msg("输入文件不存在！");
+                    return;
+                }
+                else if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
                 {
                     Msg("输入文件类型不正确！");
                     return;
@@ -85,6 +90,11 @@ namespace GI.UserControls
                 else if (!double.TryParse(arg3.Value, out _arg3))
                 {
                     Msg("浅源截距非法！");
+                    return;
+                }
+                else if (_arg0 < 0 || _arg1 < 0 || _arg2 < 0 || _arg3 < 0)
+                {
+                    Msg("参数为负值！");
                     return;
                 }
             }

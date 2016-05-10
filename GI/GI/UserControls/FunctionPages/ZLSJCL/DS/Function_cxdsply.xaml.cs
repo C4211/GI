@@ -47,7 +47,12 @@ namespace GI.UserControls
             {
                 // 检查输入文件路径
                 string inPath = inputPath1.filePath.Text;
-                if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
+                if (inPath.Trim() == "")
+                {
+                    Msg("输入文件不存在！");
+                    return;
+                }
+                else if (!inPath.Trim().EndsWith(".grd", StringComparison.OrdinalIgnoreCase))
                 {
                     Msg("输入文件类型不正确！");
                     return;

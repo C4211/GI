@@ -74,7 +74,12 @@ namespace GI.UserControls
                 {
                     case 0:
                         inPath1 = choice1path1.filePath.Text;
-                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        if (inPath1.Trim() == "")
+                        {
+                            Msg("输入文件不存在！");
+                            return;
+                        }
+                        else if (!FileNameFilter.CheckFileSuffix(inPath1))
                         {
                             Msg("重力异常数据文件类型不正确！");
                             return;
@@ -87,7 +92,12 @@ namespace GI.UserControls
                         break;
                     case 1:
                         inPath1 = choice2path1.filePath.Text;
-                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        if (inPath1.Trim() == "")
+                        {
+                            Msg("输入文件不存在！");
+                            return;
+                        }
+                        else if (!FileNameFilter.CheckFileSuffix(inPath1))
                         {
                             Msg("重力异常数据文件类型不正确！");
                             return;
@@ -101,7 +111,12 @@ namespace GI.UserControls
                     case 2:
                         inPath1 = choice3path1.filePath.Text;
                         inPath2 = choice3path2.filePath.Text;
-                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        if (inPath1.Trim() == "" || inPath2.Trim() == "")
+                        {
+                            Msg("输入文件不存在！");
+                            return;
+                        }
+                        else if (!FileNameFilter.CheckFileSuffix(inPath1))
                         {
                             Msg("重力异常数据文件类型不正确！");
                             return;
@@ -125,7 +140,12 @@ namespace GI.UserControls
                     case 3:
                         inPath1 = choice4path1.filePath.Text;
                         inPath2 = choice4path2.filePath.Text;
-                        if (!FileNameFilter.CheckFileSuffix(inPath1))
+                        if (inPath1.Trim() == "" || inPath2.Trim() == "")
+                        {
+                            Msg("输入文件不存在！");
+                            return;
+                        }
+                        else if (!FileNameFilter.CheckFileSuffix(inPath1))
                         {
                             Msg("重力异常数据文件类型不正确！");
                             return;
@@ -147,7 +167,7 @@ namespace GI.UserControls
                         }
                         break;
                     default:
-                        Msg("选项异常！");
+                        Msg("选项异常！请尝试重新选择");
                         return;
                 }
 

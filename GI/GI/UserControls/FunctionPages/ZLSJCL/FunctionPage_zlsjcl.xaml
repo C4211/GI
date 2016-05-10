@@ -146,7 +146,7 @@
                                   x:Name="ds"
                                   Icon="{StaticResource ds}"
                                   TitleText="导数"
-                                  SummaryText="反向导数、垂向导数"/>
+                                  SummaryText="方向导数、垂向导数"/>
         <GI:FunctionGroup Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="glpfx"
                                   Icon="{StaticResource glpfx}"
