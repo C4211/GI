@@ -78,7 +78,7 @@ namespace GI.Functions
             }
             // 构造parameter.inp内容
             string tc = String.Format("{0}\n{1}\n{2}\n2 f {3} {4}\n0 0 {5}\n0 0 {6}\n{7}", srtm30GrdPath, srtm60GrdPath, outPath, innerRadius, outterRadius, NxNy_inner, NxNy_outter, density);
-            MessageBox.Show(tc);
+            // MessageBox.Show(tc);
             // 写入TC.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {

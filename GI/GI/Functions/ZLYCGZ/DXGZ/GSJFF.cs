@@ -75,7 +75,7 @@ namespace GI.Functions
             File.Copy(srtm60, srtm60GrdPath, true);
             // 构造parameter.inp内容
             string tc = String.Format("{0}\n{1}\n{2}\n{3}\n{4} {5}\n{6}\n{7}", datPath, srtm30GrdPath, srtm60GrdPath, outPath, innerRadius, outterRadius, location, density);
-            MessageBox.Show(tc);
+            // MessageBox.Show(tc);
             // 写入TC.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {
