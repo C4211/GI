@@ -49,6 +49,7 @@ namespace GI.Tools
             gpw.fileName.Text = grdFileInfo.Path.Name;
             SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
             gpw.colors = colors;
+            gpw.Title = grdFileInfo.Path.Name;
             gpw.roundDecimals = roundDecimals;
             gpw.inputPath2.Loaded += delegate { gpw.round.SelectedIndex = 2; };
             gpw.Show();
@@ -63,11 +64,13 @@ namespace GI.Tools
             GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
             gpw.Owner = owner;
             gpw.colors = colors;
+            gpw.Title = "GRD画图";
             gpw.roundDecimals = roundDecimals;
             SelectColorItem sci = (SelectColorItem)colorBox.SelectedItem;
             gpw.GRDDrawing(grdFileInfo.FullName, sci.ColorFilePath, colors);
             gpw.UnitFill(grdFileInfo.FullName, roundDecimals);
             gpw.inputPath2.Loaded += delegate { gpw.inputPath2.SelectedIndex = colorBox.SelectedIndex; gpw.round.SelectedIndex = roundIndex; };
+            gpw.ShowInTaskbar = false;
             gpw.ShowDialog();
             Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
@@ -164,6 +167,7 @@ namespace GI.Tools
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            FilePreviewWindow.showWindows.Remove(this.filePath);
             this.Close();
         }
 

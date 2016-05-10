@@ -164,7 +164,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 FileInfo fi = new FileInfo(FreeAirCorrection.outPath);
-                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+                FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
         private async void DoFreeAirCorrection()

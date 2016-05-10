@@ -542,6 +542,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="bin\msvcp140.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\vcruntime140.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ColorScales\AngledBlack.clr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.ColorScales</CustomToolNamespace>

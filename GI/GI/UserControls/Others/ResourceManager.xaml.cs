@@ -335,7 +335,7 @@ namespace GI.UserControls
         /// <param name="rmtn"></param>
         private void Preview_File(ResourceManagerTreeNode rmtn)
         {
-            FilePreviewWindow.PreviwShow(rmtn);
+            FilePreviewWindow.PreviewShow(rmtn);
         }
 
         /// <summary>

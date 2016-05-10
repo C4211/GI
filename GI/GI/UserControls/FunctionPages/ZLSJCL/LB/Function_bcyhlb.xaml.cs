@@ -155,7 +155,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 FileInfo fi = new FileInfo(SmoothCompensationFilter.outPath);
-                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+                FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()

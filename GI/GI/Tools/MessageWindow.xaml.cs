@@ -39,6 +39,7 @@ namespace GI.Tools
             mw.messageText.Text = message;
             mw.OK.Visibility = Visibility.Visible;
             mw.Owner = owner;
+            mw.ShowInTaskbar = false;
             mw.ShowDialog();
         }
 

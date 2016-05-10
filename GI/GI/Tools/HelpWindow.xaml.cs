@@ -27,6 +27,8 @@ namespace GI.Tools
         {
             InitializeComponent();
             this.Owner = owner;
+            this.Title = "使用帮助";
+            this.ShowInTaskbar = false;
         }
 
         

@@ -26,6 +26,7 @@ namespace GI.Tools
         private PSDPreviewWindow()
         {
             InitializeComponent();
+            this.Title = "PSD预览";
         }
 
         public static void PreviwShow(Window owner, FileInfo fileInfo)
@@ -34,6 +35,7 @@ namespace GI.Tools
             PSDPreviewWindow ppw = new PSDPreviewWindow();
             ppw.Owner = owner;
             ppw.PSDDrawing(fileInfo.FullName);
+            ppw.ShowInTaskbar = false;
             ppw.ShowDialog();
             Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }

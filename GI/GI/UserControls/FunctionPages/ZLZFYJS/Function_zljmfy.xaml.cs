@@ -201,9 +201,9 @@ namespace GI.UserControls
             {
                 //预览
                 FileInfo fi = new FileInfo(InterfaceInversion.outPath1);
-                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+                FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
                 fi = new FileInfo(InterfaceInversion.outPath2);
-                FilePreviewWindow.PreviwShow(Application.Current.MainWindow, fi);
+                FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
         private void HidePrevAndCancel()
