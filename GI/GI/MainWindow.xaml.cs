@@ -157,8 +157,8 @@ namespace GI
         {
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.退出))
             {
-                foreach (Window w in this.OwnedWindows)
-                    w.Close();
+                foreach (KeyValuePair<string, Window> w in FilePreviewWindow.showWindows)
+                    w.Value.Close();
                 this.Close();
             }
         }

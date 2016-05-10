@@ -28,15 +28,14 @@ namespace GI.Tools
             InitializeComponent();
         }
 
-        public static void PreviwShow(Window owner, ResourceManagerTreeNode fileInfo)
+        public static Dictionary<string,Window> showWindows = new Dictionary<string,Window>();
+        public static void PreviwShow(ResourceManagerTreeNode fileInfo)
         {
-            foreach (FilePreviewWindow w in Application.Current.MainWindow.OwnedWindows)
+            
+            if (FilePreviewWindow.showWindows.ContainsKey(fileInfo.Path.FullName))
             {
-                if (w.fileName.ToolTip.ToString() == fileInfo.Path.FullName)
-                {
-                    w.Activate();
-                    return;
-                }
+                FilePreviewWindow.showWindows[fileInfo.Path.FullName].Activate();
+                return;
             }
             Application.Current.MainWindow.Cursor = Cursors.Wait;
             if (!(fileInfo.Path.Extension.Equals(".txt", StringComparison.OrdinalIgnoreCase)
@@ -48,7 +47,6 @@ namespace GI.Tools
                 return;
             }
             FilePreviewWindow fpw = new FilePreviewWindow();
-            fpw.Owner = owner;
             fpw.Title = fileInfo.Path.Name;
             fpw.fileName.Text = fileInfo.Path.Name;
             fpw.fileName.ToolTip = fileInfo.Path.FullName;
@@ -76,6 +74,7 @@ namespace GI.Tools
                             }));
                 }
                 fpw.Show();
+                showWindows.Add(fileInfo.Path.FullName, fpw);
                 Application.Current.MainWindow.Cursor = Cursors.Arrow;
         }
 
@@ -100,7 +99,7 @@ namespace GI.Tools
             }
             FilePreviewWindow fpw = new FilePreviewWindow();
             fpw.Owner = owner;
-            fpw.Title = fileInfo.Name;
+            fpw.Title = "";
             fpw.fileName.Text = fileInfo.Name;
             fpw.fileName.ToolTip = fileInfo.FullName;
 

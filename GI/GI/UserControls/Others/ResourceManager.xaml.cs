@@ -249,7 +249,7 @@ namespace GI.UserControls
                             ContextMenu menu = new ContextMenu();
                             MenuItem item = new MenuItem();
                             item.Header = "预览文件";
-                            item.Click += delegate { Preview_File(childNode); };
+                            item.Click += delegate { Preview_GRD(childNode); };
                             menu.Items.Add(item);
                             childNode.ContextMenu = menu;
                         }
@@ -257,7 +257,7 @@ namespace GI.UserControls
                         {
                             MenuItem item = new MenuItem();
                             item.Header = "预览文件";
-                            item.Click += delegate { Preview_File(childNode); };
+                            item.Click += delegate { Preview_GRD(childNode); };
                             childNode.ContextMenu.Items.Add(item);
                         }
                     }
@@ -328,13 +328,23 @@ namespace GI.UserControls
             return result;
         }
 
+
         /// <summary>
         /// 预览文件点击事件
         /// </summary>
         /// <param name="rmtn"></param>
         private void Preview_File(ResourceManagerTreeNode rmtn)
         {
-            FilePreviewWindow.PreviwShow(Application.Current.MainWindow, rmtn);
+            FilePreviewWindow.PreviwShow(rmtn);
+        }
+
+        /// <summary>
+        /// 预览Grd点击事件
+        /// </summary>
+        /// <param name="rmtn"></param>
+        private void Preview_GRD(ResourceManagerTreeNode rmtn)
+        {
+            GRDPreviewWindow.PreviewShow(rmtn,3,90);
         }
 
         private List<ResourceTreeNode> LoadResourceTree(List<DirectoryInfo> Roots)

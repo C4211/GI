@@ -37,17 +37,22 @@ namespace GI.Tools
         private int colors = 90;
         private int roundDecimals = 3;
 
-        public void PreviewShow(FileInfo grdFileInfo, int roundDecimals,int colors)
+        public static void PreviewShow(ResourceManagerTreeNode grdFileInfo, int roundDecimals, int colors)
         {
+            if (FilePreviewWindow.showWindows.ContainsKey(grdFileInfo.Path.FullName))
+            {
+                FilePreviewWindow.showWindows[grdFileInfo.Path.FullName].Activate();
+                return;
+            }
             Application.Current.MainWindow.Cursor = Cursors.Wait;
-            GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
+            GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.Path.FullName);
+            gpw.fileName.Text = grdFileInfo.Path.Name;
             SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
             gpw.colors = colors;
             gpw.roundDecimals = roundDecimals;
-            gpw.GRDDrawing(grdFileInfo.FullName, sci.ColorFilePath, colors);
-            gpw.UnitFill(grdFileInfo.FullName, roundDecimals);
-            //gpw.inputPath2.Loaded += delegate { gpw.SaveImage(gpw.grdContent); };
-            gpw.ShowDialog();
+            gpw.inputPath2.Loaded += delegate { gpw.round.SelectedIndex = 2; };
+            gpw.Show();
+            FilePreviewWindow.showWindows.Add(grdFileInfo.Path.FullName, gpw);
             Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
 
