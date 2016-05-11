@@ -370,7 +370,7 @@ namespace GI.UserControls
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, string.Format("目录{0}拒绝访问！\n", rootDir.FullName)); });
+                    Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, string.Format("目录{0}拒绝访问！请检查是否拥有管理员权限\n", rootDir.FullName)); });
                     return list;
                 }
                 catch (DirectoryNotFoundException)

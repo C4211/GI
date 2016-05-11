@@ -94,6 +94,5 @@ namespace GI.Tools
             mbr = MessageBoxResult.Cancel;
             this.Close();
         }
-
     }
 }
