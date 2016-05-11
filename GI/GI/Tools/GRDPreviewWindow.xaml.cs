@@ -44,43 +44,51 @@ namespace GI.Tools
                 FilePreviewWindow.showWindows[grdFileInfo.Path.FullName].Activate();
                 return;
             }
-            Application.Current.MainWindow.Cursor = Cursors.Wait;
             GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.Path.FullName);
             gpw.fileName.Text = grdFileInfo.Path.Name;
             SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
             gpw.colors = colors;
             gpw.Title = grdFileInfo.Path.Name;
             gpw.roundDecimals = roundDecimals;
-            gpw.inputPath2.Loaded += delegate { gpw.round.SelectedIndex = 2; };
+            gpw.openSb.Completed += delegate
+            {
+                gpw.isOpen = true;
+                gpw.inputPath2.SelectedIndex = -1;
+                gpw.inputPath2.SelectedIndex = 0;
+                gpw.round.SelectedIndex = 2;
+            };
             gpw.Show();
             FilePreviewWindow.showWindows.Add(grdFileInfo.Path.FullName, gpw);
-            Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
 
         public static void PreviewShow(Window owner, FileInfo grdFileInfo, SelectColorBox colorBox, int roundDecimals, int colors,int roundIndex)
         {
-            
-            Application.Current.MainWindow.Cursor = Cursors.Wait;
             GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
             gpw.Owner = owner;
             gpw.colors = colors;
             gpw.Title = "GRD画图";
             gpw.roundDecimals = roundDecimals;
             SelectColorItem sci = (SelectColorItem)colorBox.SelectedItem;
-            gpw.GRDDrawing(grdFileInfo.FullName, sci.ColorFilePath, colors);
-            gpw.UnitFill(grdFileInfo.FullName, roundDecimals);
-            gpw.inputPath2.Loaded += delegate { gpw.inputPath2.SelectedIndex = colorBox.SelectedIndex; gpw.round.SelectedIndex = roundIndex; };
+            gpw.openSb.Completed += delegate
+            {
+                gpw.isOpen = true;
+                gpw.inputPath2.SelectedIndex = -1;
+                gpw.inputPath2.SelectedIndex = colorBox.SelectedIndex;
+                gpw.round.SelectedIndex = roundIndex;
+            };
             gpw.ShowInTaskbar = false;
             gpw.ShowDialog();
-            Application.Current.MainWindow.Cursor = Cursors.Arrow; 
         }
 
         private void GRDDrawing(string filePath,string colorMapPath,int colors)
         {
+            this.Cursor = Cursors.Wait;
             Grd grd = new Grd(filePath);
             WriteableBitmap wb = grd.GrdImage(new ColorMap(colorMapPath,colors));
             grdImage.Source = wb;
             colorRect.Fill = SelectColorItem.ColorBrush(colorMapPath);
+            grdOutGrid.Visibility = Visibility.Visible;
+            this.Cursor = Cursors.Arrow; 
         }
 
         private void UnitFill(string filePath,int decimals)
@@ -109,7 +117,8 @@ namespace GI.Tools
         private string filePath;
         private void inputPath2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            GRDDrawing(filePath, ((SelectColorItem)(((SelectColorBox)sender).SelectedItem)).ColorFilePath, colors);
+            if(isOpen &&  ((SelectColorBox)sender).SelectedItem!=null)
+                GRDDrawing(filePath, ((SelectColorItem)(((SelectColorBox)sender).SelectedItem)).ColorFilePath, colors);
         }
         private void round_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -387,6 +396,13 @@ namespace GI.Tools
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             grdGrid.Visibility = Visibility.Hidden;
+        }
+
+        public bool isOpen = false;
+        public Storyboard openSb = (Application.Current.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
+        private void content_Loaded(object sender, RoutedEventArgs e)
+        {
+            content.BeginStoryboard(openSb);
         }
 
         
