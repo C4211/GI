@@ -1,9 +1,9 @@
 ﻿<Window xmlns:Tools="clr-namespace:GI.Tools"  x:Class="GI.Tools.GRDPreviewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="GRDPreviewWindow" Width="970" Height="750" ResizeMode="CanMinimize" BorderThickness="20" WindowStartupLocation="CenterOwner"  Loaded="content_Loaded" AllowsTransparency="True" Background="#00000000" WindowStyle="None" Closing="Window_Closing" Activated="Window_Activated" Deactivated="Window_Deactivated" StateChanged="Window_StateChanged" Icon="/GI;component/Res/Icons/GI.ico">
+        Title="GRDPreviewWindow" Width="970" Height="750" ResizeMode="CanMinimize" BorderThickness="20" WindowStartupLocation="CenterOwner" AllowsTransparency="True" Background="#00000000" WindowStyle="None" Closing="Window_Closing" Activated="Window_Activated" Deactivated="Window_Deactivated" StateChanged="Window_StateChanged" Icon="/GI;component/Res/Icons/GI.ico">
     <Grid>
-        <Border Margin="5" Background="White" BorderThickness="1" RenderTransformOrigin="0.5,0.5" x:Name="content">
+        <Border Margin="5" Background="White" BorderThickness="1" RenderTransformOrigin="0.5,0.5" x:Name="content" Loaded="content_Loaded">
             <Border.BorderBrush>
                 <SolidColorBrush Color="#333333" Opacity="0.4"/>
             </Border.BorderBrush>
