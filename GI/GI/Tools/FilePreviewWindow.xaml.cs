@@ -192,5 +192,10 @@ namespace GI.Tools
         {
             this.WindowState = WindowState.Normal;
         }
+
+        private void content_Loaded(object sender, RoutedEventArgs e)
+        {
+            content.BeginStoryboard((Application.Current.FindResource("GI.Window.openStoryboard") as Storyboard).Clone());
+        }
     }
 }
