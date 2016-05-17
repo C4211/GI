@@ -180,7 +180,7 @@ namespace GI.UserControls
             else if (CurrentState == MaxState + 1)
             {
                 FileInfo fi = new FileInfo(RegularizationFilter.outPath);
-                FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
         /// <summary>

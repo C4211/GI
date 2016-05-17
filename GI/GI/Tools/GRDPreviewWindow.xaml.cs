@@ -37,7 +37,29 @@ namespace GI.Tools
         private int colors = 90;
         private int roundDecimals = 3;
 
-        public static void PreviewShow(ResourceManagerTreeNode grdFileInfo, int roundDecimals, int colors)
+        public static void PreviewShow(Window owner, FileInfo grdFileInfo, int roundDecimals = 3, int colors = 90)
+        {
+            GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
+            gpw.fileName.Text = grdFileInfo.Name;
+            SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
+            gpw.colors = colors;
+            gpw.Title = grdFileInfo.Name;
+            gpw.roundDecimals = roundDecimals;
+            gpw.Owner = owner;
+            gpw.minBtn.Visibility = Visibility.Hidden;
+            gpw.fileName.Visibility = Visibility.Hidden;
+            gpw.ShowInTaskbar = false;
+            gpw.openSb.Completed += delegate
+            {
+                gpw.isOpen = true;
+                gpw.inputPath2.SelectedIndex = -1;
+                gpw.inputPath2.SelectedIndex = 0;
+                gpw.round.SelectedIndex = 2;
+            };
+            gpw.ShowDialog();
+        }
+
+        public static void PreviewShow(ResourceManagerTreeNode grdFileInfo, int roundDecimals = 3, int colors = 90)
         {
             if (FilePreviewWindow.showWindows.ContainsKey(grdFileInfo.Path.FullName))
             {
@@ -61,12 +83,13 @@ namespace GI.Tools
             FilePreviewWindow.showWindows.Add(grdFileInfo.Path.FullName, gpw);
         }
 
-        public static void PreviewShow(Window owner, FileInfo grdFileInfo, SelectColorBox colorBox, int roundDecimals, int colors,int roundIndex)
+        public static void PreviewShow(Window owner, FileInfo grdFileInfo, SelectColorBox colorBox,int roundIndex, int roundDecimals = 3, int colors = 90)
         {
             GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
             gpw.Owner = owner;
             gpw.colors = colors;
             gpw.Title = "GRD画图";
+            gpw.minBtn.Visibility = Visibility.Hidden;
             gpw.roundDecimals = roundDecimals;
             SelectColorItem sci = (SelectColorItem)colorBox.SelectedItem;
             gpw.openSb.Completed += delegate
@@ -82,34 +105,49 @@ namespace GI.Tools
 
         private void GRDDrawing(string filePath,string colorMapPath,int colors)
         {
-            this.Cursor = Cursors.Wait;
-            Grd grd = new Grd(filePath);
-            WriteableBitmap wb = grd.GrdImage(new ColorMap(colorMapPath,colors));
-            grdImage.Source = wb;
-            colorRect.Fill = SelectColorItem.ColorBrush(colorMapPath);
-            grdOutGrid.Visibility = Visibility.Visible;
-            this.Cursor = Cursors.Arrow; 
+            try
+            {
+                this.Cursor = Cursors.Wait;
+                Grd grd = new Grd(filePath);
+                WriteableBitmap wb = grd.GrdImage(new ColorMap(colorMapPath, colors));
+                grdImage.Source = wb;
+                colorRect.Fill = SelectColorItem.ColorBrush(colorMapPath);
+                grdOutGrid.Visibility = Visibility.Visible;
+                this.Cursor = Cursors.Arrow;
+            }
+            catch (Exception e)
+            {
+                MessageWindow.Show(this, "绘图失败，暂不支持此数据内容。");
+                this.Cursor = Cursors.Arrow;
+            }
         }
 
         private void UnitFill(string filePath,int decimals)
         {
-            Grd grd = new Grd(filePath);
-            double intervalX = (grd.maxx-grd.minx)/grdX.Children.Count;
-            for(int i = 0;i<grdX.Children.Count;i++)
+            try
             {
-                ((TextBlock)grdX.Children[i]).Text = (Math.Round((grd.minx + intervalX * i), decimals)).ToString("f"+decimals);
-            }
+                Grd grd = new Grd(filePath);
+                double intervalX = (grd.maxx - grd.minx) / grdX.Children.Count;
+                for (int i = 0; i < grdX.Children.Count; i++)
+                {
+                    ((TextBlock)grdX.Children[i]).Text = (Math.Round((grd.minx + intervalX * i), decimals)).ToString("f" + decimals);
+                }
 
-            double intervalY = (grd.maxy - grd.miny) / grdY.Children.Count;
-            for (int i = 0; i < grdY.Children.Count; i++)
-            {
-                ((TextBlock)grdY.Children[i]).Text = (Math.Round((grd.miny + intervalY * i), decimals)).ToString("f" + decimals);
-            }
+                double intervalY = (grd.maxy - grd.miny) / grdY.Children.Count;
+                for (int i = 0; i < grdY.Children.Count; i++)
+                {
+                    ((TextBlock)grdY.Children[i]).Text = (Math.Round((grd.miny + intervalY * i), decimals)).ToString("f" + decimals);
+                }
 
-            double intervalZ = (grd.max - grd.min) / grdZ.Children.Count;
-            for (int i = 0; i < grdZ.Children.Count; i++)
+                double intervalZ = (grd.max - grd.min) / grdZ.Children.Count;
+                for (int i = 0; i < grdZ.Children.Count; i++)
+                {
+                    ((TextBlock)grdZ.Children[i]).Text = (grd.max - intervalZ * i).ToString("0.000");
+                }
+            }
+            catch (Exception e)
             {
-                ((TextBlock)grdZ.Children[i]).Text = (grd.max - intervalZ * i).ToString("0.000");
+                MessageWindow.Show(this, "数据填充失败，暂不支持此数据内容。");
             }
             
         }

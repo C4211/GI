@@ -217,8 +217,16 @@ namespace GI.Tools
             {
                 index = (int)((value - _min)*colorMap.colors / interval);
             }
-            catch { }
-
+            catch {
+            }
+            if (index < 0 )
+            {
+                index = 0;
+            }
+            else if (index >= colorMap.Count)
+            {
+                index = colorMap.Count - 1;
+            }
 
             return colorMap[index];
 

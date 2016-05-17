@@ -97,7 +97,7 @@ namespace GI.UserControls
                     Msg("未找到颜色文件！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2, 2, 90, 2);
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2, 2);
 
 
 
