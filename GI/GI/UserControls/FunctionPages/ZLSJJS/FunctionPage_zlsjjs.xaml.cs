@@ -21,12 +21,15 @@ namespace GI.UserControls
     /// </summary>
     public partial class FunctionPage_zlsjjs : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public FunctionPage_zlsjjs()
         {
             InitializeComponent();
             this.titleCn = "重力数据解释";
             this.titleEn = "Gravity Data Interpretation";
         }
-        
+
     }
 }

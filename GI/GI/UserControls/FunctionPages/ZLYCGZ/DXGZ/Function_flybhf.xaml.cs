@@ -24,6 +24,9 @@ namespace GI.UserControls
     /// </summary>
     public partial class Function_flybhf : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public Function_flybhf()
         {
             InitializeComponent();
@@ -31,14 +34,24 @@ namespace GI.UserControls
             this.titleEn = "TC FFT";
         }
         /// <summary>
+        /// 计算状态编号
         /// 0 : 输入文件
         /// 1 : 输入参数
         /// 2 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        /// <summary>
+        /// 结束状态编号
+        /// </summary>
         private int MaxState { get { return content.Children.Count; } }
+        /// <summary>
+        /// 是否已经取消计算
+        /// </summary>
         private bool IsCanceled = false;
 
+        /// <summary>
+        /// 点击下一步
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             #region 逻辑
@@ -144,12 +157,15 @@ namespace GI.UserControls
             #endregion
         }
 
+        /// <summary>
+        /// 点击上一步
+        /// </summary>
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
             if (CurrentState > 0 && CurrentState <= MaxState)
             {
-                content.IsEnabled = false;buttons.IsEnabled = false;
+                content.IsEnabled = false; buttons.IsEnabled = false;
                 CurrentState -= 1;
                 content.Children[CurrentState].Visibility = Visibility.Visible;
                 Storyboard sb = ((Storyboard)this.FindResource("sb")).Clone();
@@ -166,6 +182,9 @@ namespace GI.UserControls
                 FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
+        /// <summary>
+        /// 隐藏上一步和取消按钮
+        /// </summary>
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -174,6 +193,9 @@ namespace GI.UserControls
                 cancel.Visibility = Visibility.Hidden;
             });
         }
+        /// <summary>
+        /// 显示上一步和取消按钮
+        /// </summary>
         private void ShowPrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -183,6 +205,9 @@ namespace GI.UserControls
             });
         }
 
+        /// <summary>
+        /// 开始计算
+        /// </summary>
         private async void DoFLYBHF()
         {
             if (loadingBar.Show("计算中"))
@@ -255,17 +280,26 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 计算任务
+        /// </summary>
         private Task<string> Task_flybhf = null;
 
+        /// <summary>
+        /// 弹出通知
+        /// </summary>
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
 
+        /// <summary>
+        /// 点击返回
+        /// </summary>
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            if(CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
-            loadingBar.Hide();
+            if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
+                loadingBar.Hide();
             cancel.Visibility = Visibility.Visible;
             back.Visibility = Visibility.Collapsed;
             prev.Content = "上一步";
@@ -275,6 +309,9 @@ namespace GI.UserControls
             CurrentState = MaxState - 1;
         }
 
+        /// <summary>
+        /// 计算完成
+        /// </summary>
         private void Completed()
         {
             CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);

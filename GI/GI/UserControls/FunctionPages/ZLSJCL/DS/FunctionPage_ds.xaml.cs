@@ -21,12 +21,15 @@ namespace GI.UserControls
     /// </summary>
     public partial class FunctionPage_ds : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public FunctionPage_ds()
         {
             InitializeComponent();
             this.titleCn = "导数";
             this.titleEn = "Derivatives";
         }
-        
+
     }
 }

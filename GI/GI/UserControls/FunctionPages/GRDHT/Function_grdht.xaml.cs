@@ -23,6 +23,9 @@ namespace GI.UserControls
     /// </summary>
     public partial class Function_grdht : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public Function_grdht()
         {
             InitializeComponent();
@@ -33,13 +36,20 @@ namespace GI.UserControls
 
 
         /// <summary>
+        /// 计算状态编号
         /// 0 : 输入文件
         /// 1 : 输入参数
         /// 2 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        /// <summary>
+        /// 结束状态编号
+        /// </summary>
         private int MaxState { get { return content.Children.Count; } }
 
+        /// <summary>
+        /// 点击下一步
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //if (CurrentState < MaxState - 1)
@@ -87,7 +97,7 @@ namespace GI.UserControls
                     Msg("未找到颜色文件！");
                     return;
                 }
-                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2,2,90,2);
+                GRDPreviewWindow.PreviewShow(Application.Current.MainWindow, new FileInfo(inPath), inputPath2, 2, 90, 2);
 
 
 
@@ -100,6 +110,9 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 点击上一步
+        /// </summary>
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
@@ -117,6 +130,9 @@ namespace GI.UserControls
                 next.Content = "下一步";
             }
         }
+        /// <summary>
+        /// 隐藏上一步和取消按钮
+        /// </summary>
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -125,6 +141,9 @@ namespace GI.UserControls
                 cancel.Visibility = Visibility.Hidden;
             });
         }
+        /// <summary>
+        /// 显示上一步和取消按钮
+        /// </summary>
         private void ShowPrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -134,6 +153,9 @@ namespace GI.UserControls
             });
         }
 
+        /// <summary>
+        /// 弹出通知
+        /// </summary>
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });

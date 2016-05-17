@@ -14,6 +14,9 @@ namespace GI.UserControls
     /// </summary>
     public partial class Function_zzhlb : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public Function_zzhlb()
         {
             InitializeComponent();
@@ -22,15 +25,25 @@ namespace GI.UserControls
         }
 
         /// <summary>
+        /// 计算状态编号
         /// 0 : 输入文件
         /// 1 : 输入参数
         /// 2 : 选择滤波
         /// 3 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        /// <summary>
+        /// 结束状态编号
+        /// </summary>
         private int MaxState { get { return content.Children.Count; } }
+        /// <summary>
+        /// 是否已经取消计算
+        /// </summary>
         private bool IsCanceled = false;
 
+        /// <summary>
+        /// 点击下一步
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             #region 逻辑
@@ -145,6 +158,9 @@ namespace GI.UserControls
             #endregion
         }
 
+        /// <summary>
+        /// 点击上一步
+        /// </summary>
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
@@ -167,6 +183,9 @@ namespace GI.UserControls
                 FilePreviewWindow.PreviewShow(Application.Current.MainWindow, fi);
             }
         }
+        /// <summary>
+        /// 隐藏上一步和取消按钮
+        /// </summary>
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -175,6 +194,9 @@ namespace GI.UserControls
                 cancel.Visibility = Visibility.Hidden;
             });
         }
+        /// <summary>
+        /// 显示上一步和取消按钮
+        /// </summary>
         private void ShowPrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -184,6 +206,9 @@ namespace GI.UserControls
             });
         }
 
+        /// <summary>
+        /// 开始计算
+        /// </summary>
         private async void DoRagularizationFilter()
         {
             if (loadingBar.Show("计算中"))
@@ -263,18 +288,30 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 计算任务
+        /// </summary>
         private Task<string> task = null;
 
+        /// <summary>
+        /// 弹出通知
+        /// </summary>
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
 
+        /// <summary>
+        /// 输入时校验参数是否合法
+        /// </summary>
         private void param_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             double tmp;
             e.Handled = !double.TryParse(e.Text, out tmp);
         }
+        /// <summary>
+        /// 点击返回
+        /// </summary>
         private void back_Click(object sender, RoutedEventArgs e)
         {
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
@@ -289,6 +326,9 @@ namespace GI.UserControls
                 CurrentState = MaxState - 1;
             }
         }
+        /// <summary>
+        /// 计算完成
+        /// </summary>
         private void Completed()
         {
             CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);

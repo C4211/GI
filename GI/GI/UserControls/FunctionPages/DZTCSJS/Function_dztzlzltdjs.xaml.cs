@@ -24,6 +24,9 @@ namespace GI.UserControls
     /// </summary>
     public partial class Function_dztzlzltdjs : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public Function_dztzlzltdjs()
         {
             InitializeComponent();
@@ -32,6 +35,7 @@ namespace GI.UserControls
         }
 
         /// <summary>
+        /// 计算状态编号 
         /// 0 : 选择模型
         /// 1 : 模型参数设置
         /// 2 : 观测面参数设置
@@ -39,12 +43,30 @@ namespace GI.UserControls
         /// 4 : 计算中
         /// </summary>
         private int CurrentState = 0;
+        /// <summary>
+        /// 结束状态编号
+        /// </summary>
         private int MaxState { get { return content.Children.Count; } }
+        /// <summary>
+        /// 是否已经取消计算
+        /// </summary>
         private bool IsCanceled = false;
+        /// <summary>
+        /// 不同计算方法选项的参数
+        /// </summary>
         double[] page2args, page3args;
+        /// <summary>
+        /// 计算参数
+        /// </summary>
         double cenZ1, sizeZ1;
+        /// <summary>
+        /// 计算方法选项
+        /// </summary>
         int choice = 1;
 
+        /// <summary>
+        /// 点击下一步
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             #region 逻辑
@@ -287,6 +309,9 @@ namespace GI.UserControls
             #endregion
         }
 
+        /// <summary>
+        /// 重置计算方法选项
+        /// </summary>
         private void reset_Pagechoice()
         {
             Page1choice1.Visibility = Visibility.Hidden;
@@ -295,6 +320,9 @@ namespace GI.UserControls
             Page1choice4.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// 点击上一步
+        /// </summary>
         private void prev_Click(object sender, RoutedEventArgs e)
         {
 
@@ -318,6 +346,9 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 开始计算
+        /// </summary>
         private async void DoGeoForward()
         {
             if (loadingBar.Show("计算中"))
@@ -376,8 +407,14 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 计算任务
+        /// </summary>
         private Task<string> task = null;
 
+        /// <summary>
+        /// 隐藏上一步和取消按钮
+        /// </summary>
         private void HidePrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -386,6 +423,9 @@ namespace GI.UserControls
                 cancel.Visibility = Visibility.Hidden;
             });
         }
+        /// <summary>
+        /// 显示上一步和取消按钮
+        /// </summary>
         private void ShowPrevAndCancel()
         {
             Dispatcher.Invoke(delegate
@@ -395,11 +435,17 @@ namespace GI.UserControls
             });
         }
 
+        /// <summary>
+        /// 弹出通知
+        /// </summary>
         private void Msg(string msg)
         {
             Dispatcher.Invoke(delegate { MessageWindow.Show(Application.Current.MainWindow, msg); });
         }
 
+        /// <summary>
+        /// 点击返回
+        /// </summary>
         private void back_Click(object sender, RoutedEventArgs e)
         {
             if (CloseAndBackConfirm.Start(CloseAndBackConfirm.Actions.返回))
@@ -415,6 +461,9 @@ namespace GI.UserControls
             }
         }
 
+        /// <summary>
+        /// 计算完成
+        /// </summary>
         private void Completed()
         {
             CloseAndBackConfirm.Set(CloseAndBackConfirm.States.计算结果未保存);

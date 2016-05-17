@@ -21,6 +21,9 @@ namespace GI.UserControls
     /// </summary>
     public partial class FunctionPage_zlycgz : FunctionPage
     {
+        /// <summary>
+        /// 构造函数，设置中英文标题
+        /// </summary>
         public FunctionPage_zlycgz()
         {
             InitializeComponent();
