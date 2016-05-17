@@ -584,12 +584,8 @@ namespace GI
         /// <param name="e"></param>
         private void ewjm_Click(object sender, RoutedEventArgs e)
         {
-            function_ewjm = new Function_ewjm();
-            function_ewjm.cancel.Click += delegate { Page_Back(); };
-            Group_Open(function_ewjm);
-            function_ewjm = null;
+            MessageWindow.Show(this, "暂不提供");
         }
-        private Function_ewjm function_ewjm = null;
         /// <summary>
         /// 三维建模点击事件
         /// </summary>
@@ -597,12 +593,8 @@ namespace GI
         /// <param name="e"></param>
         private void swjm_Click(object sender, RoutedEventArgs e)
         {
-            function_swjm = new Function_swjm();
-            function_swjm.cancel.Click += delegate { Page_Back(); };
-            Group_Open(function_swjm);
-            function_swjm = null;
+            MessageWindow.Show(this, "暂不提供");
         }
-        private Function_swjm function_swjm = null;
         #endregion
 
         #region 地质体参数计算

@@ -203,17 +203,11 @@
     <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\Function_cxdskjy.xaml.cs">
       <DependentUpon>Function_cxdskjy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FunctionPages\ZLSJJS\Function_swjm.xaml.cs">
-      <DependentUpon>Function_swjm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\FunctionPages\ZLSJCL\DS\Function_fxds.xaml.cs">
       <DependentUpon>Function_fxds.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FunctionPages\ZLSJCL\Function_glpfx.xaml.cs">
       <DependentUpon>Function_glpfx.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\FunctionPages\ZLSJJS\Function_ewjm.xaml.cs">
-      <DependentUpon>Function_ewjm.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FunctionPages\DZTCSJS\Function_dztzlzltdjs.xaml.cs">
       <DependentUpon>Function_dztzlzltdjs.xaml</DependentUpon>
@@ -413,19 +407,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\FunctionPages\ZLSJJS\Function_swjm.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UserControls\FunctionPages\ZLSJCL\DS\Function_fxds.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\FunctionPages\ZLSJCL\Function_glpfx.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\FunctionPages\ZLSJJS\Function_ewjm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
