@@ -95,6 +95,7 @@ namespace GI.Tools
             fpw.Owner = owner;
             fpw.Title = "文本预览";
             fpw.fileName.Text = "";
+            fpw.minBtn.Visibility = Visibility.Hidden;
             fpw.fileName.ToolTip = fileInfo.FullName;
 
             try
