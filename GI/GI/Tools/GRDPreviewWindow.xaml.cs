@@ -115,7 +115,7 @@ namespace GI.Tools
                 grdOutGrid.Visibility = Visibility.Visible;
                 this.Cursor = Cursors.Arrow;
             }
-            catch (Exception e)
+            catch
             {
                 MessageWindow.Show(this, "绘图失败，暂不支持此数据内容。");
                 this.Cursor = Cursors.Arrow;
@@ -145,7 +145,7 @@ namespace GI.Tools
                     ((TextBlock)grdZ.Children[i]).Text = (grd.max - intervalZ * i).ToString("0.000");
                 }
             }
-            catch (Exception e)
+            catch
             {
                 MessageWindow.Show(this, "数据填充失败，暂不支持此数据内容。");
             }
