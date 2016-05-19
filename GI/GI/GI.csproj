@@ -716,9 +716,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Res\images\GI.MainWindow.Shadow.png" />
   </ItemGroup>
   <ItemGroup>
