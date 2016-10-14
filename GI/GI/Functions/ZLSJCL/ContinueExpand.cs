@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GI.Tools;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -54,6 +55,7 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                string msg = "";
                 try
                 {
                     p = new Process();
@@ -63,13 +65,24 @@ namespace GI.Functions
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
-                    return p.StandardOutput.ReadToEnd();
+                    msg = p.StandardOutput.ReadToEnd();
                 }
                 catch
                 {
-                    MessageBox.Show("找不到EXE！");
-                    return "";
+                    MessageWindow.Show("找不到EXE！");
                 }
+                finally
+                {
+                    try
+                    {
+                        if (File.Exists(tcPath))
+                            File.Delete(tcPath);
+                        if (File.Exists(inPath))
+                            File.Delete(inPath);
+                    }
+                    catch { };
+                }
+                return msg;
             });
         }
     }

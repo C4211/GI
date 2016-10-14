@@ -84,6 +84,7 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                string msg = "";
                 try
                 {
                     p = new Process();
@@ -93,13 +94,24 @@ namespace GI.Functions
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
-                    return p.StandardOutput.ReadToEnd();
+                    msg = p.StandardOutput.ReadToEnd();
                 }
                 catch
                 {
-                    MessageBox.Show("找不到EXE！");
-                    return "";
+                    MessageWindow.Show("找不到EXE！");
                 }
+                finally
+                {
+                    if (File.Exists(tcPath))
+                        File.Delete(tcPath);
+                    if (File.Exists(datPath))
+                        File.Delete(datPath);
+                    if (File.Exists(srtm30GrdPath))
+                        File.Delete(srtm30GrdPath);
+                    if (File.Exists(srtm60GrdPath))
+                        File.Delete(srtm60GrdPath);
+                }
+                return msg;
             });
         }
     }

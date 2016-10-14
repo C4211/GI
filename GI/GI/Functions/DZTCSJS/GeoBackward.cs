@@ -52,6 +52,7 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                string msg = ""; 
                 try
                 {
                     p = new Process();
@@ -61,13 +62,24 @@ namespace GI.Functions
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
-                    return p.StandardOutput.ReadToEnd();
+                    msg = p.StandardOutput.ReadToEnd();
                 }
                 catch
                 {
                     MessageWindow.Show("找不到EXE！");
-                    return "";
                 }
+                finally
+                {
+                    try
+                    {
+                        if (File.Exists(inPath1))
+                            File.Delete(inPath1);
+                        if (File.Exists(inPath2))
+                            File.Delete(inPath2);
+                    }
+                    catch { };
+                }
+                return msg;
             });
         }
     }
