@@ -1,9 +1,12 @@
-﻿using System;
+﻿using GI.Functions;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace GI.Tools
 {
@@ -33,6 +36,7 @@ namespace GI.Tools
                 if (MessageWindow.Show(Application.Current.MainWindow, State + ",确认" + Enum.ToObject(typeof(Actions),action) + "？", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     IsNeedConfirm = false;
+                    ClearOutput();
                     return true;
                 }
                 else
@@ -40,7 +44,20 @@ namespace GI.Tools
                     return false;
                 }
             }
+            ClearOutput();
             return true;
+        }
+
+        public static void ClearOutput()
+        {
+            string[] outputFiles = {"out.dat","out.grd","Moho_3dinver_32km0.4.grd","boufrominv_32km0.4.grd" };
+            foreach (var outfile in outputFiles)
+            {
+                if (File.Exists(outfile))
+                {
+                    File.Delete(outfile);
+                }
+            }
         }
 
         public static void Reset()

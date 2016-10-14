@@ -21,6 +21,8 @@ namespace GI.Functions
         /// parameters.inp临时文件路径
         /// </summary>
         public static string tcPath = @"parameters.inp";
+
+        private static string inputOrigin;
         /// <summary>
         /// 输入文件(*.grd)路径
         /// </summary>
@@ -42,11 +44,10 @@ namespace GI.Functions
         /// <returns>文件存在且合法:{dx, dy}</returns>
         public static double[] Init(string input)
         {
+            inputOrigin = input;
             if (!File.Exists(input))
                 throw new Exception("输入文件不存在！");
-            // 输入文件存入临时文件夹
-            File.Copy(input, inPath, true);
-            using (var reader = new StreamReader(inPath))
+            using (var reader = new StreamReader(input))
             {
                 string firstLine = reader.ReadLine();
                 if (firstLine.Trim() != "DSAA")
@@ -91,6 +92,8 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                // 输入文件存入临时文件夹
+                File.Copy(inputOrigin, inPath, true);
                 string msg = "";
                 try
                 {

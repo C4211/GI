@@ -19,6 +19,8 @@ namespace GI.Functions
         /// parameter.inp临时文件路径
         /// </summary>
         public static string tcPath = @"parameters.inp";
+
+        private static string inputOrigin;
         /// <summary>
         /// 输入文件(*.grd)路径
         /// </summary>
@@ -40,11 +42,10 @@ namespace GI.Functions
         /// <returns>文件存在且合法:new int[]{Nx_input, Ny_input, Nx_output, Ny_output}</returns>
         public static int[] Init(string input)
         {
+            inputOrigin = input;
             if (!File.Exists(input))
                 throw new Exception("输入文件不存在！");
-            // 输入文件存入临时文件夹
-            File.Copy(input, inPath, true);
-            int[] data = FileNameFilter.CheckGRDFileFormat(inPath);
+            int[] data = FileNameFilter.CheckGRDFileFormat(input);
             if (data == null)
                 throw new Exception("输入文件不是GRD数据格式！");
             return data;
@@ -65,6 +66,8 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                // 输入文件存入临时文件夹
+                File.Copy(inputOrigin, inPath, true);
                 string msg = "";
                 try
                 {

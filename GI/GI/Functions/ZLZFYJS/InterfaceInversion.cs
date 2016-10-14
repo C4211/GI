@@ -53,8 +53,6 @@ namespace GI.Functions
         /// <returns></returns>
         public static Task<string> Start(string bouin, double contrast, double criterio, double z0, double WH, double SH, double truncation, int maxiter)
         {
-            // 输入文件全部存入临时文件夹
-            File.Copy(bouin, inPath, true);
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath1))
                 File.Create(outPath1).Dispose();
@@ -70,6 +68,8 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                // 输入文件全部存入临时文件夹
+                File.Copy(bouin, inPath, true);
                 string msg = "";
                 try
                 {

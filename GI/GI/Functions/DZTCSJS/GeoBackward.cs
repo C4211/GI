@@ -32,9 +32,6 @@ namespace GI.Functions
 
         public static Task<string> Start(int choice, string inFile1, string inFile2 = "", double arg1 = 0.0, double arg2 = 0.0)
         {
-            File.Copy(inFile1, inPath1, true);
-            if (inFile2 != "")
-                File.Copy(inFile2, inPath2, true);
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
@@ -52,9 +49,12 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                File.Copy(inFile1, inPath1, true);
                 string msg = ""; 
                 try
                 {
+                    if (inFile2 != "")
+                        File.Copy(inFile2, inPath2, true);
                     p = new Process();
                     ProcessStartInfo startInfo = new ProcessStartInfo(exePath, tc);
                     p.StartInfo = startInfo;

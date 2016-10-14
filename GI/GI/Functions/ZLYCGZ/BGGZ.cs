@@ -67,13 +67,6 @@ namespace GI.Functions
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
-            ////如果临时文件夹不存在则自动创建临时文件夹
-            //if (!Directory.Exists(tmpPath))
-            //    Directory.CreateDirectory(tmpPath);
-            // 输入文件全部存入临时文件夹
-            File.Copy(dat, datPath, true);
-            File.Copy(srtm30, srtm30GrdPath, true);
-            File.Copy(srtm60, srtm60GrdPath, true);
             // 构造TC.inp内容
             string tc = String.Format("{0}\n{1}\n{2}\n{3}\n5 3 0 2 {4}\n20.00416666 24.99583334 97.00416666 101.9958334\n{5} {6}", datPath, srtm30GrdPath, srtm60GrdPath, outPath, density, innerRadius, outterRadius);
             // 写入TC.inp
@@ -84,6 +77,10 @@ namespace GI.Functions
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
+                // 输入文件全部存入临时文件夹
+                File.Copy(dat, datPath, true);
+                File.Copy(srtm30, srtm30GrdPath, true);
+                File.Copy(srtm60, srtm60GrdPath, true);
                 string msg = "";
                 try
                 {
