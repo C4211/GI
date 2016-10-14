@@ -358,12 +358,26 @@ namespace GI.UserControls
                 DirectoryInfo rootDir = Roots[i];
                 try
                 {
+                    if (rootDir.Attributes.HasFlag(FileAttributes.Hidden))
+                    {
+                        Roots.RemoveAt(i);
+                        i--;
+                        continue;
+                    }
                     rootNode = new ResourceTreeNode(rootDir);
                     dirs = rootDir.GetDirectories().ToList();
                     rootNode.Children = LoadResourceTree(dirs);
                     files = rootDir.GetFiles().ToList();
-                    foreach (var file in files)
+                    FileInfo file;
+                    for (int j=0; j<files.Count; j++)
                     {
+                        file = files[j];
+                        if (file.Attributes.HasFlag(FileAttributes.Hidden))
+                        {
+                            files.RemoveAt(j);
+                            j--;
+                            continue;
+                        }
                         rootNode.Children.Add(new ResourceTreeNode(file));
                     }
                     list.Add(rootNode);
