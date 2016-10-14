@@ -226,6 +226,7 @@ namespace GI.UserControls
                 {
                     try
                     {
+                        DeleteErrorStatus();
                         task = SmoothCompensationFilter.Start(path1, _coefficient, _number);
                         await task;
                         if (IsCanceled)
@@ -236,12 +237,13 @@ namespace GI.UserControls
                         }
                         else
                         {
-                            Completed();
-                            return;
-                            //File.Copy(SmoothCompensationFilter.outPath, outPath, true);
-                            //loadingBar.Hide();
-                            //ShowPrevAndCancel();
-                            //Msg("计算完成");
+                            string error = CheckErrorStatus();
+                            if (error == null)
+                            {
+                                Completed();
+                                return;
+                            }
+                            throw new Exception(error);
                         }
                     }
                     catch (Exception e)
@@ -317,6 +319,33 @@ namespace GI.UserControls
             next.Visibility = Visibility.Visible;
             cancel.Visibility = Visibility.Collapsed;
             back.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// 删除遗留的错误信息
+        /// </summary>
+        private void DeleteErrorStatus()
+        {
+            if (File.Exists("error_status.txt"))
+                File.Delete("error_status.txt");
+        }
+
+        /// <summary>
+        /// 检查错误信息
+        /// </summary>
+        /// <returns></returns>
+        private string CheckErrorStatus()
+        {
+            string error;
+            if (!File.Exists("error_status.txt"))
+                return null;
+            using (var file = new StreamReader("error_status.txt", Encoding.GetEncoding("GB2312")))
+            {
+                error = file.ReadToEnd().Trim();
+                if (error != "9999")
+                    return error;
+            }
+            return null;
         }
     }
 }

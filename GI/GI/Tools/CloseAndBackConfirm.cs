@@ -33,7 +33,7 @@ namespace GI.Tools
         {
             if (IsNeedConfirm)
             {
-                if (MessageWindow.Show(Application.Current.MainWindow, State + ",确认" + Enum.ToObject(typeof(Actions),action) + "？", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageWindow.Show(Application.Current.MainWindow, State + ",确认" + Enum.ToObject(typeof(Actions), action) + "？", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     IsNeedConfirm = false;
                     ClearOutput();
@@ -50,7 +50,7 @@ namespace GI.Tools
 
         public static void ClearOutput()
         {
-            string[] outputFiles = {"out.dat","out.grd","Moho_3dinver_32km0.4.grd","boufrominv_32km0.4.grd" };
+            string[] outputFiles = { "error_status.txt", "temp_dtmf1.dat", "temp_dtmf2.dat", "out.dat", "out.grd", "Moho_3dinver_32km0.4.grd", "boufrominv_32km0.4.grd" };
             foreach (var outfile in outputFiles)
             {
                 if (File.Exists(outfile))
