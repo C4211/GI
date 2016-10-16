@@ -262,4 +262,12 @@
             <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
         </ObjectAnimationUsingKeyFrames>
     </Storyboard>
+
+    <Storyboard x:Key="GI.Help.Content.Storyboard">
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)" To="-720" Duration="0:0:0.6">
+            <DoubleAnimation.EasingFunction>
+                <PowerEase EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
 </ResourceDictionary>

@@ -6,7 +6,7 @@
              xmlns:GI="clr-namespace:GI"
              xmlns:Tools="clr-namespace:GI.Tools"
              mc:Ignorable="d" 
-             d:DesignHeight="444" d:DesignWidth="680" ClipToBounds="True"
+             d:DesignHeight="414" d:DesignWidth="680" ClipToBounds="True"
                     Style="{DynamicResource GI.Body.Content.Style}" Visibility="Visible">
     <Tools:FunctionPage.Resources>
         <DrawingBrush x:Key="zlycgz" Stretch="Uniform">
@@ -143,9 +143,8 @@
         </DrawingBrush>
     </Tools:FunctionPage.Resources>
             <Grid.RowDefinitions>
-                <RowDefinition Height="414"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+        <RowDefinition Height="414"/>
+    </Grid.RowDefinitions>
             <UniformGrid Margin="30" Columns="3">
                 <GI:FunctionGroup Grid.Row="0" Grid.Column="0" Style="{DynamicResource GI.Body.FunctionGroup.Style}"
                                   x:Name="zlycgz"
@@ -182,14 +181,4 @@
                                   TitleText="GRD画图"
                                   SummaryText="GRD文件可视化预览"/>
             </UniformGrid>
-            <Rectangle Height="1" Fill="{StaticResource GI.Colors.Body.Line}" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
-    <Grid Grid.Row="1" Height="30">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="About_MouseLeftButtonUp">关于</TextBlock>
-        <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="Help_MouseLeftButtonUp">使用帮助</TextBlock>
-    </Grid>
 </Tools:FunctionPage>

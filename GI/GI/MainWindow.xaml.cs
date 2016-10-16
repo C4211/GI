@@ -771,5 +771,39 @@ namespace GI
             }
         }
         #endregion
+
+        /// <summary>
+        /// 点击关于按钮
+        /// </summary>
+        private void About_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageWindow.Show(Application.Current.MainWindow, "版权所有：\n中国科学院测量与地球物理研究所");
+        }
+
+        private int helpLevel = 0;
+        /// <summary>
+        /// 点击帮助按钮
+        /// </summary>
+        private void Help_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (contentStack.Peek() is FunctionPage)
+            {
+                helpLevel = 0;
+                if (contentStack.Peek() is FunctionPage_home)
+                {
+                    helpLevel = 0;
+                }
+                else if(contentStack.Peek() is Function_dztcsfy || contentStack.Peek() is FunctionPage_zlsjcl || contentStack.Peek() is FunctionPage_zlsjjs ||contentStack.Peek() is FunctionPage_zlycgz|| contentStack.Peek() is FunctionPage_zlzfyjs)
+                {
+                    helpLevel = 1;
+                }
+                else
+                {
+                    helpLevel = 2;
+                }
+            }
+            HelpWindow hw = new HelpWindow(Application.Current.MainWindow,helpLevel);
+            hw.Show();
+        }
     }
 }

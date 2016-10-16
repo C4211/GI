@@ -56,7 +56,21 @@
                 </Grid>
             </Grid>
             <Grid x:Name="body" Grid.Row="1" Style="{DynamicResource GI.Window.Body.Style}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30px"/>
+                </Grid.RowDefinitions>
                 <UserControls:FunctionPage_home x:Name="home" Visibility="Visible"/>
+                <Rectangle Height="1" Fill="{StaticResource GI.Colors.Body.Line}" VerticalAlignment="Bottom" Margin="5,0"></Rectangle>
+                <Grid Grid.Row="1" Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="About_MouseLeftButtonUp">关于</TextBlock>
+                    <TextBlock Grid.Column="2" Style="{StaticResource GI.Body.BottomText.Style}" MouseLeftButtonUp="Help_MouseLeftButtonUp">使用帮助</TextBlock>
+                </Grid>
             </Grid>
         </Grid>
     </Border>
