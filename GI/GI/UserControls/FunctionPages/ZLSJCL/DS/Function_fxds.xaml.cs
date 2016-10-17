@@ -347,7 +347,7 @@ namespace GI.UserControls
             using (var file = new StreamReader("error_status.txt", Encoding.GetEncoding("GB2312")))
             {
                 error = file.ReadToEnd().Trim();
-                if (error != "9999")
+                if (error != "")
                     return error;
             }
             return null;
