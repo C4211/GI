@@ -67,8 +67,17 @@ namespace GI.Functions
             //如果输出文件不存在则自动创建输出文件
             if (!File.Exists(outPath))
                 File.Create(outPath).Dispose();
+            //读取内区半径文件参数
+            string Y, X;
+            using (var sr = new StreamReader(srtm30))
+            {
+                string tmp = sr.ReadLine();
+                tmp = sr.ReadLine();
+                X = sr.ReadLine();
+                Y = sr.ReadLine();
+            }
             // 构造TC.inp内容
-            string tc = String.Format("{0}\n{1}\n{2}\n{3}\n5 3 0 2 {4}\n20.00416666 24.99583334 97.00416666 101.9958334\n{5} {6}", datPath, srtm30GrdPath, srtm60GrdPath, outPath, density, innerRadius, outterRadius);
+            string tc = String.Format("{0}\n{1}\n{2}\n{3}\n5 3 0 2 {4}\n{5} {6}\n{7} {8}", datPath, srtm30GrdPath, srtm60GrdPath, outPath, density, Y, X, innerRadius, outterRadius);
             // 写入TC.inp
             using (var writer = new StreamWriter(tcPath, false, Encoding.GetEncoding("GB2312")))
             {

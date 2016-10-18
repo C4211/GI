@@ -172,7 +172,7 @@ namespace GI.UserControls
                     {
                         //保存
                         File.Copy(InterfaceInversion.outPath1, ofd.FileName, true);
-                        Msg("地形输出文件已保存！");
+                        Msg("界面输出文件已保存！");
                         CloseAndBackConfirm.Reset();
                     }
                     catch

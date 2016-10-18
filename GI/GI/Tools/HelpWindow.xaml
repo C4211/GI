@@ -120,7 +120,7 @@
                                 <Ellipse Width="8" Height="8" Margin="20,0,0,0" Fill="{StaticResource GI.Colors.Body.text}" HorizontalAlignment="Left"></Ellipse>
                             </Grid>
                             <Grid MouseEnter="Grid_MouseEnter" Tag="9">
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="{StaticResource GI.Body.FunctionGroup.Title.FontSize}" Foreground="{StaticResource GI.Colors.Body.text}" Margin="50,0,0,0">CRD预览窗口</TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="{StaticResource GI.Body.FunctionGroup.Title.FontSize}" Foreground="{StaticResource GI.Colors.Body.text}" Margin="50,0,0,0">GRD预览窗口</TextBlock>
                                 <Ellipse Width="8" Height="8" Margin="20,0,0,0" Fill="{StaticResource GI.Colors.Body.text}" HorizontalAlignment="Left"></Ellipse>
                             </Grid>
                             <Grid MouseEnter="Grid_MouseEnter" Tag="10">
