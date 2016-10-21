@@ -534,10 +534,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="bin\msvcp140.dll">
+    <Content Include="Utils\msvcp140.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="bin\vcruntime140.dll">
+    <Content Include="Utils\vcruntime140.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ColorScales\AngledBlack.clr">
@@ -739,15 +739,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\MathNet.Numerics.dll">
+    <Content Include="Utils\MathNet.Numerics.dll">
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="bin\Moho3.exe">
+    <Content Include="Utils\Moho3.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
-    <Content Include="bin\WienerFilter_F.exe">
+    <Content Include="Utils\WienerFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
@@ -755,181 +755,101 @@
     <Resource Include="Res\images\grdunit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\BCYHFilter_F.exe">
+    <Content Include="Utils\BCYHFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Continue_Exp_F.exe">
+    <Content Include="Utils\Continue_Exp_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\DirectionalDerivative_F.exe">
+    <Content Include="Utils\DirectionalDerivative_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\DZTFY.exe">
+    <Content Include="Utils\DZTFY.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\DZTZY.exe">
+    <Content Include="Utils\DZTZY.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Expand_F.exe">
+    <Content Include="Utils\Expand_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\FA2BA_F.exe">
+    <Content Include="Utils\FA2BA_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\InterfaceForward_F.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CustomToolNamespace>GI.bin</CustomToolNamespace>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\MatchingFilter_F.exe">
+    <Content Include="Utils\InterfaceForward_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\PSD_F.exe">
+    <Content Include="Utils\MatchingFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\RegularizationFilter_F.exe">
+    <Content Include="Utils\PSD_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\TC_F.exe">
+    <Content Include="Utils\RegularizationFilter_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\TC_FFT_F.exe">
+    <Content Include="Utils\TC_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\TC_Gauss_F.exe">
+    <Content Include="Utils\TC_FFT_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\VerticalDerivative_F.exe">
+    <Content Include="Utils\TC_Gauss_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\VerticalDerivative_Space_F.exe">
+    <Content Include="Utils\VerticalDerivative_F.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>GI.bin</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="bin\BCYHFilter_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\Continue_Exp_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\DirectionalDerivative_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\DZTFY.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\DZTZY.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\Expand_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\FA2BA_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="bin\InterfaceForward_F.exe">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
+    <Content Include="Utils\VerticalDerivative_Space_F.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>GI.bin</CustomToolNamespace>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PublishFile Include="bin\InterfaceInversion.exe">
       <Visible>False</Visible>
       <Group>
@@ -940,7 +860,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\MatchingFilter_F.exe">
+    <PublishFile Include="Utils\BCYHFilter_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -950,7 +870,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\PSD_F.exe">
+    <PublishFile Include="Utils\Continue_Exp_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -960,7 +880,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\RegularizationFilter_F.exe">
+    <PublishFile Include="Utils\DirectionalDerivative_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -970,7 +890,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\TC_F.exe">
+    <PublishFile Include="Utils\DZTFY.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -980,7 +900,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\TC_FFT_F.exe">
+    <PublishFile Include="Utils\DZTZY.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -990,7 +910,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\TC_Gauss_F.exe">
+    <PublishFile Include="Utils\Expand_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1000,7 +920,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\VerticalDerivative_F.exe">
+    <PublishFile Include="Utils\FA2BA_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1010,7 +930,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\VerticalDerivative_Space_F.exe">
+    <PublishFile Include="Utils\InterfaceForward_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1020,7 +940,87 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="bin\WienerFilter_F.exe">
+    <PublishFile Include="Utils\MatchingFilter_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\PSD_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\RegularizationFilter_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\TC_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\TC_FFT_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\TC_Gauss_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\VerticalDerivative_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\VerticalDerivative_Space_F.exe">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>DataFile</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Utils\WienerFilter_F.exe">
       <Visible>False</Visible>
       <Group>
       </Group>

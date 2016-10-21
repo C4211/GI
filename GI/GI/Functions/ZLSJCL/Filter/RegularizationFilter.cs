@@ -14,7 +14,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"bin\RegularizationFilter_F.exe";
+        public static string exePath = @"Utils\RegularizationFilter_F.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>

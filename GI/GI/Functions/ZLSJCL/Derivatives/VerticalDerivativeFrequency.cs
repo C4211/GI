@@ -16,7 +16,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"bin\VerticalDerivative_F.exe";
+        public static string exePath = @"Utils\VerticalDerivative_F.exe";
         /// <summary>
         /// parameters.inp临时文件路径
         /// </summary>

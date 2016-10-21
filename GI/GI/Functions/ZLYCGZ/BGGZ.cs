@@ -17,7 +17,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"bin\FA2BA_F.exe";
+        public static string exePath = @"Utils\FA2BA_F.exe";
         /// <summary>
         /// TC.inp临时文件路径
         /// </summary>

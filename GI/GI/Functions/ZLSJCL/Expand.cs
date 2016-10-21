@@ -14,7 +14,7 @@ namespace GI.Functions
         /// <summary>
         /// exe路径
         /// </summary>
-        public static string exePath = @"bin\Expand_F.exe";
+        public static string exePath = @"Utils\Expand_F.exe";
         /// <summary>
         /// parameter.inp临时文件路径
         /// </summary>
