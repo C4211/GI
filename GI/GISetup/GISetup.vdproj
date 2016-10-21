@@ -75,7 +75,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_20235888D97340CAAD1C4A3DB00A35CD"
+        "MsmKey" = "8:_1CB130DE3C054639BC1EAE4FD403D54B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_206EF710D463425EAE1F16A8725B3B84"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_279BC217103549469E15520FCD9A1076"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -93,13 +105,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_36EC6F260FBB42ECA3093FC6E5B39154"
+        "MsmKey" = "8:_37CCCB390F024A84B0CA5BF0A69D2FC3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3AE10C027E7C40F98EF07D006143422A"
+        "MsmKey" = "8:_4109A9972D454FA5AF99BD0D6D5B8E50"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_426EBC31301640F092F67B53565C84A8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -111,13 +129,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_47CF720464884848BC890B0A2A8CA8AE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4A3B1DCC3BC34E04B1B20AFE7D6D39BB"
+        "MsmKey" = "8:_4B186D8E750D4718A0DFE783FA830583"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,7 +159,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5E7442A63BF1462D9175A2CDFA3E43CF"
+        "MsmKey" = "8:_61771F88D4BA70D22FA1ACD90AF2D28C"
+        "OwnerKey" = "8:_90B8CF8458FE4D32AB2AE92B3B195A90"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6528E01DE3B9408288EF9927270D5265"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_697B2F121B614993BB5C182D4366F90D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -165,7 +189,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E6D741F98D34047B486448C435AF39E"
+        "MsmKey" = "8:_6E5E521F5441465AB54F1368FC5240D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -195,31 +219,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_78A6DEFDA22848EA9251BAADDB8B4745"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7EC409405ED043BBB41ECF57AAC73F3C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_81A54A61F4C49C9391091CD1F8CA5316"
-        "OwnerKey" = "8:_B25377B5090C4F2BABBD99B9D9B3B098"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_84792D25C6FB48A89317D27272AE053E"
+        "MsmKey" = "8:_7FC511377DE6422BABDB36BCBA381B11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_89E98C21A82B424F80D8BCAC008D9082"
+        "MsmKey" = "8:_7FDFF7A916254B1D9666251A49104555"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8029B15C354348018999202EEF41CD5F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -231,7 +249,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8DF876848CC54D0AACE93C8A66C2A123"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8E1A8C6C1132437E8DA94AF1ADDDD1F1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E9ECF7C4AD541B3AAD7DA4E3C3F0D3A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -243,19 +273,13 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_90B8CF8458FE4D32AB2AE92B3B195A90"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9234261E74B74D119EF52B258AA1E24B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93179D57929B427C9F3671BA4B62145B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_99D1A6EE55264D17A67EA5F7C0A90982"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -273,7 +297,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A1683235247442469575941CE0782D32"
+        "MsmKey" = "8:_A444722CBAA8481B831D80FA7F66469C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -285,31 +309,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AB7206A7DC26401894F07A567D6E775B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_ADCA3CE3024246E5829DFEFE54D34DFD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B25377B5090C4F2BABBD99B9D9B3B098"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_B6BD5E3A9642490D8B38232382F4CBE7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BBCF999EA4524018845B4AAE210DD315"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -322,6 +322,12 @@
         "Entry"
         {
         "MsmKey" = "8:_BECB8A9988AF410486AE4119A1BA1FA8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C175A5F885894988B29EF63B4B0FE0D6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -345,37 +351,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D475344D94284F578DA3D713470D1037"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D4EBF37EEBFF44E7A5A1A59E890D4F14"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D84EE4BFC3A042EFBC09AE42F8FFCFD9"
+        "MsmKey" = "8:_D7A6CBB65E974EBDAACB0F68202EA062"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DE32AA2DB5F647719C113E0D18AE2F75"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DEFAB30D13CA4E3D9716CD80CC77D621"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E1569939773540E7B1A75FC34BA09D85"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA1E473A88B24392A3ED7EE4B61FF5BF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EA8127ADFC68458FA6CFB98FF2A19874"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -399,20 +399,38 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EA1E473A88B24392A3ED7EE4B61FF5BF"
+        "MsmKey" = "8:_F18088A25B0949D092C96C2FF64F13F6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F1D58A52EDD94B509FD271865FF4CA4E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B25377B5090C4F2BABBD99B9D9B3B098"
+        "OwnerKey" = "8:_D7A6CBB65E974EBDAACB0F68202EA062"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_81A54A61F4C49C9391091CD1F8CA5316"
+        "OwnerKey" = "8:_90B8CF8458FE4D32AB2AE92B3B195A90"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_61771F88D4BA70D22FA1ACD90AF2D28C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8E9ECF7C4AD541B3AAD7DA4E3C3F0D3A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -710,12 +728,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20235888D97340CAAD1C4A3DB00A35CD"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1CB130DE3C054639BC1EAE4FD403D54B"
             {
-            "SourcePath" = "8:..\\GI\\bin\\MatchingFilter_F.exe"
-            "TargetName" = "8:MatchingFilter_F.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\TC_Gauss_F.exe"
+            "TargetName" = "8:TC_Gauss_F.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_206EF710D463425EAE1F16A8725B3B84"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\WienerFilter_F.exe"
+            "TargetName" = "8:WienerFilter_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_279BC217103549469E15520FCD9A1076"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\TC_F.exe"
+            "TargetName" = "8:TC_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -770,12 +828,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_36EC6F260FBB42ECA3093FC6E5B39154"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_37CCCB390F024A84B0CA5BF0A69D2FC3"
             {
-            "SourcePath" = "8:..\\GI\\bin\\InterfaceForward_F.exe"
-            "TargetName" = "8:InterfaceForward_F.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\MatchingFilter_F.exe"
+            "TargetName" = "8:MatchingFilter_F.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -790,12 +848,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3AE10C027E7C40F98EF07D006143422A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4109A9972D454FA5AF99BD0D6D5B8E50"
             {
-            "SourcePath" = "8:..\\GI\\bin\\DirectionalDerivative_F.exe"
-            "TargetName" = "8:DirectionalDerivative_F.exe"
+            "SourcePath" = "8:..\\GI\\Res\\Icons\\GI.ico"
+            "TargetName" = "8:GI.ico"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_5BA060F486E34AE0821AE8DB4EB7633E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_426EBC31301640F092F67B53565C84A8"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\Expand_F.exe"
+            "TargetName" = "8:Expand_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -830,32 +908,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47CF720464884848BC890B0A2A8CA8AE"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B186D8E750D4718A0DFE783FA830583"
             {
-            "SourcePath" = "8:..\\GI\\bin\\Continue_Exp_F.exe"
-            "TargetName" = "8:Continue_Exp_F.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\FA2BA_F.exe"
+            "TargetName" = "8:FA2BA_F.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4A3B1DCC3BC34E04B1B20AFE7D6D39BB"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\VerticalDerivative_F.exe"
-            "TargetName" = "8:VerticalDerivative_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -950,12 +1008,63 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E7442A63BF1462D9175A2CDFA3E43CF"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_61771F88D4BA70D22FA1ACD90AF2D28C"
             {
-            "SourcePath" = "8:..\\GI\\bin\\TC_F.exe"
-            "TargetName" = "8:TC_F.exe"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_61771F88D4BA70D22FA1ACD90AF2D28C"
+                    {
+                    "Name" = "8:MathNet.Numerics.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MathNet.Numerics.DLL"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6528E01DE3B9408288EF9927270D5265"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\TC_FFT_F.exe"
+            "TargetName" = "8:TC_FFT_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_697B2F121B614993BB5C182D4366F90D"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\BCYHFilter_F.exe"
+            "TargetName" = "8:BCYHFilter_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1010,12 +1119,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E6D741F98D34047B486448C435AF39E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E5E521F5441465AB54F1368FC5240D9"
             {
-            "SourcePath" = "8:..\\GI\\bin\\TC_FFT_F.exe"
-            "TargetName" = "8:TC_FFT_F.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\PSD_F.exe"
+            "TargetName" = "8:PSD_F.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1110,26 +1219,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_78A6DEFDA22848EA9251BAADDB8B4745"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\PSD_F.exe"
-            "TargetName" = "8:PSD_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7EC409405ED043BBB41ECF57AAC73F3C"
             {
             "SourcePath" = "8:..\\GI\\ColorScales\\USflag.clr"
@@ -1150,43 +1239,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_81A54A61F4C49C9391091CD1F8CA5316"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FC511377DE6422BABDB36BCBA381B11"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_81A54A61F4C49C9391091CD1F8CA5316"
-                    {
-                    "Name" = "8:MathNet.Numerics.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MathNet.Numerics.DLL"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\GI\\Utils\\DZTZY.exe"
+            "TargetName" = "8:DZTZY.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84792D25C6FB48A89317D27272AE053E"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\TC_Gauss_F.exe"
-            "TargetName" = "8:TC_Gauss_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1201,12 +1259,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89E98C21A82B424F80D8BCAC008D9082"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7FDFF7A916254B1D9666251A49104555"
             {
-            "SourcePath" = "8:..\\GI\\bin\\DZTFY.exe"
-            "TargetName" = "8:DZTFY.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\VerticalDerivative_Space_F.exe"
+            "TargetName" = "8:VerticalDerivative_Space_F.exe"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8029B15C354348018999202EEF41CD5F"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\InterfaceForward_F.exe"
+            "TargetName" = "8:InterfaceForward_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1241,12 +1319,63 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8DF876848CC54D0AACE93C8A66C2A123"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\DirectionalDerivative_F.exe"
+            "TargetName" = "8:DirectionalDerivative_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E1A8C6C1132437E8DA94AF1ADDDD1F1"
             {
             "SourcePath" = "8:..\\GI\\ColorScales\\HighPoints.clr"
             "TargetName" = "8:HighPoints.clr"
             "Tag" = "8:"
             "Folder" = "8:_8A627F01D0734B6884897AE263C4B563"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8E9ECF7C4AD541B3AAD7DA4E3C3F0D3A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8E9ECF7C4AD541B3AAD7DA4E3C3F0D3A"
+                    {
+                    "Name" = "8:MathNet.Numerics.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\GI\\Utils\\MathNet.Numerics.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1281,52 +1410,43 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90B8CF8458FE4D32AB2AE92B3B195A90"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Moho3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_90B8CF8458FE4D32AB2AE92B3B195A90"
+                    {
+                    "Name" = "8:Moho3.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\GI\\Utils\\Moho3.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9234261E74B74D119EF52B258AA1E24B"
             {
             "SourcePath" = "8:..\\GI\\ColorScales\\Pastel1.clr"
             "TargetName" = "8:Pastel1.clr"
             "Tag" = "8:"
             "Folder" = "8:_8A627F01D0734B6884897AE263C4B563"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93179D57929B427C9F3671BA4B62145B"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\VerticalDerivative_Space_F.exe"
-            "TargetName" = "8:VerticalDerivative_Space_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99D1A6EE55264D17A67EA5F7C0A90982"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\RegularizationFilter_F.exe"
-            "TargetName" = "8:RegularizationFilter_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1381,12 +1501,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A1683235247442469575941CE0782D32"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A444722CBAA8481B831D80FA7F66469C"
             {
-            "SourcePath" = "8:..\\GI\\bin\\DZTZY.exe"
-            "TargetName" = "8:DZTZY.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\vcruntime140.dll"
+            "TargetName" = "8:vcruntime140.dll"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1407,77 +1527,6 @@
             "TargetName" = "8:Electric.clr"
             "Tag" = "8:"
             "Folder" = "8:_8A627F01D0734B6884897AE263C4B563"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AB7206A7DC26401894F07A567D6E775B"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\BCYHFilter_F.exe"
-            "TargetName" = "8:BCYHFilter_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ADCA3CE3024246E5829DFEFE54D34DFD"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\FA2BA_F.exe"
-            "TargetName" = "8:FA2BA_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B25377B5090C4F2BABBD99B9D9B3B098"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Moho3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B25377B5090C4F2BABBD99B9D9B3B098"
-                    {
-                    "Name" = "8:Moho3.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\GI\\bin\\Moho3.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1552,6 +1601,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C175A5F885894988B29EF63B4B0FE0D6"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\Continue_Exp_F.exe"
+            "TargetName" = "8:Continue_Exp_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C37C43055AC6457789BC27111ED72433"
             {
             "SourcePath" = "8:..\\GI\\ColorScales\\Carnival.clr"
@@ -1612,26 +1681,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D475344D94284F578DA3D713470D1037"
-            {
-            "SourcePath" = "8:..\\GI\\bin\\Expand_F.exe"
-            "TargetName" = "8:Expand_F.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D4EBF37EEBFF44E7A5A1A59E890D4F14"
             {
             "SourcePath" = "8:..\\GI\\ColorScales\\Taffy.clr"
@@ -1652,12 +1701,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D84EE4BFC3A042EFBC09AE42F8FFCFD9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE32AA2DB5F647719C113E0D18AE2F75"
             {
-            "SourcePath" = "8:..\\GI\\bin\\WienerFilter_F.exe"
-            "TargetName" = "8:WienerFilter_F.exe"
+            "SourcePath" = "8:..\\GI\\Utils\\msvcp140.dll"
+            "TargetName" = "8:msvcp140.dll"
             "Tag" = "8:"
-            "Folder" = "8:_F47392164E3F48FCA0E326AB55C4309E"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DEFAB30D13CA4E3D9716CD80CC77D621"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\RegularizationFilter_F.exe"
+            "TargetName" = "8:RegularizationFilter_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1678,26 +1747,6 @@
             "TargetName" = "8:AngledBlack.clr"
             "Tag" = "8:"
             "Folder" = "8:_8A627F01D0734B6884897AE263C4B563"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA8127ADFC68458FA6CFB98FF2A19874"
-            {
-            "SourcePath" = "8:..\\GI\\Res\\Icons\\GI.ico"
-            "TargetName" = "8:GI.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_5BA060F486E34AE0821AE8DB4EB7633E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1772,6 +1821,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F18088A25B0949D092C96C2FF64F13F6"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\VerticalDerivative_F.exe"
+            "TargetName" = "8:VerticalDerivative_F.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F1D58A52EDD94B509FD271865FF4CA4E"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\DZTFY.exe"
+            "TargetName" = "8:DZTFY.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_0790256328D04265895D909C7412CD45"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -1799,6 +1888,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0790256328D04265895D909C7412CD45"
+                    {
+                    "Name" = "8:Utils"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_30C58769E1F24FEE8186E7011F276728"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_8A627F01D0734B6884897AE263C4B563"
                     {
                     "Name" = "8:ColorScales"
@@ -1806,17 +1906,6 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_F3FB1D1732354B89A2738DC7E04E322B"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F47392164E3F48FCA0E326AB55C4309E"
-                    {
-                    "Name" = "8:bin"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_CD0B4B54125044C88E48B49A652920C2"
                         "Folders"
                         {
                         }
@@ -1851,7 +1940,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:重力数据处理解释系统"
         "ProductCode" = "8:{642A7549-50C1-4063-B6C3-295FF8575BB1}"
-        "PackageCode" = "8:{B64D0575-A90B-44BF-BB27-CADF08B144FE}"
+        "PackageCode" = "8:{BDE0F8E9-D7C4-4434-B2E3-21B516678F58}"
         "UpgradeCode" = "8:{1DE451F4-768C-470D-9B85-E8A31E2D52F6}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1971,7 +2060,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_04DF608FF68941D898C4BA32C2922EBB"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_203FC0197B7740E6A86ACAADBA4ABD8E"
             {
             "Name" = "8:GI"
             "Arguments" = "8:"
@@ -1979,24 +2068,24 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_EA1E473A88B24392A3ED7EE4B61FF5BF"
-            "Folder" = "8:_91AD38F5022F4A54A824CC3F17831F51"
-            "WorkingFolder" = "8:_5BA060F486E34AE0821AE8DB4EB7633E"
-            "Icon" = "8:_EA8127ADFC68458FA6CFB98FF2A19874"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BE720023B4C843299D324AF16467E6CF"
-            {
-            "Name" = "8:GI"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_EA1E473A88B24392A3ED7EE4B61FF5BF"
+            "Target" = "8:_D7A6CBB65E974EBDAACB0F68202EA062"
             "Folder" = "8:_369709AB2CD6465AB66FB1454AADFA6C"
             "WorkingFolder" = "8:_5BA060F486E34AE0821AE8DB4EB7633E"
-            "Icon" = "8:_EA8127ADFC68458FA6CFB98FF2A19874"
+            "Icon" = "8:_4109A9972D454FA5AF99BD0D6D5B8E50"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5E39E77C1EB8465C890A5FEFDC933547"
+            {
+            "Name" = "8:GI"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_D7A6CBB65E974EBDAACB0F68202EA062"
+            "Folder" = "8:_91AD38F5022F4A54A824CC3F17831F51"
+            "WorkingFolder" = "8:_5BA060F486E34AE0821AE8DB4EB7633E"
+            "Icon" = "8:_4109A9972D454FA5AF99BD0D6D5B8E50"
             "Feature" = "8:"
             }
         }
@@ -2395,24 +2484,10 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_BBCF999EA4524018845B4AAE210DD315"
-            {
-            "UseDynamicProperties" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:c:\\program files (x86)\\common files\\merge modules\\microsoft_vc140_crt_x86.msm"
-                "Properties"
-                {
-                }
-            "LanguageId" = "3:0"
-            "Exclude" = "11:FALSE"
-            "Folder" = "8:"
-            "Feature" = "8:"
-            "IsolateTo" = "8:"
-            }
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EA1E473A88B24392A3ED7EE4B61FF5BF"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D7A6CBB65E974EBDAACB0F68202EA062"
             {
             "SourcePath" = "8:..\\GI\\obj\\Release\\GI.exe"
             "TargetName" = "8:"
