@@ -135,7 +135,7 @@
                     <Tools:SelectUnitBox  Value="200" x:Name="arg1_5"
                     Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
-                        <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
+                        <ComboBoxItem Tag="1000">g/cm^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
                 </Grid>
             </Grid>
@@ -231,7 +231,7 @@
                     <Tools:SelectUnitBox  Value="200" x:Name="arg2_7"
                     Grid.Row="5" Grid.Column="1" Margin="10" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
-                        <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
+                        <ComboBoxItem Tag="1000">g/cm^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
                 </Grid>
             </Grid>
@@ -327,7 +327,7 @@
                     <Tools:SelectUnitBox  Value="200" x:Name="arg3_7"
                     Grid.Row="5" Grid.Column="1" Margin="10" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
-                        <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
+                        <ComboBoxItem Tag="1000">g/cm^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
                 </Grid>
             </Grid>
@@ -433,7 +433,7 @@
                     <Tools:SelectUnitBox  Value="200" x:Name="arg4_7"
                     Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" Width="150" HorizontalAlignment="Left">
                         <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
-                        <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
+                        <ComboBoxItem Tag="1000">g/cm^3</ComboBoxItem>
                     </Tools:SelectUnitBox>
                 </Grid>
             </Grid>
