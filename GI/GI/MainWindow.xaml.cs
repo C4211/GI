@@ -3,6 +3,7 @@ using GI.Tools;
 using GI.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace GI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static string SOFTWARE_VERSION = "1.0";
 
         public MainWindow()
         {
@@ -335,7 +337,7 @@ namespace GI
             functionPage_zlsjcl.lb.Click += lb_Click;
             functionPage_zlsjcl.xsyt.Click += xsyt_Click;
             functionPage_zlsjcl.ds.Click += ds_Click;
-            functionPage_zlsjcl.glpfx.Click +=glpfx_Click;
+            functionPage_zlsjcl.glpfx.Click += glpfx_Click;
             Group_Open(functionPage_zlsjcl);
             functionPage_zlsjcl = null;
         }
@@ -513,7 +515,7 @@ namespace GI
             function_kb = null;
         }
         private Function_kb function_kb = null;
-       
+
         #endregion
 
         #region 重力正反演计算
@@ -584,8 +586,15 @@ namespace GI
         /// <param name="e"></param>
         private void ewjm_Click(object sender, RoutedEventArgs e)
         {
-            MessageWindow.Show(this, "暂不提供");
+            // MessageWindow.Show(this, "暂不提供");
+            Process p = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo("Utils/GAC/GravityAnomalyCalculator.exe");
+            p.StartInfo = startInfo;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
         }
+
         /// <summary>
         /// 三维建模点击事件
         /// </summary>
@@ -593,7 +602,13 @@ namespace GI
         /// <param name="e"></param>
         private void swjm_Click(object sender, RoutedEventArgs e)
         {
-            MessageWindow.Show(this, "暂不提供");
+            // MessageWindow.Show(this, "暂不提供");
+            Process p = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo("Utils/GAC/GAC3d.exe");
+            p.StartInfo = startInfo;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.Start();
         }
         #endregion
 
@@ -699,7 +714,7 @@ namespace GI
             Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
             content.BeginStoryboard(sb);
         }
-        
+
         /// <summary>
         /// 激活动画
         /// </summary>
@@ -748,7 +763,7 @@ namespace GI
         /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            if(this.WindowState == WindowState.Normal)
+            if (this.WindowState == WindowState.Normal)
             {
                 Storyboard sb = (this.FindResource("GI.Window.openStoryboard") as Storyboard).Clone();
                 content.BeginStoryboard(sb);
@@ -777,7 +792,7 @@ namespace GI
         /// </summary>
         private void About_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            MessageWindow.Show(Application.Current.MainWindow, "版权所有：\n中国科学院测量与地球物理研究所");
+            MessageWindow.Show(Application.Current.MainWindow, "重力数据处理解释软件\n版本号：" + SOFTWARE_VERSION + "\n版权所有：\n中国科学院测量与地球物理研究所");
         }
 
         private int helpLevel = 0;
@@ -793,7 +808,7 @@ namespace GI
                 {
                     helpLevel = 0;
                 }
-                else if(contentStack.Peek() is Function_dztcsfy || contentStack.Peek() is FunctionPage_zlsjcl || contentStack.Peek() is FunctionPage_zlsjjs ||contentStack.Peek() is FunctionPage_zlycgz|| contentStack.Peek() is FunctionPage_zlzfyjs)
+                else if (contentStack.Peek() is Function_dztcsfy || contentStack.Peek() is FunctionPage_zlsjcl || contentStack.Peek() is FunctionPage_zlsjjs || contentStack.Peek() is FunctionPage_zlycgz || contentStack.Peek() is FunctionPage_zlzfyjs)
                 {
                     helpLevel = 1;
                 }
@@ -802,7 +817,7 @@ namespace GI
                     helpLevel = 2;
                 }
             }
-            HelpWindow hw = new HelpWindow(Application.Current.MainWindow,helpLevel);
+            HelpWindow hw = new HelpWindow(Application.Current.MainWindow, helpLevel);
             hw.Show();
         }
     }
