@@ -94,7 +94,7 @@
                 <Tools:SelectUnitBox  Value="0.40" x:Name="arg_contrast"
                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" Width="300" HorizontalAlignment="Left">
                     <ComboBoxItem Tag="1">kg/m^3</ComboBoxItem>
-                    <ComboBoxItem Tag="1000">kg/m^3</ComboBoxItem>
+                    <ComboBoxItem Tag="1000">g/cm^3</ComboBoxItem>
                 </Tools:SelectUnitBox>
                 <TextBlock
                         Grid.Row="3" Grid.Column="0" 

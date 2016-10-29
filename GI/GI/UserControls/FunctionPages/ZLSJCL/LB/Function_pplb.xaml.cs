@@ -225,8 +225,12 @@ namespace GI.UserControls
                     Msg("输入文件不是GRD数据格式！");
                 else if (!double.TryParse(arg0.Value, out _arg0))
                     Msg("深源埋深非法！");
+                else if (_arg0 <= 0)
+                    Msg("深源埋深应大于0！");
                 else if (!double.TryParse(arg1.Value, out _arg1))
                     Msg("浅源埋深非法！");
+                else if (_arg1 <= 0)
+                    Msg("浅源埋深应大于0！");
                 else if (!double.TryParse(arg2.Value, out _arg2))
                     Msg("纵轴截距非法！");
                 else

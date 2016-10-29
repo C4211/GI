@@ -518,6 +518,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Utils\GAC\HelpGAC2D.chm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Res\images\help\help1.png" />
     <Resource Include="Res\images\help\help10.png" />
     <Resource Include="Res\images\help\help11.png" />

@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
@@ -215,6 +216,7 @@ namespace GI.UserControls
                     try
                     {
                         DeleteErrorStatus();
+                        _arg0 *= double.Parse((arg0.SelectedItem as ComboBoxItem).Tag.ToString());
                         if (choice0.IsChecked == true)
                             choice = 0;
                         else if (choice1.IsChecked == true)

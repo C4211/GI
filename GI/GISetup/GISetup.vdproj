@@ -232,7 +232,7 @@
         "Entry"
         {
         "MsmKey" = "8:_517FA15AE2343194D1E3285B60787BEE"
-        "OwnerKey" = "8:_62A83BE459E44FDD87CBE4408EB13105"
+        "OwnerKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -298,13 +298,13 @@
         "Entry"
         {
         "MsmKey" = "8:_517FA15AE2343194D1E3285B60787BEE"
-        "OwnerKey" = "8:_3920A53FA9B9A85E5BBB43F0B5D2A44F"
+        "OwnerKey" = "8:_62A83BE459E44FDD87CBE4408EB13105"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_517FA15AE2343194D1E3285B60787BEE"
-        "OwnerKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
+        "OwnerKey" = "8:_3920A53FA9B9A85E5BBB43F0B5D2A44F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -327,6 +327,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_61771F88D4BA70D22FA1ACD90AF2D28C"
+        "OwnerKey" = "8:_90B8CF8458FE4D32AB2AE92B3B195A90"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_62A56BC9DEFD4996A9BA05FCD3240F95"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -334,6 +340,12 @@
         "Entry"
         {
         "MsmKey" = "8:_62A83BE459E44FDD87CBE4408EB13105"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_649DFD5FB99F4A4693762C158B0B1E3C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -724,12 +736,6 @@
         "Entry"
         {
         "MsmKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
-        "OwnerKey" = "8:_62A83BE459E44FDD87CBE4408EB13105"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
         "OwnerKey" = "8:_062B6278D8A72A8F7ADAC51CFEFE82A5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -785,6 +791,12 @@
         {
         "MsmKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
         "OwnerKey" = "8:_E78095BBC2DD1429E9D103F98ED05250"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
+        "OwnerKey" = "8:_62A83BE459E44FDD87CBE4408EB13105"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -850,7 +862,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_90B8CF8458FE4D32AB2AE92B3B195A90"
+        "OwnerKey" = "8:_61771F88D4BA70D22FA1ACD90AF2D28C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -934,6 +946,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_062B6278D8A72A8F7ADAC51CFEFE82A5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F9572677FF790B32C2FCDB23D4DA226C"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -947,12 +965,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_517FA15AE2343194D1E3285B60787BEE"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_062B6278D8A72A8F7ADAC51CFEFE82A5"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1957,6 +1969,11 @@
             "AssemblyAsmDisplayName" = "8:MathNet.Numerics, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_61771F88D4BA70D22FA1ACD90AF2D28C"
+                    {
+                    "Name" = "8:MathNet.Numerics.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:MathNet.Numerics.DLL"
             "TargetName" = "8:"
@@ -2006,7 +2023,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GravityAnomalyCalculator, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:GravityAnomalyCalculator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_62A83BE459E44FDD87CBE4408EB13105"
@@ -2057,6 +2074,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_649DFD5FB99F4A4693762C158B0B1E3C"
+            {
+            "SourcePath" = "8:..\\GI\\Utils\\GAC\\HelpGAC2D.chm"
+            "TargetName" = "8:HelpGAC2D.chm"
+            "Tag" = "8:"
+            "Folder" = "8:_6E890B3491FA437FB9F42A19661F8B55"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6528E01DE3B9408288EF9927270D5265"
@@ -2725,7 +2762,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Moho3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Moho3, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_90B8CF8458FE4D32AB2AE92B3B195A90"

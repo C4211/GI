@@ -106,9 +106,24 @@ namespace GI.UserControls
                     Msg("内区半径非法！");
                     return;
                 }
+                else if (_arg2 <= 0)
+                {
+                    Msg("内区半径应大于0！");
+                    return;
+                }
                 else if (!double.TryParse(arg3.Value, out _arg3))
                 {
                     Msg("外区半径非法！");
+                    return;
+                }
+                else if (_arg3 <= 0)
+                {
+                    Msg("外区半径应大于0！");
+                    return;
+                }
+                else if (_arg2 > _arg3)
+                {
+                    Msg("内区参数值比外区参数值大！");
                     return;
                 }
             }
@@ -248,8 +263,12 @@ namespace GI.UserControls
                     Msg("密度值非法！");
                 else if (!double.TryParse(arg2.Value, out _arg2))
                     Msg("内区半径非法！");
+                else if (_arg2 <= 0)
+                    Msg("内区半径应大于0！");
                 else if (!double.TryParse(arg3.Value, out _arg3))
                     Msg("外区半径非法！");
+                else if (_arg3 <= 0)
+                    Msg("外区半径应大于0！");
                 else
                 {
                     try

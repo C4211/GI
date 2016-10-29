@@ -226,6 +226,8 @@ namespace GI.UserControls
                 {
                     try
                     {
+                        _referenceDepth *= double.Parse((referenceDepth.SelectedItem as ComboBoxItem).Tag.ToString());
+                        _densityContrast *= double.Parse((densityContrast.SelectedItem as ComboBoxItem).Tag.ToString());
                         if (coordinateUnit0.IsChecked == true)
                             _coordinateUnit = 0;
                         else if (coordinateUnit1.IsChecked == true)
