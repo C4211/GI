@@ -50,7 +50,7 @@ namespace GI.Tools
 
         public static void ClearOutput()
         {
-            string[] outputFiles = { "error_status.txt", "temp_dtmf1.dat", "temp_dtmf2.dat", "out.dat", "out.grd", "out.txt", "Moho_3dinver_32km0.4.grd", "boufrominv_32km0.4.grd" };
+            string[] outputFiles = { "error_status.txt", "temp_dtmf1.dat", "temp_dtmf2.dat", "out.dat", "out.grd", "out.txt", "Moho_3dinver_32km0.4.grd", "boufrominv_32km0.4.grd", "temp.txt" };
             foreach (var outfile in outputFiles)
             {
                 if (File.Exists(outfile))

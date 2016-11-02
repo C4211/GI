@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GI.Functions
 {
@@ -38,21 +39,21 @@ namespace GI.Functions
             // 构造参数内容
             string tc;
             if (choice == 0)
-                tc = string.Format("{0} {1} {2} {3}", choice, inFile1, inPath1, outPath);
+                tc = string.Format("{0} \"{1}\" {2} {3}", choice, inFile1, inPath1, outPath);
             else if (choice == 1)
-                tc = string.Format("{0} {1} {2} {3}", choice, inFile1, inPath1, outPath);
+                tc = string.Format("{0} \"{1}\" {2} {3}", choice, inFile1, inPath1, outPath);
             else if (choice == 2)
-                tc = string.Format("{0} {1} {2} {3} {4} {5}", choice, inFile1, inPath1, inFile2, inPath2, outPath);
+                tc = string.Format("{0} \"{1}\" {2} \"{3}\" {4} {5}", choice, inFile1, inPath1, inFile2, inPath2, outPath);
             else
-                tc = string.Format("{0} {1} {2} {3} {4} {5} {6} {7}", choice, inFile1, inPath1, inFile2, inPath2, outPath, arg1, arg2);
+                tc = string.Format("{0} \"{1}\" {2} \"{3}\" {4} {5} {6} {7}", choice, inFile1, inPath1, inFile2, inPath2, outPath, arg1, arg2);
 
             // 执行exe
             return Task.Factory.StartNew<string>(() =>
             {
-                File.Copy(inFile1, inPath1, true);
-                string msg = ""; 
+                string msg = "";
                 try
                 {
+                    File.Copy(inFile1, inPath1, true);
                     if (inFile2 != "")
                         File.Copy(inFile2, inPath2, true);
                     p = new Process();

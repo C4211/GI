@@ -166,14 +166,14 @@ namespace GI.UserControls
                 ofd.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
                 ofd.FilterIndex = 2;
                 ofd.FileName = "topoout.grd";
-                ofd.Title = "界面深度图";
+                ofd.Title = "界面深度文件";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
                         //保存
                         File.Copy(InterfaceInversion.outPath1, ofd.FileName, true);
-                        Msg("界面深度图已保存！");
+                        Msg("界面深度文件已保存！");
                         CloseAndBackConfirm.Reset();
                     }
                     catch
@@ -185,14 +185,14 @@ namespace GI.UserControls
                 ofd1.Filter = "txt文件(*.txt)|*.txt|grd文件(*.grd)|*.grd|dat文件(*.dat)|*.dat";
                 ofd1.FilterIndex = 2;
                 ofd1.FileName = "bouinverted.grd";
-                ofd.Title = "计算重力异常图";
+                ofd.Title = "计算重力异常文件";
                 if (ofd1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     try
                     {
                         //保存
                         File.Copy(InterfaceInversion.outPath2, ofd1.FileName, true);
-                        Msg("计算重力异常图已保存！");
+                        Msg("计算重力异常文件已保存！");
                         CloseAndBackConfirm.Reset();
                     }
                     catch

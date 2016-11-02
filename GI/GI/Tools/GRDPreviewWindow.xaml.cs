@@ -37,9 +37,12 @@ namespace GI.Tools
         private int colors = 90;
         private int roundDecimals = 3;
 
+        private bool isZLJMFYPreview = false;
+
         public static void PreviewShow(string title, Window owner, FileInfo grdFileInfo, int roundDecimals = 3, int colors = 90)
         {
             GRDPreviewWindow gpw = new GRDPreviewWindow(grdFileInfo.FullName);
+            gpw.isZLJMFYPreview = true;
             gpw.fileName.Text = title;
             SelectColorItem sci = (SelectColorItem)gpw.inputPath2.SelectedItem;
             gpw.colors = colors;
@@ -198,7 +201,10 @@ namespace GI.Tools
                 try
                 {
                     SaveToImage(saveToImageContent, ofd.FileName, ofd.FilterIndex);
-                    Msg("已保存！");
+                    if (isZLJMFYPreview)
+                        Msg(fileName.Text + "已保存！");
+                    else
+                        Msg("已保存！");
                 }
                 catch
                 {
